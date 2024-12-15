@@ -25,7 +25,7 @@ const Login = () => {
         >
           Login
         </Typography>
-
+    
         <TextField
           label="Email"
           required
@@ -61,48 +61,60 @@ const Login = () => {
                 '& .MuiInputLabel-root.Mui-focused': {
                 color: '#FC8E40',
                 },
-  }}
-    
-        />
-
-<TextField
-          label="password"
-          required
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          type="password"
-          inputProps={{ maxLength: 250 }}
-
-          sx={{
-            fontFamily: 'Roboto, sans-serif',
-            marginTop: '90px', 
-            display: 'block',   
-            fontFamily: 'Roboto, sans-serif',
-            
-            '& .MuiOutlinedInput-root': {
-     
-                '& fieldset': {
-                    borderColor: '#000', 
-                },
-                
-                '&.Mui-focused fieldset': {
-                    borderColor: '#000',
-                },
-
-            },
-
-                '& .MuiInputLabel-root': {
-                color: '#000',
-                fontFamily: 'Roboto, sans-serif',
-                },
-
-                '& .MuiInputLabel-root.Mui-focused': {
-                color: '#FC8E40',
-                },
   }} />
 
+        <TextField
+                label="password"
+                required
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type="password"
+                inputProps={{ maxLength: 250 }}
 
+                sx={{
+                    fontFamily: 'Roboto, sans-serif',
+                    marginTop: '90px', 
+                    display: 'block',   
+                    fontFamily: 'Roboto, sans-serif',
+                    
+                    '& .MuiOutlinedInput-root': {
+            
+                        '& fieldset': {
+                            borderColor: '#000', 
+                        },
+                        
+                        '&.Mui-focused fieldset': {
+                            borderColor: '#000',
+                        },
+
+                    },
+
+                        '& .MuiInputLabel-root': {
+                        color: '#000',
+                        fontFamily: 'Roboto, sans-serif',
+                        },
+
+                        '& .MuiInputLabel-root.Mui-focused': {
+                        color: '#FC8E40',
+                        },
+        }} />
+
+        <Button
+        variant='"contained'
+        color='#FC8E40'
+        type='submit'
+        sx={{
+            width: '80%',
+            margin: '100px auto 0px auto',
+            display: 'block',
+            padding: '10px',
+            fontFamily: 'Roboto, sans-serif',
+            border: 'yellow 1px solid',
+        }}
+        >
+            login
+        </Button>
            
         </Box>
     );
