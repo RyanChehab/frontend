@@ -1,11 +1,12 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import './login.css';
 import '../../css/utilities.css';
 import logo from '../../assets/logo.png';
 import { Box, TextField, Button, Typography } from '@mui/material';
+import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
-
+    const {email,setEmail,password,setPassword} = useContext(AuthContext)
     
     return (
 <>
@@ -29,13 +30,13 @@ const Login = () => {
         <Typography
           variant="h4"
           sx={{
-            fontSize:'37px',
+            fontSize:'26px',
             padding: '16px 0',
             textAlign: 'center',
             fontFamily: 'Roboto',
           }}
         >
-          Login
+          Welcome To your
         </Typography>
     
     <form>
@@ -118,14 +119,14 @@ const Login = () => {
         color='#FC8E40'
         type='submit'
         sx={{
-            width: '35%',
+            width: '30%',
             borderRadius: '10px',
             margin: '60px auto 0px auto',
             display: 'block',
             padding: '15',
             fontFamily: 'Roboto, sans-serif',
-            fontWeight: '600',
-            fontSize: '16px',
+            fontWeight: '500',
+            fontSize: '14px',
             border: 'black 2px solid',
             '&:hover': {
                 border:'solid 2px #FC8E40',
