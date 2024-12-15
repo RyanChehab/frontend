@@ -48,7 +48,11 @@ const Login = () => {
           margin="normal"
           type="email"
           inputProps={{ maxLength: 250 }}
-
+     
+        //   context
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
+        
           sx={{
             fontFamily: 'Roboto, sans-serif',
             marginTop: '20px', 
@@ -85,6 +89,8 @@ const Login = () => {
                 margin="normal"
                 type="password"
                 inputProps={{ maxLength: 250 }}
+                onChange={(e)=>setPassword(e.target.value)}
+                value={password}
 
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
