@@ -1,16 +1,17 @@
 import React from 'react';
 import './login.css';
 import '../../css/utilities.css';
+import logo from '../../assets/logo.png';
 import { Box, TextField, Button, Typography } from '@mui/material';
 
 const Login = () => {
 
-      
+    
     return (
 <>
-        <div className='flex space-between align-center'>
-        <img src="" alt="Fan Tales Logo" />
-        <p>Fan Tales</p>
+        <div className='header flex align-center mt-3'>
+        <img src={logo} alt="Fan Tales Logo" className='logo'/>
+        <p className='title'>Fan Tales</p>
         </div>
 
         <Box
@@ -20,18 +21,18 @@ const Login = () => {
             padding: '16px',
             width: '370px',
             height: '540px',
-            margin: '7rem auto',
-            background: '#fff',
+            margin: '5rem auto',
+            background: '#FFF',
         }}
         >
 
         <Typography
           variant="h4"
           sx={{
-            fontSize:'42px',
+            fontSize:'37px',
             padding: '16px 0',
             textAlign: 'center',
-             fontFamily: 'Roboto',
+            fontFamily: 'Roboto',
           }}
         >
           Login
@@ -134,6 +135,8 @@ const Login = () => {
             login
         </Button>
     </form>
+        <br />
+        <p className='link'>Don't have an account? <u>Sign up now!</u></p>
         </Box>
 </>
     );
