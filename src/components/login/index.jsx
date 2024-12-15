@@ -15,11 +15,12 @@ const Login = () => {
         >
 
         <Typography
-          variant="h3"
+          variant="h4"
           sx={{
+            fontSize:'42px',
             padding: '16px 0',
             textAlign: 'center',
-             fontFamily: 'Roboto, sans-serif',
+             fontFamily: 'Roboto',
           }}
         >
           Login
@@ -31,12 +32,14 @@ const Login = () => {
           fullWidth
           margin="normal"
           type="email"
+          inputProps={{ maxLength: 250 }}
+
           sx={{
             fontFamily: 'Roboto, sans-serif',
             marginTop: '60px', 
             display: 'block',   
             fontFamily: 'Roboto, sans-serif',
-
+            
             '& .MuiOutlinedInput-root': {
      
                 '& fieldset': {
@@ -50,17 +53,54 @@ const Login = () => {
             },
 
                 '& .MuiInputLabel-root': {
-    
                 color: '#000',
                 fontFamily: 'Roboto, sans-serif',
                 },
+
                 '& .MuiInputLabel-root.Mui-focused': {
-                
                 color: '#FC8E40',
                 },
   }}
     
         />
+
+<TextField
+          label="password"
+          variant="outlined"
+          fullWidth
+          margin="normal"
+          type="password"
+          inputProps={{ maxLength: 250 }}
+
+          sx={{
+            fontFamily: 'Roboto, sans-serif',
+            marginTop: '60px', 
+            display: 'block',   
+            fontFamily: 'Roboto, sans-serif',
+            
+            '& .MuiOutlinedInput-root': {
+     
+                '& fieldset': {
+                    borderColor: '#000', 
+                },
+                
+                '&.Mui-focused fieldset': {
+                    borderColor: '#000',
+                },
+
+            },
+
+                '& .MuiInputLabel-root': {
+                color: '#000',
+                fontFamily: 'Roboto, sans-serif',
+                },
+
+                '& .MuiInputLabel-root.Mui-focused': {
+                color: '#FC8E40',
+                },
+  }} />
+
+
            
         </Box>
     );
