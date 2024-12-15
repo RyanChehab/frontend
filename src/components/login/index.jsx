@@ -1,18 +1,26 @@
 import React from 'react';
+import './login.css';
+import '../../css/utilities.css';
 import { Box, TextField, Button, Typography } from '@mui/material';
 
 const Login = () => {
 
       
     return (
+<>
+        <div className='flex space-between align-center'>
+        <img src="" alt="Fan Tales Logo" />
+        <p>Fan Tales</p>
+        </div>
+
         <Box
         sx={{
             border: '3px solid #FC8E40',
             borderRadius: '10px',
             padding: '16px',
-            width: '400px',
-            height: '600px',
-            margin: '0 auto',
+            width: '370px',
+            height: '540px',
+            margin: '7rem auto',
             background: '#fff',
         }}
         >
@@ -120,7 +128,6 @@ const Login = () => {
             border: 'black 2px solid',
             '&:hover': {
                 border:'solid 2px #FC8E40',
-                
             }
         }}
         >
@@ -128,6 +135,7 @@ const Login = () => {
         </Button>
     </form>
         </Box>
+</>
     );
 };
 
