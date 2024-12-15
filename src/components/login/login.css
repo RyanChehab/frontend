@@ -15,7 +15,7 @@ header{
     transform: translateX(-50%);
     font-family:"Cinzel Decorative";
     color: #FC8E40;
-    font-size: 3rem;
+    font-size: 2.7rem;
 }
 
 .link{
@@ -24,6 +24,6 @@ header{
 }
 
 .logo{
-    width: 113px;  
+    width: 90px;  
     margin-left: 2rem;  
 }

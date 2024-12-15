@@ -9,7 +9,7 @@ const Login = () => {
     
     return (
 <>
-        <div className='header flex align-center mt-3'>
+        <div className='header flex align-center mt-1'>
         <img src={logo} alt="Fan Tales Logo" className='logo'/>
         <p className='title'>Fan Tales</p>
         </div>
