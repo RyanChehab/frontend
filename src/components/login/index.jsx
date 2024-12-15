@@ -8,8 +8,8 @@ const Login = () => {
             border: '3px solid #FC8E40',
             borderRadius: '10px',
             padding: '16px',
-            width: '450px',
-            height: '700px',
+            width: '400px',
+            height: '600px',
             margin: '0 auto'
         }}
         >
@@ -28,14 +28,26 @@ const Login = () => {
         <TextField
           label="Email"
           variant="outlined"
-        //   fullWidth
+          fullWidth
           margin="normal"
           type="email"
           sx={{
             fontFamily: 'Roboto, sans-serif',
-            margin: '8px auto', 
+            marginTop: '60px', 
             display: 'block',   
             fontFamily: 'Roboto, sans-serif',
+            
+            '& .MuiOutlinedInput-root': {
+
+                '&:hover fieldset': {
+                borderColor: '#000000',
+                },
+
+                '&.Mui-focused fieldset': {
+                borderColor: '#ff5722',
+                },
+
+            }
           }}
         />
            
