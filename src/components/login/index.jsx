@@ -13,6 +13,31 @@ const Login = () => {
             margin: '0 auto'
         }}
         >
+
+        <Typography
+          variant="h3"
+          sx={{
+            padding: '16px 0',
+            textAlign: 'center',
+             fontFamily: 'Roboto, sans-serif',
+          }}
+        >
+          Login
+        </Typography>
+
+        <TextField
+          label="Email"
+          variant="outlined"
+        //   fullWidth
+          margin="normal"
+          type="email"
+          sx={{
+            fontFamily: 'Roboto, sans-serif',
+            margin: '8px auto', 
+            display: 'block',   
+            fontFamily: 'Roboto, sans-serif',
+          }}
+        />
            
         </Box>
     );
