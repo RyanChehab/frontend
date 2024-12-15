@@ -1,7 +1,7 @@
-import SignupForm from './components/login';
+import Login from "./components/login";
 function App() {
   return (
-    <SignupForm />
+    <Login />
   );
 }
 

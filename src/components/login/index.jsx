@@ -19,9 +19,9 @@ const Login = () => {
             border: '3px solid #FC8E40',
             borderRadius: '10px',
             padding: '16px',
-            width: '370px',
-            height: '540px',
-            margin: '5rem auto',
+            width: '295px',
+            height: '430px',
+            margin: '0 auto',
             background: '#FFF',
         }}
         >
@@ -50,7 +50,7 @@ const Login = () => {
 
           sx={{
             fontFamily: 'Roboto, sans-serif',
-            marginTop: '60px', 
+            marginTop: '20px', 
             display: 'block',   
             fontFamily: 'Roboto, sans-serif',
             
@@ -87,7 +87,7 @@ const Login = () => {
 
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
-                    marginTop: '90px', 
+                    marginTop: '40px', 
                     display: 'block',   
                     fontFamily: 'Roboto, sans-serif',
                     
@@ -120,7 +120,7 @@ const Login = () => {
         sx={{
             width: '35%',
             borderRadius: '10px',
-            margin: '100px auto 0px auto',
+            margin: '60px auto 0px auto',
             display: 'block',
             padding: '15',
             fontFamily: 'Roboto, sans-serif',
@@ -142,5 +142,4 @@ const Login = () => {
     );
 };
 
-export default Login
-;
+export default Login;
