@@ -28,6 +28,7 @@ const Login = () => {
 
         <TextField
           label="Email"
+          required
           variant="outlined"
           fullWidth
           margin="normal"
@@ -66,6 +67,7 @@ const Login = () => {
 
 <TextField
           label="password"
+          required
           variant="outlined"
           fullWidth
           margin="normal"
@@ -74,7 +76,7 @@ const Login = () => {
 
           sx={{
             fontFamily: 'Roboto, sans-serif',
-            marginTop: '60px', 
+            marginTop: '90px', 
             display: 'block',   
             fontFamily: 'Roboto, sans-serif',
             
