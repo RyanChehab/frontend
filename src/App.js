@@ -1,8 +1,7 @@
-import './App.css';
-
+import SignupForm from './components/login';
 function App() {
   return (
-    
+    <SignupForm />
   );
 }
 
