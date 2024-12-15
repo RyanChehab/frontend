@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+body{
+    background-color:#FFEEDE;
+}
+
+header{
+    position: relative;
+}
+
+p{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family:"Cinzel Decorative";
+    color: #FC8E40;
+}
