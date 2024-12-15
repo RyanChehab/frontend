@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
 
 const Login = () => {
+
+      
     return (
         <Box
         sx={{
@@ -10,7 +12,8 @@ const Login = () => {
             padding: '16px',
             width: '400px',
             height: '600px',
-            margin: '0 auto'
+            margin: '0 auto',
+            background: '#fff',
         }}
         >
 
@@ -26,6 +29,7 @@ const Login = () => {
           Login
         </Typography>
     
+    <form>
         <TextField
           label="Email"
           required
@@ -101,21 +105,28 @@ const Login = () => {
         }} />
 
         <Button
-        variant='"contained'
+        variant='contained'
         color='#FC8E40'
         type='submit'
         sx={{
-            width: '80%',
+            width: '35%',
+            borderRadius: '10px',
             margin: '100px auto 0px auto',
             display: 'block',
-            padding: '10px',
+            padding: '15',
             fontFamily: 'Roboto, sans-serif',
-            border: 'yellow 1px solid',
+            fontWeight: '600',
+            fontSize: '16px',
+            border: 'black 2px solid',
+            '&:hover': {
+                border:'solid 2px #FC8E40',
+                
+            }
         }}
         >
             login
         </Button>
-           
+    </form>
         </Box>
     );
 };
