@@ -36,19 +36,30 @@ const Login = () => {
             marginTop: '60px', 
             display: 'block',   
             fontFamily: 'Roboto, sans-serif',
-            
+
             '& .MuiOutlinedInput-root': {
-
-                '&:hover fieldset': {
-                borderColor: '#000000',
+     
+                '& fieldset': {
+                    borderColor: '#000', 
                 },
-
+                
                 '&.Mui-focused fieldset': {
-                borderColor: '#ff5722',
+                    borderColor: '#000',
                 },
 
-            }
-          }}
+            },
+
+                '& .MuiInputLabel-root': {
+    
+                color: '#000',
+                fontFamily: 'Roboto, sans-serif',
+                },
+                '& .MuiInputLabel-root.Mui-focused': {
+                
+                color: '#FC8E40',
+                },
+  }}
+    
         />
            
         </Box>
