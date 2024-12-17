@@ -19,9 +19,12 @@ export const AuthProvider = ({children}) =>{
                 "POST",
                 {email,password}
             )
-            
-        }catch(error){
-
+            setUser(result.user);
+            localStorage.setItem("token", result.token);
+        } catch(error){
+            setError(err.response?.data?.message || "Login failed!")
+        } finally{
+            setLoading(false)
         }
     }
 
@@ -30,7 +33,11 @@ export const AuthProvider = ({children}) =>{
             email,
             setEmail,
             password,
-            setPassword
+            setPassword,
+            user, 
+            handleLogin, 
+            loading, 
+            error 
             }}>
             {children}
         </AuthContext.Provider>
