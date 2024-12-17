@@ -9,6 +9,8 @@ export const AuthProvider = ({children}) =>{
     const [user,setUser] = useState('');
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState(null);
+    // type for notification
+    const [type,setType] = useState('');
 
     const handleLogin = async (e)=>{
         e.preventDefault()
@@ -20,12 +22,12 @@ export const AuthProvider = ({children}) =>{
                 {email,password}
             )
             setUser(result.user);
-            
-            setResponse(result.message)
+            setResponse(result.message);
+            setType("success")
             localStorage.setItem("token", result.token);
         } catch(error){
-            
             setResponse(error.response.data.error);
+            setType("error")
         } finally{
             setLoading(false)
             console.log('done')
