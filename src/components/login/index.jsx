@@ -2,9 +2,13 @@ import React,{useContext} from 'react';
 import './login.css';
 import '../../css/utilities.css';
 import logo from '../../assets/logo.png';
-import { Box, TextField, Button, Typography } from '@mui/material';
+import { Box, TextField, Button, Typography, Snackbar, Alert, Slide} from '@mui/material';
 import { AuthContext } from '../../context/AuthContext';
 
+function SlideTransition(props) {
+    return <Slide {...props} direction="down" />;
+  }
+  
 const Login = () => {
     const {email,setEmail,password,setPassword,handleLogin,user,loading,error} = useContext(AuthContext)
     
