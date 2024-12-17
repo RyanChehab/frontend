@@ -10,7 +10,7 @@ function SlideTransition(props) {
   }
 
 const Login = () => {
-    const {email,setEmail,password,setPassword,handleLogin,response,loading,open,type} = useContext(AuthContext)
+    const {email,setEmail,password,setPassword,handleLogin,response,loading,open,type, handleCloseNotification} = useContext(AuthContext)
     
     return (
 <>
@@ -156,11 +156,13 @@ const Login = () => {
         <Snackbar
         open={open}
         autoHideDuration={3000}
+        onClose={handleCloseNotification}
         TransitionComponent={SlideTransition}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
             <Alert
             severity={type}
-            sx = {{width: "70%"}}
+            sx = {{width: "100%"}}
             >
                 {response}
             </Alert>
