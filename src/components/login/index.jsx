@@ -8,9 +8,9 @@ import { AuthContext } from '../../context/AuthContext';
 function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
   }
-  
+
 const Login = () => {
-    const {email,setEmail,password,setPassword,handleLogin,user,loading,error} = useContext(AuthContext)
+    const {email,setEmail,password,setPassword,handleLogin,response,loading,open,type} = useContext(AuthContext)
     
     return (
 <>
@@ -150,6 +150,21 @@ const Login = () => {
         <br />
         <p className='link'>Don't have an account? <u>Sign up now!</u></p>
         </Box>
+
+        {/* Notification */}
+
+        <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        TransitionComponent={SlideTransition}
+        >
+            <Alert
+            severity={type}
+            sx = {{width: "70%"}}
+            >
+                {response}
+            </Alert>
+        </Snackbar>
 </>
     );
 };
