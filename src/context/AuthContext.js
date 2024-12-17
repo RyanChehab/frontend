@@ -11,6 +11,7 @@ export const AuthProvider = ({children}) =>{
     const [response, setResponse] = useState(null);
     // type for notification
     const [type,setType] = useState('');
+    const [open,setOpen] = useState(false);
 
     const handleLogin = async (e)=>{
         e.preventDefault()
@@ -30,9 +31,14 @@ export const AuthProvider = ({children}) =>{
             setType("error")
         } finally{
             setLoading(false)
+            setOpen(true)
             console.log('done')
         }
     }
+
+    const handleCloseNotification = () => {
+        setOpen(false);
+      };
 
     return(
         <AuthContext.Provider value={{
@@ -43,7 +49,9 @@ export const AuthProvider = ({children}) =>{
             user, 
             handleLogin, 
             loading, 
-            response 
+            response,
+            handleCloseNotification,
+            open,
             }}>
             {children}
         </AuthContext.Provider>
