@@ -52,6 +52,7 @@ export const AuthProvider = ({children}) =>{
             response,
             handleCloseNotification,
             open,
+            type
             }}>
             {children}
         </AuthContext.Provider>
