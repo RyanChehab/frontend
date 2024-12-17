@@ -10,7 +10,8 @@ export const AuthProvider = ({children}) =>{
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const handleLogin = async ()=>{
+    const handleLogin = async (e)=>{
+        e.preventDefault()
         setLoading(true);
         setError(null);
         try{
@@ -20,11 +21,14 @@ export const AuthProvider = ({children}) =>{
                 {email,password}
             )
             setUser(result.user);
+            console.log(result.user)
             localStorage.setItem("token", result.token);
         } catch(error){
-            setError(err.response?.data?.message || "Login failed!")
+            console.log(error.response.data.error)
+            setError(error.response.data.error);
         } finally{
             setLoading(false)
+            console.log('done')
         }
     }
 
