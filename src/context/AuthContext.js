@@ -8,12 +8,11 @@ export const AuthProvider = ({children}) =>{
     const [password,setPassword] = useState('');
     const [user,setUser] = useState('');
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [response, setResponse] = useState(null);
 
     const handleLogin = async (e)=>{
         e.preventDefault()
         setLoading(true);
-        setError(null);
         try{
             const result = await fetchData(
                 "http://localhost:8000/api/login",
@@ -21,11 +20,12 @@ export const AuthProvider = ({children}) =>{
                 {email,password}
             )
             setUser(result.user);
-            console.log(result.user)
+            
+            setResponse(result.message)
             localStorage.setItem("token", result.token);
         } catch(error){
-            console.log(error.response.data.error)
-            setError(error.response.data.error);
+            
+            setResponse(error.response.data.error);
         } finally{
             setLoading(false)
             console.log('done')
@@ -41,7 +41,7 @@ export const AuthProvider = ({children}) =>{
             user, 
             handleLogin, 
             loading, 
-            error 
+            response 
             }}>
             {children}
         </AuthContext.Provider>
