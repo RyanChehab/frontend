@@ -6,7 +6,7 @@ import { Box, TextField, Button, Typography } from '@mui/material';
 import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
-    const {email,setEmail,password,setPassword} = useContext(AuthContext)
+    const {email,setEmail,password,setPassword,handleLogin,user,loading,error} = useContext(AuthContext)
     
     return (
 <>
@@ -17,7 +17,7 @@ const Login = () => {
 
         <Box
         sx={{
-            border: '3px solid #FC8E40',
+            boxShadow:5,
             borderRadius: '10px',
             padding: '16px',
             width: '295px',
@@ -30,16 +30,16 @@ const Login = () => {
         <Typography
           variant="h4"
           sx={{
-            fontSize:'26px',
+            fontSize:'16px',
             padding: '16px 0',
             textAlign: 'center',
             fontFamily: 'Roboto',
           }}
         >
-          Welcome To your
+          <span className='welcome'>Welcome </span>  back to where your story continues
         </Typography>
     
-    <form>
+    <form onSubmit={handleLogin}>
         <TextField
           label="Email"
           required
@@ -124,6 +124,7 @@ const Login = () => {
         variant='contained'
         color='#FC8E40'
         type='submit'
+        disabled = {loading}
         sx={{
             width: '30%',
             borderRadius: '10px',
@@ -139,7 +140,7 @@ const Login = () => {
             }
         }}
         >
-            login
+            {loading? "Logging in..": "Login"}
         </Button>
     </form>
         <br />
