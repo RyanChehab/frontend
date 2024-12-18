@@ -1,7 +1,6 @@
 import React,{useContext} from 'react';
 import './login.css';
 import '../../css/utilities.css';
-import logo from '../../assets/logo.png';
 import { Box, TextField, Button, Typography, Snackbar, Alert, Slide} from '@mui/material';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -14,8 +13,7 @@ const Login = () => {
     
     return (
 <>
-        <div className='header flex align-center mt-1'>
-        <img src={logo} alt="Fan Tales Logo" className='logo'/>
+        <div className='header flex align-center mt-4'>
         <p className='title'>Fan Tales</p>
         </div>
 
@@ -26,7 +24,7 @@ const Login = () => {
             padding: '16px',
             width: '295px',
             height: '430px',
-            margin: '0 auto',
+            margin: '4rem auto',
             background: '#FFF',
         }}
         >
@@ -130,11 +128,10 @@ const Login = () => {
         type='submit'
         disabled = {loading}
         sx={{
-            width: '30%',
+            width: '45%',
             borderRadius: '10px',
             margin: '60px auto 0px auto',
             display: 'block',
-            padding: '15',
             fontFamily: 'Roboto, sans-serif',
             fontWeight: '500',
             fontSize: '14px',
