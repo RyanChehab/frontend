@@ -54,6 +54,11 @@ const Signup = () => {
                 inputProps={{ maxLength: 250 }}
                 >
                 </TextField>
+                
+                {/* alert msg  */}
+                <FormHelperText sx={{ color: "red", marginLeft: "14px" }}>
+                Username already taken
+                </FormHelperText>
 
             </form>
         </box>
