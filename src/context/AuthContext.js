@@ -47,7 +47,19 @@ export const AuthProvider = ({children}) =>{
     const [regpass,setregpass] = useState('');
     const [usertype,setUsertype] = useState('');
     const [notiType,setNotiType] = useState('');
-    
+
+      const handleSignup = (e)=>{
+        e.preventDefault();
+        try{
+
+        }catch(error){
+
+        }finally{
+            
+        }
+      }
+
+
     return(
         <AuthContext.Provider value={{
             email,
