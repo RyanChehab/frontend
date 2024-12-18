@@ -10,6 +10,19 @@ function SlideTransition(props) {
 const Signup = () => {
 
     return(
-        
+        <box
+        sx={{
+        boxShadow:5,
+        borderRadius: '10px',
+        padding: '16px',
+        width: '295px',
+        height: '430px',
+        margin: '4rem auto',
+        background: '#FFF',
+        }}
+        >
+        </box>
     )
 }
+
+export default Signup;
