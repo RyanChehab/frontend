@@ -82,7 +82,19 @@ export const AuthProvider = ({children}) =>{
             response,
             handleCloseNotification,
             open,
-            type
+            type,
+            name,
+            username,
+            register,
+            usertype,
+            notiType,
+            setName,
+            setRegister,
+            setUsername,
+            setregpass,
+            setUsertype,
+            setNotiType,
+            handleSignup
             }}>
             {children}
         </AuthContext.Provider>
