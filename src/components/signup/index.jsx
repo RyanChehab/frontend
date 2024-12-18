@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import './signup.css';
 import '../../css/utilities.css';
-import { Box, TextField, Button, Typography, Snackbar, Alert, Slide, FormHelperText} from '@mui/material';
+import { Box, TextField, Button, Typography, Snackbar, Alert, Slide, FormHelperText, FormControl} from '@mui/material';
 
 function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
@@ -208,7 +208,14 @@ const Signup = () => {
                 sx={{ color: "red", marginLeft: "10px", fontSize: '10px', color: "red"}}>
                 passwords dont match 
                 </FormHelperText>
-                    
+                
+                <FormControl fullWidth>
+                    <Select
+                    labelId= "userType"
+                    label= "Type"
+                    ></Select>
+                </FormControl>
+                
 
             </form>
         </Box>
