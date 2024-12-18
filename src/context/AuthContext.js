@@ -35,11 +35,19 @@ export const AuthProvider = ({children}) =>{
             console.log('done')
         }
     }
-
     const handleCloseNotification = () => {
         setOpen(false);
       };
-
+//end login
+//####################################################################
+        
+    const [name,setName] = useState('');
+    const [username,setUsername] = useState('');
+    const [register,setRegister] = useState('');
+    const [regpass,setregpass] = useState('');
+    const [usertype,setUsertype] = useState('');
+    const [notiType,setNotiType] = useState('');
+    
     return(
         <AuthContext.Provider value={{
             email,
