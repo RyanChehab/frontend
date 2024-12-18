@@ -48,14 +48,24 @@ export const AuthProvider = ({children}) =>{
     const [usertype,setUsertype] = useState('');
     const [notiType,setNotiType] = useState('');
 
-      const handleSignup = (e)=>{
+      const handleSignup = async (e)=>{
         e.preventDefault();
         try{
-
+            const result = await fetchData(
+                "http://localhost:8000/api/signup",
+                "POST",
+                {name,username,register,regpass,usertype}
+            )
+            // setUser(result.user);
+            // setResponse(result.message);
+            // setType("success")
+            // localStorage.setItem("token", result.token);
+            console.log(result.token)
+            console.log(result.message)
         }catch(error){
 
         }finally{
-            
+
         }
       }
 
