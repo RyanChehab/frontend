@@ -3,6 +3,7 @@ import './login.css';
 import '../../css/utilities.css';
 import { Box, TextField, Button, Typography, Snackbar, Alert, Slide} from '@mui/material';
 import { AuthContext } from '../../context/AuthContext';
+import { Link, Navigate } from 'react-router-dom';
 
 function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
@@ -145,7 +146,7 @@ const Login = () => {
         </Button>
     </form>
         <br />
-        <p className='link'>Don't have an account? <u>Sign up now!</u></p>
+        <p className='link'>Don't have an account? <Link to="signup">Sign up now!</Link></p>
         </Box>
 
         {/* Notification */}
