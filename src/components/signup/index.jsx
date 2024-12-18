@@ -21,6 +21,15 @@ const Signup = () => {
         background: '#FFF',
         }}
         >
+            <Typography
+                      variant="h4"
+                      sx={{
+                        fontSize:'16px',
+                        padding: '16px 0',
+                        textAlign: 'center',
+                        fontFamily: 'Roboto',
+                      }}
+                    >Your <span className='adventure'>Adventure</span> awaits. Let’s get started!</Typography>
         </box>
     )
 }
