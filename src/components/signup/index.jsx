@@ -1,9 +1,9 @@
 import React,{useContext} from 'react';
 import './signup.css';
 import '../../css/utilities.css';
-import { Link, Navigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { Link} from 'react-router-dom';
 import { Box, TextField, Button, Typography, Snackbar, Alert, Slide, FormHelperText, FormControl, MenuItem, Select, InputLabel} from '@mui/material';
-import { Router } from 'react-router-dom';
 
 function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
@@ -11,6 +11,9 @@ function SlideTransition(props) {
 
 const Signup = () => {
 
+    const {name,username,register,usertype,notiType,setNamesetRegister,
+    setUsername,setregpass,setUsertype,setNotiType,handleSignup} = useContext(AuthContext);
+                
     return(
 <>
         <div className='header flex align-center mt-2'>
