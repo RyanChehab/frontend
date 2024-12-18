@@ -41,8 +41,34 @@ const Signup = () => {
                 margin="normal"
                 type="text"
                 inputProps={{ maxLength: 250 }}
-                >
-                </TextField>
+                sx={{
+                    fontFamily: 'Roboto, sans-serif',
+                    marginTop: '20px', 
+                    display: 'block',   
+                    fontFamily: 'Roboto, sans-serif',
+                    
+                    '& .MuiOutlinedInput-root': {
+             
+                        '& fieldset': {
+                            borderColor: '#000', 
+                        },
+                        
+                        '&.Mui-focused fieldset': {
+                            borderColor: '#000',
+                        },
+        
+                    },
+        
+                        '& .MuiInputLabel-root': {
+                        color: '#000',
+                        fontFamily: 'Roboto, sans-serif',
+                        },
+        
+                        '& .MuiInputLabel-root.Mui-focused': {
+                        color: '#FC8E40',
+                        },
+                    }}/>
+                
 
                 <TextField
                 label="Username"
@@ -52,11 +78,38 @@ const Signup = () => {
                 margin="normal"
                 type="text"
                 inputProps={{ maxLength: 250 }}
-                >
-                </TextField>
+                sx={{
+                    fontFamily: 'Roboto, sans-serif',
+                    marginTop: '20px', 
+                    display: 'block',   
+                    fontFamily: 'Roboto, sans-serif',
+                    
+                    '& .MuiOutlinedInput-root': {
+             
+                        '& fieldset': {
+                            borderColor: '#000', 
+                        },
+                        
+                        '&.Mui-focused fieldset': {
+                            borderColor: '#000',
+                        },
+        
+                    },
+        
+                        '& .MuiInputLabel-root': {
+                        color: '#000',
+                        fontFamily: 'Roboto, sans-serif',
+                        },
+        
+                        '& .MuiInputLabel-root.Mui-focused': {
+                        color: '#FC8E40',
+                        },
+                    }}/>
                 
                 {/* alert msg  */}
-                <FormHelperText sx={{ color: "red", marginLeft: "10px", fontSize: '10px' }}>
+                <FormHelperText 
+                
+                sx={{ color: "red", marginLeft: "10px", fontSize: '10px' }}>
                 Username already taken
                 </FormHelperText>
 
