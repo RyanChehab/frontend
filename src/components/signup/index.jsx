@@ -29,7 +29,33 @@ const Signup = () => {
                         textAlign: 'center',
                         fontFamily: 'Roboto',
                       }}
-                    >Your <span className='adventure'>Adventure</span> awaits. Let’s get started!</Typography>
+                    >Your <span className='adventure'>Adventure</span> awaits. Let’s get started!
+            </Typography>
+
+            <form>
+                <TextField
+                label="Name"
+                required
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type="text"
+                inputProps={{ maxLength: 250 }}
+                >
+                </TextField>
+
+                <TextField
+                label="Username"
+                required
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type="text"
+                inputProps={{ maxLength: 250 }}
+                >
+                </TextField>
+
+            </form>
         </box>
     )
 }
