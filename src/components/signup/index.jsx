@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import './signup.css';
 import '../../css/utilities.css';
-import { Box, TextField, Button, Typography, Snackbar, Alert, Slide, FormHelperText, FormControl} from '@mui/material';
+import { Box, TextField, Button, Typography, Snackbar, Alert, Slide, FormHelperText, FormControl, MenuItem, Select, InputLabel} from '@mui/material';
 
 function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
@@ -21,8 +21,8 @@ const Signup = () => {
         borderRadius: '10px',
         padding: '16px',
         width: '295px',
-        height: '530px',
-        margin: '4rem auto',
+        height: '500px',
+        margin: '2.5rem auto',
         background: '#FFF',
         }}
         >
@@ -178,7 +178,6 @@ const Signup = () => {
                     fontFamily: 'Roboto, sans-serif',
                      
                     display: 'block',   
-                    fontFamily: 'Roboto, sans-serif',
                     
                     '& .MuiOutlinedInput-root': {
                         height: "40px",
@@ -209,12 +208,71 @@ const Signup = () => {
                 passwords dont match 
                 </FormHelperText>
                 
-                <FormControl fullWidth>
+                <FormControl fullWidth
+                sx={{
+                    
+                    marginTop:"15px",
+                    height:"40px",
+                    
+                    '& .MuiOutlinedInput-root': {
+                        height: "40px",
+
+                        '& fieldset': {
+                            borderColor: '#000', 
+                        },
+
+                        '&:hover':{
+                            borderColor: '#FC8E40',
+                        },
+                        
+                        '&.Mui-focused fieldset': {
+                            borderColor: '#000',
+                        },
+
+                    },
+                    '& .MuiInputLabel-root': {
+                        top: "-8px",
+                        color: '#000',
+                    },
+                    '& .MuiInputLabel-root.Mui-focused': {
+                        color: '#FC8E40',
+                        },
+            
+                }}
+                >
+                <InputLabel id="select-label">Type</InputLabel>
                     <Select
+                    
                     labelId= "userType"
                     label= "Type"
-                    ></Select>
+                    >
+                        <MenuItem value="Reader">Reader</MenuItem>
+                        <MenuItem value="Writer">Writer</MenuItem>
+                    </Select>
                 </FormControl>
+
+                <Button
+                        variant='contained'
+                        color='#FC8E40'
+                        type='submit'
+                        // disabled = {loading}
+                        sx={{
+                            width: '45%',
+                            borderRadius: '10px',
+                            margin: '25px auto 0px auto',
+                            display: 'block',
+                            fontFamily: 'Roboto, sans-serif',
+                            fontWeight: '500',
+                            fontSize: '14px',
+                            border: 'black 2px solid',
+                            '&:hover': {
+                                border:'solid 2px #FC8E40',
+                            }
+                        }}
+                        >
+                            {/* {loading? "Logging in..": "Login"} */}
+                            Signup
+                </Button>
                 
 
             </form>
