@@ -1,7 +1,9 @@
 import React,{useContext} from 'react';
 import './signup.css';
 import '../../css/utilities.css';
+import { Link, Navigate } from 'react-router-dom';
 import { Box, TextField, Button, Typography, Snackbar, Alert, Slide, FormHelperText, FormControl, MenuItem, Select, InputLabel} from '@mui/material';
+import { Router } from 'react-router-dom';
 
 function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
@@ -11,7 +13,7 @@ const Signup = () => {
 
     return(
 <>
-        <div className='header flex align-center mt-4'>
+        <div className='header flex align-center mt-2'>
         <p className='title'>Fan Tales</p>
         </div>
 
@@ -21,7 +23,7 @@ const Signup = () => {
         borderRadius: '10px',
         padding: '16px',
         width: '295px',
-        height: '500px',
+        height: '520px',
         margin: '2.5rem auto',
         background: '#FFF',
         }}
@@ -243,7 +245,7 @@ const Signup = () => {
                 <InputLabel id="select-label">Type</InputLabel>
                     <Select
                     
-                    labelId= "userType"
+                    // labelId= "userType"
                     label= "Type"
                     >
                         <MenuItem value="Reader">Reader</MenuItem>
@@ -270,11 +272,11 @@ const Signup = () => {
                             }
                         }}
                         >
-                            {/* {loading? "Logging in..": "Login"} */}
                             Signup
                 </Button>
-                
 
+                <p className='link'>Don't have an account? <Link to="/" className='linkto'>Sign up now!</Link></p>
+                
             </form>
         </Box>
 </>
