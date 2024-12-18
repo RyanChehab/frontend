@@ -3,6 +3,31 @@
 
 body{
     background: url('../../assets/login-bg.jpg')center center / cover no-repeat;
-    height: 100vh;
-    overflow-y:hidden;
+    overflow: auto;
+    background-attachment: fixed;
+}
+body::-webkit-scrollbar {
+    width: 10px; 
+    height: 10px; 
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 5px; 
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #FC8E40; 
+}
+
+body::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 5px;
+}
+
+.adventure{
+    color:#FC8E40;
+    font-size: 20px;
+    font-family:"Cinzel Decorative";
+    font-weight: 700;
 }
