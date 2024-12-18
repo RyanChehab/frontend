@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import './signup.css';
 import '../../css/utilities.css';
-import { Box, TextField, Button, Typography, Snackbar, Alert, Slide} from '@mui/material';
+import { Box, TextField, Button, Typography, Snackbar, Alert, Slide, FormHelperText} from '@mui/material';
 
 function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
@@ -10,7 +10,7 @@ function SlideTransition(props) {
 const Signup = () => {
 
     return(
-        <box
+        <Box
         sx={{
         boxShadow:5,
         borderRadius: '10px',
@@ -56,12 +56,12 @@ const Signup = () => {
                 </TextField>
                 
                 {/* alert msg  */}
-                <FormHelperText sx={{ color: "red", marginLeft: "14px" }}>
+                <FormHelperText sx={{ color: "red", marginLeft: "10px", fontSize: '10px' }}>
                 Username already taken
                 </FormHelperText>
 
             </form>
-        </box>
+        </Box>
     )
 }
 
