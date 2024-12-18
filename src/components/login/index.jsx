@@ -146,7 +146,7 @@ const Login = () => {
         </Button>
     </form>
         <br />
-        <p className='link'>Don't have an account? <Link to="signup">Sign up now!</Link></p>
+        <p className='link'>Don't have an account? <Link to="signup" className='linkto'>Sign up now!</Link></p>
         </Box>
 
         {/* Notification */}
