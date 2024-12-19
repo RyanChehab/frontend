@@ -56,7 +56,7 @@ const Signup = () => {
                 onChange={(e)=>setName(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
-                    marginTop: '20px', 
+                    marginTop: '10px', 
                     display: 'block',   
                     fontFamily: 'Roboto, sans-serif',
                     
@@ -98,7 +98,7 @@ const Signup = () => {
                 onChange={(e)=>setUsername(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
-                    marginTop: '25px', 
+                    marginTop: '20px', 
                     display: 'block',   
                     fontFamily: 'Roboto, sans-serif',
                     
@@ -138,7 +138,7 @@ const Signup = () => {
                 onChange={(e)=>setEmail(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
-                    marginTop: '25px', 
+                    marginTop: '20px', 
                     display: 'block',   
                     fontFamily: 'Roboto, sans-serif',
                     
@@ -185,7 +185,7 @@ const Signup = () => {
                 onChange={(e) => handlePasswordChange(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
-                    marginTop: '1px', 
+                    marginTop: '20px', 
                     display: 'block',   
                     fontFamily: 'Roboto, sans-serif',
                     
@@ -193,14 +193,17 @@ const Signup = () => {
                         height: "40px",
 
                         '& fieldset': {
-                            borderColor: ispasswordError? "red": "#000", 
+                            borderColor: ispasswordError? "red": "#4caf50", 
                         },
                         
                         '&.Mui-focused fieldset': {
-                            borderColor: ispasswordError? "red": "#000", 
+                            borderColor: ispasswordError? "red": "#4caf50", 
                         },
-        
-                    },
+                        },
+
+                        '&:hover fieldset': {
+                        borderColor: ispasswordError ? "red" : "#4caf50", // Hover border color
+                        },
         
                         '& .MuiInputLabel-root': {
                         top: "-8px",
@@ -230,7 +233,7 @@ const Signup = () => {
                 onChange={(e) => handleConfirmChange(e.target.value)}
                 sx={{
                         fontFamily: 'Roboto, sans-serif',
-                        
+                        marginTop: '20px', 
                         display: 'block',   
                         
                         '& .MuiOutlinedInput-root': {
@@ -259,16 +262,11 @@ const Signup = () => {
                         color: '#FC8E40',
                         },
                     }}/>
-
-                {/* <FormHelperText  
-                sx={{ color: "red", marginLeft: "10px", fontSize: '10px', color: "red"}}>
-                passwords dont match 
-                </FormHelperText> */}
                 
                 <FormControl fullWidth
                 sx={{
                     
-                    marginTop:"15px",
+                    marginTop:"10px",
                     height:"40px",
                     
                     '& .MuiOutlinedInput-root': {
