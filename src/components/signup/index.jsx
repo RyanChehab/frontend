@@ -11,8 +11,8 @@ function SlideTransition(props) {
 
 const Signup = () => {
 
-    const {name,username,register,regpass,usertype,notiType,setName,setRegister,
-    setUsername,setregpass,setUsertype,setNotiType,handleSignup,confirm,setConfirm} = useContext(AuthContext);
+    const {name,username,user_type,setName,email,setEmail,password,setPassword,
+    setUsername,setUsertype,handleSignup,confirm,setConfirm} = useContext(AuthContext);
                 
     return(
 <>
@@ -133,8 +133,8 @@ const Signup = () => {
                 margin="normal"
                 type="email"
                 inputProps={{ maxLength: 250 }}
-                value={register}
-                onChange={(e)=>setRegister(e.target.value)}
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
                     marginTop: '25px', 
@@ -180,8 +180,8 @@ const Signup = () => {
                 margin="normal"
                 type="password"
                 inputProps={{ maxLength: 250 }}
-                value={regpass}
-                onChange={(e)=>setregpass(e.target.value)}
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
                     marginTop: '1px', 
@@ -295,12 +295,12 @@ const Signup = () => {
                 >
                 <InputLabel id="select-label">Type</InputLabel>
                     <Select
-                    value={usertype}
+                    value={user_type}
                     onChange={(e)=>setUsertype(e.target.value)}
                     label= "Type"
                     >
-                        <MenuItem value="Reader">Reader</MenuItem>
-                        <MenuItem value="Writer">Writer</MenuItem>
+                        <MenuItem value="reader">Reader</MenuItem>
+                        <MenuItem value="writer">Writer</MenuItem>
                     </Select>
                 </FormControl>
 
