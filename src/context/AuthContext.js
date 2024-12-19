@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) =>{
     // type for notification
     const [type,setType] = useState('');
     const [open,setOpen] = useState(false);
-
+    const [ispasswordError,setIsPasswordError] = useState(false)
     const handleLogin = async (e)=>{
         e.preventDefault()
         setLoading(true);
@@ -44,11 +44,24 @@ export const AuthProvider = ({children}) =>{
       };
 //end login
 //####################################################################
+        const handlePasswordChange = (value) => {
+            setPassword(value);
+            if (value === confirm) {
+            setIsPasswordError(false);
+            }
+        };
+
+        const handleConfirmChange = (value) => {
+            setConfirm(value);
+            if (value === password) {
+              setIsPasswordError(false);
+            }
+        
+        };
 
       const handleSignup = async (e)=>{
         e.preventDefault();
         setLoading(true);
-        if (password === confirm){
         try{
                 const result = await fetchData(
                     "http://localhost:8000/api/signup",
@@ -66,15 +79,7 @@ export const AuthProvider = ({children}) =>{
                 setLoading(false)
                 setOpen(true)
             }
-        }else{
-            setType("error")
-            setResponse("password is not confirmed");
-            setOpen(true)
-            setLoading(false);
         }
-        
-      }
-
 
     return(
         <AuthContext.Provider value={{
@@ -97,7 +102,11 @@ export const AuthProvider = ({children}) =>{
             setUsertype,
             handleSignup,
             confirm,
-            setConfirm
+            setConfirm,
+            
+            handlePasswordChange,
+            handleConfirmChange,
+            ispasswordError
             }}>
             {children}
         </AuthContext.Provider>
