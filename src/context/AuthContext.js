@@ -4,6 +4,7 @@ import fetchData from '../utility/fetch';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) =>{
+    // for login and signup
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [user,setUser] = useState('');
@@ -47,7 +48,7 @@ export const AuthProvider = ({children}) =>{
 
       const handleSignup = async (e)=>{
         e.preventDefault();
-        
+        setLoading(true);
         try{
             const result = await fetchData(
                 "http://localhost:8000/api/signup",
@@ -55,17 +56,13 @@ export const AuthProvider = ({children}) =>{
                 {name,username,email,password,user_type}
             )
             setUser(result.user);
-            console.log(result.user)
             setResponse(result.message);
-            console.log(result.message)
             setType("success")
             localStorage.setItem("token", result.token);
-            console.log(result.token)
-            console.log(result.message)
         }catch(error){
-            console.log(error.response.data)
+            console.log(error.response.data.message)
         }finally{
-
+            setLoading(false)
         }
       }
 
