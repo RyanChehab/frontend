@@ -1,6 +1,5 @@
 import React,{useState,useEffect,createContext} from 'react';
 import fetchData from '../utility/fetch';
-
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) =>{
@@ -49,24 +48,31 @@ export const AuthProvider = ({children}) =>{
       const handleSignup = async (e)=>{
         e.preventDefault();
         setLoading(true);
+        if (password === confirm){
         try{
-            const result = await fetchData(
-                "http://localhost:8000/api/signup",
-                "POST",
-                {name,username,email,password,user_type}
-            )
-            setUser(result.user);
-            setResponse(result.message);
-            setType("success")
-            localStorage.setItem("token", result.token);
-        }catch(error){
+                const result = await fetchData(
+                    "http://localhost:8000/api/signup",
+                    "POST",
+                    {name,username,email,password,user_type}
+                )
+                setUser(result.user);
+                setResponse(result.message);
+                setType("success")
+                localStorage.setItem("token", result.token);
+            }catch(error){
+                setType("error")
+                setResponse(error.response.data.message)
+            }finally{
+                setLoading(false)
+                setOpen(true)
+            }
+        }else{
             setType("error")
-            setResponse(error.response.data.message)
-            
-        }finally{
-            setLoading(false)
+            setResponse("password is not confirmed");
             setOpen(true)
+            setLoading(false);
         }
+        
       }
 
 
