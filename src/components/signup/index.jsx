@@ -11,7 +11,7 @@ function SlideTransition(props) {
 
 const Signup = () => {
 
-    const {name,username,user_type,setName,email,setEmail,password,setPassword,
+    const {name,username,user_type,setName,email,setEmail,password,setPassword,loading,
     setUsername,setUsertype,handleSignup,confirm,setConfirm} = useContext(AuthContext);
                 
     return(
@@ -308,7 +308,7 @@ const Signup = () => {
                         variant='contained'
                         color='#FC8E40'
                         type='submit'
-                        // disabled = {loading}
+                        disabled = {loading}
                         sx={{
                             width: '45%',
                             borderRadius: '10px',
@@ -323,7 +323,7 @@ const Signup = () => {
                             }
                         }}
                         >
-                            Signup
+                            {loading? "Signing up..." :"Sign Up"}
                 </Button>
 
                 <p className='link'>Don't have an account? <Link to="/" className='linkto'>Sign up now!</Link></p>
