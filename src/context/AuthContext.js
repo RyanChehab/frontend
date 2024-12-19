@@ -43,32 +43,36 @@ export const AuthProvider = ({children}) =>{
         
     const [name,setName] = useState('');
     const [username,setUsername] = useState('');
-    const [register,setRegister] = useState('');
     const [regpass,setregpass] = useState('');
-    const [usertype,setUsertype] = useState('');
+    const [user_type,setUsertype] = useState('');
     const [notiType,setNotiType] = useState('');
     const [confirm,setConfirm] = useState('');
 
       const handleSignup = async (e)=>{
         e.preventDefault();
         console.log('workingg')
-        // try{
-        //     const result = await fetchData(
-        //         "http://localhost:8000/api/signup",
-        //         "POST",
-        //         {name,username,register,regpass,usertype}
-        //     )
-        //     // setUser(result.user);
-        //     // setResponse(result.message);
-        //     // setType("success")
-        //     // localStorage.setItem("token", result.token);
-        //     console.log(result.token)
-        //     console.log(result.message)
-        // }catch(error){
+        console.log(name)
+        console.log(user_type)
+        console.log(username)
+        try{
+            const result = await fetchData(
+                "http://localhost:8000/api/signup",
+                "POST",
+                {name,username,email,password,user_type}
+            )
+            setUser(result.user);
+            console.log(result.user)
+            setResponse(result.message);
+            console.log(result.message)
+            setType("success")
+            localStorage.setItem("token", result.token);
+            console.log(result.token)
+            console.log(result.message)
+        }catch(error){
+            console.log(error.response.data)
+        }finally{
 
-        // }finally{
-
-        // }
+        }
       }
 
 
@@ -87,12 +91,10 @@ export const AuthProvider = ({children}) =>{
             type,
             name,
             username,
-            register,
             regpass,
-            usertype,
+            user_type,
             notiType,
             setName,
-            setRegister,
             setUsername,
             setregpass,
             setUsertype,
