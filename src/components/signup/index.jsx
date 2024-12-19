@@ -11,7 +11,7 @@ function SlideTransition(props) {
 
 const Signup = () => {
 
-    const {name,username,register,usertype,notiType,setNamesetRegister,
+    const {name,username,register,regpass,usertype,notiType,setName,setRegister,
     setUsername,setregpass,setUsertype,setNotiType,handleSignup} = useContext(AuthContext);
                 
     return(
@@ -42,7 +42,7 @@ const Signup = () => {
                     >Your <span className='adventure'>Adventure</span> awaits. Let’s get started!
             </Typography>
 
-            <form>
+            <form onSubmit={handleSignup}>
                 <TextField
                 label="Name"
                 required
@@ -51,6 +51,8 @@ const Signup = () => {
                 margin="normal"
                 type="text"
                 inputProps={{ maxLength: 250 }}
+                value={name}
+                onChange={(e)=>setName(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
                     marginTop: '20px', 
@@ -91,6 +93,8 @@ const Signup = () => {
                 margin="normal"
                 type="text"
                 inputProps={{ maxLength: 250 }}
+                value={username}
+                onChange={(e)=>setUsername(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
                     marginTop: '25px', 
@@ -120,13 +124,53 @@ const Signup = () => {
                         color: '#FC8E40',
                         },
                     }}/>
-                
+
+                <TextField
+                label="Email"
+                required
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type="email"
+                inputProps={{ maxLength: 250 }}
+                value={register}
+                onChange={(e)=>setRegister(e.target.value)}
+                sx={{
+                    fontFamily: 'Roboto, sans-serif',
+                    marginTop: '25px', 
+                    display: 'block',   
+                    fontFamily: 'Roboto, sans-serif',
+                    
+                    '& .MuiOutlinedInput-root': {
+                        height: "40px",
+
+                        '& fieldset': {
+                            borderColor: '#000', 
+                        },
+                        
+                        '&.Mui-focused fieldset': {
+                            borderColor: '#000',
+                        },
+        
+                    },
+        
+                        '& .MuiInputLabel-root': {
+                        top: "-8px",
+                        color: '#000',
+                        fontFamily: 'Roboto, sans-serif',
+                        },
+        
+                        '& .MuiInputLabel-root.Mui-focused': {
+                        color: '#FC8E40',
+                        },
+                    }}/>
+
                 {/* alert msg  */}
-                <FormHelperText 
+                {/* <FormHelperText 
                 
                 sx={{ color: "red", marginLeft: "10px", fontSize: '10px', color: "transparent"}}>
                 Username already taken
-                </FormHelperText>
+                </FormHelperText> */}
 
                 <TextField
                 label="password"
@@ -136,6 +180,8 @@ const Signup = () => {
                 margin="normal"
                 type="password"
                 inputProps={{ maxLength: 250 }}
+                value={regpass}
+                onChange={}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
                     marginTop: '1px', 
@@ -165,11 +211,11 @@ const Signup = () => {
                         color: '#FC8E40',
                         },
                     }}/>
-                <FormHelperText 
+                {/* <FormHelperText 
                 
                 sx={{ color: "red", marginLeft: "10px", fontSize: '10px', color: "red"}}>
                 passwords dont match 
-                </FormHelperText>
+                </FormHelperText> */}
 
                 <TextField
                 label="Confirm Password"
@@ -208,10 +254,10 @@ const Signup = () => {
                         },
                     }}/>
 
-                <FormHelperText  
+                {/* <FormHelperText  
                 sx={{ color: "red", marginLeft: "10px", fontSize: '10px', color: "red"}}>
                 passwords dont match 
-                </FormHelperText>
+                </FormHelperText> */}
                 
                 <FormControl fullWidth
                 sx={{
