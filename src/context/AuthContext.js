@@ -9,6 +9,10 @@ export const AuthProvider = ({children}) =>{
     const [user,setUser] = useState('');
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState(null);
+    const [user_type,setUsertype] = useState('');
+    const [name,setName] = useState('');
+    const [username,setUsername] = useState('');
+    const [confirm,setConfirm] = useState('');
     // type for notification
     const [type,setType] = useState('');
     const [open,setOpen] = useState(false);
@@ -40,20 +44,10 @@ export const AuthProvider = ({children}) =>{
       };
 //end login
 //####################################################################
-        
-    const [name,setName] = useState('');
-    const [username,setUsername] = useState('');
-    const [regpass,setregpass] = useState('');
-    const [user_type,setUsertype] = useState('');
-    const [notiType,setNotiType] = useState('');
-    const [confirm,setConfirm] = useState('');
 
       const handleSignup = async (e)=>{
         e.preventDefault();
-        console.log('workingg')
-        console.log(name)
-        console.log(user_type)
-        console.log(username)
+        
         try{
             const result = await fetchData(
                 "http://localhost:8000/api/signup",
@@ -91,14 +85,10 @@ export const AuthProvider = ({children}) =>{
             type,
             name,
             username,
-            regpass,
             user_type,
-            notiType,
             setName,
             setUsername,
-            setregpass,
             setUsertype,
-            setNotiType,
             handleSignup,
             confirm,
             setConfirm
