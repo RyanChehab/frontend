@@ -47,26 +47,28 @@ export const AuthProvider = ({children}) =>{
     const [regpass,setregpass] = useState('');
     const [usertype,setUsertype] = useState('');
     const [notiType,setNotiType] = useState('');
+    const [confirm,setConfirm] = useState('');
 
       const handleSignup = async (e)=>{
         e.preventDefault();
-        try{
-            const result = await fetchData(
-                "http://localhost:8000/api/signup",
-                "POST",
-                {name,username,register,regpass,usertype}
-            )
-            // setUser(result.user);
-            // setResponse(result.message);
-            // setType("success")
-            // localStorage.setItem("token", result.token);
-            console.log(result.token)
-            console.log(result.message)
-        }catch(error){
+        console.log('workingg')
+        // try{
+        //     const result = await fetchData(
+        //         "http://localhost:8000/api/signup",
+        //         "POST",
+        //         {name,username,register,regpass,usertype}
+        //     )
+        //     // setUser(result.user);
+        //     // setResponse(result.message);
+        //     // setType("success")
+        //     // localStorage.setItem("token", result.token);
+        //     console.log(result.token)
+        //     console.log(result.message)
+        // }catch(error){
 
-        }finally{
+        // }finally{
 
-        }
+        // }
       }
 
 
@@ -86,6 +88,7 @@ export const AuthProvider = ({children}) =>{
             name,
             username,
             register,
+            regpass,
             usertype,
             notiType,
             setName,
@@ -94,7 +97,9 @@ export const AuthProvider = ({children}) =>{
             setregpass,
             setUsertype,
             setNotiType,
-            handleSignup
+            handleSignup,
+            confirm,
+            setConfirm
             }}>
             {children}
         </AuthContext.Provider>
