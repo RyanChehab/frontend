@@ -12,7 +12,7 @@ function SlideTransition(props) {
 const Signup = () => {
 
     const {name,username,register,regpass,usertype,notiType,setName,setRegister,
-    setUsername,setregpass,setUsertype,setNotiType,handleSignup} = useContext(AuthContext);
+    setUsername,setregpass,setUsertype,setNotiType,handleSignup,confirm,setConfirm} = useContext(AuthContext);
                 
     return(
 <>
@@ -181,7 +181,7 @@ const Signup = () => {
                 type="password"
                 inputProps={{ maxLength: 250 }}
                 value={regpass}
-                onChange={}
+                onChange={(e)=>setregpass(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
                     marginTop: '1px', 
@@ -225,6 +225,8 @@ const Signup = () => {
                 margin="normal"
                 type="password"
                 inputProps={{ maxLength: 250 }}
+                value = {confirm}
+                onChange={(e)=>setConfirm(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
                      
