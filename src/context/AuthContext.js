@@ -60,9 +60,12 @@ export const AuthProvider = ({children}) =>{
             setType("success")
             localStorage.setItem("token", result.token);
         }catch(error){
-            console.log(error.response.data.message)
+            setType("error")
+            setResponse(error.response.data.message)
+            
         }finally{
             setLoading(false)
+            setOpen(true)
         }
       }
 
