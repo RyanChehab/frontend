@@ -295,8 +295,8 @@ const Signup = () => {
                 >
                 <InputLabel id="select-label">Type</InputLabel>
                     <Select
-                    
-                    // labelId= "userType"
+                    value={usertype}
+                    onChange={(e)=>setUsertype(e.target.value)}
                     label= "Type"
                     >
                         <MenuItem value="Reader">Reader</MenuItem>
