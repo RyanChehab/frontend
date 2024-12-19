@@ -12,7 +12,8 @@ function SlideTransition(props) {
 const Signup = () => {
 
     const {name,username,user_type,setName,email,setEmail,password,setPassword,loading,
-    setUsername,setUsertype,handleSignup,confirm,setConfirm} = useContext(AuthContext);
+    setUsername,setUsertype,handleSignup,confirm,setConfirm,open,type,response,handleCloseNotification,handlePasswordChange,ispasswordError,
+    handleConfirmChange} = useContext(AuthContext);
                 
     return(
 <>
@@ -26,7 +27,7 @@ const Signup = () => {
         borderRadius: '10px',
         padding: '16px',
         width: '295px',
-        height: '520px',
+        height: '530px',
         margin: '2.5rem auto',
         background: '#FFF',
         }}
@@ -181,7 +182,7 @@ const Signup = () => {
                 type="password"
                 inputProps={{ maxLength: 250 }}
                 value={password}
-                onChange={(e)=>setPassword(e.target.value)}
+                onChange={(e) => handlePasswordChange(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
                     marginTop: '1px', 
@@ -192,11 +193,11 @@ const Signup = () => {
                         height: "40px",
 
                         '& fieldset': {
-                            borderColor: '#000', 
+                            borderColor: ispasswordError? "red": "#000", 
                         },
                         
                         '&.Mui-focused fieldset': {
-                            borderColor: '#000',
+                            borderColor: ispasswordError? "red": "#000", 
                         },
         
                     },
@@ -226,24 +227,27 @@ const Signup = () => {
                 type="password"
                 inputProps={{ maxLength: 250 }}
                 value = {confirm}
-                onChange={(e)=>setConfirm(e.target.value)}
+                onChange={(e) => handleConfirmChange(e.target.value)}
                 sx={{
-                    fontFamily: 'Roboto, sans-serif',
-                     
-                    display: 'block',   
-                    
-                    '& .MuiOutlinedInput-root': {
-                        height: "40px",
-            
-                        '& fieldset': {
-                            borderColor: '#000', 
-                        },
+                        fontFamily: 'Roboto, sans-serif',
                         
-                        '&.Mui-focused fieldset': {
-                            borderColor: '#000',
+                        display: 'block',   
+                        
+                        '& .MuiOutlinedInput-root': {
+                            height: "40px",
+                
+                            '& fieldset': {
+                                borderColor: ispasswordError? "red": "#4caf50",  
+                            },
+                            
+                            '&.Mui-focused fieldset': {
+                                borderColor: ispasswordError? "red": "#4caf50", 
+                            },
                         },
-        
-                    },
+
+                        '&:hover fieldset': {
+                        borderColor: ispasswordError ? "red" : "#4caf50", // Hover border color
+                        },
         
                         '& .MuiInputLabel-root': {
                         top: "-8px",
@@ -326,9 +330,24 @@ const Signup = () => {
                             {loading? "Signing up..." :"Sign Up"}
                 </Button>
 
-                <p className='link'>Don't have an account? <Link to="/" className='linkto'>Sign up now!</Link></p>
+                <p className='link'>Already registered? <Link to="/" className='linkto'>Login!</Link></p>
                 
             </form>
+
+            <Snackbar
+            open={open}
+            autoHideDuration={3000}
+            onClose={handleCloseNotification}
+            TransitionComponent={SlideTransition}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+            <Alert                                 
+            severity={type}
+            sx = {{width: "100%"}}
+            >
+                {response}
+            </Alert>
+        </Snackbar>
         </Box>
 </>
     )
