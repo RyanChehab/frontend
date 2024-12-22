@@ -1,4 +1,4 @@
-import {React,useContext} from 'react';
+import {React,useContext,useState,useEffect} from 'react';
 import {Typography,Button,AppBar,Toolbar} from '@mui/material';
 import {Link} from 'react-router-dom';
 import InputBase from '@mui/material/InputBase';
@@ -8,6 +8,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../assets/logo.png';
 import '../../css/utilities.css';
 import './writerNav.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
     width: '453px',
@@ -19,8 +21,15 @@ const SearchBar = styled(InputBase)(({ theme }) => ({
 }));
 
 const WriterNav = ()=>{
+
+cosnt [isCollapsed, setIscollapsed] = useState(false);
+
+useEffect(()=>{
+    const handleResize = () => 
+})
+
     return (
-        <nav className="navbar flex align-center">
+        <nav className="navbar flex align-center ">
             <div className="logo">
                 <Link to="/" style={{ textDecoration: 'none'}}>
                     <img src={logo} alt="logo" />
