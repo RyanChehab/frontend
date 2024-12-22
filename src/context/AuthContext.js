@@ -46,18 +46,21 @@ export const AuthProvider = ({children}) =>{
 //####################################################################
         const handlePasswordChange = (value) => {
             setPassword(value);
-            if (value === confirm) {
-            setIsPasswordError(false);
+            if (value !== confirm) {
+                setIsPasswordError(true); 
+            } else {
+                setIsPasswordError(false); 
             }
         };
 
         const handleConfirmChange = (value) => {
             setConfirm(value);
-            if (value === password) {
-              setIsPasswordError(false);
+            if (value !== password) {
+                setIsPasswordError(true); 
+            } else {
+                setIsPasswordError(false);
             }
-        
-        };
+        }
 
       const handleSignup = async (e)=>{
         e.preventDefault();
