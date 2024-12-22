@@ -12,7 +12,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
-    width: '453px',
+    minWidth: '270px',
+    maxWidth: '453px',
     height: '46px',
     padding: '0 10px',
     border: '1px solid #ccc',
@@ -22,11 +23,11 @@ const SearchBar = styled(InputBase)(({ theme }) => ({
 
 const WriterNav = ()=>{
 
-const [isCollapsed, setIscollapsed] = useState(false);
+const [isCollapsed, setIsCollapsed] = useState(false);
 
 useEffect(() => {
     const handleResize = () => {
-        if (window.innerWidth <= 1107) {
+        if (window.innerWidth <= 1143) {
             setIsCollapsed(true); 
         } else {
             setIsCollapsed(false);
@@ -42,8 +43,25 @@ useEffect(() => {
     };
 }, []);
 
-    return (
-        <nav className="navbar flex align-center ">
+return isCollapsed ? (
+    // Collapsed Navbar
+    <nav className="collapsed-navbar">
+       <div className="d-flex align-items-center justify-content-between">
+        <img src={logo} alt="logo" />
+
+        <button
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar"
+            >
+                burger
+        </button>
+       </div>
+    </nav>
+) : (
+        <nav className="navbar d-flex align-items-center justify-content-between">
             <div className="logo">
                 <Link to="/" style={{ textDecoration: 'none'}}>
                     <img src={logo} alt="logo" />
