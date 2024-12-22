@@ -1,11 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-.signup{
+.sign-up{
     background: url('../../assets/login-bg.jpg')center center / cover no-repeat;
-    overflow: auto;
     background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: auto;
 }
+
+.adventure{
+    color:#FC8E40;
+    font-size: 20px;
+    font-family:"Cinzel Decorative";
+    font-weight: 700;
+}
+
+.linkto{
+    color: #FC8E40;
+}
+
+
 body::-webkit-scrollbar {
     width: 10px; 
     height: 10px; 
@@ -23,15 +39,4 @@ body::-webkit-scrollbar-thumb:hover {
 body::-webkit-scrollbar-track {
     background: #f1f1f1; 
     border-radius: 5px;
-}
-
-.adventure{
-    color:#FC8E40;
-    font-size: 20px;
-    font-family:"Cinzel Decorative";
-    font-weight: 700;
-}
-
-.linkto{
-    color: #FC8E40;
 }
