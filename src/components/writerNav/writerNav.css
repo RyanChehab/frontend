@@ -5,9 +5,24 @@ img{
     height:114px;
 }
 
+.navbar{
+    margin: 0 120px;
+    gap: 1rem;
+    border: yellow 1px solid;
+}
+
 .links{
     text-decoration: none;
     font-size: 21px;
     font-family:'Roboto';
     color:black;
+    padding: 0.7rem;
+}
+.profilePic{
+    width: 70px;
+    height: 70px;
+    padding: 1rem;
+}
+.links:hover{
+    color:#FC8E40;
 }
