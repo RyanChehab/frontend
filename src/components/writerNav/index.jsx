@@ -22,11 +22,25 @@ const SearchBar = styled(InputBase)(({ theme }) => ({
 
 const WriterNav = ()=>{
 
-cosnt [isCollapsed, setIscollapsed] = useState(false);
+const [isCollapsed, setIscollapsed] = useState(false);
 
-useEffect(()=>{
-    const handleResize = () => 
-})
+useEffect(() => {
+    const handleResize = () => {
+        if (window.innerWidth <= 1107) {
+            setIsCollapsed(true); 
+        } else {
+            setIsCollapsed(false);
+        }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize); 
+
+    return () => {
+        window.removeEventListener('resize', handleResize); 
+    };
+}, []);
 
     return (
         <nav className="navbar flex align-center ">
