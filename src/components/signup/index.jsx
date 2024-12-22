@@ -16,7 +16,7 @@ const Signup = () => {
     handleConfirmChange} = useContext(AuthContext);
                 
     return(
-<>
+<div className='signup'>
         <div className='header flex align-center mt-2'>
         <p className='title'>Fan Tales</p>
         </div>
@@ -297,6 +297,7 @@ const Signup = () => {
                 >
                 <InputLabel id="select-label">Type</InputLabel>
                     <Select
+                    required
                     value={user_type}
                     onChange={(e)=>setUsertype(e.target.value)}
                     label= "Type"
@@ -347,7 +348,7 @@ const Signup = () => {
             </Alert>
         </Snackbar>
         </Box>
-</>
+</div>
     )
 }
 

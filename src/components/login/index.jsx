@@ -5,7 +5,7 @@ import { Box, TextField, Button, Typography, Snackbar, Alert, Slide} from '@mui/
 import { AuthContext } from '../../context/AuthContext';
 import { Link, Navigate } from 'react-router-dom';
 
-function SlideTransition(props) {
+export function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
   }
 
@@ -13,7 +13,7 @@ const Login = () => {
     const {email,setEmail,password,setPassword,handleLogin,response,loading,open,type, handleCloseNotification} = useContext(AuthContext)
     
     return (
-<>
+<div className='login'>
         <div className='header flex align-center mt-4'>
         <p className='title'>Fan Tales</p>
         </div>
@@ -165,7 +165,7 @@ const Login = () => {
                 {response}
             </Alert>
         </Snackbar>
-</>
+</div>
     );
 };
 
