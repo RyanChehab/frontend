@@ -8,6 +8,7 @@
     padding: 0;
     box-sizing: border-box;
     overflow: auto;
+    height: 100vh;
 }
 
 .adventure{
@@ -21,6 +22,9 @@
     color: #FC8E40;
 }
 
+.link{
+    margin-top: 0.5rem;
+}
 
 body::-webkit-scrollbar {
     width: 10px; 

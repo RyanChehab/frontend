@@ -14,14 +14,14 @@ img{
 .collapsed-navbar{
     margin: 0 120px;
 }
-/* 
+
 .links{
     text-decoration: none;
     font-size: 21px;
     font-family:'Roboto';
     color:black;
     padding: 0.7rem;
-} */
+}
 .profilePic{
     width: 70px;
     height: 70px;
@@ -47,4 +47,35 @@ img{
 .hamburger-menu:hover{
     background: #FC8E40;
     color: white;
+}
+
+.offcanvas-logo{
+    width: 60px;
+    height: 60px;
+}
+.nav-item{
+    font-family:'Roboto';
+    font-size: 1.1rem;
+}
+
+.nav-item:hover{
+    color: #FC8E40;
+}
+
+.offcanvas-top {
+    height: 350px !important;
+}
+
+.offcanvas-header {
+    height: 80px; 
+    border-bottom: #FC8E40 1px solid; 
+}
+
+.offcanvas-body {
+    padding: 2rem; 
+}
+
+.btn-close:hover{
+    cursor: pointer;
+    
 }
