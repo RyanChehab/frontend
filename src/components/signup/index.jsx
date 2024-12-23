@@ -16,9 +16,9 @@ const Signup = () => {
     handleConfirmChange} = useContext(AuthContext);
                 
     return(
-<div className='signup'>
-        <div className='header flex align-center mt-2'>
-        <p className='title'>Fan Tales</p>
+<div className='sign-up'>
+        <div className='header flex align-center mt-3'>
+            <p className='title'>Fan Tales</p>
         </div>
 
         <Box
@@ -27,8 +27,8 @@ const Signup = () => {
         borderRadius: '10px',
         padding: '16px',
         width: '295px',
-        height: '530px',
-        margin: '2.5rem auto',
+        height: '550px',
+        margin: '2.8rem auto',
         background: '#FFF',
         }}
         >
@@ -328,7 +328,7 @@ const Signup = () => {
                         >
                             {loading? "Signing up..." :"Sign Up"}
                 </Button>
-
+                
                 <p className='link'>Already registered? <Link to="/" className='linkto'>Login!</Link></p>
                 
             </form>

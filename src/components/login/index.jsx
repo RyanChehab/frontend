@@ -15,7 +15,7 @@ const Login = () => {
     return (
 <div className='login'>
         <div className='header flex align-center mt-4'>
-        <p className='title'>Fan Tales</p>
+            <p className='title'>Fan Tales</p>
         </div>
 
         <Box
@@ -25,7 +25,7 @@ const Login = () => {
             padding: '16px',
             width: '295px',
             height: '430px',
-            margin: '4rem auto',
+            margin: '5rem auto',
             background: '#FFF',
         }}
         >
