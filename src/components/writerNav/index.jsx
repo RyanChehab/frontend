@@ -46,10 +46,14 @@ useEffect(() => {
 
                         // collapsed
 return isCollapsed ? (
+
     // Collapsed Navbar
     <nav className="collapsed-navbar">
        <div className="d-flex align-items-center justify-content-between">
-        <img src={logo} alt="logo" />
+
+        <Link to="/" style={{ textDecoration: 'none'}}>
+                    <img src={logo} alt="logo" />
+        </Link>
 
         <button
                 className="navbar-toggler"
@@ -65,15 +69,17 @@ return isCollapsed ? (
        </div>
 
        <div
-    className="offcanvas offcanvas-top"
-    id="offcanvasNavbar"
-    tabIndex="-1"
-    aria-labelledby="offcanvasNavbarLabel"
-    >
+            className="offcanvas offcanvas-top"
+            id="offcanvasNavbar"
+            tabIndex="-1"
+            aria-labelledby="offcanvasNavbarLabel"
+        >
     <div className="offcanvas-header ">
     
-        <img src={logo} alt="logo" className="offcanvas-logo"/>
-
+        <Link to="/" style={{ textDecoration: 'none'}}>
+                    <img src={logo} alt="logo" className="offcanvas-logo" />
+        </Link>
+                
         <div className="search-bar mx-auto">
                     <SearchBar placeholder="Search books..."
                         startAdornment={
@@ -91,7 +97,7 @@ return isCollapsed ? (
             aria-label="Close"
         ></button>
         </div>
-        
+
                         {/* offcanvas body */}
     <div className="offcanvas-body d-flex flex-column justify-items-center align-items-center">
     
@@ -100,17 +106,23 @@ return isCollapsed ? (
                 <Link to="/repositories" className="nav-link">
                 Repositories
                 </Link>
+                <hr />
             </li>
+            
             <li className="nav-item">
                 <Link to="/categories" className="nav-link">
                 Categories
                 </Link>
+                <hr />
             </li>
+            
             <li className="nav-item">
                 <Link to="/bookmarks" className="nav-link">
                 Bookmarks
                 </Link>
+                <hr />
             </li>
+
         </ul>
     
     </div>
