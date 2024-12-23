@@ -13,7 +13,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
-    minWidth: '270px',
+    minWidth: '100px',
     maxWidth: '453px',
     height: '46px',
     padding: '0 10px',
@@ -70,51 +70,54 @@ return isCollapsed ? (
     tabIndex="-1"
     aria-labelledby="offcanvasNavbarLabel"
     >
-    <div className="offcanvas-header">
+    <div className="offcanvas-header ">
     
-      <img src={logo} alt="logo" className="offcanvas-logo"/>
-      <button
-        type="button"
-        className="btn-close"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></button>
-    </div>
+        <img src={logo} alt="logo" className="offcanvas-logo"/>
 
+        <div className="search-bar mx-auto">
+                    <SearchBar placeholder="Search books..."
+                        startAdornment={
+                            <InputAdornment position="start">
+                                <i className="fas fa-search" style={{ color: '#ccc' }}></i>
+                            </InputAdornment>
+                        }
+                    />
+        </div>
+
+        <button
+            type="button"
+            className="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+        ></button>
+        </div>
+        
+                        {/* offcanvas body */}
     <div className="offcanvas-body d-flex flex-column justify-items-center align-items-center">
-      
-    <div className="search-bar">
-                <SearchBar placeholder="Search..."
-                    startAdornment={
-                        <InputAdornment position="start">
-                            <i className="fas fa-search" style={{ color: '#ccc' }}></i>
-                        </InputAdornment>
-                    }
-                />
-    </div>
     
-    <ul className="navbar-nav">
-        <li className="nav-item">
-            <Link to="/repositories" className="nav-link">
-            Repositories
-            </Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/categories" className="nav-link">
-            Categories
-            </Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/bookmarks" className="nav-link">
-            Bookmarks
-            </Link>
-        </li>
-    </ul>
-      
+        <ul className="navbar-nav">
+            <li className="nav-item">
+                <Link to="/repositories" className="nav-link">
+                Repositories
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link to="/categories" className="nav-link">
+                Categories
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link to="/bookmarks" className="nav-link">
+                Bookmarks
+                </Link>
+            </li>
+        </ul>
+    
     </div>
   </div>
     </nav>
 ) : (
+                        // Normal nav
         <nav className="navbar d-flex align-items-center justify-content-between">
             <div className="logo">
                 <Link to="/" style={{ textDecoration: 'none'}}>
