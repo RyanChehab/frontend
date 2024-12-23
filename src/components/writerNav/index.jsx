@@ -11,6 +11,7 @@ import './writerNav.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
+
 const SearchBar = styled(InputBase)(({ theme }) => ({
     minWidth: '270px',
     maxWidth: '453px',
@@ -27,7 +28,7 @@ const [isCollapsed, setIsCollapsed] = useState(false);
 
 useEffect(() => {
     const handleResize = () => {
-        if (window.innerWidth <= 1143) {
+        if (window.innerWidth <= 1128) {
             setIsCollapsed(true); 
         } else {
             setIsCollapsed(false);
@@ -55,10 +56,31 @@ return isCollapsed ? (
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar"
-            >
-                burger
+        >
+            <button className="hamburger-menu">
+                <i className="fas fa-bars"></i>
+            </button>
         </button>
        </div>
+
+       <div
+    className="offcanvas offcanvas-top"
+    id="offcanvasNavbar"
+    tabIndex="-1"
+    aria-labelledby="offcanvasNavbarLabel"
+    >
+    <div className="offcanvas-header">
+    
+      <img src={logo} alt="logo" className="offcanvas-logo"/>
+      <button
+        type="button"
+        className="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    
     </nav>
 ) : (
         <nav className="navbar d-flex align-items-center justify-content-between">
@@ -69,9 +91,9 @@ return isCollapsed ? (
             </div>
 
             <div className="nav-links">
-                <Link to="/repositories" className='links'>Repositories</Link>
-                <Link to="/categories" className='links'>Categories</Link>
-                <Link to="/bookmarks" className='links'>Bookmarks</Link>
+                <Link to="/repositories" className='links fs-5 fs-md-6 fs-sm-6'>Repositories</Link>
+                <Link to="/categories" className='links fs-5 fs-md-6fs-sm-6'>Categories</Link>
+                <Link to="/bookmarks" className='links fs-5 fs-md-6 fs-sm-6'>Bookmarks</Link>
             </div>
 
             <div className="search-bar">
