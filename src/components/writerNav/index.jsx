@@ -44,6 +44,7 @@ useEffect(() => {
     };
 }, []);
 
+                        // collapsed
 return isCollapsed ? (
     // Collapsed Navbar
     <nav className="collapsed-navbar">
@@ -80,7 +81,38 @@ return isCollapsed ? (
       ></button>
     </div>
 
+    <div className="offcanvas-body d-flex flex-column justify-items-center align-items-center">
+      
+    <div className="search-bar">
+                <SearchBar placeholder="Search..."
+                    startAdornment={
+                        <InputAdornment position="start">
+                            <i className="fas fa-search" style={{ color: '#ccc' }}></i>
+                        </InputAdornment>
+                    }
+                />
+    </div>
     
+    <ul className="navbar-nav">
+        <li className="nav-item">
+            <Link to="/repositories" className="nav-link">
+            Repositories
+            </Link>
+        </li>
+        <li className="nav-item">
+            <Link to="/categories" className="nav-link">
+            Categories
+            </Link>
+        </li>
+        <li className="nav-item">
+            <Link to="/bookmarks" className="nav-link">
+            Bookmarks
+            </Link>
+        </li>
+    </ul>
+      
+    </div>
+  </div>
     </nav>
 ) : (
         <nav className="navbar d-flex align-items-center justify-content-between">
