@@ -1,5 +1,6 @@
 import {React,useContext,useState,useEffect} from 'react';
 import {Typography,Button,AppBar,Toolbar,Avatar, Menu, MenuItem} from '@mui/material';
+import { NavContext } from '../../context/NavContext';
 import {Link} from 'react-router-dom';
 import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
@@ -25,35 +26,8 @@ const SearchBar = styled(InputBase)(({ theme }) => ({
 }));
 
 const WriterNav = ()=>{
-
-const [isCollapsed, setIsCollapsed] = useState(false);
-const [anchorEl,setAnchorEl] = useState(null);
-
-const handleOpen = (e)=>{
-    setAnchorEl(e.currentTarget)
-}
-const handleClose = ()=>{
-    setAnchorEl(false)
-}
-
-
-useEffect(() => {
-    const handleResize = () => {
-        if (window.innerWidth <= 1128) {
-            setIsCollapsed(true); 
-        } else {
-            setIsCollapsed(false);
-        }
-    };
-
-    handleResize();
-
-    window.addEventListener('resize', handleResize); 
-
-    return () => {
-        window.removeEventListener('resize', handleResize); 
-    };
-}, []);
+    
+const [isCollapsed,anchorEl,handleOpen,handleClose] = useContext(NavContext)
 
                         // collapsed
 return isCollapsed ? (
