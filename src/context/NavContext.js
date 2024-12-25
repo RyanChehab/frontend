@@ -1,4 +1,5 @@
 import React,{useState,useEffect,createContext} from 'react';
+import Dropzone from "dropzone"
 
 export const NavContext = createContext();
 
@@ -33,6 +34,17 @@ useEffect(() => {
     };
 }, []);
 
+// dropzone
+useEffect(()=>{
+    const ProfilePicDropzone = new Dropzone("#profilePic",{
+        url: "/upload-profile-pic",
+        paramName: "profile_pic",
+        maxFiles: 1,
+        maxFilesize: 2, //mbt
+        acceptedFiles: "image/jpeg,image/png",
+        autoProcessQueue: true,
+    })
+})
 return(
     <NavContext.Provider value={{
         isCollapsed,
