@@ -7,6 +7,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // import SettingsIcon from '@mui/icons-material/settings';
 // import LogoutIcon from '@mui/icons-material/Logout';
+import Dropzone from "dropzone"
 import logo from '../.././assets/logo.png';
 import '../../css/utilities.css';
 import './writerNav.css';
