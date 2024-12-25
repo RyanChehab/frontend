@@ -1,8 +1,8 @@
 import React,{useState,useEffect,createContext} from 'react';
 
-const NavContext = createContext();
+export const NavContext = createContext();
 
-const NavProvider = ({children})=>{
+export const NavProvider = ({children})=>{
 
 const [isCollapsed, setIsCollapsed] = useState(false);
 const [anchorEl,setAnchorEl] = useState(null);
@@ -32,4 +32,17 @@ useEffect(() => {
         window.removeEventListener('resize', handleResize); 
     };
 }, []);
+
+return(
+    <NavContext.Provider value={{
+        isCollapsed,
+        setIsCollapsed,
+        anchorEl,
+        setAnchorEl,
+        handleOpen,
+        handleClose,
+    }}>
+        {children}
+    </NavContext.Provider>
+)
 }
