@@ -1,5 +1,5 @@
 import {React,useContext,useState,useEffect} from 'react';
-import {Typography,Button,AppBar,Toolbar,Avatar} from '@mui/material';
+import {Typography,Button,AppBar,Toolbar,Avatar, Menu, MenuItem} from '@mui/material';
 import {Link} from 'react-router-dom';
 import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
@@ -10,15 +10,6 @@ import '../../css/utilities.css';
 import './writerNav.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
-const [anchor,setAnchor] = useState(null);
-
-const handleOpen = ()=>{
-    setAnchor(true)
-}
-const handleClose = ()=>{
-    setAnchor(false)
-}
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
     minWidth: '100px',
@@ -33,6 +24,15 @@ const SearchBar = styled(InputBase)(({ theme }) => ({
 const WriterNav = ()=>{
 
 const [isCollapsed, setIsCollapsed] = useState(false);
+const [anchorEl,setAnchorEl] = useState(null);
+
+const handleOpen = ()=>{
+    setAnchorEl(true)
+}
+const handleClose = ()=>{
+    setAnchorEl(false)
+}
+
 
 useEffect(() => {
     const handleResize = () => {
@@ -169,9 +169,20 @@ return isCollapsed ? (
                 <Avatar
                 alt="User Profile"
                 src="path-to-profile-picture.jpg"
+                onClick={handleOpen}
                 sx={{ width: 50, height: 50 }}
                 />
             </div>
+
+            <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
+                <MenuItem onClick={handleClose}>Add Profile Picture</MenuItem>
+                <MenuItem onClick={handleClose}>Settings</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
 
         </nav>
         
