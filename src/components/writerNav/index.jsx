@@ -8,12 +8,40 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // import SettingsIcon from '@mui/icons-material/settings';
 // import LogoutIcon from '@mui/icons-material/Logout';
-import Dropzone from "dropzone"
 import logo from '../.././assets/logo.png';
 import '../../css/utilities.css';
 import './writerNav.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+const WriterNav = () => {
+    
+const {isCollapsed,anchorEl,handleOpen,handleClose} = useContext(NavContext)
+
+// dropzone
+useEffect(()=>{
+    const ProfilePicDropzone = new Dropzone("#profilePic",{
+        url: "/upload-profile-pic",
+        paramName: "profile_pic",
+        maxFiles: 1,
+        maxFilesize: 2, //mb
+        acceptedFiles: "image/jpeg,image/png",
+        autoProcessQueue: true,
+
+        init: function () {
+            this.on("success", (file, response) => {
+                console.log("File uploaded successfully:", response.url);
+                setProfilePic(response.url);
+            });
+            this.on("error", (file, errorMessage) => {
+                console.error("Upload error:", errorMessage);
+                alert("Error uploading profile picture: " + errorMessage);
+            });
+
+        }
+    })
+})
+
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
     minWidth: '100px',
@@ -24,10 +52,6 @@ const SearchBar = styled(InputBase)(({ theme }) => ({
     borderRadius: '20px',
     fontSize: '16px',
 }));
-
-const WriterNav = () => {
-    
-const {isCollapsed,anchorEl,handleOpen,handleClose} = useContext(NavContext)
 
                         // collapsed
 return isCollapsed ? (
@@ -145,6 +169,7 @@ return isCollapsed ? (
                 alt="User Profile"
                 src="path-to-profile-picture.jpg"
                 onClick={handleOpen}
+
                 sx={{ width: 50, height: 50 }}
                 />
             </div>
