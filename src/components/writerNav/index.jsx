@@ -25,9 +25,9 @@ const SearchBar = styled(InputBase)(({ theme }) => ({
     fontSize: '16px',
 }));
 
-const WriterNav = ()=>{
+const WriterNav = () => {
     
-const [isCollapsed,anchorEl,handleOpen,handleClose] = useContext(NavContext)
+const {isCollapsed,anchorEl,handleOpen,handleClose} = useContext(NavContext)
 
                         // collapsed
 return isCollapsed ? (
@@ -108,9 +108,7 @@ return isCollapsed ? (
                         </Link>
                         <hr />
                     </li>
-
                 </ul>
-            
             </div>
         </div>
     </nav>
