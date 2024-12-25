@@ -5,6 +5,8 @@ import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+// import SettingsIcon from '@mui/icons-material/settings';
+// import LogoutIcon from '@mui/icons-material/Logout';
 import logo from '../.././assets/logo.png';
 import '../../css/utilities.css';
 import './writerNav.css';
@@ -26,8 +28,8 @@ const WriterNav = ()=>{
 const [isCollapsed, setIsCollapsed] = useState(false);
 const [anchorEl,setAnchorEl] = useState(null);
 
-const handleOpen = ()=>{
-    setAnchorEl(true)
+const handleOpen = (e)=>{
+    setAnchorEl(e.currentTarget)
 }
 const handleClose = ()=>{
     setAnchorEl(false)
@@ -178,6 +180,14 @@ return isCollapsed ? (
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
+                anchorOrigin={{
+                    vertical: 'bottom', 
+                    horizontal: 'center', 
+                }}
+                transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center', 
+                }}
             >
                 <MenuItem onClick={handleClose}>Add Profile Picture</MenuItem>
                 <MenuItem onClick={handleClose}>Settings</MenuItem>
