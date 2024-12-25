@@ -11,6 +11,14 @@ import './writerNav.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
+const [anchor,setAnchor] = useState(null);
+
+const handleOpen = ()=>{
+    setAnchor(true)
+}
+const handleClose = ()=>{
+    setAnchor(false)
+}
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
     minWidth: '100px',
