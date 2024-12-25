@@ -7,6 +7,7 @@ export const NavProvider = ({children})=>{
 
 const [isCollapsed, setIsCollapsed] = useState(false);
 const [anchorEl,setAnchorEl] = useState(null);
+const [profilePic,setProfilePic] = useState('');
 
 // functions
 const handleOpen = (e)=>{
@@ -43,6 +44,18 @@ useEffect(()=>{
         maxFilesize: 2, //mbt
         acceptedFiles: "image/jpeg,image/png",
         autoProcessQueue: true,
+
+        init: function () {
+            this.on("success", (file, response) => {
+                console.log("File uploaded successfully:", response.url);
+                setProfilePic(response.url);
+            });
+            this.on("error", (file, errorMessage) => {
+                console.error("Upload error:", errorMessage);
+                alert("Error uploading profile picture: " + errorMessage);
+            });
+
+        }
     })
 })
 return(
