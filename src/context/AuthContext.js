@@ -30,6 +30,7 @@ export const AuthProvider = ({children}) =>{
             setResponse(result.message);
             setType("success")
             localStorage.setItem("token", result.token);
+            localStorage.setItem("avatar_url",result.user.avatar_url|| "/default-avatar.jpg")
         } catch(error){
             setResponse(error.response.data.error);
             setType("error")
