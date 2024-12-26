@@ -1,5 +1,6 @@
-import {React,useContext,useState,useEffect} from 'react';
+import {React,useContext,useState,useEffect,useRef} from 'react';
 import {Typography,Button,AppBar,Toolbar,Avatar, Menu, MenuItem} from '@mui/material';
+import Dropzone from "dropzone"
 import { NavContext } from '../../context/NavContext';
 import {Link} from 'react-router-dom';
 import InputBase from '@mui/material/InputBase';
@@ -15,13 +16,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const WriterNav = () => {
-    
+
+const base_url = process.env.BASE_URL;
 const {isCollapsed,anchorEl,handleOpen,handleClose} = useContext(NavContext)
 
 // dropzone
+const [profilePic,setProfilePic] = useState('default.jpg');
+const dropzoneRef = useRef(null);
+
 useEffect(()=>{
-    const ProfilePicDropzone = new Dropzone("#profilePic",{
-        url: "/upload-profile-pic",
+    const ProfilePicDropzone = new Dropzone(dropzoneRef.current,{
+        url: `${base_url}/upload`,
         paramName: "profile_pic",
         maxFiles: 1,
         maxFilesize: 2, //mb
@@ -40,7 +45,10 @@ useEffect(()=>{
 
         }
     })
-})
+    return ()=>{
+        ProfilePicDropzone.destroy(); //cleanup dropzone instance 
+    }
+},[])
 
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
@@ -164,12 +172,11 @@ return isCollapsed ? (
                 />
             </div>
 
-            <div className="profilePic">
+            <div className="profilePic" ref={dropzoneRef}>
                 <Avatar
-                alt="User Profile"
-                src="path-to-profile-picture.jpg"
+                alt="User Avatar"
+                src={profilePic}
                 onClick={handleOpen}
-
                 sx={{ width: 50, height: 50 }}
                 />
             </div>
