@@ -22,7 +22,7 @@ export const AuthProvider = ({children}) =>{
         setLoading(true);
         try{
             const result = await fetchData(
-                "http://localhost:8000/api/login",
+                "http://localhost:8000/api/auth/login",
                 "POST",
                 {email,password}
             )
@@ -67,7 +67,7 @@ export const AuthProvider = ({children}) =>{
         setLoading(true);
         try{
                 const result = await fetchData(
-                    "http://localhost:8000/api/signup",
+                    "http://localhost:8000/api/auth/signup",
                     "POST",
                     {name,username,email,password,user_type}
                 )
@@ -106,7 +106,6 @@ export const AuthProvider = ({children}) =>{
             handleSignup,
             confirm,
             setConfirm,
-            
             handlePasswordChange,
             handleConfirmChange,
             ispasswordError
