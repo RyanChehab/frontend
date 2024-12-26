@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 // import SettingsIcon from '@mui/icons-material/settings';
 // import LogoutIcon from '@mui/icons-material/Logout';
 import logo from '../.././assets/logo.png';
@@ -24,6 +24,7 @@ const {isCollapsed,anchorEl,handleOpen,handleClose} = useContext(NavContext)
 const [profilePic,setProfilePic] = useState(localStorage.getItem("avatar_url"));
 const dropzoneRef = useRef(null);
 
+// Dropzone 
 useEffect(()=>{
     const ProfilePicDropzone = new Dropzone(dropzoneRef.current,{
         url: `${base_url}/upload`,
@@ -45,17 +46,24 @@ useEffect(()=>{
 
         }
     })
+    // saving the instance 
+    dropzoneRef.current.dropzone = ProfilePicDropzone;
+    console.log(dropzoneRef.current.dropzone)
     return ()=>{
         ProfilePicDropzone.destroy(); //cleanup dropzone instance 
     }
-},[])
+},[base_url])
 
+const handleUploadClick = () => {
+    // Trigger the file add img
+    ProfilePicDropzone.hiddenFileInput.click();
+};
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
     minWidth: '100px',
     maxWidth: '453px',
     height: '46px',
-    // padding: '0 px',
+    padding: '10px',
     border: '1px solid #ccc',
     borderRadius: '20px',
     fontSize: '16px',
@@ -92,9 +100,6 @@ return isCollapsed ? (
                 sx={{ width: 50, height: 50,border: '3px solid #FC8E40'}}
                 />
             </div>
-
-            <Avatar/>
-            
        </div>
 
        <div
@@ -204,7 +209,7 @@ return isCollapsed ? (
                     horizontal: 'center', 
                 }}
             >
-                <MenuItem onClick={handleClose}>Add Profile Picture</MenuItem>
+                <MenuItem onClick={handleUploadClick}>Add Profile Picture</MenuItem>
                 <MenuItem onClick={handleClose}>Settings</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
