@@ -86,13 +86,14 @@ return isCollapsed ? (
             </button>  
             
             <div className="profilePic" ref={dropzoneRef}>
-            <Avatar
-                alt="User Avatar"
+                <Avatar
                 src={profilePic}
                 onClick={handleOpen}
-                sx={{ width: 50, height: 50,border: '3px solid #FC8E40',}}
+                sx={{ width: 50, height: 50,border: '3px solid #FC8E40'}}
                 />
             </div>
+
+            <Avatar/>
             
        </div>
 
@@ -184,10 +185,9 @@ return isCollapsed ? (
 
             <div className="profilePic" ref={dropzoneRef}>
                 <Avatar
-                alt="User Avatar"
                 src={profilePic}
                 onClick={handleOpen}
-                sx={{ width: 50, height: 50 }}
+                sx={{ width: 50, height: 50,border: '3px solid #FC8E40'}}
                 />
             </div>
 
