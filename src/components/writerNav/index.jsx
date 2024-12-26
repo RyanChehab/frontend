@@ -27,7 +27,8 @@ const dropzoneRef = useRef(null);
 // Dropzone 
 useEffect(()=>{
     const ProfilePicDropzone = new Dropzone(dropzoneRef.current,{
-        url: `${base_url}/upload`,
+        url: `${base_url}upload`,
+        url:"http://localhost:8000/api/upload",
         paramName: "profile_pic",
         maxFiles: 1,
         maxFilesize: 2, //mb
@@ -48,6 +49,7 @@ useEffect(()=>{
     })
     // saving the instance 
     dropzoneRef.current.dropzone = ProfilePicDropzone;
+
     console.log(dropzoneRef.current.dropzone)
     return ()=>{
         ProfilePicDropzone.destroy(); //cleanup dropzone instance 
@@ -55,8 +57,12 @@ useEffect(()=>{
 },[base_url])
 
 const handleUploadClick = () => {
-    // Trigger the file add img
-    ProfilePicDropzone.hiddenFileInput.click();
+    const dropzoneInstance = dropzoneRef.current.dropzone;
+    if (dropzoneInstance) {
+        dropzoneInstance.hiddenFileInput.click(); // Trigger the file dialog
+    } else {
+        console.error("Dropzone instance not found!");
+    }
 };
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
