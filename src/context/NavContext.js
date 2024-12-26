@@ -1,5 +1,5 @@
 import React,{useState,useEffect,createContext} from 'react';
-import Dropzone from "dropzone"
+import fetchData from '../utility/fetch';
 
 export const NavContext = createContext();
 
@@ -7,7 +7,6 @@ export const NavProvider = ({children})=>{
 
 const [isCollapsed, setIsCollapsed] = useState(false);
 const [anchorEl,setAnchorEl] = useState(null);
-const [profilePic,setProfilePic] = useState('');
 
 // functions
 const handleOpen = (e)=>{
@@ -15,6 +14,15 @@ const handleOpen = (e)=>{
 }
 const handleClose = ()=>{
     setAnchorEl(false)
+}
+
+const handleLogout = async ()=>{
+    try{
+
+    }catch{
+        
+    }
+        
 }
 //responsiveness
 useEffect(() => {
@@ -34,6 +42,8 @@ useEffect(() => {
         window.removeEventListener('resize', handleResize); 
     };
 }, []);
+
+
 
 return(
     <NavContext.Provider value={{
