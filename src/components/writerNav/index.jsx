@@ -21,7 +21,7 @@ const base_url = process.env.BASE_URL;
 const {isCollapsed,anchorEl,handleOpen,handleClose} = useContext(NavContext)
 
 // dropzone
-const [profilePic,setProfilePic] = useState('default.jpg');
+const [profilePic,setProfilePic] = useState(localStorage.getItem("avatar_url"));
 const dropzoneRef = useRef(null);
 
 useEffect(()=>{
@@ -69,21 +69,31 @@ return isCollapsed ? (
     <nav className="collapsed-navbar">
        <div className="d-flex align-items-center justify-content-between">
 
-        <Link to="/" style={{ textDecoration: 'none'}}>
-            <img src={logo} alt="logo" />
-        </Link>
+            <Link to="/" style={{ textDecoration: 'none'}}>
+                <img src={logo} alt="logo" />
+            </Link>
 
-        <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar"
-        >
-            <button className="hamburger-menu">
-                <i className="fas fa-bars"></i>
-            </button>
-        </button>
+            <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar"
+            >
+                <button className="hamburger-menu">
+                    <i className="fas fa-bars"></i>
+                </button>
+            </button>  
+            
+            <div className="profilePic" ref={dropzoneRef}>
+            <Avatar
+                alt="User Avatar"
+                src={profilePic}
+                onClick={handleOpen}
+                sx={{ width: 50, height: 50,border: '3px solid #FC8E40',}}
+                />
+            </div>
+            
        </div>
 
        <div
