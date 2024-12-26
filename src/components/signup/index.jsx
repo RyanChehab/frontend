@@ -180,7 +180,7 @@ const Signup = () => {
                 fullWidth
                 margin="normal"
                 type="password"
-                inputProps={{ maxLength: 250 }}
+                inputProps={{ minLength:6,maxLength: 250 }}
                 value={password}
                 onChange={(e) => handlePasswordChange(e.target.value)}
                 sx={{
@@ -228,7 +228,7 @@ const Signup = () => {
                 fullWidth
                 margin="normal"
                 type="password"
-                inputProps={{ maxLength: 250 }}
+                inputProps={{ minLength:6,maxLength: 250 }}
                 value = {confirm}
                 onChange={(e) => handleConfirmChange(e.target.value)}
                 sx={{
@@ -313,7 +313,7 @@ const Signup = () => {
                         type='submit'
                         disabled = {loading}
                         sx={{
-                            width: '45%',
+                            width: '50%',
                             borderRadius: '10px',
                             margin: '25px auto 0px auto',
                             display: 'block',
