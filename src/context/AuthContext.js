@@ -1,8 +1,11 @@
 import React,{useState,useEffect,createContext} from 'react';
 import fetchData from '../utility/fetch';
+import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) =>{
+
+    const navigate = useNavigate();
     // for login and signup
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
@@ -13,10 +16,13 @@ export const AuthProvider = ({children}) =>{
     const [name,setName] = useState('');
     const [username,setUsername] = useState('');
     const [confirm,setConfirm] = useState('');
+    const [correct,setCorrect] = useState(false)
     // type for notification
     const [type,setType] = useState('');
     const [open,setOpen] = useState(false);
     const [ispasswordError,setIsPasswordError] = useState(false)
+
+    // login function
     const handleLogin = async (e)=>{
         e.preventDefault()
         setLoading(true);
@@ -29,8 +35,17 @@ export const AuthProvider = ({children}) =>{
             setUser(result.user);
             setResponse(result.message);
             setType("success")
+            // save token
             localStorage.setItem("token", result.token);
+            // save avatar_url
             localStorage.setItem("avatar_url",result.user.avatar_url|| "/default-avatar.jpg")
+
+            if (result.user.user_type === "writer") {
+                navigate("card");
+                localStorage.setItem("type", result.user.user_type);
+            } else if (result.user.userType === "reader") {
+                navigate("/reader-dashboard");
+            } 
         } catch(error){
             setResponse(error.response.data.error);
             setType("error")
@@ -45,12 +60,15 @@ export const AuthProvider = ({children}) =>{
       };
 //end login
 //####################################################################
-        const handlePasswordChange = (value) => {
+        
+    const handlePasswordChange = (value) => {
             setPassword(value);
             if (value !== confirm) {
                 setIsPasswordError(true); 
+                setCorrect(false)
             } else {
                 setIsPasswordError(false); 
+                setCorrect(true)
             }
         };
 
@@ -58,30 +76,38 @@ export const AuthProvider = ({children}) =>{
             setConfirm(value);
             if (value !== password) {
                 setIsPasswordError(true); 
+                setCorrect(false)
             } else {
                 setIsPasswordError(false);
+                setCorrect(true)
             }
         }
 
       const handleSignup = async (e)=>{
         e.preventDefault();
-        setLoading(true);
-        try{
-                const result = await fetchData(
-                    "http://localhost:8000/api/auth/signup",
-                    "POST",
-                    {name,username,email,password,user_type}
-                )
-                setUser(result.user);
-                setResponse(result.message);
-                setType("success")
-                localStorage.setItem("token", result.token);
-            }catch(error){
-                setType("error")
-                setResponse(error.response.data.message)
-            }finally{
-                setLoading(false)
-                setOpen(true)
+            if(correct){
+                e.preventDefault();
+                setLoading(true);
+                
+                try{
+                    const result = await fetchData(
+                        "http://localhost:8000/api/auth/signup",
+                        "POST",
+                        {name,username,email,password,user_type}
+                    )
+                    setUser(result.user);
+                    setResponse(result.message);
+                    setType("success")
+                    localStorage.setItem("token", result.token);
+                }catch(error){
+                    setType("error")
+                    setResponse(error.response.data.message)
+                }finally{
+                    setLoading(false)
+                    setOpen(true)
+                }
+            }else{
+                alert('confirm password')
             }
         }
 
