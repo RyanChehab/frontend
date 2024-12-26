@@ -91,7 +91,7 @@ const Login = () => {
                 fullWidth
                 margin="normal"
                 type="password"
-                inputProps={{ maxLength: 250 }}
+                inputProps={{ minLength: 6 , maxLength:20}}
                 onChange={(e)=>setPassword(e.target.value)}
                 value={password}
 
@@ -129,7 +129,7 @@ const Login = () => {
         type='submit'
         disabled = {loading}
         sx={{
-            width: '45%',
+            width: '50%',
             borderRadius: '10px',
             margin: '60px auto 0px auto',
             display: 'block',
