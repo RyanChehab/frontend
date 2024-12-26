@@ -4,9 +4,10 @@ import fetchData from '../utility/fetch';
 export const NavContext = createContext();
 
 export const NavProvider = ({children})=>{
-
+const base_url = process.env.BASE_URL
 const [isCollapsed, setIsCollapsed] = useState(false);
 const [anchorEl,setAnchorEl] = useState(null);
+const [response,setResponse] = useState('');
 
 // functions
 const handleOpen = (e)=>{
@@ -18,9 +19,14 @@ const handleClose = ()=>{
 
 const handleLogout = async ()=>{
     try{
-
-    }catch{
-        
+        const result = await fetchData(
+            `${base_url}/auth/logout`,
+            "POST"
+        )
+        console.log(result.message)
+        // setResponse(result.message)
+    }catch(error){
+        setResponse(error.response.data.error);
     }
         
 }
