@@ -3,21 +3,26 @@ import fetchData from '../utility/fetch';
 
 export const CardsContext = createContext();
 
-export const CradProvider = ({children}) => { 
+export const CardProvider = ({children}) => { 
 
-const getFeatured = async()=>{
-    const base_url = process.env.BASE_URL;
-    try{
-        const response = await fetchData(
-            `${base_url}/getFeaturedBooks`,
-            "POST",
-            null,
-        )
-        console.log(response)
-    }catch(error){
-        console.log(error.response.error.message)
-    }
-} 
+useEffect(()=>{
+    const getFeatured = async()=>{
+        const base_url = process.env.BASE_URL;
+        try{
+            const response = await fetchData(
+                `${base_url}/getFeaturedBooks`,
+                "POST",
+                null,
+            )
+            console.log(response)
+        }catch(error){
+            console.log(error.response.error.message)
+        }
+    } 
+
+    getFeatured()
+},[])
+
     return(
         <CardsContext.Provider value={{
             getFeatured
