@@ -38,7 +38,7 @@ export const AuthProvider = ({children}) =>{
             // save token
             localStorage.setItem("token", result.token);
             // save avatar_url
-            localStorage.setItem("avatar_url",result.user.avatar_url|| "/default-avatar.jpg")
+            localStorage.setItem("avatar_url",result.user.avatar_url)
 
             if (result.user.user_type === "writer") {
                 navigate("card");
