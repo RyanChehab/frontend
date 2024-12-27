@@ -1,9 +1,12 @@
 import React,{useState,useEffect,createContext} from 'react';
 import fetchData from '../utility/fetch';
+import { useNavigate } from "react-router-dom";
 
 export const NavContext = createContext();
 
 export const NavProvider = ({children})=>{
+
+const navigate = useNavigate();
 const base_url = process.env.BASE_URL
 const [isCollapsed, setIsCollapsed] = useState(false);
 const [anchorEl,setAnchorEl] = useState(null);
@@ -18,13 +21,20 @@ const handleClose = ()=>{
 }
 
 const handleLogout = async ()=>{
+    const token = localStorage.getItem("token");
+    console.log(base_url)
     try{
         const result = await fetchData(
-            `${base_url}/auth/logout`,
-            "POST"
+            "http://localhost:8000/api/logout",
+            "POST",
+            null,
+            {
+                 Authorization: `Bearer ${token}`
+            }
         )
         console.log(result.message)
         // setResponse(result.message)
+        navigate("/");
     }catch(error){
         setResponse(error.response.data.error);
     }
@@ -59,6 +69,7 @@ return(
         setAnchorEl,
         handleOpen,
         handleClose,
+        handleLogout,
     }}>
         {children}
     </NavContext.Provider>
