@@ -7,26 +7,23 @@ export const CardProvider = ({children}) => {
 
 useEffect(()=>{
     const getFeatured = async()=>{
-        const base_url = process.env.BASE_URL;
+        
         try{
             const response = await fetchData(
-                `${base_url}/getFeaturedBooks`,
+                `http://localhost:8000/api/getFeaturedBooks`,
                 "POST",
                 null,
             )
             console.log(response)
         }catch(error){
-            console.log(error.response.error.message)
+            console.log(error.response.error)
         }
     } 
-
     getFeatured()
 },[])
 
     return(
-        <CardsContext.Provider value={{
-            getFeatured
-        }}> 
+        <CardsContext.Provider> 
             {children}
         </CardsContext.Provider>
     )
