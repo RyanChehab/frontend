@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import './signup.css';
-import '../../css/utilities.css';
-import { AuthContext } from '../../context/AuthContext';
+import '../../../css/utilities.css';
+import { AuthContext } from '../../../context/AuthContext';
 import { Link} from 'react-router-dom';
 import { Box, TextField, Button, Typography, Snackbar, Alert, Slide, FormHelperText, FormControl, MenuItem, Select, InputLabel} from '@mui/material';
 
