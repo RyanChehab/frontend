@@ -35,7 +35,7 @@ useEffect(()=>{
         maxFiles: 1,
         maxFilesize: 2, //mb
         acceptedFiles: "image/jpeg,image/png",
-        autoProcessQueue: true,
+        autoProcessQueue: false,
         headers:{
             Authorization: `Bearer ${token}`
         },
