@@ -4,28 +4,33 @@ import fetchData from '../utility/fetch';
 export const CardsContext = createContext();
 
 export const CardProvider = ({children}) => { 
-const [data, setData] = useState({})
-useEffect(()=>{
-    const getFeatured = async()=>{
-        
-        try{
-            const response = await fetchData(
-                `http://localhost:8000/api/getFeaturedBooks`,
+const [data, setData] = useState([])
+const [loading, setLoading] = useState(true);
+const [test, settest] = useState("testing");
+useEffect(() => {
+    const getFeatured = async () => {
+        try {
+            const result = await fetchData(
+                "http://localhost:8000/api/getFeaturedBooks",
                 "POST",
                 null,
-            )
-            console.log(response)
-            setData(response)
-        }catch(error){
-            console.log(error.response.error.message)
+            );
+        
+            setData(result);
+            console.log(result)
+        } catch (error) {
+            console.error("Error fetching dataa:", error);
+        } finally {
+            setLoading(false); // Set loading to false after data is fetched
         }
-    } 
-    getFeatured()
-},[])
+    };
+
+    getFeatured();
+}, []);
 
     return(
         <CardsContext.Provider value={{
-            data
+            data,loading,test
         }}> 
             {children}
         </CardsContext.Provider>
