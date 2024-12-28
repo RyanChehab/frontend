@@ -1,10 +1,10 @@
-import {Children, React,createContext,useEffect,useNavigate} from 'react';
+import {Children, React,createContext,useEffect,useNavigate,useState} from 'react';
 import fetchData from '../utility/fetch';
 
 export const CardsContext = createContext();
 
 export const CardProvider = ({children}) => { 
-
+const [data, setData] = useState({})
 useEffect(()=>{
     const getFeatured = async()=>{
         
@@ -15,15 +15,18 @@ useEffect(()=>{
                 null,
             )
             console.log(response)
+            setData(response)
         }catch(error){
-            console.log(error.response.error)
+            console.log(error.response.error.message)
         }
     } 
     getFeatured()
 },[])
 
     return(
-        <CardsContext.Provider> 
+        <CardsContext.Provider value={{
+            data
+        }}> 
             {children}
         </CardsContext.Provider>
     )
