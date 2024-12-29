@@ -1,14 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import './BookCard.css';
+import fetchData from "../../../utility/fetch";
 
-const BookCard = ({img_url, title, author, id, userBookmarks})=>{
+const BookCard = ({img_url, title, author, userBookmarks})=>{
+
     const [isBookmarked, setIsBookmarked] = useState(
         userBookmarks.some((bookmark) => bookmark.bookmarkable_id === id)
     );
-
-    const toggleBookmark = () => {
-        
-    };
 
     return(
         <div className="book-card">
