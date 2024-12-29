@@ -7,15 +7,27 @@ const BookCard = ({img_url, title, author, userBookmarks})=>{
         userBookmarks.some((bookmark) => bookmark.bookmarkable_id === id)
     );
 
-    const toggleBookmark = () => {
+    const toggleBookmark = async () => {
         try{
-            fetchData(
+            const result = await fetchData(
                 "http://localhost:8000/api/bookmark",
                 "POST",
+                {
+                    bookmarkable_id: id,
+                    bookmarkable_type: "App\\Models\\Book",
+                },
                 {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             )
+            const data = await response.json();
+
+            if (response.ok) {
+                setIsBookmarked(data.status); // Update the bookmark state
+            } else {
+                console.error("Failed to toggle bookmark:", data.message);
+            }
+            
         }catch(error){
             console.error("Error fetching dataa:", error)
         }
