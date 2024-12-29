@@ -6,6 +6,7 @@ export const CardsContext = createContext();
 export const CardProvider = ({children}) => { 
 const [data, setData] = useState([])
 const [loading, setLoading] = useState(true);
+const [bookmarks,setBookmarks] = useState([]);
 
 useEffect(() => {
     const getFeatured = async () => {
@@ -35,6 +36,7 @@ useEffect(() => {
                 },
             );
             console.log(response)
+            setBookmarks(response)
         } catch (error) {
             console.error("Error fetching dataa:", error);
         }
@@ -45,7 +47,9 @@ useEffect(() => {
 
     return(
         <CardsContext.Provider value={{
-            data,loading,test
+            data,
+            loading,
+            bookmarks
         }}> 
             {children}
         </CardsContext.Provider>
