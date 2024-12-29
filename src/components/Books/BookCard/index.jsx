@@ -1,7 +1,15 @@
 import React from "react";
 import './BookCard.css';
 
-const BookCard = ({img_url, title, author})=>{
+const BookCard = ({img_url, title, author, id, userBookmarks})=>{
+    const [isBookmarked, setIsBookmarked] = useState(
+        userBookmarks.some((bookmark) => bookmark.bookmarkable_id === id)
+    );
+
+    const toggleBookmark = () => {
+        
+    };
+
     return(
         <div className="book-card">
             <img src={img_url} alt={title} className="book_img"/>
