@@ -25,21 +25,24 @@ const handleLogout = async ()=>{
     console.log(base_url)
     try{
         const result = await fetchData(
-            "http://localhost:8000/api/logout",
+            "http://localhost:8000/api/auth/logout",
             "POST",
             null,
             {
-                 Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`
             }
         )
         console.log(result.message)
+        localStorage.removeItem("token");
+        handleClose()
         // setResponse(result.message)
         navigate("/");
     }catch(error){
         setResponse(error.response.data.error);
+        console.log(error.message)
     }
-        
 }
+
 //responsiveness
 useEffect(() => {
     const handleResize = () => {
