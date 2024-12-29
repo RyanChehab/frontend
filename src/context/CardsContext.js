@@ -6,7 +6,7 @@ export const CardsContext = createContext();
 export const CardProvider = ({children}) => { 
 const [data, setData] = useState([])
 const [loading, setLoading] = useState(true);
-const [test, settest] = useState("testing");
+
 useEffect(() => {
     const getFeatured = async () => {
         try {
@@ -25,6 +25,21 @@ useEffect(() => {
         }
     };
 
+    const getBookmarks = async () => {
+        try {
+            const response = await fetchData(
+                "http://localhost:8000/api/getBookmarks",
+                "POST",
+                {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            );
+            console.log(response)
+        } catch (error) {
+            console.error("Error fetching dataa:", error);
+        }
+    };
+    getBookmarks();
     getFeatured();
 }, []);
 
