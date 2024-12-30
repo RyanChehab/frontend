@@ -38,4 +38,15 @@ export const BookCardProvider = ({children})=>{
             console.error("Error fetching dataa:", error)
         }
     };
+
+    return(
+        <BookCardContext.Provider value={{
+            toggleBookmark,
+            isBookmarked,
+            setIsBookmarked,
+            handleNavigate
+        }}>
+            {children}
+        </BookCardContext.Provider>
+    )
 }
