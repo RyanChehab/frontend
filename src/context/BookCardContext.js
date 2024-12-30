@@ -6,9 +6,15 @@ export const BookCardContext = createContext()
 export const BookCardProvider = ({children})=>{
 
     const navigate = useNavigate();
-    const handleNavigate = () =>{
-        navigate(`view/${gutenberg_id}`)
-    }
+
+    const handleNavigate = (gutenberg_id) => {
+        if (!gutenberg_id) {
+            console.error("gutenberg_id is not defined.");
+            return;
+        }
+        navigate(`view/${gutenberg_id}`);
+    };
+    
     const [isBookmarked, setIsBookmarked] = useState(
         userBookmarks.some((bookmark) => bookmark.bookmarkable_id === id)
     );
