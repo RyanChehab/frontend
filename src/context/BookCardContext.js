@@ -1,9 +1,10 @@
 import React,{useEffect,useState,createContext} from "react";
+import { useNavigate } from "react-router-dom";
 
-const BookCardContext = createContext()
+export const BookCardContext = createContext()
 
-const BookCardProvider = ({children})=>{
-    
+export const BookCardProvider = ({children})=>{
+
     const navigate = useNavigate();
     const handleNavigate = () =>{
         navigate(`view/${gutenberg_id}`)
