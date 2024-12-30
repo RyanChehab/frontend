@@ -8,4 +8,7 @@ export const BookLayoutProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
 
+    const fetchPageContent = async (bookId) => {
+        setLoading(true);
+        try {
 }
