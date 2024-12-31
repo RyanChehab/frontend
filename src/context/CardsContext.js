@@ -6,13 +6,15 @@ export const CardsContext = createContext();
 export const CardProvider = ({children}) => { 
 const [data, setData] = useState([])
 const [loading, setLoading] = useState(true);
+const [catLoading, setCatLoading] = useState(true);
 const [bookmarks,setBookmarks] = useState([]);
+const [category,setCategory] = useState([]);
 
 useEffect(() => {
     const getFeatured = async () => {
         try {
             const result = await fetchData(
-                "http://localhost:8000/api/books/getFeaturedBooks",
+                "http://localhost:8000/api/book/getFeaturedBooks",
                 "POST",
                 null,
             );
@@ -29,7 +31,7 @@ useEffect(() => {
     const getBookmarks = async () => {
         try {
             const response = await fetchData(
-                "http://localhost:8000/api/books/getBookmarks",
+                "http://localhost:8000/api/book/getBookmarks",
                 "POST",
                 {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -45,13 +47,15 @@ useEffect(() => {
     const getByCategory = async () => {
         try {
             const response = await fetchData(
-                "http://localhost:8000/api/books/getBookmarks",
+                "http://localhost:8000/api/book/BookCategories",
                 "POST",
             );
             console.log(response)
-            setBookmarks(response)
+            setCategory(response)
         } catch (error) {
             console.error("Error fetching dataa:", error);
+        } finally{
+            setCatLoading(false)
         }
     };
 
@@ -64,7 +68,9 @@ useEffect(() => {
         <CardsContext.Provider value={{
             data,
             loading,
-            bookmarks
+            bookmarks,
+            category,
+            catLoading
         }}> 
             {children}
         </CardsContext.Provider>
