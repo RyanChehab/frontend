@@ -48,7 +48,11 @@ useEffect(() => {
                 "http://localhost:8000/api/books/getBookmarks",
                 "POST",
             );
-            
+            console.log(response)
+            setBookmarks(response)
+        } catch (error) {
+            console.error("Error fetching dataa:", error);
+        }
     };
 
     getBookmarks();
