@@ -4,8 +4,7 @@ import BookCard from "../BookCard";
 import './BooksDisplay.css'
 
 const DisplayCards = ()=>{
-    const { data, loading, bookmarks} = useContext(CardsContext);
-
+    const { data, loading} = useContext(CardsContext);
     
     const booksArray = Object.values(data);
 
@@ -18,11 +17,11 @@ const DisplayCards = ()=>{
         <div className="books-container">
           {booksArray.map((book, index) => (
             <BookCard
-              key={index}
+              gutenberg_id = {book.gutenberg_id}
               img_url={book.img_url}
               title={book.title}
               author={book.author}
-              userBookmarks={bookmarks}
+              
             />
           ))}
         </div>
