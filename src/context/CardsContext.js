@@ -1,4 +1,4 @@
-import {Children, React,createContext,useEffect,useNavigate,useState} from 'react';
+import {Children, React,createContext,useEffect,useState} from 'react';
 import fetchData from '../utility/fetch';
 
 export const CardsContext = createContext();
@@ -12,7 +12,7 @@ useEffect(() => {
     const getFeatured = async () => {
         try {
             const result = await fetchData(
-                "http://localhost:8000/api/getFeaturedBooks",
+                "http://localhost:8000/api/books/getFeaturedBooks",
                 "POST",
                 null,
             );
@@ -29,7 +29,7 @@ useEffect(() => {
     const getBookmarks = async () => {
         try {
             const response = await fetchData(
-                "http://localhost:8000/api/getBookmarks",
+                "http://localhost:8000/api/books/getBookmarks",
                 "POST",
                 {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -41,8 +41,19 @@ useEffect(() => {
             console.error("Error fetching dataa:", error);
         }
     };
+
+    const getByCategory = async () => {
+        try {
+            const response = await fetchData(
+                "http://localhost:8000/api/books/getBookmarks",
+                "POST",
+            );
+            
+    };
+
     getBookmarks();
     getFeatured();
+    getByCategory();
 }, []);
 
     return(
