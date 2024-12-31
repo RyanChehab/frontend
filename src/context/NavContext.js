@@ -12,6 +12,10 @@ const [isCollapsed, setIsCollapsed] = useState(false);
 const [anchorEl,setAnchorEl] = useState(null);
 const [response,setResponse] = useState('');
 
+
+const [searchTerm, setSearchTerm] = useState("");
+const [results, setResults] = useState([]);
+const [searchLoad,setSearchLoad] = useState();
 // functions
 const handleOpen = (e)=>{
     setAnchorEl(e.currentTarget)
@@ -42,6 +46,17 @@ const handleLogout = async ()=>{
         console.log(error.message)
     }
 }
+
+const handleSearch = async (e) => {
+    e.preventDefault();
+    if (!searchTerm.trim()) return; // Prevent empty search
+
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        `https://gutendex.com/books/?search=${encodeURIComponent(searchTerm)}`
+      );
+  };
 
 //responsiveness
 useEffect(() => {
