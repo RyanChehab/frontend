@@ -12,10 +12,10 @@ const [isCollapsed, setIsCollapsed] = useState(false);
 const [anchorEl,setAnchorEl] = useState(null);
 const [response,setResponse] = useState('');
 
-
 const [searchTerm, setSearchTerm] = useState("");
 const [results, setResults] = useState([]);
 const [searchLoad,setSearchLoad] = useState();
+
 // functions
 const handleOpen = (e)=>{
     setAnchorEl(e.currentTarget)
@@ -23,7 +23,7 @@ const handleOpen = (e)=>{
 const handleClose = ()=>{
     setAnchorEl(false)
 }
-
+// logout
 const handleLogout = async ()=>{
     const token = localStorage.getItem("token");
     console.log(base_url)
@@ -46,16 +46,25 @@ const handleLogout = async ()=>{
         console.log(error.message)
     }
 }
-
+// Search
 const handleSearch = async (e) => {
     e.preventDefault();
-    if (!searchTerm.trim()) return; // Prevent empty search
+    if (!searchTerm.trim()){
+        return // prevent empty search 
+    }
 
-    setLoading(true);
+    setSearchLoad(true);
     try {
-      const response = await axios.get(
-        `https://gutendex.com/books/?search=${encodeURIComponent(searchTerm)}`
-      );
+      const response = await fetchData(
+        `https://gutendex.com/books/?search=${encodeURIComponent(searchTerm)}`,
+        "GET"
+      )
+      setResults(response.data.results);
+    } catch (error) {
+      console.error("Error fetching data from Gutenberg API:", error);
+    } finally {
+        setSearchLoad(false);
+    }
   };
 
 //responsiveness
@@ -88,6 +97,9 @@ return(
         handleOpen,
         handleClose,
         handleLogout,
+        searchLoad,
+        results,
+        handleSearch
     }}>
         {children}
     </NavContext.Provider>
