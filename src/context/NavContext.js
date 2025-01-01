@@ -46,27 +46,14 @@ const handleLogout = async ()=>{
         console.log(error.message)
     }
 }
-// Search
-const handleSearch = async (e) => {
-    e.preventDefault();
-    if (!searchTerm.trim()){
-        return // prevent empty search 
-    }
 
-    setSearchLoad(true);
-    try {
-      const response = await fetchData(
-        `https://gutendex.com/books/?search=${encodeURIComponent(searchTerm)}`,
-        "GET"
-      )
-      setResults(response.data.results);
-    } catch (error) {
-      console.error("Error fetching data from Gutenberg API:", error);
-    } finally {
-        setSearchLoad(false);
-    }
+
+  // Update the search term and trigger api call
+  const handleInputChange = (e) => {
+    const query = e.target.value;
+    setSearchTerm(query);
+    debounceSearch(query);
   };
-
 //responsiveness
 useEffect(() => {
     const handleResize = () => {
@@ -97,9 +84,8 @@ return(
         handleOpen,
         handleClose,
         handleLogout,
-        searchLoad,
-        results,
-        handleSearch
+
+        
     }}>
         {children}
     </NavContext.Provider>
