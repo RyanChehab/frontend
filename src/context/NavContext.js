@@ -47,8 +47,31 @@ const handleLogout = async ()=>{
     }
 }
 
+// Search
+const debounceSearch = useCallback(
+    debounce(async (query) => {
+      if (!query.trim()) {
+        setResults([]);
+        return;
+      }
+      setSearchLoad(true);
+      try {
+        const response = await fetchData(
+          `https://gutendex.com/books/?search=${encodeURIComponent(query)}`,
+          "GET"
+        );
+        setResults(response.results || []);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setResults([]);
+      } finally {
+        setSearchLoad(false);
+      }
+    }, 500), //500ms delay
+    []
+  );
 
-  // Update the search term and trigger api call
+  // Update the search term and trigger api 
   const handleInputChange = (e) => {
     const query = e.target.value;
     setSearchTerm(query);
@@ -84,8 +107,10 @@ return(
         handleOpen,
         handleClose,
         handleLogout,
-
-        
+        searchLoad,
+        results,
+        searchTerm,
+        handleInputChange
     }}>
         {children}
     </NavContext.Provider>
