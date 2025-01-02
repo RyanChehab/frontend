@@ -40,6 +40,7 @@ const handleLogout = async ()=>{
         )
         console.log(result.message)
         localStorage.removeItem("token");
+        localStorage.removeItem("avatar_url")
         handleClose()
         // setResponse(result.message)
         navigate("/");

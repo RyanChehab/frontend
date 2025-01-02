@@ -98,6 +98,7 @@ export const AuthProvider = ({children}) =>{
                     setResponse(result.message);
                     setType("success")
                     localStorage.setItem("token", result.token);
+                    navigate("writer");
                 }catch(error){
                     setType("error")
                     setResponse(error.response.data.message)
