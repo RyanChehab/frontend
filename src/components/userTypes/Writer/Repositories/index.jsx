@@ -3,6 +3,7 @@ import {styled} from "@mui/material/styles"
 import Button from "@mui/material/Button";
 import WriterNav from '../writerNav';
 import { RepositoryContext } from '../../../../context/RepositoryContext';
+import Input from '@mui/material/Input';
 
 const RepositoriesContainer = styled("div")({
     display: "flex",
@@ -63,10 +64,15 @@ const RepositoryCard = styled("div")({
     zIndex: 1000,
   });
 
+  const CustomeInput = styled(Input)({
+    "&:after": {
+        borderBottomColor: "#FC8E40", // Focus underline color
+    },
+  })
 
   const Repositories = () => {
 
-    const {handleAddRepository,showForm,setShowForm} = useContext(RepositoryContext)
+    const {handleAddRepository,showForm,loading} = useContext(RepositoryContext)
     const repositories = [
         { id: 1, name: "Adventure Tales" },
         { id: 2, name: "Harry and the lost wand" },
@@ -91,7 +97,37 @@ const RepositoryCard = styled("div")({
       {showForm &&(
         <FormContainer>
           <ModalOverlay>
-          <p>test</p>
+            <form onSubmit={{/*handleFormSubmit}*/}}>
+              <CustomeInput type="text"
+              required
+              placeholder='title'
+              fullWidth
+              />
+              <CustomeInput type="text"
+              required
+              placeholder='descripion'
+              fullWidth
+              />
+              <Button
+              variant='contained'
+              color='#FC8E40'
+              type='submit'
+              disabled = {loading}
+              sx={{
+                  width: '50%',
+                  borderRadius: '10px',
+                  margin: '60px auto 0px auto',
+                  display: 'block',
+                  fontFamily: 'Roboto, sans-serif',
+                  fontWeight: '500',
+                  fontSize: '14px',
+                  border: 'black 2px solid',
+                  '&:hover': {
+                      border:'solid 2px #FC8E40',
+            }
+        }}
+        >Create Repositrory</Button>
+            </form>
           </ModalOverlay>
         </FormContainer>
       )}
