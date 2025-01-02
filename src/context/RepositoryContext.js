@@ -30,9 +30,9 @@ export const RepositoryProvider = ({children})=>{
             )
             console.log(response.message)
         }catch(error){
-
+            console.error(error)
         }finally{
-
+            setLoading(false)
         }
     }
     
@@ -41,7 +41,8 @@ export const RepositoryProvider = ({children})=>{
             handleAddRepository,
             showForm,
             setShowForm,
-            loading
+            loading,
+            handleCreateRepository
         }}>
             {children}
         </RepositoryContext.Provider>
