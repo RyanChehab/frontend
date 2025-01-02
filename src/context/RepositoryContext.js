@@ -1,7 +1,20 @@
-import React,{useEffect,useState,createContxt} from 'react';
+import React,{useEffect,useState,createContext} from 'react';
 
-const RepositoryContext = createContxt();
+export const RepositoryContext = createContext();
 
-const RepositoryProvider = ({children})=>{
+export const RepositoryProvider = ({children})=>{
     
+    const handleAddRepository = () => {
+        console.log("working!");
+    };
+
+
+    return(
+        <RepositoryContext.Provider value={{
+            handleAddRepository,
+        }}>
+            {children}
+        </RepositoryContext.Provider>
+    )
 }
+
