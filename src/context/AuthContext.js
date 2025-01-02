@@ -41,7 +41,7 @@ export const AuthProvider = ({children}) =>{
             localStorage.setItem("avatar_url",result.user.avatar_url)
 
             if (result.user.user_type === "writer") {
-                navigate("card");
+                navigate("writer");
                 localStorage.setItem("type", result.user.user_type);
             } else if (result.user.userType === "reader") {
                 navigate("/reader-dashboard");
@@ -52,7 +52,6 @@ export const AuthProvider = ({children}) =>{
         } finally{
             setLoading(false)
             setOpen(true)
-            console.log('done')
         }
     }
     const handleCloseNotification = () => {

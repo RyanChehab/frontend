@@ -1,7 +1,7 @@
 import {React,useContext,useState,useEffect,useRef} from 'react';
 import {Typography,Button,AppBar,Toolbar,Avatar, Menu, MenuItem} from '@mui/material';
 import Dropzone from "dropzone"
-import { NavContext } from '../../context/NavContext';
+import { NavContext } from '../../../../context/NavContext';
 import {Link,useNavigate} from 'react-router-dom';
 import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
@@ -10,6 +10,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import logo from '../.././assets/logo.png';
+import SearchStories from '../../../utilities/search';
 import '../../css/utilities.css';
 import './writerNav.css';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -78,7 +79,6 @@ const WriterNav = () => {
         }
     };
 
-    
                             // collapsed
     return isCollapsed ? (
     
@@ -145,13 +145,7 @@ const WriterNav = () => {
                         </Link>
                                 
                         <div className="search-bar mx-auto">
-                                    <SearchBar placeholder="Search books..."
-                                        startAdornment={
-                                            <InputAdornment position="start">
-                                                <i className="fas fa-search" style={{ color: '#ccc' }}></i>
-                                            </InputAdornment>
-                                        }
-                                    />
+                        <SearchStories/>
                     </div>
     
                     <button
@@ -209,13 +203,7 @@ const WriterNav = () => {
                 </div>
     
                 <div className="search-bar">
-                    <SearchBar placeholder="Search..."
-                        startAdornment={
-                            <InputAdornment position="start">
-                                <i className="fas fa-search" style={{ color: '#ccc' }}></i>
-                            </InputAdornment>
-                        }
-                    />
+                    <SearchStories/>
                 </div>
     
                 <div className="profilePic" ref={dropzoneRef}>

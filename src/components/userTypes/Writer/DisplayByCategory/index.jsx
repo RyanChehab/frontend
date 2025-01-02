@@ -1,6 +1,6 @@
 import React,{useContext}from 'react';
-import BookCard from '../Books/BookCard';
-import { CardsContext } from '../../context/CardsContext';
+import BookCard from '../BookCard';
+import { CardsContext } from '../../../../context/CardsContext';
 import WriterNav from '../writerNav';
 import './displatByCategory.css';
 const DisplayByCategory = ()=>{

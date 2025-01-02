@@ -1,6 +1,6 @@
 import React,{useState,useContext} from "react";
 import { useNavigate } from "react-router-dom";
-import { BookCardContext } from "../../../context/BookCardContext";
+import { BookCardContext } from "../../../../context/BookCardContext";
 import './BookCard.css';
 
 const BookCard = ({ gutenberg_id, img_url, title, author})=>{

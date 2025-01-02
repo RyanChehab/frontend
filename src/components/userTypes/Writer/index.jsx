@@ -1,7 +1,7 @@
 import React from "react";
 import './Writer.css';
 import WriterNav from "../../writerNav";
-import DisplayCards from "../../Books/BooksDisplay";
+import DisplayCards from "./BooksDisplay";
 const Writer = ()=>{
 
     return(
