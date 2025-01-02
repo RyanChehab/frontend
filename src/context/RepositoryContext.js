@@ -4,20 +4,35 @@ export const RepositoryContext = createContext();
 
 export const RepositoryProvider = ({children})=>{
     const [showForm,setShowForm] = useState(false);
-    const [loading,setLoading] = useState(false);
+    const [title,setTitle] = useState("");
+    const [description,setDescription] = useState("");
+    const [loading,setLoading] = useState();
+    const [response,setResponse] = useState("");
 
     // showform
     const handleAddRepository = () => {
         setShowForm(true);
     };
 
-    const handleCreateRepository = () => {
+    const handleCreateRepository = async () => {
         try{
-
+            setLoading(true);
+            const response = await fetchData(
+                "http://localhost:8000/api/Repository/createRepo",
+                "POST",
+                {
+                    title: {title},
+                    description: {description}
+                },
+                {
+                    Authorization: localStorage.getItem('token')
+                }
+            )
+            console.log(response.message)
         }catch(error){
 
         }finally{
-            
+
         }
     }
     
