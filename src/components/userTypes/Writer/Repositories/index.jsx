@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {styled} from "@mui/material/styles"
+import Button from "@mui/material/Button";
 
 const RepositoriesContainer = styled("div")({
     display: "flex",
@@ -37,3 +38,32 @@ const RepositoryCard = styled("div")({
       backgroundColor: "#0056b3",
     },
   });
+
+  const Repositories = () => {
+    const repositories = [
+        { id: 1, name: "Adventure Tales" },
+        { id: 2, name: "Harry and the lost wand" },
+    ];
+
+    const handleAddRepository = () => {
+        console.log("working!");
+    };
+
+    return (
+      <RepositoriesContainer>
+      {repositories.map((repo) => (
+          <RepositoryCard key={repo.id}>
+              {repo.name}
+              <AddButton onClick={() => console.log(`Editing ${repo.name}`)}>
+                  
+              </AddButton>
+          </RepositoryCard>
+      ))}
+      <RepositoryCard onClick={handleAddRepository}>
+          <span>+ Add Repository</span>
+      </RepositoryCard>
+  </RepositoriesContainer>
+    );
+};
+
+export default Repositories;
