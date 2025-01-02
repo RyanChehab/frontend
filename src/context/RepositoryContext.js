@@ -4,11 +4,22 @@ export const RepositoryContext = createContext();
 
 export const RepositoryProvider = ({children})=>{
     const [showForm,setShowForm] = useState(false);
-    const [loading,setLoading] = useState(false)
+    const [loading,setLoading] = useState(false);
+
     // showform
     const handleAddRepository = () => {
         setShowForm(true);
     };
+
+    const handleCreateRepository = () => {
+        try{
+
+        }catch(error){
+
+        }finally{
+            
+        }
+    }
     
     return(
         <RepositoryContext.Provider value={{
