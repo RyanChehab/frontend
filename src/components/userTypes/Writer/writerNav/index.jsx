@@ -9,9 +9,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
-import logo from '../.././assets/logo.png';
+import logo from './../../../../assets/logo.png';
 import SearchStories from '../../../utilities/search';
-import '../../css/utilities.css';
+import '../../../../css/utilities.css';
 import './writerNav.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -90,7 +90,7 @@ const WriterNav = () => {
                 <Link to="writer" style={{ textDecoration: 'none'}}>
                     <img src={logo} alt="logo" />
                 </Link>
-                <div className="d-flex gap-4 align-items-center">
+                <div className="d-flex gap-5 align-items-center">
                     <button
                             className="navbar-toggler"
                             type="button"
@@ -103,11 +103,11 @@ const WriterNav = () => {
                         </button>
                     </button>  
                     
-                    <div className="profilePic" ref={dropzoneRef}>
+                    <div className="CollapsedprofilePic" ref={dropzoneRef}>
                         <Avatar
                         src={profilePic}
                         onClick={handleOpen}
-                        sx={{ width: 50, height: 50,border: '3px solid #FC8E40'}}
+                        sx={{ width: 50, height: 50}}
                         />
                     </div>
         
