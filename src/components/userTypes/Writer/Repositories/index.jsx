@@ -68,7 +68,7 @@ const RepositoryCard = styled("div")({
 
   const CustomeInput = styled(Input)({
     padding: "0.2rem",
-    
+
     marginTop:"1.4rem",
     "&:after": {
         borderBottomColor: "#FC8E40", // Focus underline color
@@ -77,7 +77,7 @@ const RepositoryCard = styled("div")({
 
   const Repositories = () => {
 
-    const {handleAddRepository,showForm,loading} = useContext(RepositoryContext)
+    const {handleAddRepository,showForm,loading,setShowForm} = useContext(RepositoryContext)
     const repositories = [
         { id: 1, name: "Adventure Tales" },
         { id: 2, name: "Harry and the lost wand" },
@@ -99,9 +99,20 @@ const RepositoryCard = styled("div")({
           <span>+ Add Repository</span>
       </RepositoryCard>
       </RepositoriesContainer>
+
+      {/* create repo form */}
       {showForm &&(
         <ModalOverlay>
           <FormContainer>
+
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setShowForm(false)}
+                ></button>
+              </div>
+
             <form onSubmit={{/*handleFormSubmit}*/}}>
               <CustomeInput type="text"
               required
@@ -121,7 +132,7 @@ const RepositoryCard = styled("div")({
               type='submit'
               disabled = {loading}
               sx={{
-                  width: '50%',
+                  width: '80%',
                   borderRadius: '10px',
                   margin: '60px auto 0px auto',
                   display: 'block',
@@ -133,7 +144,7 @@ const RepositoryCard = styled("div")({
                       border:'solid 2px #FC8E40',
             }
         }}
-        >Create Repositrory</Button>
+        >Create Repository</Button>
             </form>
           </FormContainer>
         </ModalOverlay>
