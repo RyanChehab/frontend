@@ -3,6 +3,7 @@ import {styled} from "@mui/material/styles"
 import Button from "@mui/material/Button";
 import WriterNav from '../writerNav';
 import { RepositoryContext } from '../../../../context/RepositoryContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from '@mui/material/Input';
 
 const RepositoriesContainer = styled("div")({
@@ -47,7 +48,8 @@ const RepositoryCard = styled("div")({
     padding: "20px",
     backgroundColor: "#fff",
     borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    border:"2px solid #FC8E40",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
 });
 
   const ModalOverlay = styled("div")({
@@ -65,6 +67,9 @@ const RepositoryCard = styled("div")({
   });
 
   const CustomeInput = styled(Input)({
+    padding: "0.2rem",
+    
+    marginTop:"1.4rem",
     "&:after": {
         borderBottomColor: "#FC8E40", // Focus underline color
     },
@@ -95,17 +100,19 @@ const RepositoryCard = styled("div")({
       </RepositoryCard>
       </RepositoriesContainer>
       {showForm &&(
-        <FormContainer>
-          <ModalOverlay>
+        <ModalOverlay>
+          <FormContainer>
             <form onSubmit={{/*handleFormSubmit}*/}}>
               <CustomeInput type="text"
               required
-              placeholder='title'
+              placeholder='Title'
               fullWidth
               />
               <CustomeInput type="text"
               required
-              placeholder='descripion'
+              placeholder='The Fanfiction derrived from book...talks about..'
+              multiline
+              rows={4}
               fullWidth
               />
               <Button
@@ -128,8 +135,8 @@ const RepositoryCard = styled("div")({
         }}
         >Create Repositrory</Button>
             </form>
-          </ModalOverlay>
-        </FormContainer>
+          </FormContainer>
+        </ModalOverlay>
       )}
     </>
     );
