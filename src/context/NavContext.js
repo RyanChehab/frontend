@@ -1,4 +1,6 @@
-import React,{useState,useEffect,createContext,debounce,useCallback} from 'react';
+import React,{useState,useEffect,createContext,useCallback}
+from 'react';
+import debounce from "lodash/debounce";
 import fetchData from '../utility/fetch';
 import { useNavigate } from "react-router-dom";
 
@@ -67,7 +69,7 @@ const debounceSearch = useCallback(
       } finally {
         setSearchLoad(false);
       }
-    }, 500), //500ms delay
+    }, 300), //300ms delay
     []
   );
 
