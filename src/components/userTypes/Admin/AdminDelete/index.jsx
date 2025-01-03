@@ -67,7 +67,7 @@ const AdminDeletelist = () => {
                             <TableCell>{user.user_type}</TableCell>
                             <TableCell>{user.email}</TableCell>
                             <TableCell>
-                                <button style={{background:red,color:white}} onClick={()=>{handleDeleteUser}}>Delete User</button>
+                                <button style={{background:"red",color:"white"}} >Delete User</button>
                             </TableCell>
                         </TableRow>
                     ))}
