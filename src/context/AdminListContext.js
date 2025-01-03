@@ -10,7 +10,7 @@ export const AdminListProvider = ({children}) => {
     const [email,setEmail] = useState();
 
     const token = localStorage.getItem("token");
-    
+
     useEffect(()=>{
 
         const getUsers = async () => {
@@ -29,17 +29,29 @@ export const AdminListProvider = ({children}) => {
 
     },[])
 
-    const handleBlockUser = async () => {
-        const result = await fetchData(
-            "http://localhost:8000/api/block_user",
-            "POST",
-            {email},
-            {}
-        )
+    const handleBlockUser = async (email) => {
+        try{
+            setLoading(true)
+            const result = await fetchData(
+                "http://localhost:8000/api/block_user",
+                "POST",
+                {"email": email},
+                {Authorization: `Bearer ${token}`}
+            )
+            console.log(result)
+        }catch(error){
+            console.error(error)
+        }finally{
+            setLoading(false)
+        }
+        
     }
     return(
         <AdminListContext.Provider value={{
-            users
+            users,
+            setEmail,
+            loading,
+            handleBlockUser
         }}>
             {children}
         </AdminListContext.Provider>
