@@ -68,8 +68,25 @@ const MenuItem = styled("div")(({ isCollapsed }) => ({
 }));
 
 const AdminNav = () => {
+    
+    const [isCollapsed, setIsCollapsed] = useState(false);
 
-    return ()
+    const toggleNav = () => {
+        setIsCollapsed(!isCollapsed);
+    };
+
+    return (
+        <AdminNavContainer isCollapsed={isCollapsed}>
+            <CollapseToggle onClick={toggleNav}>
+                {isCollapsed ? <MenuIcon /> : <CloseIcon />}
+            </CollapseToggle>
+            <AdminAvatar>A</AdminAvatar>
+            <AdminName isCollapsed={isCollapsed}>Hello, Admin</AdminName>
+            <MenuItem isCollapsed={isCollapsed}>Block User</MenuItem>
+            <MenuItem isCollapsed={isCollapsed}>Delete User</MenuItem>
+            <MenuItem isCollapsed={isCollapsed}>Add Admin</MenuItem>
+        </AdminNavContainer>
+    )
 };
 
 export default AdminNav;
