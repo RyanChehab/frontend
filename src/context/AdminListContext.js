@@ -7,7 +7,10 @@ export const AdminListProvider = ({children}) => {
 
     const [users,setUsers] = useState([]);
     const [loading,setLoading] = useState(false);
+    const [email,setEmail] = useState();
 
+    const token = localStorage.getItem("token");
+    
     useEffect(()=>{
 
         const getUsers = async () => {
@@ -22,10 +25,18 @@ export const AdminListProvider = ({children}) => {
                 console.error(error)
             }
         }
-
         getUsers();
 
     },[])
+
+    const handleBlockUser = async () => {
+        const result = await fetchData(
+            "http://localhost:8000/api/block_user",
+            "POST",
+            {email},
+            {}
+        )
+    }
     return(
         <AdminListContext.Provider value={{
             users
