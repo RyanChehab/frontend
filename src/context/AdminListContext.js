@@ -31,7 +31,6 @@ export const AdminListProvider = ({children}) => {
 
     const handleBlockUser = async (email) => {
         try{
-            setLoading(true)
             const result = await fetchData(
                 "http://localhost:8000/api/block_user",
                 "POST",
@@ -39,11 +38,29 @@ export const AdminListProvider = ({children}) => {
                 {Authorization: `Bearer ${token}`}
             )
             console.log(result)
+
+            // update on spot 
+            const updatedUsers = users.map((user) => {
+                if (user.email === email) {
+                    return { ...user, blocked: !user.blocked }; 
+                }
+                return user;
+            });
+
+            setUsers(updatedUsers); 
+
         }catch(error){
             console.error(error)
-        }finally{
-            setLoading(false)
         }
+
+    const handleunBlockUser = async (email) => {
+        try{
+            const result = await fetchData(
+                "http://localhost:8000/api/unblock_user",
+                "POST",
+                {"email": email},
+                {Authorization: `Bearer ${token}`}
+            )
         
     }
     return(
