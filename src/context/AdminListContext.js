@@ -52,6 +52,7 @@ export const AdminListProvider = ({children}) => {
         }catch(error){
             console.error(error)
         }
+    }
 
     const handleunBlockUser = async (email) => {
         try{
@@ -61,14 +62,31 @@ export const AdminListProvider = ({children}) => {
                 {"email": email},
                 {Authorization: `Bearer ${token}`}
             )
+            console.log(result)
+
+            // update on spot 
+            const updatedUsers = users.map((user) => {
+                if (user.email === email) {
+                    return { ...user, blocked: !user.blocked }; 
+                }
+                return user;
+            });
+
+            setUsers(updatedUsers); 
+
+        }catch(error){
+            console.error(error)
+        }
         
     }
+
     return(
         <AdminListContext.Provider value={{
             users,
             setEmail,
             loading,
-            handleBlockUser
+            handleBlockUser,
+            handleunBlockUser
         }}>
             {children}
         </AdminListContext.Provider>
