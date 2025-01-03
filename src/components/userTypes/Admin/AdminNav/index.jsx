@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { styled } from "@mui/system";
+import IconButton from "@mui/material/IconButton";
 
 const AdminNavContainer = styled("div")(({ isCollapsed }) => ({
     width: isCollapsed ? "60px" : "250px",
@@ -14,6 +15,39 @@ const AdminNavContainer = styled("div")(({ isCollapsed }) => ({
     position: "fixed",
     height: "100vh",
     zIndex: 5,
+}));
+
+const CollapseToggle = styled(IconButton)(({ isCollapsed }) => ({
+    position: "absolute",
+    top: "10px",
+    right: isCollapsed ? "-20px" : "-40px",
+    backgroundColor: "#fff",
+    color: "#FC8E40",
+    zIndex: 6,
+    "&:hover": {
+        backgroundColor: "#f5f5f5",
+    },
+}));
+
+const AdminAvatar = styled(Avatar)({
+    width: "60px",
+    height: "60px",
+    marginBottom: "10px",
+    backgroundColor: "#fff",
+    color: "#FC8E40",
+    fontSize: "24px",
+    fontWeight: "bold",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+});
+
+const AdminName = styled("div")(({ isCollapsed }) => ({
+    marginBottom: "20px",
+    fontSize: "18px",
+    fontWeight: "bold",
+    textAlign: "center",
+    display: isCollapsed ? "none" : "block",
 }));
 
 
