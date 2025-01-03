@@ -84,7 +84,7 @@ const AdminNav = () => {
                 {isCollapsed ? <MenuIcon /> : <CloseIcon />}
             </CollapseToggle>
             <AdminAvatar>{firstLetter}</AdminAvatar>
-            <AdminName isCollapsed={isCollapsed}>Hello, Admin</AdminName>
+            <AdminName isCollapsed={isCollapsed}>Hello, {adminName}</AdminName>
             <MenuItem isCollapsed={isCollapsed}>Block User</MenuItem>
             <MenuItem isCollapsed={isCollapsed}>Delete User</MenuItem>
             <MenuItem isCollapsed={isCollapsed}>Add Admin</MenuItem>
