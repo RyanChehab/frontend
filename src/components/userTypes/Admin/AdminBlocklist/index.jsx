@@ -2,16 +2,16 @@ import React,{useContext} from "react";
 import { styled } from "@mui/system";
 import { AdminListContext } from "../../../../context/AdminListContext";
 
-const BlockUserContainer = styled("div")({
-    padding: "20px",
-    backgroundColor: "#fff",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    width: "80%",
-    margin: "20px auto",
-    maxHeight: "400px",
-    overflowY: "auto",
-});
+// const BlockUserContainer = styled("div")({
+//     padding: "20px",
+//     backgroundColor: "#fff",
+//     borderRadius: "10px",
+//     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+//     width: "80%",
+//     margin: "20px auto",
+//     maxHeight: "400px",
+//     overflowY: "auto",
+// });
 
 const Table = styled("table")({
     width: "100%",
@@ -47,11 +47,18 @@ const TableCell = styled("td")({
     borderBottom: "1px solid #ddd",
 });
 
+const TableWrapper = styled("div")({
+    maxHeight: "400px",
+    overflowY: "auto", 
+    
+});
+
 const AdminBlocklist = () => {
     const {users} = useContext(AdminListContext);
 
     return (
-        <BlockUserContainer>
+        // <BlockUserContainer>
+            <TableWrapper>
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -79,7 +86,7 @@ const AdminBlocklist = () => {
                             </TableCell>
                             <TableCell>
                                 {user.blocked ? (
-                                    <span><button  style={{ color: "green"}}>Unblock</button></span>
+                                    <span><button style={{ color: "green"}}>Unblock</button></span>
                                 ) : (
                                     <span><button style={{ color: "red" }}>block</button></span>
                                 )}
@@ -88,7 +95,8 @@ const AdminBlocklist = () => {
                     ))}
                 </tbody>
             </Table>
-        </BlockUserContainer>
+            </TableWrapper>
+       
     );
 };
 
