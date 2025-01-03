@@ -37,6 +37,7 @@ export const AuthProvider = ({children}) =>{
             setType("success")
             // save token
             localStorage.setItem("token", result.token);
+            localStorage.setItem("name", result.user.name)
             // save avatar_url
             localStorage.setItem("avatar_url",result.user.avatar_url)
 
@@ -45,7 +46,9 @@ export const AuthProvider = ({children}) =>{
                 localStorage.setItem("type", result.user.user_type);
             } else if (result.user.userType === "reader") {
                 navigate("/reader-dashboard");
-            } 
+            } else{
+                navigate("adminPanel")
+            }
         } catch(error){
             setResponse(error.response.data.error);
             setType("error")
