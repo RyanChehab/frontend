@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { styled } from "@mui/system";
 import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 const AdminNavContainer = styled("div")(({ isCollapsed }) => ({
     width: isCollapsed ? "60px" : "250px",
@@ -50,6 +52,20 @@ const AdminName = styled("div")(({ isCollapsed }) => ({
     display: isCollapsed ? "none" : "block",
 }));
 
+const MenuItem = styled("div")(({ isCollapsed }) => ({
+    width: "100%",
+    padding: "15px",
+    textAlign: "center",
+    fontSize: "16px",
+    fontWeight: "bold",
+    cursor: "pointer",
+    borderRadius: "5px",
+    display: isCollapsed ? "none" : "block",
+    "&:hover": {
+        backgroundColor: "#fff",
+        color: "#FC8E40",
+    },
+}));
 
 const AdminNav = () => {
 
