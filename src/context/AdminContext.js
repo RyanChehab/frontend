@@ -9,6 +9,7 @@ export const AdminProvider = ({children}) => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [response,setResponse] = useState()
+    const [activeMenuItem, setActiveMenuItem] = useState("blockUser");
 
     // functions
     const handleBlockUser = async ()=>{
@@ -47,7 +48,9 @@ export const AdminProvider = ({children}) => {
             setPassword,
             response,
             loading,
-            handleBlockUser
+            handleBlockUser,
+            activeMenuItem,
+            setActiveMenuItem
         }}>
             {children}
         </AdminContext.Provider>
