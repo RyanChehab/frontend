@@ -5,21 +5,24 @@ export const AdminContext = createContext();
 export const AdminProvider = ({children}) => {
 
     const [loading,setLoading] = useState(false)
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
     const [response,setResponse] = useState()
 
     // functions
-    const handleBlockUser = ()=>{
+    const handleBlockUser = async ()=>{
         try{
             setLoading(true)
-            fetchData(
+            const response = await fetchData(
                 "http://localhost:8000/api/block_user",
                 "POST",
                 {email}
             )
+            console.log(resp)
         }catch(error){
-
+            console.error(error)
         }finally{
-            
+            setLoading(false)
         }
     }
 
