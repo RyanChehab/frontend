@@ -68,7 +68,7 @@ const MenuItem = styled("div")(({ isCollapsed }) => ({
     },
 }));
 
-const AdminNav = () => {
+const AdminNav = ({onSelectItem}) => {
     
     const adminName = localStorage.getItem("name")||"admin"
     const firstLetter = adminName.charAt(0).toUpperCase();
@@ -85,9 +85,9 @@ const AdminNav = () => {
             </CollapseToggle>
             <AdminAvatar>{firstLetter}</AdminAvatar>
             <AdminName isCollapsed={isCollapsed}>Hello, {adminName}</AdminName>
-            <MenuItem isCollapsed={isCollapsed}>Block User</MenuItem>
-            <MenuItem isCollapsed={isCollapsed}>Delete User</MenuItem>
-            <MenuItem isCollapsed={isCollapsed}>Add Admin</MenuItem>
+            <MenuItem isCollapsed={isCollapsed} onClick={() => onSelectItem("blockUser")}>Block User</MenuItem>
+            <MenuItem isCollapsed={isCollapsed} onClick={() => onSelectItem("deleteUser")}>Delete User</MenuItem>
+            <MenuItem isCollapsed={isCollapsed} onClick={() => onSelectItem("AddAdmin")}>Add Admin</MenuItem>
         </AdminNavContainer>
     )
 };
