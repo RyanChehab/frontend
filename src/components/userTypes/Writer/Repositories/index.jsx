@@ -77,7 +77,7 @@ const RepositoryCard = styled("div")({
 
   const Repositories = () => {
 
-    const {handleAddRepository,showForm,loading,setShowForm} = useContext(RepositoryContext)
+    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository} = useContext(RepositoryContext)
     const repositories = [
         { id: 1, name: "Adventure Tales" },
         { id: 2, name: "Harry and the lost wand" },
@@ -113,7 +113,7 @@ const RepositoryCard = styled("div")({
                 ></button>
               </div>
 
-            <form onSubmit={{/*handleFormSubmit}*/}}>
+            <form onSubmit={handleCreateRepository}>
               <CustomeInput type="text"
               required
               placeholder='Title'
