@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import Avatar from "@mui/material/Avatar";
 
 const AdminNavContainer = styled("div")(({ isCollapsed }) => ({
     width: isCollapsed ? "60px" : "250px",
@@ -69,6 +70,8 @@ const MenuItem = styled("div")(({ isCollapsed }) => ({
 
 const AdminNav = () => {
     
+    const adminName = localStorage.getItem("name")||"admin"
+    const firstLetter = adminName.charAt(0).toUpperCase();
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     const toggleNav = () => {
@@ -80,7 +83,7 @@ const AdminNav = () => {
             <CollapseToggle onClick={toggleNav}>
                 {isCollapsed ? <MenuIcon /> : <CloseIcon />}
             </CollapseToggle>
-            <AdminAvatar>A</AdminAvatar>
+            <AdminAvatar>{firstLetter}</AdminAvatar>
             <AdminName isCollapsed={isCollapsed}>Hello, Admin</AdminName>
             <MenuItem isCollapsed={isCollapsed}>Block User</MenuItem>
             <MenuItem isCollapsed={isCollapsed}>Delete User</MenuItem>
