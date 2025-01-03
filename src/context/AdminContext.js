@@ -18,7 +18,7 @@ export const AdminProvider = ({children}) => {
                 "POST",
                 {email}
             )
-            console.log(resp)
+            console.log(response)
         }catch(error){
             console.error(error)
         }finally{
@@ -26,9 +26,23 @@ export const AdminProvider = ({children}) => {
         }
     }
 
+    const handleAddAdmin = ()=>{
+        try{
+
+        }catch(error){
+
+        }finally{
+            
+        }
+    }
+
     return(
         <AdminContext.Provider value={{
-
+            password,
+            setPassword,
+            response,
+            loading,
+            handleBlockUser
         }}>
             {children}
         </AdminContext.Provider>
