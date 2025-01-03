@@ -54,7 +54,7 @@ const TableWrapper = styled("div")({
 });
 
 const AdminBlocklist = () => {
-    const {users} = useContext(AdminListContext);
+    const {users,handleBlockUser,handleunBlockUser} = useContext(AdminListContext);
 
     return (
         // <BlockUserContainer>
@@ -86,9 +86,9 @@ const AdminBlocklist = () => {
                             </TableCell>
                             <TableCell>
                                 {user.blocked ? (
-                                    <span><button style={{ color: "green"}}>Unblock</button></span>
+                                    <button style={{ color: "green"}} onClick={()=>{handleunBlockUser(user.email)}}>Unblock</button>
                                 ) : (
-                                    <span><button style={{ color: "red" }}>block</button></span>
+                                    <span><button style={{ color: "red" }} onClick={()=>handleBlockUser(user.email)}>block</button></span>
                                 )}
                             </TableCell>
                         </TableRow>
