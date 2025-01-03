@@ -28,7 +28,6 @@ const handleClose = ()=>{
 // logout
 const handleLogout = async ()=>{
     const token = localStorage.getItem("token");
-    console.log(base_url)
     try{
         const result = await fetchData(
             "http://localhost:8000/api/auth/logout",
@@ -41,6 +40,8 @@ const handleLogout = async ()=>{
         console.log(result.message)
         localStorage.removeItem("token");
         localStorage.removeItem("avatar_url")
+        localStorage.removeItem("name")
+        localStorage.removeItem("type")
         handleClose()
         // setResponse(result.message)
         navigate("/");
