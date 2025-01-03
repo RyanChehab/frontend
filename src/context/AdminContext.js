@@ -5,6 +5,7 @@ export const AdminContext = createContext();
 export const AdminProvider = ({children}) => {
 
     const [loading,setLoading] = useState(false)
+    const [adminLoading,setAdminLoading] = useState(false)
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [response,setResponse] = useState()
@@ -26,13 +27,17 @@ export const AdminProvider = ({children}) => {
         }
     }
 
-    const handleAddAdmin = ()=>{
-        try{
-
+    const handleAddAdmin = async ()=>{
+        try{    
+            setAdminLoading(true)
+            const response = await fetchData(
+        
+            )
+            console.log(response)
         }catch(error){
-
+            console.error(error)
         }finally{
-            
+            setAdminLoading(false)
         }
     }
 
