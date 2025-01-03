@@ -11,23 +11,6 @@ export const AdminProvider = ({children}) => {
     const [response,setResponse] = useState()
     const [activeMenuItem, setActiveMenuItem] = useState("blockUser");
 
-    // functions
-    const handleBlockUser = async ()=>{
-        try{
-            setLoading(true)
-            const response = await fetchData(
-                "http://localhost:8000/api/block_user",
-                "POST",
-                {email}
-            )
-            console.log(response)
-        }catch(error){
-            console.error(error)
-        }finally{
-            setLoading(false)
-        }
-    }
-
     const handleAddAdmin = async ()=>{
         try{    
             setAdminLoading(true)
@@ -42,15 +25,23 @@ export const AdminProvider = ({children}) => {
         }
     }
 
+    const handleDeleteUser = async () =>{
+        try{
+
+        }catch(error){
+
+        }
+    }
+
     return(
         <AdminContext.Provider value={{
             password,
             setPassword,
             response,
             loading,
-            handleBlockUser,
             activeMenuItem,
-            setActiveMenuItem
+            setActiveMenuItem,
+            handleDeleteUser
         }}>
             {children}
         </AdminContext.Provider>
