@@ -80,6 +80,21 @@ export const AdminListProvider = ({children}) => {
         
     }
 
+    const handleDeleteUser = async (email) => {
+        try{
+            const result = await fetchData(
+                "http://localhost:8000/api/delete_user",
+                "POST",
+                {"email": email},
+                {Authorization: `Bearer ${token}`}
+            )
+
+        }catch(error){
+            console.error(error)
+        }
+        
+    }
+
     return(
         <AdminListContext.Provider value={{
             users,
