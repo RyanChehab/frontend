@@ -15,12 +15,25 @@ export const AdminListProvider = ({children}) => {
     const [adminOpen,setAdminOpen] = useState(false);
     const [confirm,setConfirm] = useState('');
     const [Loading,setLoading] = useState("")
-    const [name,setName] = useState();
+    const [name,setName] = useState('');
     const [type,setType] = useState("");
     
 
     const token = localStorage.getItem("token");
 
+    // clearing input
+    useEffect(()=>{
+        setUsers([])
+        setEmail('')
+        setPassword('')
+        setResponse('')
+        setConfirm('')
+        setName('')
+        setType('')
+        setOpen(false)
+        setAdminOpen(false)
+        setIsPasswordError(false)
+    },[])
     useEffect(()=>{
 
         const getUsers = async () => {
@@ -131,8 +144,11 @@ export const AdminListProvider = ({children}) => {
                 )
                 console.log(response)
                 setResponse(response.message)
+                setType("success")
             }catch(error){
-                console.error(error)
+                setType("error")
+                setResponse(error.response.data.message)
+                console.log(error.response.data.message)
             }finally{
                 setLoading(false)
                 setAdminOpen(true)
