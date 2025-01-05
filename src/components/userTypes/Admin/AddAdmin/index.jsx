@@ -10,7 +10,7 @@ function SlideTransition(props) {
 
 const AddAdmin = () => {
     
-    const {handleAddAdmin,setName,adminEmail} = useContext(AdminListContext)
+    const {handleAddAdmin,setName,setAdminEmail,adminEmail,handlePasswordChange,handleConfirmChange,adminLoading} = useContext(AdminListContext)
     return(
 <div>
         <Box
@@ -251,7 +251,7 @@ const AddAdmin = () => {
                         variant='contained'
                         color='#FC8E40'
                         type='submit'
-                        disabled = {loading}
+                        disabled = {adminLoading}
                         sx={{
                             width: '50%',
                             borderRadius: '10px',
@@ -266,7 +266,7 @@ const AddAdmin = () => {
                             }
                         }}
                         >
-                            {loading? "Adding..." :"Add User"}
+                            {adminLoading? "Adding..." :"Add User"}
                 </Button>
                 
             </form>
