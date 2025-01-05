@@ -174,7 +174,10 @@ export const AdminListProvider = ({children}) => {
             handleCloseNotification,
             open,
             response,
-            setName
+            setName,
+            handleAddAdmin,
+            setAdminEmail,
+            adminEmail
         }}>
             {children}
         </AdminListContext.Provider>
