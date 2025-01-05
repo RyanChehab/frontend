@@ -49,7 +49,7 @@ const TableWrapper = styled("div")({
 });
 
 const AdminDeletelist = () => {
-    const {users,handleDeleteUser} = useContext(AdminListContext);
+    const {users,handleDeleteUser,open,response,handleCloseNotification} = useContext(AdminListContext);
 
     return(
 <>
@@ -89,10 +89,10 @@ const AdminDeletelist = () => {
             anchorOrigin={{ vertical: "top", horizontal: "center" }}
             >
                 <Alert
-                severity={type}
+                severity="success"
                 sx = {{width: "100%"}}
                 >
-                    {response}
+                    User Deleted Successfully
                 </Alert>
             </Snackbar>
 </>
