@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { AdminContext } from "../../../../context/AdminContext";
+import React, { useState } from "react";
 import AdminNav from "../AdminNav";
 import AdminBlocklist from "../AdminBlocklist";
 import AdminDeletelist from "../AdminDelete";
+import AddAdmin from "../AddAdmin";
 
 const Admin = ()=>{
-    const{password,setPassword,response,loading,handleBlockUser,activeMenuItem,setActiveMenuItem} = useContext(AdminContext)
+    const [activeMenuItem, setActiveMenuItem] = useState("blockUser");
     
     const renderComponent = () => {
         switch (activeMenuItem) {
@@ -13,8 +13,8 @@ const Admin = ()=>{
                 return <AdminBlocklist />;
             case "deleteUser":
                 return <AdminDeletelist/>;
-            // case "addAdmin":
-            //     return <div>Add Admin Component</div>;        
+            case "AddAdmin"   :
+                return <AddAdmin/>     
         }
     }
 
