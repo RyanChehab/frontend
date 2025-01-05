@@ -10,7 +10,7 @@ function SlideTransition(props) {
 
 const AddAdmin = () => {
     
-    const {handleAddAdmin,setName,setAdminEmail,adminEmail,handlePasswordChange,handleConfirmChange,adminLoading} = useContext(AdminListContext)
+    const {password,handleAddAdmin,setName,setAdminEmail,adminEmail,handlePasswordChange,handleConfirmChange,adminLoading,ispasswordError,name,confirm,adminOpen,handleCloseNotification,type} = useContext(AdminListContext)
     return(
 <div>
         <Box
@@ -86,7 +86,7 @@ const AddAdmin = () => {
                 margin="normal"
                 type="email"
                 inputProps={{ maxLength: 250 }}
-                value={email}
+                value={adminEmail}
                 onChange={(e)=>setAdminEmail(e.target.value)}
                 sx={{
                     fontFamily: 'Roboto, sans-serif',
@@ -239,11 +239,9 @@ const AddAdmin = () => {
                     <Select
                     disabled
                     value="admin"
-                    onChange={(e)=>setUsertype(e.target.value)}
                     label= "Type"
                     >
-                        <MenuItem value="reader">Reader</MenuItem>
-                        <MenuItem value="writer">Writer</MenuItem>
+                        Admin
                     </Select>
                 </FormControl>
 
@@ -272,7 +270,7 @@ const AddAdmin = () => {
             </form>
 
             <Snackbar
-            open={open}
+            open={adminOpen}
             autoHideDuration={3000}
             onClose={handleCloseNotification}
             TransitionComponent={SlideTransition}
