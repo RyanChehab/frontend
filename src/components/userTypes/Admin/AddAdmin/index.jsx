@@ -1,7 +1,6 @@
 import React,{useContext} from 'react';
 import '../../../../css/utilities.css';
 import { AdminListContext } from "../../../../context/AdminListContext";
-import { Link} from 'react-router-dom';
 import { Box, TextField, Button, Typography, Snackbar, Alert, Slide, FormControl, MenuItem, Select, InputLabel} from '@mui/material';
 
 function SlideTransition(props) {
@@ -10,7 +9,7 @@ function SlideTransition(props) {
 
 const AddAdmin = () => {
     
-    const {password,handleAddAdmin,setName,setAdminEmail,adminEmail,handlePasswordChange,handleConfirmChange,adminLoading,ispasswordError,name,confirm,adminOpen,handleCloseNotification,type} = useContext(AdminListContext)
+    const {password,handleAddAdmin,setName,setAdminEmail,adminEmail,handlePasswordChange,handleConfirmChange,adminLoading,ispasswordError,name,confirm,adminOpen,handleCloseNotification,type,response} = useContext(AdminListContext)
     return(
 <div>
         <Box
@@ -116,7 +115,7 @@ const AddAdmin = () => {
                         '& .MuiInputLabel-root.Mui-focused': {
                         color: '#FC8E40',
                         },
-                    }}/>
+                    }}/> 
 
                 <TextField
                 label="password"
@@ -202,48 +201,6 @@ const AddAdmin = () => {
                         color: '#FC8E40',
                         },
                     }}/>
-                
-                <FormControl fullWidth
-                sx={{
-                    
-                    marginTop:"10px",
-                    height:"40px",
-                    
-                    '& .MuiOutlinedInput-root': {
-                        height: "40px",
-
-                        '& fieldset': {
-                            borderColor: '#000', 
-                        },
-
-                        '&:hover':{
-                            borderColor: '#FC8E40',
-                        },
-                        
-                        '&.Mui-focused fieldset': {
-                            borderColor: '#000',
-                        },
-
-                    },
-                    '& .MuiInputLabel-root': {
-                        top: "-8px",
-                        color: '#000',
-                    },
-                    '& .MuiInputLabel-root.Mui-focused': {
-                        color: '#FC8E40',
-                        },
-            
-                }}
-                >
-                <InputLabel id="select-label">Type</InputLabel>
-                    <Select
-                    disabled
-                    value="admin"
-                    label= "Type"
-                    >
-                        Admin
-                    </Select>
-                </FormControl>
 
                 <Button
                         variant='contained'
