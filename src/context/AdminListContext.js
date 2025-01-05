@@ -10,7 +10,7 @@ export const AdminListProvider = ({children}) => {
     const [email,setEmail] = useState();
     const [response,setResponse] = useState('')
     const [open,setOpen] = useState(false);
-    
+
     const token = localStorage.getItem("token");
 
     useEffect(()=>{
@@ -82,6 +82,10 @@ export const AdminListProvider = ({children}) => {
         
     }
 
+    const handleCloseNotification = () => {
+        setOpen(false);
+      };
+
     const handleDeleteUser = async (email) => {
         try{
             const result = await fetchData(
@@ -99,6 +103,9 @@ export const AdminListProvider = ({children}) => {
             setResponse(result.message)
         }catch(error){
             console.error(error)
+
+        }finally{
+            setOpen(true)
         }
         
     }
@@ -110,7 +117,11 @@ export const AdminListProvider = ({children}) => {
             loading,
             handleBlockUser,
             handleunBlockUser,
-            handleDeleteUser
+            handleDeleteUser,
+            handleCloseNotification,
+            open,
+            
+
         }}>
             {children}
         </AdminListContext.Provider>
