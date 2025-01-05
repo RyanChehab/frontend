@@ -8,7 +8,9 @@ export const AdminListProvider = ({children}) => {
     const [users,setUsers] = useState([]);
     const [loading,setLoading] = useState(false);
     const [email,setEmail] = useState();
-
+    const [response,setResponse] = useState('')
+    const [open,setOpen] = useState(false);
+    
     const token = localStorage.getItem("token");
 
     useEffect(()=>{
@@ -88,7 +90,13 @@ export const AdminListProvider = ({children}) => {
                 {"email": email},
                 {Authorization: `Bearer ${token}`}
             )
-
+            
+            if(result.success){
+                console.log("Deleting user from state:", email);
+                const updateUsers = users.filter((user) => user.email !== email)
+                setUsers(updateUsers)
+            }
+            setResponse(result.message)
         }catch(error){
             console.error(error)
         }
@@ -101,7 +109,8 @@ export const AdminListProvider = ({children}) => {
             setEmail,
             loading,
             handleBlockUser,
-            handleunBlockUser
+            handleunBlockUser,
+            handleDeleteUser
         }}>
             {children}
         </AdminListContext.Provider>
