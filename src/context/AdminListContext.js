@@ -137,6 +137,28 @@ export const AdminListProvider = ({children}) => {
                 setAdminLoading(false)
             }
         }
+
+        const handlePasswordChange = (value) => {
+            setPassword(value);
+            if (value !== confirm) {
+                setIsPasswordError(true); 
+                setCorrect(false)
+            } else {
+                setIsPasswordError(false); 
+                setCorrect(true)
+            }
+        };
+
+        const handleConfirmChange = (value) => {
+            setConfirm(value);
+            if (value !== password) {
+                setIsPasswordError(true); 
+                setCorrect(false)
+            } else {
+                setIsPasswordError(false);
+                setCorrect(true)
+            }
+        }
     
 
     return(
