@@ -7,7 +7,6 @@ export const AdminListProvider = ({children}) => {
 
     const [users,setUsers] = useState([]);
     const [email,setEmail] = useState();
-    const [adminEmail,setAdminEmail] = useState("");
     const [password,setPassword] = useState("");
     const [ispasswordError,setIsPasswordError] = useState(false);
     const [correct,setCorrect] = useState(false)
@@ -15,7 +14,7 @@ export const AdminListProvider = ({children}) => {
     const [open,setOpen] = useState(false);
     const [adminOpen,setAdminOpen] = useState(false);
     const [confirm,setConfirm] = useState('');
-    const [adminLoading,setAdminLoading] = useState(false);
+    const [Loading,setLoading] = useState("")
     const [name,setName] = useState();
     const [type,setType] = useState("");
     
@@ -116,29 +115,26 @@ export const AdminListProvider = ({children}) => {
     
     const handleCloseNotification = () => {
         setOpen(false);
+        setAdminOpen(false)
       };
 
-    const handleAddAdmin = async ()=>{
+    const handleAddAdmin = async (e)=>{
             try{    
-                setAdminLoading(true)
+                e.preventDefault()
+                setLoading(true)
                 const response = await fetchData(
                     "http://localhost:8000/api/AddAdmin",
                     "POST",
-                    {
-                        name:{name},
-                        email:{adminEmail},
-                        password:{password},
-                        type:"admin",
-                    },
+                    {name,email,password,user_type:"admin"},
                     {Authorization: `Bearer ${token}`}
 
                 )
                 console.log(response)
-                setResponse(response)
+                setResponse(response.message)
             }catch(error){
                 console.error(error)
             }finally{
-                setAdminLoading(false)
+                setLoading(false)
                 setAdminOpen(true)
             }
         }
@@ -180,14 +176,15 @@ export const AdminListProvider = ({children}) => {
             name,
             setName,
             handleAddAdmin,
-            setAdminEmail,
-            adminEmail,
+            email,
+            setEmail,
             handlePasswordChange,
             handleConfirmChange,
             ispasswordError,
             confirm,
             type,
-            response
+            response,
+            adminOpen
         }}>
             {children}
         </AdminListContext.Provider>
