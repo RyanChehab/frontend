@@ -11,6 +11,13 @@ export const AdminListProvider = ({children}) => {
     const [response,setResponse] = useState('')
     const [open,setOpen] = useState(false);
 
+    const [adminLoading,setAdminLoading] = useState(false)
+    const [name,setName] = useState()
+    const [adminEmail,setAdminEmail] = useState("");
+    const [password,setPassword] = useState("");
+    const [ispasswordError,setIsPasswordError] = useState(false)
+    const [correct,setCorrect] = useState(false)
+
     const token = localStorage.getItem("token");
 
     useEffect(()=>{
@@ -100,7 +107,7 @@ export const AdminListProvider = ({children}) => {
                 const updateUsers = users.filter((user) => user.email !== email)
                 setUsers(updateUsers)
             }
-            setResponse(result.message)
+            setResponse(result.massege)
         }catch(error){
             console.error(error)
 
@@ -109,6 +116,28 @@ export const AdminListProvider = ({children}) => {
         }
         
     }
+
+    const handleAddAdmin = async ()=>{
+            try{    
+                setAdminLoading(true)
+                const response = await fetchData(
+                    "http://localhost:8000/api/AddAdmin",
+                    {
+                        name:{name},
+                        email:{adminEmail},
+                        password:{password},
+                        type:"admin",
+                    }
+
+                )
+                console.log(response)
+            }catch(error){
+                console.error(error)
+            }finally{
+                setAdminLoading(false)
+            }
+        }
+    
 
     return(
         <AdminListContext.Provider value={{
@@ -120,8 +149,8 @@ export const AdminListProvider = ({children}) => {
             handleDeleteUser,
             handleCloseNotification,
             open,
-            
-
+            response,
+            setName
         }}>
             {children}
         </AdminListContext.Provider>
