@@ -11,6 +11,7 @@ export const AdminListProvider = ({children}) => {
     const [response,setResponse] = useState('')
     const [open,setOpen] = useState(false);
 
+    const [confirm,setConfirm] = useState('');
     const [adminLoading,setAdminLoading] = useState(false)
     const [name,setName] = useState()
     const [adminEmail,setAdminEmail] = useState("");
@@ -174,10 +175,15 @@ export const AdminListProvider = ({children}) => {
             handleCloseNotification,
             open,
             response,
+            password,
+            name,
             setName,
             handleAddAdmin,
             setAdminEmail,
-            adminEmail
+            adminEmail,
+            handlePasswordChange,
+            handleConfirmChange,
+            ispasswordError
         }}>
             {children}
         </AdminListContext.Provider>
