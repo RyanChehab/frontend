@@ -1,7 +1,12 @@
 import React,{useContext} from "react";
 import { styled } from "@mui/system";
 import { AdminListContext } from "../../../../context/AdminListContext";
+import {Snackbar, Alert, Slide} from '@mui/material'
 
+
+export function SlideTransition(props) {
+    return <Slide {...props} direction="down" />;
+}
 
 const Table = styled("table")({
     width: "100%",
@@ -44,7 +49,7 @@ const TableWrapper = styled("div")({
 });
 
 const AdminDeletelist = () => {
-    const {users} = useContext(AdminListContext);
+    const {users,handleDeleteUser} = useContext(AdminListContext);
 
     return(
         <TableWrapper>
@@ -67,7 +72,7 @@ const AdminDeletelist = () => {
                             <TableCell>{user.user_type}</TableCell>
                             <TableCell>{user.email}</TableCell>
                             <TableCell>
-                                <button style={{background:"red",color:"white"}} >Delete User</button>
+                                <button onClick={()=>{handleDeleteUser(user.email)}} style={{background:"red",color:"white"}} >Delete User</button>
                             </TableCell>
                         </TableRow>
                     ))}
