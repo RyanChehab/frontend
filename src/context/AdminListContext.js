@@ -122,12 +122,14 @@ export const AdminListProvider = ({children}) => {
                 setAdminLoading(true)
                 const response = await fetchData(
                     "http://localhost:8000/api/AddAdmin",
+                    "POST",
                     {
                         name:{name},
                         email:{adminEmail},
                         password:{password},
                         type:"admin",
-                    }
+                    },
+                    {Authorization: `Bearer ${token}`}
 
                 )
                 console.log(response)
