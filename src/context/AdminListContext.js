@@ -6,18 +6,19 @@ export const AdminListContext = createContext();
 export const AdminListProvider = ({children}) => {
 
     const [users,setUsers] = useState([]);
-    const [loading,setLoading] = useState(false);
     const [email,setEmail] = useState();
-    const [response,setResponse] = useState('')
-    const [open,setOpen] = useState(false);
-
-    const [confirm,setConfirm] = useState('');
-    const [adminLoading,setAdminLoading] = useState(false)
-    const [name,setName] = useState()
     const [adminEmail,setAdminEmail] = useState("");
     const [password,setPassword] = useState("");
     const [ispasswordError,setIsPasswordError] = useState(false)
     const [correct,setCorrect] = useState(false)
+    const [response,setResponse] = useState('')
+    const [open,setOpen] = useState(false);
+    const [adminOpen,setAdminOpen] = useState(false)
+    const [confirm,setConfirm] = useState('');
+    const [adminLoading,setAdminLoading] = useState(false)
+    const [name,setName] = useState()
+    const [type,setType] = useState("");
+    
 
     const token = localStorage.getItem("token");
 
@@ -90,10 +91,6 @@ export const AdminListProvider = ({children}) => {
         
     }
 
-    const handleCloseNotification = () => {
-        setOpen(false);
-      };
-
     const handleDeleteUser = async (email) => {
         try{
             const result = await fetchData(
@@ -117,6 +114,10 @@ export const AdminListProvider = ({children}) => {
         }
         
     }
+    
+    const handleCloseNotification = () => {
+        setOpen(false);
+      };
 
     const handleAddAdmin = async ()=>{
             try{    
@@ -138,6 +139,7 @@ export const AdminListProvider = ({children}) => {
                 console.error(error)
             }finally{
                 setAdminLoading(false)
+                setAdminOpen(true)
             }
         }
 
@@ -168,7 +170,6 @@ export const AdminListProvider = ({children}) => {
         <AdminListContext.Provider value={{
             users,
             setEmail,
-            loading,
             handleBlockUser,
             handleunBlockUser,
             handleDeleteUser,
@@ -183,7 +184,8 @@ export const AdminListProvider = ({children}) => {
             adminEmail,
             handlePasswordChange,
             handleConfirmChange,
-            ispasswordError
+            ispasswordError,
+            confirm
         }}>
             {children}
         </AdminListContext.Provider>
