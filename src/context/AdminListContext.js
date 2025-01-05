@@ -9,14 +9,14 @@ export const AdminListProvider = ({children}) => {
     const [email,setEmail] = useState();
     const [adminEmail,setAdminEmail] = useState("");
     const [password,setPassword] = useState("");
-    const [ispasswordError,setIsPasswordError] = useState(false)
+    const [ispasswordError,setIsPasswordError] = useState(false);
     const [correct,setCorrect] = useState(false)
-    const [response,setResponse] = useState('')
+    const [response,setResponse] = useState('');
     const [open,setOpen] = useState(false);
-    const [adminOpen,setAdminOpen] = useState(false)
+    const [adminOpen,setAdminOpen] = useState(false);
     const [confirm,setConfirm] = useState('');
-    const [adminLoading,setAdminLoading] = useState(false)
-    const [name,setName] = useState()
+    const [adminLoading,setAdminLoading] = useState(false);
+    const [name,setName] = useState();
     const [type,setType] = useState("");
     
 
@@ -105,7 +105,6 @@ export const AdminListProvider = ({children}) => {
                 const updateUsers = users.filter((user) => user.email !== email)
                 setUsers(updateUsers)
             }
-            setResponse(result.massege)
         }catch(error){
             console.error(error)
 
@@ -135,6 +134,7 @@ export const AdminListProvider = ({children}) => {
 
                 )
                 console.log(response)
+                setResponse(response)
             }catch(error){
                 console.error(error)
             }finally{
@@ -185,7 +185,9 @@ export const AdminListProvider = ({children}) => {
             handlePasswordChange,
             handleConfirmChange,
             ispasswordError,
-            confirm
+            confirm,
+            type,
+            response
         }}>
             {children}
         </AdminListContext.Provider>
