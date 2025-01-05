@@ -1,6 +1,6 @@
 import React,{useState,useEffect,createContext} from 'react';
 import fetchData from '../utility/fetch';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) =>{
@@ -21,6 +21,10 @@ export const AuthProvider = ({children}) =>{
     const [type,setType] = useState('');
     const [open,setOpen] = useState(false);
     const [ispasswordError,setIsPasswordError] = useState(false)
+
+    useEffect(()=>{
+            setEmail("")
+    },[useLocation()])
 
     // login function
     const handleLogin = async (e)=>{
