@@ -52,7 +52,8 @@ const AdminDeletelist = () => {
     const {users,handleDeleteUser} = useContext(AdminListContext);
 
     return(
-        <TableWrapper>
+<>
+            <TableWrapper>
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -79,6 +80,22 @@ const AdminDeletelist = () => {
                 </tbody>
             </Table>
             </TableWrapper>
+
+            <Snackbar
+            open={open}
+            autoHideDuration={3000}
+            onClose={handleCloseNotification}
+            TransitionComponent={SlideTransition}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+                <Alert
+                severity={type}
+                sx = {{width: "100%"}}
+                >
+                    {response}
+                </Alert>
+            </Snackbar>
+</>
     )
 }
 
