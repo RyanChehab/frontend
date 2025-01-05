@@ -24,6 +24,16 @@ export const AuthProvider = ({children}) =>{
 
     useEffect(()=>{
             setEmail("")
+            setPassword("")
+            setUser("")
+            setResponse(null)
+            setUsertype("")
+            setName("")
+            setUsername("")
+            setConfirm("")
+            setCorrect(false)
+            setType("")
+            setOpen(false)
     },[useLocation()])
 
     // login function
