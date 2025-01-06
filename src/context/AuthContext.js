@@ -22,7 +22,8 @@ export const AuthProvider = ({children}) =>{
     const [open,setOpen] = useState(false);
     const [ispasswordError,setIsPasswordError] = useState(false)
 
-    
+    const location = useLocation();
+
     // clear fields
     useEffect(()=>{
             setEmail("")
@@ -44,7 +45,7 @@ export const AuthProvider = ({children}) =>{
             localStorage.clear()
             console.log("local storage cleared")
         }
-    },[])
+    },[location])
 
     // login function
     const handleLogin = async (e)=>{
