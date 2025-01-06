@@ -12,4 +12,14 @@ export const WriterDevProvider = () => {
         navigate("/writer")
     };
 
+    const handlePageChange = (direction) => {
+        if (direction === "next" && currentPage < totalPages) {
+            setCurrentPage((prev) => prev + 1);
+        } else if (direction === "prev" && currentPage > 1) {
+            setCurrentPage((prev) => prev - 1);
+        }
+    };
+
+    return()
+
 }
