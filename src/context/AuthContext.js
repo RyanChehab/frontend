@@ -56,12 +56,18 @@ export const AuthProvider = ({children}) =>{
             localStorage.setItem("avatar_url",result.user.avatar_url)
 
             if (result.user.user_type === "writer") {
-                navigate("writer");
+                setTimeout(() => {
+                    navigate("writer");
+                },2000)
                 localStorage.setItem("type", result.user.user_type);
             } else if (result.user.userType === "reader") {
-                navigate("/reader-dashboard");
+                setTimeout(() => {
+                    navigate("/reader-dashboard");
+                })
             } else{
-                navigate("adminPanel")
+                setTimeout(() => {
+                    navigate("adminPanel")
+                })
             }
         } catch(error){
             setResponse(error.response.data.error);
