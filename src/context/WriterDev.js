@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export const WriterDevContext = createContext()
 
-export const WriterDevProvider = () => {
+export const WriterDevProvider = ({children}) => {
     const navigate = useNavigate()
     const [fanfiction, setFanfiction] = useState(""); 
     const [currentPage, setCurrentPage] = useState(1); 
@@ -20,6 +20,17 @@ export const WriterDevProvider = () => {
         }
     };
 
-    return()
+    return(
+        <WriterDevContext.Provider value={{
+            fanfiction,
+            setFanfiction,
+            currentPage,
+            setCurrentPage,
+            handleBack,
+            handlePageChange
+        }}>
+            {children}
+        </WriterDevContext.Provider>
+    )
 
 }
