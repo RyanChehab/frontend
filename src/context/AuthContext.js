@@ -22,6 +22,8 @@ export const AuthProvider = ({children}) =>{
     const [open,setOpen] = useState(false);
     const [ispasswordError,setIsPasswordError] = useState(false)
 
+    
+    // clear fields
     useEffect(()=>{
             setEmail("")
             setPassword("")
@@ -35,6 +37,14 @@ export const AuthProvider = ({children}) =>{
             setType("")
             setOpen(false)
     },[useLocation()])
+
+    // clear local storage when user goes backwards
+    useEffect(()=>{
+        if(location.pathname === "/" || location.pathname === "signup"){
+            localStorage.clear()
+            console.log("local storage cleared")
+        }
+    },[])
 
     // login function
     const handleLogin = async (e)=>{
@@ -58,16 +68,16 @@ export const AuthProvider = ({children}) =>{
             if (result.user.user_type === "writer") {
                 setTimeout(() => {
                     navigate("writer");
-                },2000)
+                },1000)
                 localStorage.setItem("type", result.user.user_type);
             } else if (result.user.userType === "reader") {
                 setTimeout(() => {
                     navigate("/reader-dashboard");
-                })
+                },1000)
             } else{
                 setTimeout(() => {
                     navigate("adminPanel")
-                })
+                },1000)
             }
         } catch(error){
             setResponse(error.response.data.error);
