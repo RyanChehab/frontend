@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -1rem;
   }
   
   /* Dark Overlay */
@@ -32,12 +33,14 @@
     font-size: 3rem;
     font-weight: bold;
     margin: 0 0 1rem;
+    font-family: 'Roboto';
   }
   
   /* Subheading */
   .intro-subheading {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    font-family: 'Roboto';
   }
   
   /* Button */
@@ -56,6 +59,18 @@
   .intro-btn:hover {
     color: #FC8E40;
     background-color: #fff;
+  }
+
+  .imagination{
+    font-family:"Cinzel Decorative" !important;
+    color: #FC8E40;
+    font-size: 2.4rem;
+  }
+
+  .tale{
+    font-family:"Cinzel Decorative" !important;
+    color: #FC8E40;
+    font-size: 1.7rem;
   }
   
   /* Responsiveness*/
