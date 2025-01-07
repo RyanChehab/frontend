@@ -5,12 +5,10 @@ export const CardsContext = createContext();
 
 export const CardProvider = ({children}) => { 
 const [data, setData] = useState([])
-const [loading, setLoading] = useState(true);
-const [catLoading, setCatLoading] = useState(true);
+const [loading, setLoading] = useState(false);
 const [bookmarks,setBookmarks] = useState([]);
 const [category,setCategory] = useState([]);
 
-useEffect(() => {
     const getFeatured = async () => {
         try {
             const result = await fetchData(
@@ -23,9 +21,7 @@ useEffect(() => {
             console.log(result)
         } catch (error) {
             console.error("Error fetching dataa:", error);
-        } finally {
-            setLoading(false); // Set loading to false after data is fetched
-        }
+        } 
     };
 
     const getBookmarks = async () => {
@@ -54,15 +50,28 @@ useEffect(() => {
             setCategory(response)
         } catch (error) {
             console.error("Error fetching dataa:", error);
-        } finally{
-            setCatLoading(false)
-        }
+        } 
     };
 
-    getBookmarks();
-    getFeatured();
-    getByCategory();
-}, []);
+
+    useEffect(() => {
+        const fetchAllData = async ()=>{
+            setLoading(true)
+            try{
+                await Promise.all([getFeatured(), getBookmarks(), getByCategory()])
+
+            }catch(error){
+                console.error("Error fetching all data:", error);
+            }finally{
+                setLoading(false)
+                document.body.style.overflow = "hidden"; 
+                void document.body.offsetHeight; 
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        fetchAllData()
+    },[])
 
     return(
         <CardsContext.Provider value={{
@@ -70,7 +79,6 @@ useEffect(() => {
             loading,
             bookmarks,
             category,
-            catLoading
         }}> 
             {children}
         </CardsContext.Provider>
