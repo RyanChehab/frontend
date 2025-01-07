@@ -1,6 +1,6 @@
 import {React,createContext,useEffect,useState} from 'react';
 import fetchData from '../utility/fetch';
-
+import { useLocation } from "react-router-dom";
 export const CardsContext = createContext();
 
 export const CardProvider = ({children}) => { 
@@ -53,7 +53,7 @@ const [category,setCategory] = useState([]);
         } 
     };
 
-
+    const location = useLocation()
     useEffect(() => {
         const fetchAllData = async ()=>{
             setLoading(true)
@@ -71,7 +71,7 @@ const [category,setCategory] = useState([]);
         }
 
         fetchAllData()
-    },[])
+    },[location.pathname])
 
     return(
         <CardsContext.Provider value={{
