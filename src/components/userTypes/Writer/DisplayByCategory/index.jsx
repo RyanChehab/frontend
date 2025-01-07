@@ -4,7 +4,7 @@ import { CardsContext } from '../../../../context/CardsContext';
 import WriterNav from '../writerNav';
 import './displatByCategory.css';
 const DisplayByCategory = ()=>{
-    const{category,catLoading} = useContext(CardsContext);
+    const{category,loading} = useContext(CardsContext);
 
     const slideBooks = (rowId) => {
       const row = document.getElementById(rowId);
@@ -21,7 +21,7 @@ const DisplayByCategory = ()=>{
     return (
       <>
         <WriterNav /> {/* Navbar is always displayed */}
-        {catLoading ? (
+        {loading ? (
           <p>Loading...</p>
         ) : Object.keys(BooksArray).length > 0 ? (
           <>
