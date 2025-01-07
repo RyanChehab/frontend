@@ -1,5 +1,6 @@
 import React,{useEffect,useState,createContext} from "react";
 import fetchData from '../utility/fetch';
+import { useLocation } from "react-router-dom";
 
 export const AdminListContext = createContext();
 
@@ -33,7 +34,8 @@ export const AdminListProvider = ({children}) => {
         setOpen(false)
         setAdminOpen(false)
         setIsPasswordError(false)
-    },[])
+    },[Location])
+
     useEffect(()=>{
 
         const getUsers = async () => {
