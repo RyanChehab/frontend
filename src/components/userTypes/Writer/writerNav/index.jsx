@@ -19,7 +19,7 @@ const WriterNav = () => {
 
     const navigate = useNavigate();
     const base_url = process.env.BASE_URL;
-    const {isCollapsed,anchorEl,handleOpen,handleClose,handleLogout} = useContext(NavContext)
+    const {isCollapsed,anchorEl,handleOpen,handleClose,handleLogout,handleNavigate} = useContext(NavContext)
     
     // dropzone
     const [profilePic,setProfilePic] = useState(localStorage.getItem("avatar_url"));
@@ -87,9 +87,9 @@ const WriterNav = () => {
         <nav className="collapsed-navbar">
            <div className="d-flex align-items-center justify-content-between">
     
-                <Link to="writer" style={{ textDecoration: 'none'}}>
+                <div onClick={() => navigate("/writer")}>
                     <img src={logo} alt="logo" />
-                </Link>
+                </div>
                 <div className="d-flex gap-5 align-items-center">
                     <button
                             className="navbar-toggler"
@@ -140,9 +140,9 @@ const WriterNav = () => {
             >
                     <div className="offcanvas-header ">
                     
-                        <Link to="writer" style={{ textDecoration: 'none'}}>
+                        <div onClick={()=>navigate("/writer")}>
                                     <img src={logo} alt="logo" className="offcanvas-logo" />
-                        </Link>
+                        </div>
                                 
                         <div className="search-bar mx-auto">
                         <SearchStories/>
@@ -161,23 +161,23 @@ const WriterNav = () => {
                 
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link to="/repositories" className="nav-link">
+                            <div className="nav-link" onClick = {()=>navigate('/repositories')}>
                             Repositories
-                            </Link>
+                            </div>
                             <hr />
                         </li>
                         
                         <li className="nav-item">
-                            <Link to="/writerCategory" className="nav-link">
+                            <div onClick={()=>navigate("/Categories")} className="nav-link">
                             Categories
-                            </Link>
+                            </div>
                             <hr />
                         </li>
                         
                         <li className="nav-item">
-                            <Link to="/bookmarks" className="nav-link">
+                            <div className="nav-link">
                             Bookmarks
-                            </Link>
+                            </div>
                             <hr />
                         </li>
                     </ul>
@@ -210,7 +210,7 @@ const WriterNav = () => {
                     <Avatar
                     src={profilePic}
                     onClick={handleOpen}
-                    sx={{ width: 50, height: 50,border: '3px solid #FC8E40'}}
+                    sx={{ width: 50, height: 50}}
                     />
                 </div>
     
