@@ -1,0 +1,103 @@
+.fanfiction-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+.fanfiction-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.back-button {
+    position: absolute;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #555;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+}
+
+.book-title {
+    flex: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    padding: 10px 15px;
+}
+
+/* TextArea Section */
+.fanfiction-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.fanfiction-textarea {
+    flex: 1;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    resize: none;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.fanfiction-textarea:focus {
+    border-color: #FC8E40;
+}
+
+/* Pagination Section */
+.fanfiction-pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #FC8E40;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+    background-color: #FC8E40;
+}
+
+.pagination-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination-text {
+    font-size: 16px;
+    color: #555;
+}
