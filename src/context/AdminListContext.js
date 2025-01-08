@@ -144,7 +144,8 @@ export const AdminListProvider = ({children}) => {
                     {Authorization: `Bearer ${token}`}
 
                 )
-                console.log(response)
+                console.log(response.users)
+                setUsers((prev)=>[...prev,...response.users])
                 setResponse(response.message)
                 setType("success")
             }catch(error){
