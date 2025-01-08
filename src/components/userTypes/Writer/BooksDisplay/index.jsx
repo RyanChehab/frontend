@@ -10,10 +10,10 @@ const DisplayCards = ()=>{
 
      console.log("Books Array:", booksArray);
      return loading ? (
-        <p>Loading...</p>
+        <p className="display-loading-message">Loading...</p>
       ) : booksArray.length > 0 ? (
       <>
-        <p className="display-title">Fetured Books</p>
+        <h2 className="display-title">Fetured Books</h2>
         <div className="books-container">
           {booksArray.map((book, index) => (
             <BookCard
