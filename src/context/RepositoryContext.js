@@ -6,9 +6,12 @@ export const RepositoryProvider = ({children})=>{
     const [showForm,setShowForm] = useState(false);
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
-    const [loading,setLoading] = useState();
+    const [loading,setLoading] = useState(false);
     const [response,setResponse] = useState("");
+    const [type,setType] = useState('');
+    const [open,setOpen] = useState(false)
 
+    const token = localStorage.getItem('token')
     // showform
     const handleAddRepository = () => {
         setShowForm(true);
@@ -25,16 +28,22 @@ export const RepositoryProvider = ({children})=>{
                 {title,description},
 
                 {
-                    Authorization: localStorage.getItem('token')
+                    Authorization: `Bearer ${token}`
                 }
             )
-            console.log(response.message)
+            setType('success')
+            setResponse(response.message)
         }catch(error){
-            console.error(error)
+            setResponse(error.response.data.message)
+            setType('error')
         }finally{
             setLoading(false)
+            setOpen(true)
         }
     }
+    const handleCloseNotification = () => {
+        setOpen(false);
+      };
     
     return(
         <RepositoryContext.Provider value={{
@@ -43,8 +52,12 @@ export const RepositoryProvider = ({children})=>{
             setShowForm,
             loading,
             handleCreateRepository,
+            handleCloseNotification,
             setTitle,
-            setDescription
+            setDescription,
+            response,
+            type,
+            open
         }}>
             {children}
         </RepositoryContext.Provider>
