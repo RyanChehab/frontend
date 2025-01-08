@@ -14,16 +14,16 @@ export const RepositoryProvider = ({children})=>{
         setShowForm(true);
     };
 
-    const handleCreateRepository = async () => {
+    const handleCreateRepository = async (e) => {
+        e.preventDefault()
         try{
             setLoading(true);
             const response = await fetchData(
                 "http://localhost:8000/api/Repository/createRepo",
                 "POST",
-                {
-                    title: {title},
-                    description: {description}
-                },
+                
+                {title,description},
+
                 {
                     Authorization: localStorage.getItem('token')
                 }
@@ -42,7 +42,9 @@ export const RepositoryProvider = ({children})=>{
             showForm,
             setShowForm,
             loading,
-            handleCreateRepository
+            handleCreateRepository,
+            setTitle,
+            setDescription
         }}>
             {children}
         </RepositoryContext.Provider>
