@@ -77,7 +77,7 @@ const RepositoryCard = styled("div")({
 
   const Repositories = () => {
 
-    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository} = useContext(RepositoryContext)
+    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription} = useContext(RepositoryContext)
     const repositories = [
         { id: 1, name: "Adventure Tales" },
         { id: 2, name: "Harry and the lost wand" },
@@ -118,6 +118,7 @@ const RepositoryCard = styled("div")({
               required
               placeholder='Title'
               fullWidth
+              onChange={(e)=>setTitle(e.target.value)}
               />
               <CustomeInput type="text"
               required
@@ -125,6 +126,7 @@ const RepositoryCard = styled("div")({
               multiline
               rows={4}
               fullWidth
+              onChange={(e)=>setDescription(e.target.value)}
               />
               <Button
               variant='contained'
@@ -144,7 +146,7 @@ const RepositoryCard = styled("div")({
                       border:'solid 2px #FC8E40',
             }
         }}
-        >Create Repository</Button>
+        >{loading? "Creating..." :"Create Repository"}</Button>
             </form>
           </FormContainer>
         </ModalOverlay>
