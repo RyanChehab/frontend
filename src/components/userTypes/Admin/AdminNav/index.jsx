@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { styled } from "@mui/system";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Avatar from "@mui/material/Avatar";
+import { NavContext } from "../../../../context/NavContext";
 
 const AdminNavContainer = styled("div")(({ isCollapsed }) => ({
     width: isCollapsed ? "60px" : "250px",
@@ -69,6 +70,7 @@ const MenuItem = styled("div")(({ isCollapsed }) => ({
 }));
 
 const AdminNav = ({onSelectItem}) => {
+    const {handleLogout} = useContext(NavContext)
     
     const adminName = localStorage.getItem("name")||"admin"
     const firstLetter = adminName.charAt(0).toUpperCase();
@@ -88,6 +90,8 @@ const AdminNav = ({onSelectItem}) => {
             <MenuItem isCollapsed={isCollapsed} onClick={() => onSelectItem("blockUser")}>Block User</MenuItem>
             <MenuItem isCollapsed={isCollapsed} onClick={() => onSelectItem("deleteUser")}>Delete User</MenuItem>
             <MenuItem isCollapsed={isCollapsed} onClick={() => onSelectItem("AddAdmin")}>Add Admin</MenuItem>
+            <MenuItem isCollapsed={isCollapsed} onClick={() => 
+            handleLogout()}>Logout</MenuItem>
         </AdminNavContainer>
     )
 };
