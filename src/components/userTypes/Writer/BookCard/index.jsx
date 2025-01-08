@@ -5,22 +5,25 @@ import './BookCard.css';
 
 const BookCard = ({ gutenberg_id, img_url, title, author})=>{
 
-    const {handleNavigate} = useContext(BookCardContext)
     return(
         <div className="book-card">
-            <img src={img_url} alt={title} className="book_img"/>
+            
+            <button className="bookmark-btn" >
+                <i className="far fa-bookmark"></i>
+            </button>
+
+            <div className="book-image-container">
+                <img src={img_url} alt={title} className="book-image" />
+            </div>
+
             <div className="book-details">
                 <h3 className="book-title">{title}</h3>
-                <p className="book-author">{author}</p>
-                <button className="bookmark-btn" onClick={{/*{toggleBookmark}*/}}>
-                    {/* {isBookmarked ? (
-                        <i className="fas fa-bookmark"></i>
-                    ) : (
-                        <i className="far fa-bookmark"></i>
-                    )} */}
-                </button>
-                <button className="navigate-btn" onClick={handleNavigate}>
-                    Open Book
+                <p className="book-author">By {author}</p>
+            </div>
+
+            <div className="book-footer">
+                <button className="navigate-btn">
+                    Open
                 </button>
             </div>
         </div>
