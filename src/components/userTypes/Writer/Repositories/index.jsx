@@ -1,10 +1,11 @@
 import React, {useContext, useState} from 'react'
 import {styled} from "@mui/material/styles"
-import Button from "@mui/material/Button";
 import WriterNav from '../writerNav';
 import { RepositoryContext } from '../../../../context/RepositoryContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from '@mui/material/Input';
+import { Button, Snackbar, Alert, Slide} from '@mui/material';
+
 
 const RepositoriesContainer = styled("div")({
     display: "flex",
@@ -74,6 +75,11 @@ const RepositoryCard = styled("div")({
         borderBottomColor: "#FC8E40", // Focus underline color
     },
   })
+
+  export function SlideTransition(props) {
+    return <Slide {...props} direction="down" />;
+  }
+
 
   const Repositories = () => {
 
@@ -151,6 +157,21 @@ const RepositoryCard = styled("div")({
           </FormContainer>
         </ModalOverlay>
       )}
+
+      <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleCloseNotification}
+        TransitionComponent={SlideTransition}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+            <Alert
+            severity={type}
+            sx = {{width: "100%"}}
+            >
+                {response}
+            </Alert>
+        </Snackbar>
     </>
     );
 };
