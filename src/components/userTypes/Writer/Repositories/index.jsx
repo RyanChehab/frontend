@@ -5,7 +5,7 @@ import { RepositoryContext } from '../../../../context/RepositoryContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from '@mui/material/Input';
 import { Button, Snackbar, Alert, Slide} from '@mui/material';
-
+import { AuthContext } from '../../../../context/AuthContext';
 
 const RepositoriesContainer = styled("div")({
     display: "flex",
@@ -84,6 +84,7 @@ const RepositoryCard = styled("div")({
   const Repositories = () => {
 
     const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription} = useContext(RepositoryContext)
+    const {handleCloseNotification} = useContext(AuthContext)
     const repositories = [
         { id: 1, name: "Adventure Tales" },
         { id: 2, name: "Harry and the lost wand" },
