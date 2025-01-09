@@ -17,7 +17,7 @@ img{
 
 .links{
     text-decoration: none;
-    font-size: 21px;
+    font-size: 18px;
     font-family:'Roboto';
     color:black;
     padding: 0.7rem;
@@ -28,6 +28,11 @@ img{
     height: 70px;
     padding: 0.4rem;
 }
+
+.CollapsedprofilePic{
+    
+}
+
 .links:hover{
     color:#FC8E40;
 }
@@ -54,9 +59,16 @@ img{
     width: 60px;
     height: 60px;
 }
+.collapsed-img-logo:hover{
+    cursor: pointer;
+}
 .nav-item{
     font-family:'Roboto';
     font-size: 1.1rem;
+}
+
+.nav-link:hover{
+    cursor: pointer;
 }
 
 .nav-item:hover{
