@@ -10,7 +10,7 @@ export function SlideTransition(props) {
   }
 
 const Login = () => {
-    const {email,setEmail,password,setPassword,handleLogin,response,loading,open,type, handleCloseNotification} = useContext(AuthContext)
+    const {email,setEmail,password,setPassword,handleLogin,response,loading,open,type,handleCloseNotification} = useContext(AuthContext)
     
     return (
 <div className='login'>

@@ -15,6 +15,8 @@ const Admin = ()=>{
                 return <AdminDeletelist/>;
             case "AddAdmin"   :
                 return <AddAdmin/>     
+            default:
+                return null;
         }
     }
 
