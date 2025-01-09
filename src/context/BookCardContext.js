@@ -40,35 +40,37 @@ export const BookCardProvider = ({children})=>{
         }
     }
     
-    // const removeBookmark = async (gutenberg_id) => {
-    //     try {
-    //         const requestBody = {
-    //             bookmarkable_type: "App\\Models\\Book",
-    //             bookmarkable_id: gutenberg_id,
-    //         };
+    const removeBookmark = async (gutenberg_id) => {
+        try {
+            const requestBody = {
+                bookmarkable_type: "App\\Models\\Book",
+                bookmarkable_id: gutenberg_id,
+            };
 
-    //         const result = await fetchData(
-    //             "http://localhost:8000/api/unbookmark",
-    //             "POST",
-    //             { Authorization: `Bearer ${token}` },
-    //             requestBody
-    //         );
+            const result = await fetchData(
+                "http://localhost:8000/api/unbookmark",
+                "POST",
+                requestBody,
+                { Authorization: `Bearer ${token}` },
+            );
 
-    //         console.log("Bookmark removed successfully:", result);
+            console.log("Bookmark removed successfully:", result);
 
-    //         // Update the local state
-    //         setBookmarkedBooks((prev) => prev.filter((id) => id !== gutenberg_id));
-    //     } catch (error) {
-    //         console.error("Failed to remove bookmark:", error?.response?.message || error.message);
-    //     }
-    // };
+            // Update the local state
+            setBookmarkedBooks((prev) => prev.filter((id) => id !== gutenberg_id));
+        } catch (error) {
+            console.error("Failed to remove bookmark:", error?.response?.message || error.message);
+        }
+    };
+
     const isBookmarked = (gutenberg_id) => bookmarkedBooks.includes(gutenberg_id);
 
     return(
         <BookCardContext.Provider value={{
             handleBookmark,
             handleNavigate,
-            isBookmarked
+            isBookmarked,
+            removeBookmark
         }}>
             {children}
         </BookCardContext.Provider>
