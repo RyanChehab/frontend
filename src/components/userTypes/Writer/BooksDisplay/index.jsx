@@ -5,15 +5,18 @@ import BookCard from "../BookCard";
 import './BooksDisplay.css'
 
 const DisplayCards = ()=>{
-    const { data} = useContext(CardsContext);
+    const { data, loading} = useContext(CardsContext);
     const { isBookmarked, bookmarkedBooks } = useBookmark(); 
     console.log("Bookmarked IDs:", bookmarkedBooks);
     console.log(data)
     const booksArray = Object.values(data);
 
-     return (
+     return loading ? (
+        <p className="display-loading-message">Loading...</p>
+      ) : booksArray.length > 0 ? (
       <>
-        <div>
+        <h2 className="display-title">Fetured Books</h2>
+        <div className="books-container">
           {booksArray.map((book) => (
             <BookCard
               gutenberg_id = {book.gutenberg_id}
@@ -25,7 +28,9 @@ const DisplayCards = ()=>{
           ))}
         </div>
       </>
-      ) 
+      ) : (
+        <p className="display-title">No books available</p>
+      );
 };
 
 export default DisplayCards;
