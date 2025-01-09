@@ -88,7 +88,7 @@ const WriterNav = () => {
            <div className="d-flex align-items-center justify-content-between">
     
                 <div onClick={() => navigate("/writer")}>
-                    <img src={logo} alt="logo" />
+                    <img src={logo} alt="logo" className="collapsed-img-logo"/>
                 </div>
                 <div className="d-flex gap-5 align-items-center">
                     <button
@@ -175,7 +175,7 @@ const WriterNav = () => {
                         </li>
                         
                         <li className="nav-item">
-                            <div className="nav-link">
+                            <div onClick={()=>navigate("/bookmarks")} className="nav-link">
                             Bookmarks
                             </div>
                             <hr />
@@ -190,11 +190,10 @@ const WriterNav = () => {
                             // Normal nav
     <>
             <nav className="navbar d-flex align-items-center justify-content-between">
-                <div className="logo">
-                    <Link to="/" style={{ textDecoration: 'none'}}>
-                        <img src={logo} alt="logo" />
-                    </Link>
-                </div>
+
+            <div onClick={()=>navigate("/writer")}>
+                <img src={logo} alt="logo" className="offcanvas-logo" />
+            </div>
     
                 <div className="nav-links">
                     <Link to="/repositories" className='links fs-5 fs-md-6 fs-sm-6'>Repositories</Link>
