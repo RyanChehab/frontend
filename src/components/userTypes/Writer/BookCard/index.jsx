@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useBookmark } from "../../../../context/BookCardContext";
 import './BookCard.css';
 
-const BookCard = ({ gutenberg_id, img_url, title, author})=>{
-    const { handleBookmark, removeBookmark, isBookmarked } = useBookmark();
+const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked})=>{
+    const { handleBookmark, removeBookmark} = useBookmark();
     
     const handleBookmarkToggle = () => {
-        if (isBookmarked(gutenberg_id)) {
-            // removeBookmark(gutenberg_id);
-            console.log('ok remove')
+        if (isBookmarked) {
+            removeBookmark(gutenberg_id);
         } else {
             handleBookmark(gutenberg_id);
         }
@@ -19,11 +18,10 @@ const BookCard = ({ gutenberg_id, img_url, title, author})=>{
         <div className="book-card">
             
             <button
-                className={`bookmark-btn ${isBookmarked(gutenberg_id) ? "bookmarked" : ""}`}
+                className={`bookmark-btn ${isBookmarked ? "bookmarked" : ""}`}
                 onClick={handleBookmarkToggle}
             >
-                {/* Dynamic Bookmark Icon */}
-                <i className={isBookmarked(gutenberg_id) ? "fas fa-bookmark" : "far fa-bookmark"}></i>
+                <i className={isBookmarked ? "fas fa-bookmark" : "far fa-bookmark"}></i>
             </button>
 
             <div className="book-image-container">

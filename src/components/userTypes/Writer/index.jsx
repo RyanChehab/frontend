@@ -9,7 +9,6 @@ const Writer = ()=>{
 <>
         <WriterNav/>
         <Intro/>
-        {/* <div className="WriterBanner"/> */}
         <DisplayCards/>
 </>
     )
