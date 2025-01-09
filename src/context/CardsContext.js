@@ -24,22 +24,6 @@ const [category,setCategory] = useState([]);
         } 
     };
 
-    const getBookmarks = async () => {
-        try {
-            const response = await fetchData(
-                "http://localhost:8000/api/book/getBookmarks",
-                "POST",
-                {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            );
-            console.log(response)
-            setBookmarks(response)
-        } catch (error) {
-            console.error("Error fetching dataa:", error);
-        }
-    };
-
     const getByCategory = async () => {
         try {
             const response = await fetchData(
@@ -58,7 +42,7 @@ const [category,setCategory] = useState([]);
         const fetchAllData = async ()=>{
             setLoading(true)
             try{
-                await Promise.all([getFeatured(), getBookmarks(), getByCategory()])
+                await Promise.all([getFeatured(), getByCategory()])
 
             }catch(error){
                 console.error("Error fetching all data:", error);
