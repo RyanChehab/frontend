@@ -100,8 +100,6 @@ useEffect(() => {
     };
 }, []);
 
-
-
 return(
     <NavContext.Provider value={{
         isCollapsed,
@@ -114,7 +112,7 @@ return(
         searchLoad,
         results,
         searchTerm,
-        handleInputChange
+        handleInputChange,
     }}>
         {children}
     </NavContext.Provider>

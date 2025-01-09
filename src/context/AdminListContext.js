@@ -203,7 +203,8 @@ export const AdminListProvider = ({children}) => {
             confirm,
             type,
             response,
-            adminOpen
+            adminOpen,
+            Loading
         }}>
             {children}
         </AdminListContext.Provider>

@@ -33,6 +33,7 @@ export const RepositoryProvider = ({children})=>{
             )
             setType('success')
             setResponse(response.message)
+            setShowForm(false)
         }catch(error){
             setResponse(error.response.data.message)
             setType('error')
