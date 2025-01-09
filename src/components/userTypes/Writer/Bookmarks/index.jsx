@@ -6,20 +6,24 @@ import { useBookmark } from "../../../../context/BookCardContext";
 const Bookmarks = () => {
     const {data, loading} = useContext(CardsContext)
     const { isBookmarked, bookmarkedBooks } = useBookmark();  
-    const books = Object.values(data)
-    // const bookmarkedBooks = books.filter(book => book.isBookmarked);
+    
+    const books = Object.values(data);
 
+    const bookmarked = books.filter(book => bookmarkedBooks.includes(book.gutenberg_id));
+
+    if (loading) return <p>Loading bookmarks...</p>;
+    
     return(
         <div>
             <h1>Bookmarked Books</h1>
             <div className="bookmarks-container">
-                {bookmarkedBooks.length > 0 ? (
-                    bookmarkedBooks.map(book => <BookCard 
+                {bookmarked.length > 0 ? (
+                    bookmarked.map(book => <BookCard 
                         gutenberg_id={book.gutenberg_id}
                         img_url={book.img_url}
                         title={book.title}
                         author={book.author}
-                        isBookmarked={true}
+                        isBookmarked={isBookmarked(book.gutenberg_id)}
                          />)
                 ) : (
                     <p>No bookmarks found.</p>
