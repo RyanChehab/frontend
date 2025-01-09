@@ -19,6 +19,27 @@ export const BookCardProvider = ({children})=>{
         navigate(`view/${gutenberg_id}`);
     };
 
+    useEffect(()=>{
+        const getBookmarks = async () => {
+            try{
+                const result = await fetchData(
+                    "http://localhost:8000/api/bookmarks/getBookmarks",
+                    "POST",
+                    null,
+                    {Authorization: `Bearer ${token}`}
+                )
+                console.log("Fetched bookmarks:", result.bookmarked_ids);
+                setBookmarkedBooks(result.bookmarked_ids);
+            }catch(error){
+                console.error(error);
+            }
+        }
+        if (token) {
+            getBookmarks();
+        }
+        
+    },[token])
+
     const handleBookmark = async (gutenberg_id)=>{
         console.log("Gutenberg ID:", gutenberg_id);
         try{
@@ -27,7 +48,7 @@ export const BookCardProvider = ({children})=>{
                 bookmarkable_id: gutenberg_id,
             };
             const result  = await fetchData(
-                "http://localhost:8000/api/bookmark",
+                "http://localhost:8000/api/bookmarks/bookmark",
                 "POST",
                 requestBody,
                 {Authorization: `Bearer ${token}`},
@@ -36,7 +57,7 @@ export const BookCardProvider = ({children})=>{
             console.log("Bookmark added successfully:", result);
             setBookmarkedBooks((prev) => [...prev, gutenberg_id]);
         }catch(error){
-            console.log(error.response.message)
+            console.log(error)
         }
     }
     
@@ -48,7 +69,7 @@ export const BookCardProvider = ({children})=>{
             };
 
             const result = await fetchData(
-                "http://localhost:8000/api/unbookmark",
+                "http://localhost:8000/api/bookmarks/unbookmark",
                 "POST",
                 requestBody,
                 { Authorization: `Bearer ${token}` },
@@ -63,14 +84,17 @@ export const BookCardProvider = ({children})=>{
         }
     };
 
-    const isBookmarked = (gutenberg_id) => bookmarkedBooks.includes(gutenberg_id);
+    const isBookmarked = (gutenberg_id) => {
+        return bookmarkedBooks.includes(gutenberg_id);
+    };
 
     return(
         <BookCardContext.Provider value={{
             handleBookmark,
             handleNavigate,
             isBookmarked,
-            removeBookmark
+            removeBookmark,
+            bookmarkedBooks
         }}>
             {children}
         </BookCardContext.Provider>
