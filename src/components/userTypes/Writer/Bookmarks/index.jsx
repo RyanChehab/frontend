@@ -1,8 +1,13 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import BookCard from "../BookCard";
+import { CardsContext } from '../../../../context/CardsContext';
+import { useBookmark } from "../../../../context/BookCardContext";
 
-const Bookmarks = ({books}) => {
-    const bookmarkedBooks = books.filter(book => book.isBookmarked);
+const Bookmarks = () => {
+    const {data, loading} = useContext(CardsContext)
+    const { isBookmarked, bookmarkedBooks } = useBookmark();  
+    const books = Object.values(data)
+    // const bookmarkedBooks = books.filter(book => book.isBookmarked);
 
     return(
         <div>
