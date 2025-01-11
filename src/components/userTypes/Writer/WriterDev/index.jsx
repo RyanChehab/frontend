@@ -2,7 +2,17 @@ import React,{useContext} from "react";
 import { WriterDevContext } from "../../../../context/WriterDev";
 import './WriterDev.css'
 const WriterDev = () =>{
-    
+
+        const {content,pages,currentPage,Max_Characters,handlePageChange,handlePageContentChange,handleStore,handleGetContent,setCurrentPage,setPages,
+        } = useContext(WriterDevContext);
+
+        useEffect(() => {
+            handleGetContent();
+        }, []);
+
+        const handleTextareaChange = (e) => {
+            handlePageContentChange(e.target.value);
+        };
 
     return (
         <div className="fanfiction-container">
