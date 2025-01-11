@@ -21,6 +21,8 @@ export const RepositoryProvider = ({children})=>{
         e.preventDefault()
         try{
             setLoading(true);
+
+            // creating the repository 
             const response = await fetchData(
                 "http://localhost:8000/api/Repository/createRepo",
                 "POST",
@@ -33,6 +35,9 @@ export const RepositoryProvider = ({children})=>{
             )
             setType('success')
             setResponse(response.message)
+            
+            const repositoryId = response.data.id
+            console.log(repositoryId)
             setShowForm(false)
         }catch(error){
             setResponse(error.response.data.message)
