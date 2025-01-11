@@ -24,27 +24,44 @@ export const RepositoryProvider = ({children})=>{
 
             // creating the repository 
             const response = await fetchData(
-                "http://localhost:8000/api/Repository/createRepo",
+                "http://localhost:8000/api/createRepo",
                 "POST",
                 
                 {title,description},
 
-                {
-                    Authorization: `Bearer ${token}`
-                }
+                {Authorization: `Bearer ${token}`}
             )
+
+            // if(response.message === 'Repository created successfully!'){
+            //     navigate to writerDev
+            // }
             
             // retrieve repo id 
             const repositoryId = response.data.id
 
+            // prepend fixed string to the description 
+            const prompt = `Create book cover (only need the cover photo). The theme is based on the following fanfiction description: ${description}`
+
+            // second api fetch
             const imageResponse = await fetchData(
                 "http://localhost:8000/api/generate-image",
                 "POST",
-                {prompt:description},
+                {prompt},
                 {Authorization: `Bearer ${token}`}
             )
-            console.log(imageResponse.s3url)
+
+            // save the retrieved path
+            const s3url = imageResponse.s3url;
             
+            // third api fetch
+            const updateImg = await fetchData(
+                `http://localhost:8000/api/updateRepo/${repositoryId}`,
+                'POST',
+                {s3url},
+                {Authorization: `Bearer ${token}`}
+            )
+
+            console.log(updateImg)
 
             setType('success')
             
