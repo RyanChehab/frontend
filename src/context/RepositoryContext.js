@@ -33,11 +33,21 @@ export const RepositoryProvider = ({children})=>{
                     Authorization: `Bearer ${token}`
                 }
             )
-            setType('success')
-            setResponse(response.message)
             
+            // retrieve repo id 
             const repositoryId = response.data.id
-            console.log(repositoryId)
+
+            const imageResponse = await fetchData(
+                "http://localhost:8000/api/generate-image",
+                "POST",
+                {prompt:description},
+                {Authorization: `Bearer ${token}`}
+            )
+            console.log(imageResponse.s3url)
+            
+
+            setType('success')
+            
             setShowForm(false)
         }catch(error){
             setResponse(error.response.data.message)
