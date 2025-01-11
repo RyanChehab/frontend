@@ -23,9 +23,7 @@ const RepositoryCard = styled("div")({
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-    fontSize: "18px",
-    fontWeight: "bold",
+    overflow: "hidden",
   });
 
   const AddButton = styled(Button)({
@@ -50,7 +48,62 @@ const RepositoryCard = styled("div")({
     borderRadius: "10px",
     border:"2px solid #FC8E40",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
+  });
+
+  const CardImage = styled("div")({
+    width: "100%",
+    height: "70%",
+    overflow: "hidden",
+    position: "relative",
+    img: {
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        transition: "transform 0.3s ease",
+    },
+    "&:hover img": {
+        transform: "scale(1.1)", // Zoom effect on hover
+    },
 });
+
+const CardDetails = styled("div")({
+    position: "absolute",
+    bottom: "0",
+    left: "0",
+    width: "100%",
+    height: "30%",
+    background: "rgba(0, 0, 0, 0.7)", 
+    color: "white",
+    padding: "10px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    fontSize: "16px",
+    fontWeight: "bold",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    transition: "height 0.3s ease, opacity 0.3s ease",
+    cursor: "pointer",
+    "&:hover": {
+        height: "50%",
+    },
+    "& h3": {
+        margin: 0,
+        fontSize: "18px",
+    },
+    "& p": {
+        margin: "5px 0 0",
+        fontSize: "14px",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        maxHeight: "40px",
+    },
+    "&:hover p": {
+        maxHeight: "none",
+        whiteSpace: "normal",
+    },
+  });
 
   const ModalOverlay = styled("div")({
     position: "fixed",
@@ -88,18 +141,24 @@ const RepositoryCard = styled("div")({
     <>
       <WriterNav/>
       <RepositoriesContainer>
-      {repositories.map((repo) => (
-          <RepositoryCard key={repo.id}>
-              {repo.title}
-              <AddButton onClick={() => console.log(`Editing ${repo.name}`)}>
-              <i class="fas fa-pencil-alt"></i>
-              </AddButton>
-          </RepositoryCard>
-      ))}
-      <RepositoryCard onClick={handleAddRepository}>
-          <span>+ Add Repository</span>
-      </RepositoryCard>
-      </RepositoriesContainer>
+    {repositories.map((repo) => (
+        <RepositoryCard key={repo.id}>
+            <CardImage>
+                <img src={repo.img_url} alt={`${repo.title} cover`} />
+            </CardImage>
+            <CardDetails>
+                <h3>{repo.title}</h3>
+                <p>{repo.description}</p>
+            </CardDetails>
+            <AddButton onClick={() => console.log(`Editing ${repo.name}`)}>
+                <i className="fas fa-pencil-alt"></i>
+            </AddButton>
+        </RepositoryCard>
+    ))}
+    <RepositoryCard onClick={handleAddRepository}>
+        <span>+ Add Repository</span>
+    </RepositoryCard>
+</RepositoriesContainer>
 
       {/* create repo form */}
       {showForm &&(
