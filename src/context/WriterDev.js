@@ -15,7 +15,7 @@ export const WriterDevProvider = ({ children }) => {
     const [type, setType] = useState('');
     const [response, setResponse] = useState('');
     const [loading, setLoading] = useState(false);
-
+    const [open,setOpen] = useState(true)
     // Pagination states
     const [currentPage, setCurrentPage] = useState(0);
     const [pages, setPages] = useState([]);
@@ -54,6 +54,10 @@ export const WriterDevProvider = ({ children }) => {
             setLoading(false);
         }
     };
+    
+    const handleCloseNotification = () => {
+        setOpen(false);
+      };
 
     // Handle fetching content from backend
     const handleGetContent = async () => {
