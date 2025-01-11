@@ -1,8 +1,12 @@
 import React,{useEffect,useState,createContext} from 'react';
 import fetchData from '../utility/fetch';
+import { useNavigate } from "react-router-dom";
+
 export const RepositoryContext = createContext();
 
 export const RepositoryProvider = ({children})=>{
+
+    const navigate = useNavigate();
     const [showForm,setShowForm] = useState(false);
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
@@ -34,6 +38,9 @@ export const RepositoryProvider = ({children})=>{
 
             // if(response.message === 'Repository created successfully!'){
             //     navigate to writerDev
+            // setType('success')
+            //    setResponse(response.message)
+            // setShowForm(false)
             // }
             
             // retrieve repo id 
@@ -52,7 +59,9 @@ export const RepositoryProvider = ({children})=>{
 
             // save the retrieved path
             const s3url = imageResponse.s3url;
-            
+            if(!s3url){
+                console.log('failed to generate img')
+            }
             // third api fetch
             const updateImg = await fetchData(
                 `http://localhost:8000/api/updateRepo/${repositoryId}`,
@@ -63,9 +72,7 @@ export const RepositoryProvider = ({children})=>{
 
             console.log(updateImg)
 
-            setType('success')
             
-            setShowForm(false)
         }catch(error){
             setResponse(error.response.data.message)
             setType('error')
