@@ -22,14 +22,18 @@ export const RepositoryProvider = ({children})=>{
     useEffect(()=>{
         const repositories = async () => {
             try{
-                const result await fetchData(
+                const result = await fetchData(
                     'http://localhost:8000/api/createRepo',
                     "POST",
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
+            }catch(error){
+                console.log(error.response.data.message)
             }
         }
+
+        respositories()
     },[])
 
     // showform
