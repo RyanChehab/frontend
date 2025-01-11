@@ -55,6 +55,13 @@ const WriterDev = () =>{
                         Next
                     </button>
                 </div>
+                
+                {/* Save Button */}
+                <div className="fanfiction-save">
+                    <button className="save-button" onClick={handleStore}>
+                        Save Fanfiction
+                    </button>
+                </div>
             </div>
         </div>
     );
