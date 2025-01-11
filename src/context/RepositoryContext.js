@@ -23,17 +23,18 @@ export const RepositoryProvider = ({children})=>{
         const repositories = async () => {
             try{
                 const result = await fetchData(
-                    'http://localhost:8000/api/createRepo',
+                    'http://localhost:8000/api/getRepositories',
                     "POST",
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
+                console.log(result)
             }catch(error){
                 console.log(error.response.data.message)
             }
         }
 
-        respositories()
+        repositories()
     },[])
 
     // showform
