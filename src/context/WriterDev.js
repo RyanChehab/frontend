@@ -19,7 +19,7 @@ export const WriterDevProvider = ({ children }) => {
     // Pagination states
     const [currentPage, setCurrentPage] = useState(0);
     const [pages, setPages] = useState([]);
-    const Max_Characters = 1000;
+    const Max_Characters = 1900;
 
     // Helper function to split content into pages
     const splitIntoPages = (content) => {
@@ -102,6 +102,30 @@ export const WriterDevProvider = ({ children }) => {
         setContent(mergedContent);
     };
 
+    // Handle textarea input
+    const handleTextareaChange = (e) => {
+        const newContent = e.target.value;
+
+        // Check if the character limit is reached
+        if (newContent.length >= Max_Characters) {
+            // Update the current page content
+            handlePageContentChange(newContent.slice(0, Max_Characters));
+
+            // Create a new page with the remaining text
+            const remainingContent = newContent.slice(Max_Characters);
+            const updatedPages = [...pages];
+            updatedPages[currentPage] = newContent.slice(0, Max_Characters);
+            updatedPages.splice(currentPage + 1, 0, remainingContent);
+
+            setPages(updatedPages);
+            setCurrentPage(currentPage + 1); // Move to the new page
+        } else {
+            // Update the current page content
+            handlePageContentChange(newContent);
+        }
+    };
+
+
     return (
         <WriterDevContext.Provider
             value={{
@@ -120,6 +144,7 @@ export const WriterDevProvider = ({ children }) => {
                 handlePageChange,
                 handlePageContentChange,
                 saveCurrentPage,
+                handleTextareaChange
             }}
         >
             {children}
