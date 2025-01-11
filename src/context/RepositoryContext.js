@@ -14,7 +14,7 @@ export const RepositoryProvider = ({children})=>{
     const [response,setResponse] = useState("");
     const [type,setType] = useState('');
     const [open,setOpen] = useState(false);
-    const [respositories, setRepositories] = useState([])
+    const [repositories, setRepositories] = useState([])
 
     const token = localStorage.getItem('token')
     
@@ -28,7 +28,8 @@ export const RepositoryProvider = ({children})=>{
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
-                console.log(result)
+                setRepositories(result.repositories)
+                
             }catch(error){
                 console.log(error.response.data.message)
             }
@@ -118,7 +119,8 @@ export const RepositoryProvider = ({children})=>{
             setDescription,
             response,
             type,
-            open
+            open,
+            repositories
         }}>
             {children}
         </RepositoryContext.Provider>
