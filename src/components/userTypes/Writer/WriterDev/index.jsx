@@ -18,7 +18,7 @@ const WriterDev = () =>{
         <div className="fanfiction-container">
             {/* Header Section */}
             <div className="fanfiction-header">
-                <button className="back-button">
+                <button className="back-button" onClick={() => window.history.back()}>
                     Back to Website
                 </button>
                 <h1 className="book-title">Book Title</h1>
@@ -28,23 +28,29 @@ const WriterDev = () =>{
             <div className="fanfiction-body">
                 <textarea
                     className="fanfiction-textarea"
-                    placeholder="Start writing your fanfiction here..."
+                    value={pages[currentPage] || ""}
+                    onChange={handleTextareaChange}
+                    placeholder={`Page ${currentPage + 1}. Maximum ${Max_Characters} characters.`}
                 ></textarea>
 
                 {/* Pagination Section */}
                 <div className="fanfiction-pagination">
                     <button
                         className="pagination-button"
-                        
+                        onClick={() => handlePageChange("prev")}
+                        disabled={currentPage === 0}
                     >
                         Previous
                     </button>
+                    
                     <span className="pagination-text">
-                        Page 1 of 100
+                    Page {currentPage + 1} of {pages.length || 1}
                     </span>
+
                     <button
                         className="pagination-button"
-                        
+                        onClick={() => handlePageChange("next")}
+                        disabled={currentPage === pages.length - 1 || pages.length === 0}
                     >
                         Next
                     </button>
