@@ -13,9 +13,16 @@ export const RepositoryProvider = ({children})=>{
     const [loading,setLoading] = useState(false);
     const [response,setResponse] = useState("");
     const [type,setType] = useState('');
-    const [open,setOpen] = useState(false)
+    const [open,setOpen] = useState(false);
+    const [respositories, setRepositories] = useState([])
 
     const token = localStorage.getItem('token')
+    
+    // get repositories
+    useEffect(()=>{
+
+    },[])
+
     // showform
     const handleAddRepository = () => {
         setShowForm(true);
@@ -66,7 +73,7 @@ export const RepositoryProvider = ({children})=>{
             console.log(updateImg)
 
             if(response.message === 'Repository created successfully!'){
-                navigate('WriterDev')
+                navigate(`WriterDev/${repositoryId}`)
             setType('success')
                setResponse(response.message)
             setShowForm(false)
