@@ -1,6 +1,6 @@
 import React,{useEffect,useState,createContext} from 'react';
 import fetchData from '../utility/fetch';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const RepositoryContext = createContext();
 
@@ -36,7 +36,7 @@ export const RepositoryProvider = ({children})=>{
         }
 
         repositories()
-    },[])
+    },[useLocation()])
 
     // showform
     const handleAddRepository = () => {
