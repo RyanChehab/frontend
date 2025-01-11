@@ -35,13 +35,6 @@ export const RepositoryProvider = ({children})=>{
 
                 {Authorization: `Bearer ${token}`}
             )
-
-            // if(response.message === 'Repository created successfully!'){
-            //     navigate to writerDev
-            // setType('success')
-            //    setResponse(response.message)
-            // setShowForm(false)
-            // }
             
             // retrieve repo id 
             const repositoryId = response.data.id
@@ -71,6 +64,13 @@ export const RepositoryProvider = ({children})=>{
             )
 
             console.log(updateImg)
+
+            if(response.message === 'Repository created successfully!'){
+                navigate('WriterDev')
+            setType('success')
+               setResponse(response.message)
+            setShowForm(false)
+            }
 
             
         }catch(error){
