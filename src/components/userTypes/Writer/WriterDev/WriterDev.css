@@ -101,3 +101,28 @@
     font-size: 16px;
     color: #555;
 }
+
+@media (max-width: 600px) {
+    .fanfiction-header {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .back-button {
+        position: relative; 
+        left: auto; 
+        width: 30%; 
+        text-align: center;
+    }
+
+    .back-button:hover{
+        background-color: #FC8E40;
+        color: white;
+    }
+
+    .book-title {
+        font-size: 16px; 
+    }
+}
