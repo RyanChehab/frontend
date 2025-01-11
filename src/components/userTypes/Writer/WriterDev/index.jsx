@@ -1,18 +1,16 @@
-import React,{useContext} from "react";
+import React,{useContext, useEffect} from "react";
 import { WriterDevContext } from "../../../../context/WriterDev";
 import './WriterDev.css'
 const WriterDev = () =>{
 
-        const {content,pages,currentPage,Max_Characters,handlePageChange,handlePageContentChange,handleStore,handleGetContent,setCurrentPage,setPages,
+        const {content,pages,currentPage,Max_Characters,handlePageChange,handlePageContentChange,handleStore,handleGetContent,setCurrentPage,setPages,handleTextareaChange
         } = useContext(WriterDevContext);
 
         useEffect(() => {
-            handleGetContent();
-        }, []);
-
-        const handleTextareaChange = (e) => {
-            handlePageContentChange(e.target.value);
-        };
+            if (!content || content.length === 0) {
+                handleGetContent();
+            }
+        }, [content]);
 
     return (
         <div className="fanfiction-container">
@@ -55,11 +53,11 @@ const WriterDev = () =>{
                         Next
                     </button>
                 </div>
-                
+
                 {/* Save Button */}
                 <div className="fanfiction-save">
                     <button className="save-button" onClick={handleStore}>
-                        Save Fanfiction
+                        Save
                     </button>
                 </div>
             </div>

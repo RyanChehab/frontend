@@ -102,6 +102,27 @@
     color: #555;
 }
 
+.fanfiction-save {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.save-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #FC8E40;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #e67e34;
+}
+
 @media (max-width: 600px) {
     .fanfiction-header {
         flex-direction: column;
