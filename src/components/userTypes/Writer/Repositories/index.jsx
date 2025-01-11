@@ -82,20 +82,15 @@ const RepositoryCard = styled("div")({
 
   const Repositories = () => {
 
-    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type} = useContext(RepositoryContext)
+    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type,repositories} = useContext(RepositoryContext)
     
-    const repositories = [
-        { id: 1, name: "Adventure Tales" },
-        { id: 2, name: "Harry and the lost wand" },
-    ];
-
     return (
     <>
       <WriterNav/>
       <RepositoriesContainer>
       {repositories.map((repo) => (
           <RepositoryCard key={repo.id}>
-              {repo.name}
+              {repo.title}
               <AddButton onClick={() => console.log(`Editing ${repo.name}`)}>
               <i class="fas fa-pencil-alt"></i>
               </AddButton>
