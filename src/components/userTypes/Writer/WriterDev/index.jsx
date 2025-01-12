@@ -17,7 +17,10 @@ const WriterDev = () =>{
         <div className="fanfiction-container">
             {/* Header Section */}
             <div className="fanfiction-header">
-                <button className="back-button" onClick={() => window.history.back()}>
+            <button className="back-button" onClick={async () =>{
+                    handleStore(id)
+                    window.history.back()}
+                }>
                     Back to Website
                 </button>
                 <h1 className="book-title">Book Title</h1>
