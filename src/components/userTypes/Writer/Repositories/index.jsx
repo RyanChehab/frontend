@@ -3,6 +3,7 @@ import {styled} from "@mui/material/styles"
 import { useNavigate } from 'react-router-dom';
 import WriterNav from '../writerNav';
 import { RepositoryContext } from '../../../../context/RepositoryContext';
+import { WriterDevContext } from '../../../../context/WriterDev';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from '@mui/material/Input';
 import { Button, Snackbar, Alert, Slide} from '@mui/material';
@@ -138,6 +139,7 @@ const CardDetails = styled("div")({
     const navigate = useNavigate();
     const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type,repositories} = useContext(RepositoryContext)
     
+    const {handleGetContent} = useContext(WriterDevContext)
     return (
     <>
       <WriterNav/>
@@ -151,7 +153,11 @@ const CardDetails = styled("div")({
                 <h3>{repo.title}</h3>
                 <p>{repo.description}</p>
             </CardDetails>
-            <AddButton onClick={()=>navigate(`/WriterDev/${repo.id}`)}>
+            <AddButton onClick={async () => {
+                
+                await handleGetContent(repo.id);
+                navigate(`/WriterDev/${repo.id}`);
+            }}>
                 <i className="fas fa-pencil-alt"></i>
             </AddButton>
         </RepositoryCard>
