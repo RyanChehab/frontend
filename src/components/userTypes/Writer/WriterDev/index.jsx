@@ -3,21 +3,14 @@ import { WriterDevContext } from "../../../../context/WriterDev";
 import './WriterDev.css'
 import { Snackbar,Alert } from "@mui/material";
 import { SlideTransition } from "../../../Auth/login";
+import {useLocation } from "react-router-dom";
+
 const WriterDev = () =>{
+        const location = useLocation()
 
         const {id,content,pages,currentPage,Max_Characters,handlePageChange,handlePageContentChange,handleStore,handleGetContent,setCurrentPage,setPages,handleTextareaChange,type,response,handleCloseNotification,open,setContent,splitIntoPages
         } = useContext(WriterDevContext);
 
-        useEffect(() => {
-            const savedContent = localStorage.getItem(`fanfictionContent_${id}`);
-            if (savedContent) {
-                setContent(savedContent);
-                setPages(splitIntoPages(savedContent));
-                setCurrentPage(0);
-            } else {
-                handleGetContent();
-            }
-        }, []);
 
     return (
 <>        
