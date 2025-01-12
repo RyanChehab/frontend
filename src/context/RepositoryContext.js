@@ -57,10 +57,10 @@ export const RepositoryProvider = ({children})=>{
 
                 {Authorization: `Bearer ${token}`}
             )
-            
+            console.log(response)
             // retrieve repo id 
             const repositoryId = response.data.id
-
+            
             // prepend fixed string to the description 
             const prompt = `Create book cover (only need the cover photo). The theme is based on the following fanfiction description: ${description}`
 

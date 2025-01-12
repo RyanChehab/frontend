@@ -27,6 +27,10 @@ export const WriterDevProvider = ({ children }) => {
                 setType("")
                 setOpen(false)
         },[useLocation()])
+    
+    useEffect(()=>{
+        handleGetContent(id)
+    },[])
 
     // Helper function to split content into pages
     const splitIntoPages = (content) => {
@@ -88,6 +92,9 @@ export const WriterDevProvider = ({ children }) => {
             }
         } catch (error) {
             console.error(error.response?.data || error.message);
+            setContent("");
+        setPages([]);
+        setCurrentPage(0);
         } finally {
             setLoading(false);
         }
