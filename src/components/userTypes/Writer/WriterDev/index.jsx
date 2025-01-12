@@ -1,18 +1,26 @@
 import React,{useContext, useEffect} from "react";
 import { WriterDevContext } from "../../../../context/WriterDev";
 import './WriterDev.css'
+import { Snackbar,Alert } from "@mui/material";
+import { SlideTransition } from "../../../Auth/login";
 const WriterDev = () =>{
 
-        const {content,pages,currentPage,Max_Characters,handlePageChange,handlePageContentChange,handleStore,handleGetContent,setCurrentPage,setPages,handleTextareaChange
+        const {id,content,pages,currentPage,Max_Characters,handlePageChange,handlePageContentChange,handleStore,handleGetContent,setCurrentPage,setPages,handleTextareaChange,type,response,handleCloseNotification,open,setContent,splitIntoPages
         } = useContext(WriterDevContext);
 
         useEffect(() => {
-            if (!content || content.length === 0) {
+            const savedContent = localStorage.getItem(`fanfictionContent_${id}`);
+            if (savedContent) {
+                setContent(savedContent);
+                setPages(splitIntoPages(savedContent));
+                setCurrentPage(0);
+            } else {
                 handleGetContent();
             }
-        }, [content]);
+        }, []);
 
     return (
+<>        
         <div className="fanfiction-container">
             {/* Header Section */}
             <div className="fanfiction-header">
@@ -62,6 +70,22 @@ const WriterDev = () =>{
                 </div>
             </div>
         </div>
+
+        <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleCloseNotification}
+        TransitionComponent={SlideTransition}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+            <Alert
+            severity={type}
+            sx = {{width: "100%"}}
+            >
+                {response}
+            </Alert>
+        </Snackbar>
+</>
     );
 }
 
