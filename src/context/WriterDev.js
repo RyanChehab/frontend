@@ -52,9 +52,10 @@ export const WriterDevProvider = ({ children }) => {
             console.error(error.response?.data || error.message);
         } finally {
             setLoading(false);
+            setOpen(true)
         }
     };
-    
+
     const handleCloseNotification = () => {
         setOpen(false);
       };
@@ -65,7 +66,7 @@ export const WriterDevProvider = ({ children }) => {
             setLoading(true);
 
             const result = await fetchData(
-                `http://localhost:8000/api/storeFiction/${id}`,
+                `http://localhost:8000/api/getFiction/${id}`,
                 "GET",
                 null,
                 { Authorization: `Bearer ${token}` }
@@ -76,6 +77,8 @@ export const WriterDevProvider = ({ children }) => {
                 setContent(fullContent);
                 setPages(splitIntoPages(fullContent));
                 setCurrentPage(0);
+                // saving in localstorage
+                localStorage.setItem(`fanfictionContent_${id}`, fullContent);
             }
         } catch (error) {
             console.error(error.response?.data || error.message);
@@ -133,6 +136,7 @@ export const WriterDevProvider = ({ children }) => {
     return (
         <WriterDevContext.Provider
             value={{
+                id,
                 content,
                 setContent,
                 type,
@@ -148,7 +152,10 @@ export const WriterDevProvider = ({ children }) => {
                 handlePageChange,
                 handlePageContentChange,
                 saveCurrentPage,
-                handleTextareaChange
+                handleTextareaChange,
+                handleCloseNotification,
+                open,
+                splitIntoPages
             }}
         >
             {children}
