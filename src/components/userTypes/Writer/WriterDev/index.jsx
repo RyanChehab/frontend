@@ -23,7 +23,7 @@ const WriterDev = () =>{
                 }>
                     Back to Website
                 </button>
-                <h1 className="book-title">Book Title</h1>
+                <h1 className="book-title">{localStorage.getItem(`repo_${id}`)}</h1>
             </div>
 
             {/* TextArea Section */}

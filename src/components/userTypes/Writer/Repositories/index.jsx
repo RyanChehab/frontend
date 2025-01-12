@@ -151,6 +151,7 @@ const CardDetails = styled("div")({
             </CardImage>
             <CardDetails>
                 <h3>{repo.title}</h3>
+                {localStorage.setItem(`repo_${repo.id}`, repo.title)}
                 <p>{repo.description}</p>
             </CardDetails>
             <AddButton onClick={async () => {
