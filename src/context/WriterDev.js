@@ -1,5 +1,5 @@
-import { useState, createContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useState, createContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import fetchData from "../utility/fetch";
 
 export const WriterDevContext = createContext();
@@ -20,6 +20,13 @@ export const WriterDevProvider = ({ children }) => {
     const [currentPage, setCurrentPage] = useState(0);
     const [pages, setPages] = useState([]);
     const Max_Characters = 1900;
+
+    useEffect(()=>{
+                setResponse(null)
+                setContent("")
+                setType("")
+                setOpen(false)
+        },[useLocation()])
 
     // Helper function to split content into pages
     const splitIntoPages = (content) => {
@@ -61,7 +68,7 @@ export const WriterDevProvider = ({ children }) => {
       };
 
     // Handle fetching content from backend
-    const handleGetContent = async () => {
+    const handleGetContent = async (id) => {
         try {
             setLoading(true);
 
@@ -77,8 +84,7 @@ export const WriterDevProvider = ({ children }) => {
                 setContent(fullContent);
                 setPages(splitIntoPages(fullContent));
                 setCurrentPage(0);
-                // saving in localstorage
-                localStorage.setItem(`fanfictionContent_${id}`, fullContent);
+                
             }
         } catch (error) {
             console.error(error.response?.data || error.message);
