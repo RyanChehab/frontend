@@ -2,14 +2,13 @@ import React,{useState,useEffect,createContext,useCallback}
 from 'react';
 import debounce from "lodash/debounce";
 import fetchData from '../utility/fetch';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const NavContext = createContext();
 
 export const NavProvider = ({children})=>{
 
 const navigate = useNavigate();
-const base_url = process.env.BASE_URL
 const [isCollapsed, setIsCollapsed] = useState(false);
 const [anchorEl,setAnchorEl] = useState(null);
 const [response,setResponse] = useState('');
@@ -17,6 +16,16 @@ const [response,setResponse] = useState('');
 const [searchTerm, setSearchTerm] = useState("");
 const [results, setResults] = useState([]);
 const [searchLoad,setSearchLoad] = useState();
+
+// clearing localStorage
+const location = useLocation()
+useEffect(() => {
+
+        if (location.pathname === "/" || location.pathname === "/signup") {
+            localStorage.clear();
+            console.log("Local storage cleared!");
+        }
+    }, [location.pathname]);
 
 // functions
 const handleOpen = (e)=>{
@@ -37,10 +46,7 @@ const handleLogout = async ()=>{
                 Authorization: `Bearer ${token}`
             }
         )
-        localStorage.removeItem("token");
-        localStorage.removeItem("avatar_url")
-        localStorage.removeItem("name")
-        localStorage.removeItem("type")
+        localStorage.clear();
         handleClose()
         // setResponse(result.message)
         navigate("/");
