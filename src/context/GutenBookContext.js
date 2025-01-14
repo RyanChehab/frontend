@@ -15,6 +15,10 @@ export const GutenBookProvider = ({children}) =>{
     const [title,setTitle] = useState('');
     const [loading, setLoading] = useState(false)
 
+    // forking 
+    const [forkMode, setForkMode] = useState(false);
+    const [forkedContent, setForkedContent] = useState("");
+
     const token = localStorage.getItem('token')
 
     const fetchBookContent = async (url,title) => {
@@ -44,7 +48,7 @@ export const GutenBookProvider = ({children}) =>{
         }
     }, [data]);
 
-    // return cursor
+    // return scroll
     useEffect(()=>{
         if (textareaRef.current) {
             textareaRef.current.scrollTop = 0;
@@ -77,6 +81,14 @@ export const GutenBookProvider = ({children}) =>{
         } else if (direction === "prev" && currentPage > 0) {
             setCurrentPage((prev) => prev - 1);
         }
+    };
+
+    const handleFork = (e) => {
+        const cursorPosition = e.target.selectionStart;
+        const slicedContent = content.slice(cursorPosition);
+        setForkedContent(slicedContent);
+        setForkMode(false);
+        // openforkmode
     };
 
     return(
