@@ -6,8 +6,11 @@ export const GutenBookContext = createContext()
 export const GutenBookProvider = ({children}) =>{
 
     const [data,setData] = useState('');
+    const [pages, setPages] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
 
     const token = localStorage.getItem('token')
+    const Max_Characters = 2000;
 
     const fetchBookContent = async (url) => {
         try {
@@ -23,7 +26,12 @@ export const GutenBookProvider = ({children}) =>{
         }
     };
 
-    const standarized = data.replace(/\r\n|\r/g, '\n');
+    useEffect(() => {
+        if (data) {
+            const standardizedData = data.replace(/\r\n|\r/g, '\n');
+            setPages(splitIntoPages(standardizedData)); // Process content into pages
+        }
+    }, [data]);
 
     // Helper function to split content into pages
     const splitIntoPages = (standarized) => {
@@ -38,13 +46,6 @@ export const GutenBookProvider = ({children}) =>{
         } else if (direction === "prev" && currentPage > 0) {
             setCurrentPage((prev) => prev - 1);
         }
-    };
-
-    // Handle updates to current page content
-    const handlePageContentChange = (newContent) => {
-        const updatedPages = [...pages];
-        updatedPages[currentPage] = newContent;
-        setPages(updatedPages);
     };
 
     return(
