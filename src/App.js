@@ -6,6 +6,7 @@ import DisplayByCategory from "./components/userTypes/Writer/DisplayByCategory";
 import WriterDev from "./components/userTypes/Writer/WriterDev";
 import Admin from "./components/userTypes/Admin/AdminLayout";
 import Bookmarks from "./components/userTypes/Writer/Bookmarks";
+import GutenBook from "./components/shared/GutenBook";
 import { GutenBookProvider } from "./context/GutenBookContext";
 import { AuthProvider } from "./context/AuthContext";
 import { NavProvider } from "./context/NavContext";
@@ -40,6 +41,7 @@ function App() {
             <Route path="WriterDev/:id" element={<WriterDev/>} />
             <Route path='bookmarks' element={<Bookmarks/>} />
             <Route path="adminPanel" element={<Admin/>}/>
+            <Route path="Book/:id" element={<GutenBook/>}/>
           </Routes>
         
           </BookCardProvider>
