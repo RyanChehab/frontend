@@ -1,9 +1,9 @@
 import React,{createContext} from "react";
 import fetchData from "../utility/fetch";
 
-export const BookContext = createContext()
+export const GutenBookContext = createContext()
 
-export const BookProvider = ({children}) =>{
+export const GutenBookProvider = ({children}) =>{
 
     const token = localStorage.getItem('token')
 
@@ -23,10 +23,10 @@ export const BookProvider = ({children}) =>{
     };
 
     return(
-        <BookContext.Provider value={{
+        <GutenBookContext.Provider value={{
             fetchBookContent
         }}>
             {children}
-        </BookContext.Provider>
+        </GutenBookContext.Provider>
     )
 }
