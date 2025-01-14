@@ -21,6 +21,7 @@ export const GutenBookProvider = ({children}) =>{
                 {Authorization: `Bearer: ${token}`},
             );
             setData(response.content)
+            
         } catch (error) {
             console.error("Failed to fetch the book content:", error);
         }
@@ -51,7 +52,9 @@ export const GutenBookProvider = ({children}) =>{
     return(
         <GutenBookContext.Provider value={{
             fetchBookContent,
-            
+            pages,
+            currentPage,
+            handlePageChange,
         }}>
             {children}
         </GutenBookContext.Provider>
