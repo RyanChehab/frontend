@@ -1,4 +1,4 @@
-import React,{createContext,useState} from "react";
+import React,{createContext,useState,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import fetchData from "../utility/fetch";
 
@@ -40,7 +40,7 @@ export const GutenBookProvider = ({children}) =>{
     // Helper function to split content into pages
     const splitIntoPages = (standarized) => {
         const regex = new RegExp(`.{1,${Max_Characters}}`, "g");
-        return content.match(regex) || [];
+        return standarized.match(regex) || [];
     };
 
     // Handle page changes (next/previous)
