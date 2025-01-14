@@ -17,6 +17,7 @@ export const GutenBookProvider = ({children}) =>{
     const token = localStorage.getItem('token')
 
     const fetchBookContent = async (url) => {
+        setLoading(true)
         try {
             const response = await fetchData(
                 'http://localhost:8000/api/book/fetchBookContent', 
@@ -28,6 +29,8 @@ export const GutenBookProvider = ({children}) =>{
             navigate('Book')
         } catch (error) {
             console.error("Failed to fetch the book content:", error);
+        }finally{
+            setLoading(false)
         }
     };
 
@@ -75,7 +78,8 @@ export const GutenBookProvider = ({children}) =>{
             pages,
             currentPage,
             handlePageChange,
-            textareaRef
+            textareaRef,
+            loading
         }}>
             {children}
         </GutenBookContext.Provider>
