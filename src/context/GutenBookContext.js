@@ -51,9 +51,14 @@ export const GutenBookProvider = ({children}) =>{
 
     // Helper function to split content into pages
     const splitIntoPages = (content, maxLines = 30) => {
-       
+        // Normalize line breaks
         const normalizedContent = content.replace(/\r\n|\r/g, '\n');
-        const lines = normalizedContent.split('\n');
+    
+        // Replace multiple consecutive newlines with just two
+        const cleanedContent = normalizedContent.replace(/\n{3,}/g, '\n\n');
+    
+        // Split the cleaned content into lines
+        const lines = cleanedContent.split('\n');
     
         // Group lines into pages
         const pages = [];
