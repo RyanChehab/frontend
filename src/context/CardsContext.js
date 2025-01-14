@@ -9,6 +9,15 @@ const [loading, setLoading] = useState(false);
 const [bookmarks,setBookmarks] = useState([]);
 const [category,setCategory] = useState([]);
 
+    useEffect(()=>{
+            // storing book titles
+            const books = Object.values(data)
+            books.forEach(book => {
+                const key = `gutenberg_id/${book.gutenberg_id}`
+                localStorage.setItem(key, book.title)
+            })
+    },[])
+
     const getFeatured = async () => {
         try {
             const result = await fetchData(
@@ -18,7 +27,7 @@ const [category,setCategory] = useState([]);
             );
         
             setData(result);
-            console.log(result)
+            
         } catch (error) {
             console.error("Error fetching dataa:", error);
         } 
@@ -30,7 +39,6 @@ const [category,setCategory] = useState([]);
                 "http://localhost:8000/api/book/BookCategories",
                 "POST",
             );
-            console.log(response)
             setCategory(response)
         } catch (error) {
             console.error("Error fetching dataa:", error);
