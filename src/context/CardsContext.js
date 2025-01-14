@@ -8,15 +8,16 @@ const [data, setData] = useState([])
 const [loading, setLoading] = useState(false);
 const [bookmarks,setBookmarks] = useState([]);
 const [category,setCategory] = useState([]);
-
+const location = useLocation()
     useEffect(()=>{
             // storing book titles
+           
             const books = Object.values(data)
             books.forEach(book => {
                 const key = `gutenberg_id/${book.gutenberg_id}`
                 localStorage.setItem(key, book.title)
             })
-    },[])
+    },[location.pathname])
 
     const getFeatured = async () => {
         try {
@@ -45,7 +46,6 @@ const [category,setCategory] = useState([]);
         } 
     };
 
-    const location = useLocation()
     useEffect(() => {
         const fetchAllData = async ()=>{
             setLoading(true)
@@ -63,7 +63,7 @@ const [category,setCategory] = useState([]);
         }
 
         fetchAllData()
-    },[location.pathname])
+    },[])
 
     return(
         <CardsContext.Provider value={{
