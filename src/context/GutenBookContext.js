@@ -1,10 +1,13 @@
 import React,{createContext,useState} from "react";
+import { useNavigate } from "react-router-dom";
 import fetchData from "../utility/fetch";
 
 export const GutenBookContext = createContext()
 
 export const GutenBookProvider = ({children}) =>{
-
+    
+    const navigate = useNavigate();
+    
     const [data,setData] = useState('');
     const [pages, setPages] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
@@ -21,7 +24,7 @@ export const GutenBookProvider = ({children}) =>{
                 {Authorization: `Bearer: ${token}`},
             );
             setData(response.content)
-            
+            navigate('Book')
         } catch (error) {
             console.error("Failed to fetch the book content:", error);
         }
