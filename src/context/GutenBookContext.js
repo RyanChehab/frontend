@@ -32,15 +32,28 @@ export const GutenBookProvider = ({children}) =>{
 
     useEffect(() => {
         if (data) {
-            const standardizedData = data.replace(/\r\n|\r/g, '\n');
-            setPages(splitIntoPages(standardizedData)); // Process content into pages
+            const pages = splitIntoPages(data);
+            setPages(pages);
+            setCurrentPage(0);
         }
     }, [data]);
 
     // Helper function to split content into pages
-    const splitIntoPages = (standarized) => {
-        const regex = new RegExp(`.{1,${Max_Characters}}`, "g");
-        return standarized.match(regex) || [];
+    const splitIntoPages = (content, maxLines = 30) => {
+        // Normalize the line breaks
+        const normalizedContent = content.replace(/\r\n|\r/g, '\n');
+    
+        // Split the content into an array of lines
+        const lines = normalizedContent.split('\n');
+    
+        // Group lines into pages
+        const pages = [];
+        for (let i = 0; i < lines.length; i += maxLines) {
+            pages.push(lines.slice(i, i + maxLines).join('\n'));
+        }
+    
+        console.log("Pages by Line:", pages); // Debugging log
+        return pages;
     };
 
     // Handle page changes (next/previous)
