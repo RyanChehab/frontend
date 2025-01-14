@@ -1,11 +1,12 @@
 import React,{useState,useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { useBookmark } from "../../../../context/BookCardContext";
+import { BookContext } from "../../../../context/BookContext";
 import './BookCard.css';
 
-const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked})=>{
+const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked,url_text})=>{
     const { handleBookmark, removeBookmark} = useBookmark();
-    
+    const {fetchBookContent} = useContext(BookContext)
     const handleBookmarkToggle = () => {
         if (isBookmarked) {
             removeBookmark(gutenberg_id);
@@ -34,7 +35,13 @@ const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked})=>{
             </div>
 
             <div className="book-footer">
-                <button className="navigate-btn">
+            <button
+    className="navigate-btn"
+    onClick={async () => {
+        console.log("Fetching book content...");
+        console.log('book url: ', {url_text} ) // Call the function
+    }}
+>
                     Open
                 </button>
             </div>
