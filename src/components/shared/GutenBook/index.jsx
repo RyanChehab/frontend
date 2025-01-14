@@ -1,7 +1,7 @@
 import React,{useContext} from "react";
 import { GutenBookContext } from "../../../context/GutenBookContext";
 const GutenBook = () => {
-    const {pages,currentPage,handlePageChange,textareaRef} = useContext(GutenBookContext)
+    const {pages,currentPage,handlePageChange,textareaRef,title} = useContext(GutenBookContext)
     
     return(
 
@@ -12,7 +12,7 @@ const GutenBook = () => {
             <button className="back-button" onClick={()=>{window.history.back()}}>
                     Back to Website
                 </button>
-                <h1 className="book-title">Book</h1>
+                <h1 className="book-title">{title}</h1>
             </div>
 
             {/* TextArea Section */}
