@@ -6,6 +6,7 @@ import DisplayByCategory from "./components/userTypes/Writer/DisplayByCategory";
 import WriterDev from "./components/userTypes/Writer/WriterDev";
 import Admin from "./components/userTypes/Admin/AdminLayout";
 import Bookmarks from "./components/userTypes/Writer/Bookmarks";
+import { GutenBookProvider } from "./context/GutenBookContext";
 import { AuthProvider } from "./context/AuthContext";
 import { NavProvider } from "./context/NavContext";
 import { CardProvider } from "./context/CardsContext";
@@ -23,6 +24,7 @@ function App() {
     <Router>
     <AuthProvider>
       <RepositoryProvider>
+        <GutenBookProvider>
         <WriterDevProvider>
           <AdminListProvider>
       <NavProvider>
@@ -45,6 +47,7 @@ function App() {
       </NavProvider>
       </AdminListProvider>
       </WriterDevProvider>
+      </GutenBookProvider>
       </RepositoryProvider>
     </AuthProvider>
     </Router>
