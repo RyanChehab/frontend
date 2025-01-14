@@ -1,7 +1,8 @@
 import React,{useContext} from "react";
 import { GutenBookContext } from "../../../context/GutenBookContext";
 const GutenBook = () => {
-    const {pages,currentPage,handlePageChange,} = useContext(GutenBookContext)
+    const {pages,currentPage,handlePageChange,textareaRef} = useContext(GutenBookContext)
+    
     return(
 
 <>        
@@ -19,6 +20,7 @@ const GutenBook = () => {
                 <textarea
                     className="fanfiction-textarea"
                     value={pages[currentPage] || ""}
+                    ref={textareaRef}
                 ></textarea>
 
                 {/* Pagination Section */}
