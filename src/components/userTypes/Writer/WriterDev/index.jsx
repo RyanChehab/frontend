@@ -4,6 +4,8 @@ import './WriterDev.css'
 import { Snackbar,Alert } from "@mui/material";
 import { SlideTransition } from "../../../Auth/login";
 import {useLocation } from "react-router-dom";
+import { ModalOverlay } from "../Repositories";
+import { FormContainer } from "../Repositories";
 
 const WriterDev = () =>{
         const location = useLocation()
@@ -67,6 +69,7 @@ const WriterDev = () =>{
             </div>
         </div>
 
+{/* Notification */}
         <Snackbar
         open={open}
         autoHideDuration={3000}
@@ -81,6 +84,59 @@ const WriterDev = () =>{
                 {response}
             </Alert>
         </Snackbar>
+
+{/* create repo form */}
+      {showForm &&(
+        <ModalOverlay>
+          <FormContainer>
+
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setShowForm(false)}
+                ></button>
+              </div>
+
+            <form onSubmit={handleCreateRepository}>
+              <CustomeInput type="text"
+              required
+              placeholder='Title'
+              fullWidth
+              onChange={(e)=>setTitle(e.target.value)}
+              />
+              <CustomeInput type="text"
+              required
+              placeholder='The Fanfiction derrived from book...talks about..'
+              multiline
+              rows={4}
+              fullWidth
+              onChange={(e)=>setDescription(e.target.value)}
+              />
+              <Button
+              variant='contained'
+              color='#FC8E40'
+              type='submit'
+              disabled = {loading}
+              sx={{
+                  width: '80%',
+                  borderRadius: '10px',
+                  margin: '60px auto 0px auto',
+                  display: 'block',
+                  fontFamily: 'Roboto, sans-serif',
+                  fontWeight: '500',
+                  fontSize: '14px',
+                  border: 'black 2px solid',
+                  '&:hover': {
+                      border:'solid 2px #FC8E40',
+            }
+        }}
+        >{loading? "Creating..." :"Create Repository"}</Button>
+            </form>
+          </FormContainer>
+        </ModalOverlay>
+      )}
+
 </>
     );
 }
