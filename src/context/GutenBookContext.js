@@ -83,12 +83,28 @@ export const GutenBookProvider = ({children}) =>{
         }
     };
 
+    const activateForkMode = () => {
+        setForkMode(true); // Enabling fork mode
+        console.log("Fork mode activated! Click on a position in the text to fork.");
+    };
+
     const handleFork = (e) => {
-        const cursorPosition = e.target.selectionStart;
-        const slicedContent = content.slice(cursorPosition);
-        setForkedContent(slicedContent);
-        setForkMode(false);
-        // openforkmode
+        
+        const cursorPositionOnPage = e.target.selectionStart; 
+        const fullContent = pages.join("\n"); // Combining all pages 
+
+        // Calculate the starting index of the current page 
+        const currentPageStart = pages
+            .slice(0, currentPage)
+            .reduce((acc, page) => acc + page.length + 1, 0);
+
+        // Adjust cursor position for the entire story
+        const adjustedCursorPosition = currentPageStart + cursorPositionOnPage;
+
+        const forkedContent = fullContent.slice(0, adjustedCursorPosition);
+
+        setForkedContent(forkedContent); // Save the sliced content
+        setForkMode(false); // Exit fork mo
     };
 
     return(
@@ -99,7 +115,9 @@ export const GutenBookProvider = ({children}) =>{
             handlePageChange,
             textareaRef,
             loading,
-            title
+            title,
+            handleFork,
+            activateForkMode
         }}>
             {children}
         </GutenBookContext.Provider>
