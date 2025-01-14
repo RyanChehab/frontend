@@ -1,7 +1,7 @@
 import React,{useContext} from "react";
-
+import { GutenBookContext } from "../../../context/GutenBookContext";
 const GutenBook = () => {
-
+    const {pages,currentPage,handlePageChange,} = useContext(GutenBookContext)
     return(
 
 <>        
