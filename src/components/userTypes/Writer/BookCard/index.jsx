@@ -6,7 +6,9 @@ import './BookCard.css';
 
 const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked,url_text})=>{
     const { handleBookmark, removeBookmark} = useBookmark();
-    const {fetchBookContent} = useContext(GutenBookContext)
+    const {fetchBookContent} = useContext(GutenBookContext
+        
+    )
     const handleBookmarkToggle = () => {
         if (isBookmarked) {
             removeBookmark(gutenberg_id);
