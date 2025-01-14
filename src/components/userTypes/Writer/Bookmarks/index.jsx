@@ -26,6 +26,7 @@ const Bookmarks = () => {
                         img_url={book.img_url}
                         title={book.title}
                         author={book.author}
+                        url_text={book.url_text}
                         isBookmarked={isBookmarked(book.gutenberg_id)}
                          />)
                 ) : (
