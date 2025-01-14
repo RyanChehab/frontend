@@ -37,7 +37,6 @@ const handleLogout = async ()=>{
                 Authorization: `Bearer ${token}`
             }
         )
-        console.log(result.message)
         localStorage.removeItem("token");
         localStorage.removeItem("avatar_url")
         localStorage.removeItem("name")

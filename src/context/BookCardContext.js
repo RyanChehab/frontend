@@ -28,7 +28,6 @@ export const BookCardProvider = ({children})=>{
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
-                console.log("Fetched bookmarks:", result.bookmarked_ids);
                 setBookmarkedBooks(result.bookmarked_ids);
             }catch(error){
                 console.error(error);
@@ -41,7 +40,6 @@ export const BookCardProvider = ({children})=>{
     },[token])
 
     const handleBookmark = async (gutenberg_id)=>{
-        console.log("Gutenberg ID:", gutenberg_id);
         try{
             const requestBody = {
                 bookmarkable_type: "App\\Models\\Book",
@@ -54,7 +52,6 @@ export const BookCardProvider = ({children})=>{
                 {Authorization: `Bearer ${token}`},
                 
             )
-            console.log("Bookmark added successfully:", result);
             setBookmarkedBooks((prev) => [...prev, gutenberg_id]);
         }catch(error){
             console.log(error)
@@ -74,9 +71,6 @@ export const BookCardProvider = ({children})=>{
                 requestBody,
                 { Authorization: `Bearer ${token}` },
             );
-
-            console.log("Bookmark removed successfully:", result);
-
             // Update the local state
             setBookmarkedBooks((prev) => prev.filter((id) => id !== gutenberg_id));
         } catch (error) {
@@ -87,6 +81,8 @@ export const BookCardProvider = ({children})=>{
     const isBookmarked = (gutenberg_id) => {
         return bookmarkedBooks.includes(gutenberg_id);
     };
+
+    
 
     return(
         <BookCardContext.Provider value={{

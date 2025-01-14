@@ -57,7 +57,6 @@ export const RepositoryProvider = ({children})=>{
 
                 {Authorization: `Bearer ${token}`}
             )
-            console.log(response)
             // retrieve repo id 
             const repositoryId = response.data.id
             
@@ -84,8 +83,6 @@ export const RepositoryProvider = ({children})=>{
                 {s3url},
                 {Authorization: `Bearer ${token}`}
             )
-
-            console.log(updateImg)
 
             if(response.message === 'Repository created successfully!'){
                 navigate(`WriterDev/${repositoryId}`)

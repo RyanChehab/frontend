@@ -43,7 +43,6 @@ export const AuthProvider = ({children}) =>{
     useEffect(()=>{
         if(location.pathname === "/" || location.pathname === "signup"){
             localStorage.clear()
-            console.log("local storage cleared")
         }
     },[location])
 

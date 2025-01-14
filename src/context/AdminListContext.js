@@ -44,7 +44,6 @@ export const AdminListProvider = ({children}) => {
                     "http://localhost:8000/api/auth/getUsers",
                     "POST"
                 )
-                console.log(response.data)
                 setUsers(response.data)
             }catch(error){
                 console.error(error)
@@ -62,8 +61,6 @@ export const AdminListProvider = ({children}) => {
                 {"email": email},
                 {Authorization: `Bearer ${token}`}
             )
-            console.log(result)
-
             // update on spot 
             const updatedUsers = users.map((user) => {
                 if (user.email === email) {
@@ -87,7 +84,6 @@ export const AdminListProvider = ({children}) => {
                 {"email": email},
                 {Authorization: `Bearer ${token}`}
             )
-            console.log(result)
 
             // update on spot 
             const updatedUsers = users.map((user) => {
@@ -115,7 +111,6 @@ export const AdminListProvider = ({children}) => {
             )
             
             if(result.success){
-                console.log("Deleting user from state:", email);
                 const updateUsers = users.filter((user) => user.email !== email)
                 setUsers(updateUsers)
             }
@@ -144,7 +139,6 @@ export const AdminListProvider = ({children}) => {
                     {Authorization: `Bearer ${token}`}
 
                 )
-                console.log(response.users)
                 setUsers((prev)=>[...prev,...response.users])
                 setResponse(response.message)
                 setType("success")

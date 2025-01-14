@@ -8,7 +8,7 @@ const GutenBook = () => {
         <div className="fanfiction-container">
             {/* Header Section */}
             <div className="fanfiction-header">
-            <button className="back-button">
+            <button className="back-button" onClick={()=>{window.history.back()}}>
                     Back to Website
                 </button>
                 <h1 className="book-title">Book</h1>

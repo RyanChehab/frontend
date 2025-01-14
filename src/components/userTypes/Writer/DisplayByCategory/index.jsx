@@ -17,7 +17,6 @@ const DisplayByCategory = ()=>{
     };  
 
     const BooksArray = category
-    console.log("category:", category)
     return (
       <>
         <WriterNav /> {/* Navbar is always displayed */}

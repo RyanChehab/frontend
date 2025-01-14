@@ -145,7 +145,7 @@ const CardDetails = styled("div")({
       <WriterNav/>
       <RepositoriesContainer>
     {repositories.map((repo) => (
-        <RepositoryCard key={repo.id}>{console.log("repo id", repo.id)}
+        <RepositoryCard key={repo.id}>
             <CardImage>
                 <img src={repo.img_url} alt={`${repo.title} cover`} />
             </CardImage>

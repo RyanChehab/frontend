@@ -39,7 +39,7 @@ const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked,url_text}
             <div className="book-footer">
             <button
     className="navigate-btn"
-    onClick={()=>{console.log(url_text)}}
+    onClick={()=>{fetchBookContent(url_text)}}
 >
                     Open
                 </button>

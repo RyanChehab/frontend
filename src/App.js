@@ -41,7 +41,7 @@ function App() {
             <Route path="WriterDev/:id" element={<WriterDev/>} />
             <Route path='bookmarks' element={<Bookmarks/>} />
             <Route path="adminPanel" element={<Admin/>}/>
-            <Route path="Book/:id" element={<GutenBook/>}/>
+            <Route path="Book" element={<GutenBook/>}/>
           </Routes>
         
           </BookCardProvider>
