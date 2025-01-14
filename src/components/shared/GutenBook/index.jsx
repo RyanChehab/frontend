@@ -1,12 +1,15 @@
 import React,{useContext} from "react";
 import { GutenBookContext } from "../../../context/GutenBookContext";
+
 const GutenBook = () => {
-    const {pages,currentPage,handlePageChange,textareaRef,title,handleFork,activateForkMode} = useContext(GutenBookContext)
+    const {pages,currentPage,handlePageChange,textareaRef,title,handleFork,activateForkMode,forkMode} = useContext(GutenBookContext)
     
     return(
 
-<>        
+<>
+
         <div className="fanfiction-container">
+            
             {/* Header Section */}
             <div className="fanfiction-header">
             <button className="back-button" onClick={()=>{window.history.back()}}>
@@ -22,6 +25,7 @@ const GutenBook = () => {
                     value={pages[currentPage] || ""}
                     ref={textareaRef}
                     onClick={(e)=> handleFork(e)}
+                    style={{ cursor: forkMode ? "crosshair" : "text" }}
                 ></textarea>
 
                 {/* Pagination Section */}
@@ -51,12 +55,12 @@ const GutenBook = () => {
                 <div className="fanfiction-save">
                     <button className="save-button" onClick={()=>{activateForkMode()
                     }}>
-                        Fork
+                        {forkMode? "Forking..": "test"}
                     </button>
                 </div>
             </div>
         </div>
-</>
+</>        
     )
 }
 
