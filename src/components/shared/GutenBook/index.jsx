@@ -1,7 +1,7 @@
 import React,{useContext} from "react";
 import { GutenBookContext } from "../../../context/GutenBookContext";
 const GutenBook = () => {
-    const {pages,currentPage,handlePageChange,textareaRef,title} = useContext(GutenBookContext)
+    const {pages,currentPage,handlePageChange,textareaRef,title,handleFork,activateForkMode} = useContext(GutenBookContext)
     
     return(
 
@@ -21,6 +21,7 @@ const GutenBook = () => {
                     className="fanfiction-textarea"
                     value={pages[currentPage] || ""}
                     ref={textareaRef}
+                    onClick={(e)=> handleFork(e)}
                 ></textarea>
 
                 {/* Pagination Section */}
@@ -48,7 +49,8 @@ const GutenBook = () => {
 
                 {/* Fork Button */}
                 <div className="fanfiction-save">
-                    <button className="save-button">
+                    <button className="save-button" onClick={()=>{activateForkMode()
+                    }}>
                         Fork
                     </button>
                 </div>
