@@ -18,7 +18,7 @@ const GutenBook = () => {
             <div className="fanfiction-body">
                 <textarea
                     className="fanfiction-textarea"
-                    
+                    value={pages[currentPage] || ""}
                 ></textarea>
 
                 {/* Pagination Section */}
@@ -32,21 +32,21 @@ const GutenBook = () => {
                     </button>
                     
                     <span className="pagination-text">
-                    Page {currentPage + 1} of {pages.length || 1}
+                    Page {currentPage + 1} of {pages.length}
                     </span>
 
                     <button
                         className="pagination-button"
                         onClick={() => handlePageChange("next")}
-                        disabled={currentPage === pages.length - 1 || pages.length === 0}
+                        disabled={currentPage === pages.length - 1}
                     >
                         Next
                     </button>
                 </div>
 
-                {/* Save Button */}
+                {/* Fork Button */}
                 <div className="fanfiction-save">
-                    <button className="save-button" onClick={handleStore}>
+                    <button className="save-button">
                         Fork
                     </button>
                 </div>
@@ -56,4 +56,4 @@ const GutenBook = () => {
     )
 }
 
-export default GutenBook
+export default GutenBook;
