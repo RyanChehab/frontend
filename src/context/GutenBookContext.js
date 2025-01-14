@@ -1,4 +1,4 @@
-import React,{createContext,useState,useEffect} from "react";
+import React,{createContext,useState,useEffect,useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import fetchData from "../utility/fetch";
 
@@ -7,13 +7,14 @@ export const GutenBookContext = createContext()
 export const GutenBookProvider = ({children}) =>{
     
     const navigate = useNavigate();
-    
+    const textareaRef = useRef(null)
+
     const [data,setData] = useState('');
     const [pages, setPages] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
+    const [loading, setLoading] = useState(false)
 
     const token = localStorage.getItem('token')
-    const Max_Characters = 2000;
 
     const fetchBookContent = async (url) => {
         try {
@@ -38,12 +39,17 @@ export const GutenBookProvider = ({children}) =>{
         }
     }, [data]);
 
+    // return cursor
+    useEffect(()=>{
+        if (textareaRef.current) {
+            textareaRef.current.scrollTop = 0;
+        }
+    },[])
+
     // Helper function to split content into pages
     const splitIntoPages = (content, maxLines = 30) => {
-        // Normalize the line breaks
+       
         const normalizedContent = content.replace(/\r\n|\r/g, '\n');
-    
-        // Split the content into an array of lines
         const lines = normalizedContent.split('\n');
     
         // Group lines into pages
@@ -51,8 +57,6 @@ export const GutenBookProvider = ({children}) =>{
         for (let i = 0; i < lines.length; i += maxLines) {
             pages.push(lines.slice(i, i + maxLines).join('\n'));
         }
-    
-        console.log("Pages by Line:", pages); // Debugging log
         return pages;
     };
 
@@ -71,6 +75,7 @@ export const GutenBookProvider = ({children}) =>{
             pages,
             currentPage,
             handlePageChange,
+            textareaRef
         }}>
             {children}
         </GutenBookContext.Provider>
