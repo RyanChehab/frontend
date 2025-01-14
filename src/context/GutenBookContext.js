@@ -12,12 +12,14 @@ export const GutenBookProvider = ({children}) =>{
     const [data,setData] = useState('');
     const [pages, setPages] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
+    const [title,setTitle] = useState('');
     const [loading, setLoading] = useState(false)
 
     const token = localStorage.getItem('token')
 
-    const fetchBookContent = async (url) => {
+    const fetchBookContent = async (url,title) => {
         setLoading(true)
+        setTitle(title)
         try {
             const response = await fetchData(
                 'http://localhost:8000/api/book/fetchBookContent', 
@@ -84,7 +86,8 @@ export const GutenBookProvider = ({children}) =>{
             currentPage,
             handlePageChange,
             textareaRef,
-            loading
+            loading,
+            title
         }}>
             {children}
         </GutenBookContext.Provider>

@@ -7,8 +7,6 @@ import './BooksDisplay.css'
 const DisplayCards = ()=>{
     const { data, loading} = useContext(CardsContext);
     const { isBookmarked, bookmarkedBooks } = useBookmark(); 
-    console.log("Bookmarked IDs:", bookmarkedBooks);
-    console.log(data)
     const booksArray = Object.values(data);
 
      return loading ? (
