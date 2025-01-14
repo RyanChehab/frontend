@@ -44,7 +44,7 @@ export const GutenBookProvider = ({children}) =>{
         if (textareaRef.current) {
             textareaRef.current.scrollTop = 0;
         }
-    },[])
+    },[currentPage])
 
     // Helper function to split content into pages
     const splitIntoPages = (content, maxLines = 30) => {
