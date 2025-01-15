@@ -28,6 +28,7 @@ export const RepositoryProvider = ({children})=>{
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
+                console.log(result)
                 setRepositories(result.repositories)
                 
             }catch(error){
@@ -36,7 +37,7 @@ export const RepositoryProvider = ({children})=>{
         }
 
         repositories()
-    },[useLocation(),repositories])
+    },[])
 
     // showform
     const handleAddRepository = () => {
@@ -58,6 +59,7 @@ export const RepositoryProvider = ({children})=>{
 
                 {Authorization: `Bearer ${token}`}
             )
+            setRepositories((prev) => [...prev, response.repositories])
             // retrieve repo id 
             const repositoryId = response.data.id
             
@@ -105,7 +107,7 @@ export const RepositoryProvider = ({children})=>{
     // deleting repo 
     const handleDeleteRepo = async (id) => {
         try{
-            response = await fetchData(
+            const response = await fetchData(
                 `http://localhost:8000/api/deleteRepo/${id}`,
                 'POST',
                 null,
