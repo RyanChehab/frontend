@@ -103,11 +103,18 @@ export const RepositoryProvider = ({children})=>{
     }
 
     // deleting repo 
-    const handleDeleteRepo = () => {
+    const handleDeleteRepo = async (id) => {
         try{
-            fetchData(
-                `http://localhost:8000/api/deleteRepo/${id}`
+            response = await fetchData(
+                `http://localhost:8000/api/deleteRepo/${id}`,
+                'POST',
+                null,
+                {Authorization: `Bearer ${token}`}
             )
+            console.log(response)
+
+        }catch(error){
+            error.log(error)
         }
     }
     const handleCloseNotification = () => {
@@ -127,7 +134,8 @@ export const RepositoryProvider = ({children})=>{
             response,
             type,
             open,
-            repositories
+            repositories,
+            handleDeleteRepo
         }}>
             {children}
         </RepositoryContext.Provider>
