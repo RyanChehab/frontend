@@ -6,7 +6,7 @@ import { ModalOverlay } from "../../userTypes/Writer/Repositories";
 import { FormContainer } from "../../userTypes/Writer/Repositories";
 import { CustomeInput } from "../../userTypes/Writer/Repositories";
 const GutenBook = () => {
-    const {pages,currentPage,handlePageChange,textareaRef,title,handleFork,activateForkMode,forkMode,showForm,setShowForm,open,handleCreateRepository,response,handleCloseNotification,type,setTitle,setDescription,repoLoading} = useContext(GutenBookContext)
+    const {pages,currentPage,handlePageChange,textareaRef,title,handleFork,activateForkMode,forkMode,showForm,setShowForm,open,handleCreateRepository,response,handleCloseNotification,type,setRepoTitle,setDescription,repoLoading} = useContext(GutenBookContext)
     
     return(
 
@@ -99,7 +99,7 @@ const GutenBook = () => {
               required
               placeholder='Title'
               fullWidth
-              onChange={(e)=>setTitle(e.target.value)}
+              onChange={(e)=>setRepoTitle(e.target.value)}
               />
               <CustomeInput type="text"
               required
