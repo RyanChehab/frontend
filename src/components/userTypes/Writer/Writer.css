@@ -1,3 +1,7 @@
+html,body{
+    overflow: auto !important;
+}
+
 .WriterBanner{
     border: solid 3px black;
     height: 400px;
