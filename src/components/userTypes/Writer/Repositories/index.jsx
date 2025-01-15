@@ -17,15 +17,19 @@ const RepositoriesContainer = styled("div")({
 })
 
 const RepositoryCard = styled("div")({
-    position: "relative",
-    width: "300px",
-    height: "400px",
-    backgroundColor: "#f0f0f0",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    display: "flex",
-    justifyContent: "center",
-    overflow: "hidden",
+  position: "relative",
+  width: "300px",
+  height: "400px",
+  backgroundColor: "#f0f0f0",
+  borderRadius: "10px",
+  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  overflow: "hidden",
+  cursor: "pointer",
+
+  
+  "&:hover > .card-details": {
+      transform: "translateY(0)", 
+  },
   });
 
   export const AddButton = styled(Button)({
@@ -53,58 +57,38 @@ const RepositoryCard = styled("div")({
   });
 
   const CardImage = styled("div")({
+    position: "absolute",
+    top: 0,
+    left: 0,
     width: "100%",
-    height: "70%",
-    overflow: "hidden",
-    position: "relative",
-    img: {
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-        transition: "transform 0.3s ease",
-    },
+    height: "100%",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    zIndex: 1,
     "&:hover img": {
-        transform: "scale(1.1)", // Zoom effect on hover
+        transform: "scale(1.1)", 
     },
 });
 
 const CardDetails = styled("div")({
     position: "absolute",
-    bottom: "0",
-    left: "0",
+    bottom: 0,
+    left: 0,
     width: "100%",
-    height: "30%",
-    background: "rgba(0, 0, 0, 0.7)", 
-    color: "white",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    color: "#fff",
     padding: "10px",
+    borderTopLeftRadius: "10px",
+    borderTopRightRadius: "10px",
+    transform: "translateY(100%)", 
+    transition: "transform 0.3s ease",
+
+    // adjust height to fit content
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start",
     alignItems: "flex-start",
-    fontSize: "16px",
-    fontWeight: "bold",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    transition: "height 0.3s ease, opacity 0.3s ease",
-    cursor: "pointer",
-    "&:hover": {
-        height: "50%",
-    },
-    "& h3": {
-        margin: 0,
-        fontSize: "18px",
-    },
-    "& p": {
-        margin: "5px 0 0",
-        fontSize: "14px",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        maxHeight: "40px",
-    },
-    "&:hover p": {
-        maxHeight: "none",
-        whiteSpace: "normal",
-    },
+    justifyContent: "center",
+    zIndex: 2,
   });
 
   export const ModalOverlay = styled("div")({
@@ -161,37 +145,43 @@ const CardDetails = styled("div")({
       <RepositoriesContainer>
     {repositories.map((repo) => (
         <RepositoryCard key={repo.id}>
-            <CardImage>
-                <img src={repo.img_url} alt={`${repo.title} cover`} />
-            </CardImage>
-            <CardDetails>
+            {/* Full-Card Background Image */}
+            <CardImage
+                style={{ backgroundImage: `url(${repo.img_url})` }}
+            ></CardImage>
+
+            {/* Details Section */}
+            <CardDetails className="card-details">
                 <h3>{repo.title}</h3>
-                {localStorage.setItem(`repo_${repo.id}`, repo.title)}
                 <p>{repo.description}</p>
             </CardDetails>
-            <AddButton onClick={async () => {
-                
-                await handleGetContent(repo.id);
-                navigate(`/WriterDev/${repo.id}`);
-            }}>
+
+            {/* Add and Delete Buttons */}
+            <AddButton
+                onClick={async () => {
+                    await handleGetContent(repo.id);
+                    navigate(`/WriterDev/${repo.id}`);
+                }}
+            >
                 <i className="fas fa-pencil-alt"></i>
             </AddButton>
-                <DeleteButton
-                    onClick={() => {
-                        const confirmDelete = window.confirm(
-                            `Are you sure you want to delete the repository "${repo.title}"?`
-                        );
-                        if (confirmDelete) {handleDeleteRepo(repo.id);}
-                    }}
-                >
-                    <i className="fas fa-trash-alt"></i>
-                </DeleteButton>
+            <DeleteButton
+                onClick={() => {
+                    const confirmDelete = window.confirm(
+                        `Are you sure you want to delete the repository "${repo.title}"?`
+                    );
+                    if (confirmDelete) {
+                        handleDeleteRepo(repo.id);
+                    }
+                }}
+            >
+                <i className="fas fa-trash-alt"></i>
+            </DeleteButton>
         </RepositoryCard>
     ))}
-    <RepositoryCard onClick={handleAddRepository}>
-        <span>+ Add Repository</span>
-    </RepositoryCard>
-</RepositoriesContainer>
+    
+    
+    </RepositoriesContainer>
 
       {/* create repo form */}
       {showForm &&(
