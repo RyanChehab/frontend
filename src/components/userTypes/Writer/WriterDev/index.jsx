@@ -1,16 +1,22 @@
 import React,{useContext, useEffect} from "react";
 import { WriterDevContext } from "../../../../context/WriterDev";
 import './WriterDev.css'
-import { Snackbar,Alert } from "@mui/material";
-import { SlideTransition } from "../../../Auth/login";
 import {useLocation } from "react-router-dom";
-import { ModalOverlay } from "../Repositories";
-import { FormContainer } from "../Repositories";
+
 
 const WriterDev = () =>{
         const location = useLocation()
+        const {forkedContent} = location.state || {}
 
-        const {id,pages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange,type,response,handleCloseNotification,open} = useContext(WriterDevContext);
+        const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange,type,response,handleCloseNotification,open} = useContext(WriterDevContext);
+
+        useEffect(() => {
+            if(forkedContent){
+                setPages([forkedContent])
+            }
+        }, [forkedContent,setPages]
+        
+        )
 
 
     return (
