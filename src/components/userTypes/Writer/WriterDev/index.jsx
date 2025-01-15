@@ -1,11 +1,12 @@
 import React,{useContext, useEffect} from "react";
 import { WriterDevContext } from "../../../../context/WriterDev";
 import './WriterDev.css'
-import {useLocation } from "react-router-dom";
+import {useLocation,useNavigate } from "react-router-dom";
 
 
 const WriterDev = () =>{
         const location = useLocation()
+        const navigate = useNavigate()
         const {forkedContent} = location.state || {}
 
         const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange,type,response,handleCloseNotification,open} = useContext(WriterDevContext);
@@ -26,7 +27,7 @@ const WriterDev = () =>{
             <div className="fanfiction-header">
             <button className="back-button" onClick={async () =>{
                     handleStore(id)
-                    window.history.back()}
+                    navigate('/repositories')}
                 }>
                     Back to Website
                 </button>
