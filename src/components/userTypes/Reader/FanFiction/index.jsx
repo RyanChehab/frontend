@@ -1,6 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
+import { useNavigate } from "react-router-dom";
+import { WriterDevContext } from "../../../../context/WriterDev";
 
 const FanFiction = () => {
+    
+    
 
     return (
         <>        
@@ -60,4 +64,4 @@ const FanFiction = () => {
             );
 }
 
-export default FanFiction
+export default FanFiction;
