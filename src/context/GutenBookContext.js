@@ -13,6 +13,7 @@ export const GutenBookProvider = ({children}) =>{
     const [pages, setPages] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [title,setTitle] = useState('');
+    const [repoTitle,setRepoTitle] = useState('');
     const [loading, setLoading] = useState(false)
 
     // forking 
@@ -121,6 +122,7 @@ export const GutenBookProvider = ({children}) =>{
 
     const handleCreateRepository = async (e) => {
         e.preventDefault()
+        const title = repoTitle
         try{
             setRepoLoading(true);
 
@@ -203,7 +205,7 @@ export const GutenBookProvider = ({children}) =>{
             open,
             handleCloseNotification,
             type,
-            setTitle,
+            setRepoTitle,
             setDescription,
             repoLoading
         }}>
