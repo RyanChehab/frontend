@@ -97,8 +97,8 @@ export const GutenBookProvider = ({children}) =>{
     };
 
     const handleFork = (e) => {
-        
-        const cursorPositionOnPage = e.target.selectionStart; 
+        if(forkMode){
+            const cursorPositionOnPage = e.target.selectionStart; 
         const fullContent = pages.join("\n"); // Combining all pages 
 
         // Calculate the starting index of the current page 
@@ -115,6 +115,7 @@ export const GutenBookProvider = ({children}) =>{
         setForkMode(false); // Exit fork mo
 
         setShowForm(true)
+        }
     };
 
 
