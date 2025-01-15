@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from '@mui/material/Input';
 import { Button, Snackbar, Alert, Slide} from '@mui/material';
 
-const RepositoriesContainer = styled("div")({
+  export const RepositoriesContainer = styled("div")({
     display: "flex",
     flexWrap: "wrap",
     gap: "20px",
@@ -16,7 +16,7 @@ const RepositoriesContainer = styled("div")({
     padding: "20px",
 })
 
-const RepositoryCard = styled("div")({
+  export const RepositoryCard = styled("div")({
   position: "relative",
   width: "300px",
   height: "400px",
@@ -57,7 +57,7 @@ const RepositoryCard = styled("div")({
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
   });
 
-  const CardImage = styled("div")({
+  export const CardImage = styled("div")({
     position: "absolute",
     top: 0,
     left: 0,
@@ -71,7 +71,7 @@ const RepositoryCard = styled("div")({
     },
 });
 
-const CardDetails = styled("div")({
+  export const CardDetails = styled("div")({
     position: "absolute",
     bottom: 0,
     left: 0,
@@ -115,7 +115,7 @@ const CardDetails = styled("div")({
     },
   })
 
-  const DeleteButton = styled(Button)({
+  export const DeleteButton = styled(Button)({
     position: "absolute",
     top: "50px",
     right: "10px",
@@ -131,10 +131,30 @@ const CardDetails = styled("div")({
     },
   })
 
+  export const CenterButton = styled("button")({
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    padding: "10px 20px",
+    backgroundColor: "#FC8E40",
+    color: "#fff",
+    border: "none",
+    borderRadius: "5px",
+    fontSize: "16px",
+    fontWeight: "bold",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    zIndex: 2,
+
+    "&:hover": {
+        backgroundColor: "#e57835",
+    },
+  })
+
   export function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
   }
-
 
   const Repositories = () => {
     const navigate = useNavigate();
