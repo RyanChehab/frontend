@@ -4,6 +4,7 @@ import { RepositoriesContainer } from "../../Writer/Repositories";
 import { RepositoryCard } from "../../Writer/Repositories";
 import { CardImage } from "../../Writer/Repositories";
 import { CardDetails } from "../../Writer/Repositories";
+import { CenterButton } from "../../Writer/Repositories";
 
 const ReaderRepository = () => {
     const {repositories} = useContext(RepositoryContext)
@@ -22,6 +23,9 @@ const ReaderRepository = () => {
                         <h3>{repo.title}</h3>
                         <p>{repo.description}</p>
                     </CardDetails>
+                    <CenterButton onClick={()=>{console.log(repo.id)}}>
+                        Visit 
+                    </CenterButton>
                 </RepositoryCard>
             ))}
         </RepositoriesContainer>
