@@ -58,6 +58,7 @@ export const AuthProvider = ({children}) =>{
             )
             setUser(result.user);
             setResponse(result.message);
+            
             setType("success")
             // save token
             localStorage.setItem("token", result.token);
@@ -69,30 +70,38 @@ export const AuthProvider = ({children}) =>{
                 setTimeout(() => {
                     navigate("writer");
                 },1000)
-                localStorage.setItem("type", result.user.user_type);
-            } else if (result.user.userType === "reader") {
-                setTimeout(() => {
-                    navigate("/reader-dashboard");
-                },1000)
-            } else{
-                setTimeout(() => {
-                    navigate("adminPanel")
-                },1000)
-            }
-        } catch(error){
-            setResponse(error.response.data.error);
-            setType("error")
-        } finally{
-            setLoading(false)
-            setOpen(true)
+
+                    // save type
+                    localStorage.setItem("type", result.user.user_type);
+                } else if (result.user.user_type === "reader") {
+                    setTimeout(() => {
+                        navigate("reader");
+                    },1000)
+
+                    // save type
+                    localStorage.setItem("type", result.user.user_type);
+                } else{
+                    setTimeout(() => {
+                        navigate("adminPanel")
+                    },1000)
+                    
+                    // save type
+                    localStorage.setItem("type", result.user.user_type);
+            }   
+                } catch(error){
+                    setResponse(error.response.data.error);
+                    setType("error")
+                } finally{
+                    setLoading(false)
+                    setOpen(true)
+                }
         }
-    }
     const handleCloseNotification = () => {
         setOpen(false);
       };
 //end login
 //####################################################################
-        
+        // helper function
     const handlePasswordChange = (value) => {
             setPassword(value);
             if (value !== confirm) {
@@ -103,17 +112,17 @@ export const AuthProvider = ({children}) =>{
                 setCorrect(true)
             }
         };
-
-        const handleConfirmChange = (value) => {
-            setConfirm(value);
-            if (value !== password) {
-                setIsPasswordError(true); 
-                setCorrect(false)
-            } else {
-                setIsPasswordError(false);
-                setCorrect(true)
-            }
+        // helper function
+    const handleConfirmChange = (value) => {
+        setConfirm(value);
+        if (value !== password) {
+            setIsPasswordError(true); 
+            setCorrect(false)
+        } else {
+            setIsPasswordError(false);
+            setCorrect(true)
         }
+    }
 
       const handleSignup = async (e)=>{
         e.preventDefault();
@@ -130,8 +139,32 @@ export const AuthProvider = ({children}) =>{
                     setUser(result.user);
                     setResponse(result.message);
                     setType("success")
+
+                    // save token
                     localStorage.setItem("token", result.token);
-                    navigate("writer");
+                    localStorage.setItem("name", result.user.name)
+
+                    // navigate signedUp user 
+                    if (result.user.user_type === "writer") {
+                        setTimeout(() => {
+                            navigate("writer");
+                        },1000)
+                        // save type
+                        localStorage.setItem("type", result.user.user_type);
+                    } else if (result.user.user_type === "reader") {
+                        setTimeout(() => {
+                            navigate("reader");
+                        },1000)
+                        // save type
+                        localStorage.setItem("type", result.user.user_type);
+                    } else{
+                        setTimeout(() => {
+                            navigate("adminPanel")
+                        },1000)
+                        // save type
+                        localStorage.setItem("type", result.user.user_type);
+                    }
+
                 }catch(error){
                     setType("error")
                     setResponse(error.response.data.message)
