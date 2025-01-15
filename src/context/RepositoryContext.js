@@ -43,6 +43,7 @@ export const RepositoryProvider = ({children})=>{
         setShowForm(true);
     };
 
+    // creating repo and generating img
     const handleCreateRepository = async (e) => {
         e.preventDefault()
         try{
@@ -98,6 +99,15 @@ export const RepositoryProvider = ({children})=>{
         }finally{
             setLoading(false)
             setOpen(true)
+        }
+    }
+
+    // deleting repo 
+    const handleDeleteRepo = () => {
+        try{
+            fetchData(
+                `http://localhost:8000/api/deleteRepo/${id}`
+            )
         }
     }
     const handleCloseNotification = () => {
