@@ -36,7 +36,7 @@ export const RepositoryProvider = ({children})=>{
         }
 
         repositories()
-    },[useLocation()])
+    },[useLocation(),repositories])
 
     // showform
     const handleAddRepository = () => {
@@ -114,7 +114,7 @@ export const RepositoryProvider = ({children})=>{
             console.log(response)
 
         }catch(error){
-            error.log(error)
+            console.log(error)
         }
     }
     const handleCloseNotification = () => {
