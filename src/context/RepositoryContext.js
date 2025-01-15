@@ -111,8 +111,9 @@ export const RepositoryProvider = ({children})=>{
                 null,
                 {Authorization: `Bearer ${token}`}
             )
-            console.log(response)
 
+            // updating the Repositories state 
+            setRepositories((prev) => prev.filter((repo) => repo.id !== id));
         }catch(error){
             console.log(error)
         }
