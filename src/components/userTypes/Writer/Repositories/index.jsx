@@ -130,6 +130,21 @@ const CardDetails = styled("div")({
     },
   })
 
+  const DeleteButton = styled(Button)({
+    position: "absolute",
+    top: "50px",
+    right: "10px",
+    minWidth: "30px",
+    height: "30px",
+    padding: "0",
+    borderRadius: "50%",
+    backgroundColor: "#FC8E40",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: "#0056b3",
+    },
+  })
+
   export function SlideTransition(props) {
     return <Slide {...props} direction="down" />;
   }
@@ -137,7 +152,7 @@ const CardDetails = styled("div")({
 
   const Repositories = () => {
     const navigate = useNavigate();
-    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type,repositories} = useContext(RepositoryContext)
+    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type,repositories,handleDeleteRepository} = useContext(RepositoryContext)
     
     const {handleGetContent} = useContext(WriterDevContext)
     return (
@@ -161,6 +176,18 @@ const CardDetails = styled("div")({
             }}>
                 <i className="fas fa-pencil-alt"></i>
             </AddButton>
+                <DeleteButton
+                    onClick={async () => {
+                        const confirmDelete = window.confirm(
+                            `Are you sure you want to delete the repository "${repo.title}"?`
+                        );
+                        if (confirmDelete) {
+                            await handleDeleteRepository(repo.id);
+                        }
+                    }}
+                >
+                    <i className="fas fa-trash-alt"></i>
+                </DeleteButton>
         </RepositoryCard>
     ))}
     <RepositoryCard onClick={handleAddRepository}>
