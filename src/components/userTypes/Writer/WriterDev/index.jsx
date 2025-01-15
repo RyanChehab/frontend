@@ -10,8 +10,7 @@ import { FormContainer } from "../Repositories";
 const WriterDev = () =>{
         const location = useLocation()
 
-        const {id,content,pages,currentPage,Max_Characters,handlePageChange,handlePageContentChange,handleStore,handleGetContent,setCurrentPage,setPages,handleTextareaChange,type,response,handleCloseNotification,open,setContent,splitIntoPages
-        } = useContext(WriterDevContext);
+        const {id,pages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange,type,response,handleCloseNotification,open} = useContext(WriterDevContext);
 
 
     return (
@@ -68,75 +67,6 @@ const WriterDev = () =>{
                 </div>
             </div>
         </div>
-
-{/* Notification */}
-        <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleCloseNotification}
-        TransitionComponent={SlideTransition}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        >
-            <Alert
-            severity={type}
-            sx = {{width: "100%"}}
-            >
-                {response}
-            </Alert>
-        </Snackbar>
-
-{/* create repo form */}
-      {showForm &&(
-        <ModalOverlay>
-          <FormContainer>
-
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <button
-                  type="button"
-                  className="btn-close"
-                  onClick={() => setShowForm(false)}
-                ></button>
-              </div>
-
-            <form onSubmit={handleCreateRepository}>
-              <CustomeInput type="text"
-              required
-              placeholder='Title'
-              fullWidth
-              onChange={(e)=>setTitle(e.target.value)}
-              />
-              <CustomeInput type="text"
-              required
-              placeholder='The Fanfiction derrived from book...talks about..'
-              multiline
-              rows={4}
-              fullWidth
-              onChange={(e)=>setDescription(e.target.value)}
-              />
-              <Button
-              variant='contained'
-              color='#FC8E40'
-              type='submit'
-              disabled = {loading}
-              sx={{
-                  width: '80%',
-                  borderRadius: '10px',
-                  margin: '60px auto 0px auto',
-                  display: 'block',
-                  fontFamily: 'Roboto, sans-serif',
-                  fontWeight: '500',
-                  fontSize: '14px',
-                  border: 'black 2px solid',
-                  '&:hover': {
-                      border:'solid 2px #FC8E40',
-            }
-        }}
-        >{loading? "Creating..." :"Create Repository"}</Button>
-            </form>
-          </FormContainer>
-        </ModalOverlay>
-      )}
-
 </>
     );
 }
