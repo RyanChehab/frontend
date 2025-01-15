@@ -1,12 +1,11 @@
 import React,{useContext} from "react";
-import { useNavigate } from "react-router-dom";
 import { useBookmark } from "../../../../context/BookCardContext";
 import { GutenBookContext } from "../../../../context/GutenBookContext";
 import './BookCard.css';
 
 const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked,url_text})=>{
     const { handleBookmark, removeBookmark} = useBookmark();
-    const {fetchBookContent,loading} = useContext(GutenBookContext)
+    const {fetchBookContent,loading,setTitle} = useContext(GutenBookContext)
 
     const handleBookmarkToggle = () => {
         if (isBookmarked) {
@@ -38,7 +37,7 @@ const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked,url_text}
             <div className="book-footer">
             <button
                 className="navigate-btn"
-                onClick={()=>{fetchBookContent(url_text)}}
+                onClick={()=>{fetchBookContent(url_text,title)}}
                 disabled={loading}
                 >
                     Read
