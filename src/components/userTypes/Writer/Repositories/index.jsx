@@ -152,7 +152,7 @@ const CardDetails = styled("div")({
 
   const Repositories = () => {
     const navigate = useNavigate();
-    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type,repositories,handleDeleteRepository} = useContext(RepositoryContext)
+    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type,repositories,handleDeleteRepo} = useContext(RepositoryContext)
     
     const {handleGetContent} = useContext(WriterDevContext)
     return (
@@ -177,13 +177,11 @@ const CardDetails = styled("div")({
                 <i className="fas fa-pencil-alt"></i>
             </AddButton>
                 <DeleteButton
-                    onClick={async () => {
+                    onClick={() => {
                         const confirmDelete = window.confirm(
                             `Are you sure you want to delete the repository "${repo.title}"?`
                         );
-                        if (confirmDelete) {
-                            await handleDeleteRepository(repo.id);
-                        }
+                        if (confirmDelete) {handleDeleteRepo(repo.id);}
                     }}
                 >
                     <i className="fas fa-trash-alt"></i>
