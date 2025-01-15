@@ -59,7 +59,7 @@ const GutenBook = () => {
                 <div className="fanfiction-save">
                     <button className="save-button" onClick={()=>{activateForkMode()
                     }}>
-                        {forkMode? "Forking..": "test"}
+                        {forkMode? "Forking..": "Fork"}
                     </button>
                 </div>
             </div>

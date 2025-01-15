@@ -19,6 +19,7 @@ export const WriterDevProvider = ({ children }) => {
     // Pagination states
     const [currentPage, setCurrentPage] = useState(0);
     const [pages, setPages] = useState([]);
+    
     const Max_Characters = 1900;
 
     useEffect(()=>{
@@ -54,7 +55,6 @@ export const WriterDevProvider = ({ children }) => {
                 { Authorization: `Bearer ${token}` }
             );
 
-            console.log(result);
             setResponse("Content stored successfully!");
             setType("success");
         } catch (error) {

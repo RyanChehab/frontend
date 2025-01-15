@@ -86,9 +86,9 @@ export const RepositoryProvider = ({children})=>{
 
             if(response.message === 'Repository created successfully!'){
                 navigate(`WriterDev/${repositoryId}`)
-            setType('success')
-               setResponse(response.message)
-            setShowForm(false)
+                setType('success')
+                setResponse(response.message)
+                setShowForm(false)
             }
 
             
