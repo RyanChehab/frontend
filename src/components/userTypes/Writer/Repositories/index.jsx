@@ -181,7 +181,9 @@ const CardDetails = styled("div")({
             </DeleteButton>
         </RepositoryCard>
     ))}
-    
+    <RepositoryCard onClick={handleAddRepository}>
+        <span>+ Add Repository</span>
+    </RepositoryCard>
     
     </RepositoriesContainer>
 
