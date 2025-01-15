@@ -9,7 +9,7 @@ const WriterDev = () =>{
         const navigate = useNavigate()
         const {forkedContent} = location.state || {}
 
-        const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange,type,response,handleCloseNotification,open} = useContext(WriterDevContext);
+        const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange} = useContext(WriterDevContext);
 
         useEffect(() => {
             if(forkedContent){
