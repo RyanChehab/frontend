@@ -158,6 +158,7 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
 
   const Repositories = () => {
     const navigate = useNavigate();
+
     const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type,repositories,handleDeleteRepo} = useContext(RepositoryContext)
     
     const {handleGetContent} = useContext(WriterDevContext)
@@ -179,10 +180,11 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
             </CardDetails>
 
             {/* Add and Delete Buttons */}
+            
             <AddButton
                 onClick={async () => {
-                    await handleGetContent(repo.id);
-                    navigate(`/WriterDev/${repo.id}`);
+                  await handleGetContent(repo.id);
+                  navigate(`/WriterDev/${repo.id}`, {state:{title: repo.title}});
                 }}
             >
                 <i className="fas fa-pencil-alt"></i>
