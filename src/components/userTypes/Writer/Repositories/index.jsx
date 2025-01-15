@@ -42,6 +42,7 @@ const RepositoryCard = styled("div")({
     borderRadius: "50%",
     backgroundColor: "#FC8E40",
     color: "#fff",
+    zIndex:"4",
     "&:hover": {
       backgroundColor: "#0056b3",
     },
@@ -80,7 +81,7 @@ const CardDetails = styled("div")({
     padding: "10px",
     borderTopLeftRadius: "10px",
     borderTopRightRadius: "10px",
-    transform: "translateY(100%)", 
+    transform: "translateY(87%)", 
     transition: "transform 0.3s ease",
 
     // adjust height to fit content
@@ -124,6 +125,7 @@ const CardDetails = styled("div")({
     borderRadius: "50%",
     backgroundColor: "#FC8E40",
     color: "#fff",
+    zIndex:"4",
     "&:hover": {
       backgroundColor: "#0056b3",
     },
