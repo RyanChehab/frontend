@@ -43,7 +43,7 @@ const RepositoryCard = styled("div")({
     },
   });
 
-  const FormContainer = styled("div")({
+  export const FormContainer = styled("div")({
     width: "300px",
     padding: "20px",
     backgroundColor: "#fff",
@@ -107,7 +107,7 @@ const CardDetails = styled("div")({
     },
   });
 
-  const ModalOverlay = styled("div")({
+  export const ModalOverlay = styled("div")({
     position: "fixed",
     top: 0,
     left: 0,
@@ -121,7 +121,7 @@ const CardDetails = styled("div")({
     zIndex: 1000,
   });
 
-  const CustomeInput = styled(Input)({
+  export const CustomeInput = styled(Input)({
     padding: "0.2rem",
 
     marginTop:"1.4rem",
