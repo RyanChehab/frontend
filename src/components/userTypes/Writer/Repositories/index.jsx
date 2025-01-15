@@ -28,7 +28,7 @@ const RepositoryCard = styled("div")({
     overflow: "hidden",
   });
 
-  const AddButton = styled(Button)({
+  export const AddButton = styled(Button)({
     position: "absolute",
     top: "10px",
     right: "10px",
