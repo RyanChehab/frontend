@@ -153,7 +153,7 @@ const ReaderNav = () => {
                 </div>
     
                                 {/* offcanvas body */}
-                <div className="offcanvas-body d-flex flex-column justify-items-center align-items-center">
+                <div className="offcanvas-body d-flex flex-column">
                 
                     <ul className="navbar-nav">
                         <li className="nav-item">
