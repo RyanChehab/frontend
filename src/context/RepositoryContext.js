@@ -17,7 +17,7 @@ export const RepositoryProvider = ({children})=>{
     const [repositories, setRepositories] = useState([])
 
     const token = localStorage.getItem('token')
-    
+
     // get repositories
     useEffect(()=>{
         const repositories = async () => {
@@ -28,9 +28,7 @@ export const RepositoryProvider = ({children})=>{
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
-                console.log(result)
                 setRepositories(result.repositories)
-                
             }catch(error){
                 console.log(error.response.data.message)
             }
