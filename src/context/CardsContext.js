@@ -9,15 +9,6 @@ const [loading, setLoading] = useState(false);
 const [bookmarks,setBookmarks] = useState([]);
 const [category,setCategory] = useState([]);
 const location = useLocation()
-    useEffect(()=>{
-            // storing book titles
-           
-            const books = Object.values(data)
-            books.forEach(book => {
-                const key = `gutenberg_id/${book.gutenberg_id}`
-                localStorage.setItem(key, book.title)
-            })
-    },[location.pathname])
 
     const getFeatured = async () => {
         try {
@@ -26,7 +17,7 @@ const location = useLocation()
                 "POST",
                 null,
             );
-        
+           
             setData(result);
             
         } catch (error) {
@@ -40,6 +31,7 @@ const location = useLocation()
                 "http://localhost:8000/api/book/BookCategories",
                 "POST",
             );
+            console.log(response)
             setCategory(response)
         } catch (error) {
             console.error("Error fetching dataa:", error);
@@ -47,23 +39,29 @@ const location = useLocation()
     };
 
     useEffect(() => {
-        const fetchAllData = async ()=>{
-            setLoading(true)
-            try{
-                await Promise.all([getFeatured(), getByCategory()])
-
-            }catch(error){
+        const fetchAllData = async () => {
+            setLoading(true);
+            try {
+                await Promise.all([getFeatured(), getByCategory()]);
+            } catch (error) {
                 console.error("Error fetching all data:", error);
-            }finally{
-                setLoading(false)
-                document.body.style.overflow = "hidden"; 
-                void document.body.offsetHeight; 
+            } finally {
+                setLoading(false);
+    
+                // Force re-enable scrollbars
+                document.body.style.overflow = "hidden";
+                document.body.getBoundingClientRect();
                 document.body.style.overflow = "auto";
             }
-        }
-
-        fetchAllData()
-    },[])
+        };
+    
+        fetchAllData();
+    
+        // Cleanup to reset styles on unmount
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, []);
 
     return(
         <CardsContext.Provider value={{
