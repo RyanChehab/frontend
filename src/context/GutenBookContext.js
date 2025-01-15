@@ -161,9 +161,9 @@ export const GutenBookProvider = ({children}) =>{
 
             if(response.message === 'Repository created successfully!'){
 
-                navigate(`WriterDev/${repositoryId}`)
+            navigate(`WriterDev/${repositoryId}`, {state:{forkedContent}})
             setType('success')
-               setResponse(response.message)
+            setResponse(response.message)
             setShowForm(false)
             }
 
@@ -203,7 +203,8 @@ export const GutenBookProvider = ({children}) =>{
             handleCloseNotification,
             type,
             setTitle,
-            setDescription
+            setDescription,
+            repoLoading
         }}>
             {children}
         </GutenBookContext.Provider>
