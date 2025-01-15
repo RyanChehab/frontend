@@ -1,10 +1,17 @@
+                    // Auth
 import Login from "./components/Auth/login";
 import Signup from "./components/Auth/signup";
+
+                    // Admin
+import Admin from "./components/userTypes/Admin/AdminLayout";
+import { AdminListProvider } from "./context/AdminListContext";
+
+                    // Writer
 import Writer from "./components/userTypes/Writer";
 import Repositories from "./components/userTypes/Writer/Repositories";
 import DisplayByCategory from "./components/userTypes/Writer/DisplayByCategory";
 import WriterDev from "./components/userTypes/Writer/WriterDev";
-import Admin from "./components/userTypes/Admin/AdminLayout";
+
 import Bookmarks from "./components/userTypes/Writer/Bookmarks";
 import GutenBook from "./components/shared/GutenBook";
 import { GutenBookProvider } from "./context/GutenBookContext";
@@ -13,8 +20,12 @@ import { NavProvider } from "./context/NavContext";
 import { CardProvider } from "./context/CardsContext";
 import { BookCardProvider } from "./context/BookCardContext";
 import { RepositoryProvider } from "./context/RepositoryContext";
-import { AdminListProvider } from "./context/AdminListContext";
+
 import { WriterDevProvider } from "./context/WriterDev";
+
+                    // Reader
+import Reader from "./components/userTypes/Reader";
+
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 const token = localStorage.getItem('token')
@@ -40,8 +51,11 @@ function App() {
             <Route path="repositories" element={<Repositories/>}/>
             <Route path="WriterDev/:id" element={<WriterDev/>} />
             <Route path='bookmarks' element={<Bookmarks/>} />
-            <Route path="adminPanel" element={<Admin/>}/>
             <Route path="Book" element={<GutenBook/>}/>
+            {/* Admin */}
+            <Route path="adminPanel" element={<Admin/>}/>
+            {/* Reader */}
+            <Route path="reader" element={<Reader/>}/>
           </Routes>
         
           </BookCardProvider>
