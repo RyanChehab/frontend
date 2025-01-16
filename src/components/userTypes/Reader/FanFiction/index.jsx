@@ -4,16 +4,17 @@ import { WriterDevContext } from "../../../../context/WriterDev";
 
 const FanFiction = () => {
     
-    
+    const navigate = useNavigate()
+    const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange} = useContext(WriterDevContext);
 
     return (
         <>        
                 <div className="fanfiction-container">
                     {/* Header Section */}
                     <div className="fanfiction-header">
-                    <button className="back-button" onClick={async () =>{
-                            handleStore(id)
-                            navigate('/reader')}
+                <button className="back-button" onClick={async () =>{
+                        handleStore(id)
+                        navigate('/reader')}
                         }>
                             Back to Website
                         </button>
