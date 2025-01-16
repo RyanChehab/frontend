@@ -9,7 +9,7 @@ const SearchBar = styled(InputBase)(({ theme }) => ({
     height: '46px',
     padding: '10px',
     border: '1px solid #ccc',
-    borderRadius: '20px',
+    borderRadius: '60px',
     fontSize: '16px',
 }));
 

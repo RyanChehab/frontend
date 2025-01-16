@@ -16,10 +16,17 @@ const GutenBook = () => {
             
             {/* Header Section */}
             <div className="fanfiction-header">
-            <button className="back-button" onClick={()=>{window.history.back()}}>
-                    Back to Website
+
+                <button className="back-button" onClick={()=>{window.history.back()}}>
+                    Exit
                 </button>
                 <h1 className="book-title">{title}</h1>
+                
+                <button className="back-button" onClick={()=>{activateForkMode()
+                }}>
+                    {forkMode? "Forking..": "Fork"}
+                </button>
+                
             </div>
 
             {/* TextArea Section */}
@@ -55,13 +62,6 @@ const GutenBook = () => {
                     </button>
                 </div>
 
-                {/* Fork Button */}
-                <div className="fanfiction-save">
-                    <button className="save-button" onClick={()=>{activateForkMode()
-                    }}>
-                        {forkMode? "Forking..": "Fork"}
-                    </button>
-                </div>
             </div>
         </div>
 

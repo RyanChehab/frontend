@@ -10,7 +10,7 @@ const WriterDev = () =>{
         const location = useLocation()
         const navigate = useNavigate()
         const {forkedContent, RepositoryTitle} = location.state || {}
-        const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange,response,type,handleCloseNotification,open,setOpen} = useContext(WriterDevContext);
+        const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange,response,type,handleCloseNotification,open} = useContext(WriterDevContext);
 
         useEffect(() => {
             if(forkedContent){

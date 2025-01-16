@@ -63,7 +63,9 @@ const Login = () => {
             fontFamily: 'Roboto, sans-serif',
             
             '& .MuiOutlinedInput-root': {
-     
+                
+                height: "50px",
+
                 '& fieldset': {
                     borderColor: '#000', 
                 },
@@ -102,7 +104,9 @@ const Login = () => {
                     fontFamily: 'Roboto, sans-serif',
                     
                     '& .MuiOutlinedInput-root': {
-            
+                        
+                        height: "50px",
+
                         '& fieldset': {
                             borderColor: '#000', 
                         },
