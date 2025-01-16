@@ -1,6 +1,7 @@
 import React,{useContext} from "react";
 import { styled } from "@mui/system";
 import { AdminListContext } from "../../../../context/AdminListContext";
+import './admin.css'
 
 const Table = styled("table")({
     width: "100%",
@@ -75,9 +76,9 @@ const AdminBlocklist = () => {
                             </TableCell>
                             <TableCell>
                                 {user.blocked ? (
-                                    <button style={{ color: "green"}} onClick={()=>{handleunBlockUser(user.email)}}>Unblock</button>
+                                    <button className="unblock-button" onClick={()=>{handleunBlockUser(user.email)}}>Unblock</button>
                                 ) : (
-                                    <span><button style={{ color: "red" }} onClick={()=>handleBlockUser(user.email)}>block</button></span>
+                                    <span><button className="block-button" onClick={()=>handleBlockUser(user.email)}>block</button></span>
                                 )}
                             </TableCell>
                         </TableRow>
