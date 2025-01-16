@@ -2,13 +2,15 @@ import React,{useContext, useEffect} from "react";
 import { WriterDevContext } from "../../../../context/WriterDev";
 import './WriterDev.css'
 import {useLocation,useNavigate } from "react-router-dom";
+import { Snackbar, Alert } from "@mui/material";
+import { SlideTransition } from "../../../Auth/login";
 
 
 const WriterDev = () =>{
         const location = useLocation()
         const navigate = useNavigate()
         const {forkedContent, RepositoryTitle} = location.state || {}
-        const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange} = useContext(WriterDevContext);
+        const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange,response,type,handleCloseNotification,open,setOpen} = useContext(WriterDevContext);
 
         useEffect(() => {
             if(forkedContent){
@@ -28,9 +30,12 @@ const WriterDev = () =>{
                     handleStore(id)
                     navigate('/repositories')}
                 }>
-                    Back to Website
+                    Exit
                 </button>
                 <h1 className="book-title">{RepositoryTitle}</h1>
+                <button className="back-button" onClick={handleStore}>
+                        Save
+                </button>
             </div>
 
             {/* TextArea Section */}
@@ -65,14 +70,9 @@ const WriterDev = () =>{
                     </button>
                 </div>
 
-                {/* Save Button */}
-                <div className="fanfiction-save">
-                    <button className="save-button" onClick={handleStore}>
-                        Save
-                    </button>
-                </div>
             </div>
         </div>
+        
 </>
     );
 }
