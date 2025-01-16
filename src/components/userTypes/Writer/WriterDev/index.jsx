@@ -72,7 +72,22 @@ const WriterDev = () =>{
 
             </div>
         </div>
-        
+        {/* Notification */}
+
+        <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleCloseNotification}
+        TransitionComponent={SlideTransition}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+            <Alert
+            severity={type}
+            sx = {{width: "100%"}}
+            >
+                {response}
+            </Alert>
+        </Snackbar>
 </>
     );
 }
