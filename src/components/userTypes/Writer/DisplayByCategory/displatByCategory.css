@@ -1,48 +1,77 @@
 .categories-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem; /* Space between categories */
-    padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
   
   .category-row {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
+    color: #333;
+    text-align: center;
   }
   
   .category-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: #eaeaea;
+    padding: 1rem;
+    border-radius: 10px;
   }
   
   .books-row-container {
+    position: relative;
     display: flex;
-    align-items: center;
-    position: relative; /* For positioning the View More button */
+    gap: 1rem;
+    overflow-x: hidden;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 1rem 0;
   }
   
   .books-row {
     display: flex;
     gap: 1rem;
-    overflow-x: hidden; /* Hide overflow for smooth sliding */
-    white-space: nowrap; /* Prevent wrapping of the cards */
+    overflow-x: hidden;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 1rem 0;
   }
   
   .books-row > * {
-    flex: 0 0 auto; /* Prevent cards from shrinking or growing */
-    width: 280px; /* Fixed width for each card */
-  }
+    flex: 0 0 auto;
+    width: 280px;
+    height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
   
   .view-more {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #000;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-size: 1rem;
+    position: absolute; /* Make it absolutely positioned relative to the parent */
+    right: 1rem; /* Align to the right edge with some spacing */
+    top: 50%; /* Vertically center */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    background-color: #FC8E40; /* Primary color */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    padding: 0.5rem 1rem; /* Add padding for size */
+    cursor: pointer; /* Show pointer on hover */
+    font-size: 1rem; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    z-index: 2;
   }
+  .view-more:hover {
+    background-color: #e57835; /* Darker shade on hover */
+}
