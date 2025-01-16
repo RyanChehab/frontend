@@ -34,9 +34,21 @@ export const WriterDevProvider = ({ children }) => {
     },[])
 
     // Helper function to split content into pages
-    const splitIntoPages = (content) => {
-        const regex = new RegExp(`.{1,${Max_Characters}}`, "g");
-        return content.match(regex) || [];
+    const splitIntoPages = (content,maxLines = 30) => {
+        const normalizedContent = content.replace(/\r\n|\r/g, '\n');
+
+    // Replace multiple consecutive newlines with just two
+    const cleanedContent = normalizedContent.replace(/\n{3,}/g, '\n\n');
+
+    // Split the cleaned content into lines
+    const lines = cleanedContent.split('\n');
+
+    // Group lines into pages
+    const pages = [];
+    for (let i = 0; i < lines.length; i += maxLines) {
+        pages.push(lines.slice(i, i + maxLines).join('\n'));
+    }
+    return pages;
     };
 
     // Helper function to merge pages into a single string
