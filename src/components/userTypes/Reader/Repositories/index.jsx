@@ -7,30 +7,48 @@ import { CardImage } from "../../Writer/Repositories";
 import { CardDetails } from "../../Writer/Repositories";
 import { CenterButton } from "../../Writer/Repositories";
 import { WriterDevContext } from "../../../../context/WriterDev";
+import { ReaderRepositoryContext } from "../../../../context/ReaderRepositoryContext";
+import { ReaderBookmarkContext } from "../../../../context/ReaderBookmarkContext";
 
 const ReaderRepository = () => {
-    const {repositories} = useContext(RepositoryContext)
+    const {repositories} = useContext(ReaderRepositoryContext)
     const {handleGetContent} = useContext(WriterDevContext)
+    const {handleBookmark} = useContext(ReaderBookmarkContext)
     const navigate = useNavigate()
 
-    const handleBookmarkToggle = () => {
-        if (isBookmarked) {
-            removeBookmark(gutenberg_id);
-        } else {
-            handleBookmark(gutenberg_id);
-        }
-    };
+    // const { handleBookmark, removeBookmark} = useBookmark();
+
+    // const handleBookmarkToggle = () => {
+    //     if (isBookmarked) {
+    //         removeBookmark(bookmarkable_id);
+    //     } else {
+    //         handleBookmark(bookmarkable_id);
+    //     }
+    // };
     
     return(
     <>
+        {/* Title */}
         <p className="display-title">Featured Repositories</p>
+
+        
         <RepositoriesContainer>
+
+            {/* Mapping repos */}
             {repositories.map((repo) => (
+
                 <RepositoryCard key={repo.id}>
-                    {/* Full-Card Background Image */}
+
+                {/* Full-Card Background Image */}
+                
                     <CardImage
                         style={{ backgroundImage: `url(${repo.img_url})` }}
-                    ></CardImage>
+                    ><button
+                    className='bookmark-btn'
+                    onClick={()=>{handleBookmark(repo.id)}}
+                    >
+                    <i className="fas fa-bookmark"></i>
+                </button></CardImage>
 
                     {/* Details Section */}
                     <CardDetails className="card-details">
