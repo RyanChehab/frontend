@@ -14,6 +14,8 @@ const ReaderRepository = () => {
     const navigate = useNavigate()
     
     return(
+    <>
+        <p className="display-title">Featured Repositories</p>
         <RepositoriesContainer>
             {repositories.map((repo) => (
                 <RepositoryCard key={repo.id}>
@@ -36,6 +38,7 @@ const ReaderRepository = () => {
                 </RepositoryCard>
             ))}
         </RepositoriesContainer>
+    </>
 )
 }
 export default ReaderRepository;
