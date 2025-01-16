@@ -168,7 +168,8 @@ export const WriterDevProvider = ({ children }) => {
                 handleTextareaChange,
                 handleCloseNotification,
                 open,
-                splitIntoPages
+                splitIntoPages,
+                setOpen
             }}
         >
             {children}
