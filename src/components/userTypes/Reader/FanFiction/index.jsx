@@ -1,11 +1,13 @@
 import React,{useContext} from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { WriterDevContext } from "../../../../context/WriterDev";
 
 const FanFiction = () => {
     
     const navigate = useNavigate()
-    const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange} = useContext(WriterDevContext);
+    const location = useLocation()
+    const {RepoTitle} = location.state || {}
+    const {pages,currentPage,handlePageChange} = useContext(WriterDevContext);
 
     return (
         <>        
@@ -13,12 +15,11 @@ const FanFiction = () => {
                     {/* Header Section */}
                     <div className="fanfiction-header">
                 <button className="back-button" onClick={async () =>{
-                        handleStore(id)
                         navigate('/reader')}
                         }>
                             Back to Website
                         </button>
-                        <h1 className="book-title">{localStorage.getItem(`repo_${id}`)}</h1>
+                        <h1 className="book-title">{RepoTitle}</h1>
                     </div>
         
                     {/* TextArea Section */}
@@ -26,8 +27,6 @@ const FanFiction = () => {
                         <textarea
                             className="fanfiction-textarea"
                             value={pages[currentPage] || ""}
-                            onChange={handleTextareaChange}
-                            placeholder={`Page ${currentPage + 1}. Maximum ${Max_Characters} characters.`}
                         ></textarea>
         
                         {/* Pagination Section */}
@@ -53,12 +52,6 @@ const FanFiction = () => {
                             </button>
                         </div>
         
-                        {/* Save Button */}
-                        <div className="fanfiction-save">
-                            <button className="save-button" onClick={handleStore}>
-                                Save
-                            </button>
-                        </div>
                     </div>
                 </div>
         </>
