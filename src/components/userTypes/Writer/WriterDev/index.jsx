@@ -7,9 +7,9 @@ import {useLocation,useNavigate } from "react-router-dom";
 const WriterDev = () =>{
         const location = useLocation()
         const navigate = useNavigate()
-        const {forkedContent, title} = location.state || {}
+        const {forkedContent, RepositoryTitle} = location.state || {}
         const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange} = useContext(WriterDevContext);
-
+console.log(RepositoryTitle)
         useEffect(() => {
             if(forkedContent){
                 setPages([forkedContent])
@@ -30,7 +30,7 @@ const WriterDev = () =>{
                 }>
                     Back to Website
                 </button>
-                <h1 className="book-title">{title}</h1>
+                <h1 className="book-title">{RepositoryTitle}</h1>
             </div>
 
             {/* TextArea Section */}
