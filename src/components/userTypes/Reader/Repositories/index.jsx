@@ -13,18 +13,17 @@ import { ReaderBookmarkContext } from "../../../../context/ReaderBookmarkContext
 const ReaderRepository = () => {
     const {repositories} = useContext(ReaderRepositoryContext)
     const {handleGetContent} = useContext(WriterDevContext)
-    const {handleBookmark} = useContext(ReaderBookmarkContext)
+    const {handleBookmark,removeBookmark } = useContext(ReaderBookmarkContext)
     const navigate = useNavigate()
 
-    // const { handleBookmark, removeBookmark} = useBookmark();
 
-    // const handleBookmarkToggle = () => {
-    //     if (isBookmarked) {
-    //         removeBookmark(bookmarkable_id);
-    //     } else {
-    //         handleBookmark(bookmarkable_id);
-    //     }
-    // };
+    const handleBookmarkToggle = () => {
+        if (isBookmarked) {
+            removeBookmark(id);
+        } else {
+            handleBookmark(id);
+        }
+    };
     
     return(
     <>
@@ -43,10 +42,12 @@ const ReaderRepository = () => {
                 
                     <CardImage
                         style={{ backgroundImage: `url(${repo.img_url})` }}
-                    ><button
-                    className='bookmark-btn'
-                    onClick={()=>{handleBookmark(repo.id)}}
                     >
+                        <button
+                            className={`bookmark-btn ${isBookmarked ? "bookmarked" : ""}`}
+                            onClick={handleBookmarkToggle(id)}
+                        >
+
                     <i className="fas fa-bookmark"></i>
                 </button></CardImage>
 
