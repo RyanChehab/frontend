@@ -1,9 +1,9 @@
-import React, {createContext,useState} from "react";
+import React, {createContext,useState,useEffect} from "react";
 import fetchData from "../utility/fetch";
 
 export const ReaderBookmarkContext = createContext()
 
-export const ReaderBookmarkProvider = () =>{
+export const ReaderBookmarkProvider = ({children}) =>{
 
     const token = localStorage.getItem('token')
     const [bookmarkedRepo,setBookmarkedRepo] = useState([])
@@ -41,7 +41,7 @@ export const ReaderBookmarkProvider = () =>{
                 {Authorization: `Bearer ${token}`},
                 
             )
-            setBookmarkedRepo((prev) => [...prev, gutenberg_id]);
+            // setBookmarkedRepo((prev) => [...prev, gutenberg_id]);
         }catch(error){
             console.log(error)
         }
@@ -61,12 +61,19 @@ export const ReaderBookmarkProvider = () =>{
                 { Authorization: `Bearer ${token}` },
             );
             // Update state
-            setBookmarkedRepo((prev) => prev.filter((id) => id !== gutenberg_id));
+            // setBookmarkedRepo((prev) => prev.filter((id) => id !== gutenberg_id));
         } catch (error) {
             console.error("Failed to remove bookmark:", error?.response?.message || error.message);
         }
     };
-  
+    
+    return(
+        <ReaderBookmarkContext.Provider value={{
+            handleBookmark
+        }}>
+            {children}
+        </ReaderBookmarkContext.Provider>
+    )
 
 }
 
