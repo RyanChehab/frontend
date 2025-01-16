@@ -14,13 +14,13 @@ const AddAdmin = () => {
 <div>
         <Box
         sx={{
-        boxShadow:5,
+        
         borderRadius: '10px',
         padding: '16px',
         width: '295px',
         height: '380px',
         margin: '0 auto',
-        background: '#FFF',
+        background: '#eee',
         }}
         >
             <Typography
