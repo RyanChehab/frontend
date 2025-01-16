@@ -127,7 +127,7 @@ const GutenBook = () => {
                       border:'solid 2px #FC8E40',
             }
         }}
-        >{repoLoading? "Creating..." :"Create Repository"}</Button>
+        >{repoLoading? "Creating..." :"Create "}</Button>
             </form>
           </FormContainer>
         </ModalOverlay>
