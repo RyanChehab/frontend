@@ -26,7 +26,7 @@ import { WriterDevProvider } from "./context/WriterDev";
                     // Reader
 import Reader from "./components/userTypes/Reader";
 import FanFiction from "./components/userTypes/Reader/FanFiction";
-
+import { ReaderRepoProvider } from "./context/ReaderRepositoryContext";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 const token = localStorage.getItem('token')
@@ -39,6 +39,7 @@ function App() {
       <RepositoryProvider>
         <GutenBookProvider>
         <WriterDevProvider>
+          <ReaderRepoProvider>
           <AdminListProvider>
       <NavProvider>
         <CardProvider>
@@ -64,6 +65,7 @@ function App() {
         </CardProvider>
       </NavProvider>
       </AdminListProvider>
+      </ReaderRepoProvider>
       </WriterDevProvider>
       </GutenBookProvider>
       </RepositoryProvider>
