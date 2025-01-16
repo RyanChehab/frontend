@@ -69,6 +69,15 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
     "&:hover img": {
         transform: "scale(1.1)", 
     },
+    "& img": {
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        transition: "transform 0.3s ease", // Smooth hover effect
+    },
+    "&:hover img": {
+        transform: "scale(1.1)", // Slight zoom on hover
+    },
 });
 
   export const CardDetails = styled("div")({
@@ -165,28 +174,28 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
     return (
     <>
       <WriterNav/>
+      <p className="display-title">Your Repositories</p>
       <RepositoriesContainer>
     {repositories.map((repo) => (
         <RepositoryCard key={repo.id}>
-            {/* Full-Card Background Image */}
+
+            {/* image */}
             <CardImage
-                style={{ backgroundImage: `url(${repo.img_url})` }}
+            style={{ backgroundImage: `url(${repo.img_url})` }}
             ></CardImage>
 
-            {/* Details Section */}
+            {/* Card detail section */}
             <CardDetails className="card-details">
                 <h3>{repo.title}</h3>
                 <p>{repo.description}</p>
             </CardDetails>
 
-            {/* Add and Delete Buttons */}
-            
-            <AddButton
-                onClick={async () => {
-                  await handleGetContent(repo.id);
-                  navigate(`/WriterDev/${repo.id}`, {state:{title: repo.title}});
-                }}
-            >
+            {/* edit btn */}
+            <AddButton onClick={async () => {
+                
+                await handleGetContent(repo.id);
+                navigate(`/WriterDev/${repo.id}`, {state:{RepositoryTitle: repo.title}});
+            }}>
                 <i className="fas fa-pencil-alt"></i>
             </AddButton>
             <DeleteButton
@@ -206,8 +215,7 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
     <RepositoryCard onClick={handleAddRepository}>
         <span>+ Add Repository</span>
     </RepositoryCard>
-    
-    </RepositoriesContainer>
+</RepositoriesContainer>
 
       {/* create repo form */}
       {showForm &&(
