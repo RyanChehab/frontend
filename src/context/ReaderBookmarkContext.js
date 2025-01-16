@@ -27,5 +27,46 @@ export const ReaderBookmarkProvider = () =>{
         }
         
     },[token])
+
+    const handleBookmark = async (id)=>{
+        try{
+            const requestBody = {
+                bookmarkable_type: "App\\Models\\Repository",
+                bookmarkable_id: id,
+            };
+            const result  = await fetchData(
+                "http://localhost:8000/api/bookmarks/bookmark",
+                "POST",
+                requestBody,
+                {Authorization: `Bearer ${token}`},
+                
+            )
+            setBookmarkedRepo((prev) => [...prev, gutenberg_id]);
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    const removeBookmark = async (id) => {
+        try {
+            const requestBody = {
+                bookmarkable_type: "App\\Models\\Repository",
+                bookmarkable_id: id,
+            };
+
+            const result = await fetchData(
+                "http://localhost:8000/api/bookmarks/unbookmark",
+                "POST",
+                requestBody,
+                { Authorization: `Bearer ${token}` },
+            );
+            // Update state
+            setBookmarkedRepo((prev) => prev.filter((id) => id !== gutenberg_id));
+        } catch (error) {
+            console.error("Failed to remove bookmark:", error?.response?.message || error.message);
+        }
+    };
+  
+
 }
 
