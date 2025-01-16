@@ -25,6 +25,7 @@ import { WriterDevProvider } from "./context/WriterDev";
 
                     // Reader
 import Reader from "./components/userTypes/Reader";
+import FanFiction from "./components/userTypes/Reader/FanFiction";
 
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="adminPanel" element={<Admin/>}/>
             {/* Reader */}
             <Route path="reader" element={<Reader/>}/>
+            <Route path="ReaderDev/:id" element={<FanFiction/>}/>
           </Routes>
         
           </BookCardProvider>
