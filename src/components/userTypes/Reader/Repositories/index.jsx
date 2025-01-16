@@ -12,6 +12,14 @@ const ReaderRepository = () => {
     const {repositories} = useContext(RepositoryContext)
     const {handleGetContent} = useContext(WriterDevContext)
     const navigate = useNavigate()
+
+    const handleBookmarkToggle = () => {
+        if (isBookmarked) {
+            removeBookmark(gutenberg_id);
+        } else {
+            handleBookmark(gutenberg_id);
+        }
+    };
     
     return(
     <>
