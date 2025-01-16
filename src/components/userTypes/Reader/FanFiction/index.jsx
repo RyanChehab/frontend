@@ -14,10 +14,10 @@ const FanFiction = () => {
                 <div className="fanfiction-container">
                     {/* Header Section */}
                     <div className="fanfiction-header">
-                <button className="back-button" onClick={async () =>{
+                        <button className="back-button" onClick={async () =>{
                         navigate('/reader')}
                         }>
-                            Back to Website
+                            Exit
                         </button>
                         <h1 className="book-title">{RepoTitle}</h1>
                     </div>
