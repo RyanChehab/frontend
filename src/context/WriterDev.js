@@ -20,7 +20,7 @@ export const WriterDevProvider = ({ children }) => {
     const [currentPage, setCurrentPage] = useState(0);
     const [pages, setPages] = useState([]);
     
-    const Max_Characters = 1900;
+    const Max_Characters = 3000;
 
     useEffect(()=>{
                 setResponse(null)

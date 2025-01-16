@@ -9,7 +9,7 @@ const WriterDev = () =>{
         const navigate = useNavigate()
         const {forkedContent, RepositoryTitle} = location.state || {}
         const {id,pages,setPages,currentPage,Max_Characters,handlePageChange,handleStore,handleTextareaChange} = useContext(WriterDevContext);
-console.log(RepositoryTitle)
+
         useEffect(() => {
             if(forkedContent){
                 setPages([forkedContent])
