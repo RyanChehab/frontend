@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 export const RepositoryContext = createContext();
 
 export const RepositoryProvider = ({children})=>{
-
+    const location = useLocation()
     const navigate = useNavigate();
     const [showForm,setShowForm] = useState(false);
     const [title,setTitle] = useState("");
@@ -36,7 +36,7 @@ export const RepositoryProvider = ({children})=>{
         }
 
         repositories()
-    },[token])
+    },[token,location])
 
     // showform
     const handleAddRepository = () => {
@@ -99,7 +99,6 @@ export const RepositoryProvider = ({children})=>{
             setType('error')
         }finally{
             setLoading(false)
-            setOpen(true)
         }
     }
 
