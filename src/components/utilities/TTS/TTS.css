@@ -1,0 +1,53 @@
+.tts-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .tts-button {
+    position: relative;
+    background-color:#FC8E40;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1.25rem;
+  }
+  
+  .tts-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .tts-button:hover {
+    background-color: #FC8E40;
+    transform: scale(1.1);
+  }
+  
+  .tooltip {
+    position: absolute;
+    bottom: -25px;
+    background-color: #333;
+    color: white;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  
+  .tts-button:hover .tooltip {
+    opacity: 1;
+    transform: translateY(0);
+  }
