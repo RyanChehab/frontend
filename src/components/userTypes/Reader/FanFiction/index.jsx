@@ -1,6 +1,7 @@
 import React,{useContext} from "react";
 import { useNavigate,useLocation } from "react-router-dom";
 import { WriterDevContext } from "../../../../context/WriterDev";
+import TTSControls from "../../../utilities/TTS/TTSControls";
 
 const FanFiction = () => {
     
@@ -20,18 +21,7 @@ const FanFiction = () => {
                             Exit
                         </button>
                         <h1 className="book-title">{RepoTitle}</h1>
-                        <button
-                                className="tts-button"
-                                onClick={() => {
-                                const utterance = new SpeechSynthesisUtterance(pages[currentPage] || "");
-                                utterance.lang = "en-US";
-                                utterance.rate = 1;//speed
-                                utterance.pitch = 1;//Pitch
-                                window.speechSynthesis.speak(utterance);
-                                }}
-                            >
-                                Read Aloud
-                            </button>
+                        
                     </div>
         
                     {/* TextArea Section */}
@@ -40,6 +30,8 @@ const FanFiction = () => {
                             className="fanfiction-textarea"
                             value={pages[currentPage] || ""}
                         ></textarea>
+
+                    <TTSControls text={pages[currentPage] || ""} />
         
                         {/* Pagination Section */}
                         <div className="fanfiction-pagination">
