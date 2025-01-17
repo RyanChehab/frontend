@@ -11,11 +11,12 @@ export const TTSProvider = ({ children }) => {
 
     const voices = window.speechSynthesis.getVoices();
 
-    const selectedVoice = voices.find((voice) => voice.name.includes("Google UK English Female"))
+    const selectedVoice = voices.find((voice) => voice.name.includes("Google UK English Female"))|| voices.find((voice) => voice.name.includes("Google US English")) 
+    || voices[0];
 
     const utterance = new SpeechSynthesisUtterance(text);
 
-    utterance.voice = selectedVoice;
+    utterance.voice = selectedVoice; 
     utterance.lang = "en-US";
     utterance.rate = 1;
     utterance.pitch = 1;
