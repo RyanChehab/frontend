@@ -51,7 +51,7 @@ const ReaderCard = ({id, title, isBookmarked, img_url, description}) => {
                     </CardDetails>
                     <CenterButton onClick={async ()=>{
                             await handleGetContent(id)
-                            navigate(`/ReaderDev/${id}`,{state:{RepoTitle:{title}}})
+                            navigate(`/ReaderDev/${id}`,{state:{RepoTitle: title}})
                     }}>
                         Visit 
                     </CenterButton>
