@@ -19,7 +19,7 @@ export const RepositoryProvider = ({children})=>{
     const token = localStorage.getItem('token')
 
     // get repositories
-    useEffect(()=>{
+    useEffect(()=>{ //ADD ID 
         const repositories = async () => {
             try{
                 const result = await fetchData(
@@ -28,6 +28,7 @@ export const RepositoryProvider = ({children})=>{
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
+                console.log("writers reposs",result)
                 setRepositories(result.repositories)
             }catch(error){
                 console.log(error.response.data.message)
@@ -35,7 +36,7 @@ export const RepositoryProvider = ({children})=>{
         }
 
         repositories()
-    },[])
+    },[token])
 
     // showform
     const handleAddRepository = () => {
@@ -104,6 +105,10 @@ export const RepositoryProvider = ({children})=>{
 
     // deleting repo 
     const handleDeleteRepo = async (id) => {
+        if (!id) {
+            console.error("Invalid repository ID:", id);
+            return;
+        }
         try{
             const response = await fetchData(
                 `http://localhost:8000/api/deleteRepo/${id}`,
