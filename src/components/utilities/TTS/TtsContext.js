@@ -8,7 +8,14 @@ export const TTSProvider = ({ children }) => {
   const [isPaused, setIsPaused] = useState(false);
 
   const playTTS = (text) => {
+
+    const voices = window.speechSynthesis.getVoices();
+
+    const selectedVoice = voices.find((voice) => voice.name.includes("Google UK English Female"))
+
     const utterance = new SpeechSynthesisUtterance(text);
+
+    utterance.voice = selectedVoice;
     utterance.lang = "en-US";
     utterance.rate = 1;
     utterance.pitch = 1;
