@@ -5,6 +5,11 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [userMessage, setUserMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); 
+
+  const toggleChatbot = () => {
+    setIsOpen((prevState) => !prevState);
+  };
 
   const sendMessage = async () => {
     if (!userMessage.trim()) return;
@@ -35,5 +40,8 @@ const Chatbot = () => {
       }
 
   }
+  return()
 
 }
+
+export default Chatbot;
