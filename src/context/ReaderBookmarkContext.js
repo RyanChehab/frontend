@@ -41,6 +41,7 @@ export const ReaderBookmarkProvider = ({children}) =>{
                 {Authorization: `Bearer ${token}`},
                 
             )
+            console.log(result)
             // setBookmarkedRepo((prev) => [...prev, gutenberg_id]);
         }catch(error){
             console.log(error)
@@ -60,16 +61,20 @@ export const ReaderBookmarkProvider = ({children}) =>{
                 requestBody,
                 { Authorization: `Bearer ${token}` },
             );
+            console.log(result)
             // Update state
             // setBookmarkedRepo((prev) => prev.filter((id) => id !== gutenberg_id));
         } catch (error) {
             console.error("Failed to remove bookmark:", error?.response?.message || error.message);
         }
     };
+
+    
     
     return(
         <ReaderBookmarkContext.Provider value={{
-            handleBookmark
+            handleBookmark,
+            removeBookmark
         }}>
             {children}
         </ReaderBookmarkContext.Provider>
