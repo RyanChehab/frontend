@@ -6,6 +6,7 @@ import { RepositoryContext } from '../../../../context/RepositoryContext';
 import { WriterDevContext } from '../../../../context/WriterDev';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from '@mui/material/Input';
+import './Repositories.css';
 import { Button, Snackbar, Alert, Slide} from '@mui/material';
 
   export const RepositoriesContainer = styled("div")({
@@ -20,8 +21,11 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
   position: "relative",
   width: "300px",
   height: "400px",
-  backgroundColor: "#f0f0f0",
+  backgroundColor: "#e0e0e0",
   borderRadius: "10px",
+  textAlign: "center",
+  justifyContent:"center",
+  alignItems:"center",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   overflow: "hidden",
   cursor: "pointer",
@@ -30,6 +34,7 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
   "&:hover > .card-details": {
       transform: "translateY(0)", 
   },
+
   });
 
   export const AddButton = styled(Button)({
@@ -165,6 +170,8 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
     return <Slide {...props} direction="down" />;
   }
 
+
+
   const Repositories = () => {
     const navigate = useNavigate();
 
@@ -177,43 +184,44 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
       <p className="display-title">Your Repositories</p>
       <RepositoriesContainer>
     {repositories.map((repo) => (
-        <RepositoryCard key={repo.id}>
+      repo && repo.img_url ? (<RepositoryCard key={repo.id}>
 
-            {/* image */}
-            <CardImage
-            style={{ backgroundImage: `url(${repo.img_url})` }}
-            ></CardImage>
+        {/* image */}
+        <CardImage
+        style={{ backgroundImage: `url(${repo.img_url || 'path/to/placeholder.jpg'})` }}
+        ></CardImage>
 
-            {/* Card detail section */}
-            <CardDetails className="card-details">
-                <h3>{repo.title}</h3>
-                <p>{repo.description}</p>
-            </CardDetails>
+        {/* Card detail section */}
+        <CardDetails className="card-details">
+            <h3>{repo.title}</h3>
+            <p>{repo.description}</p>
+        </CardDetails>
 
-            {/* edit btn */}
-            <AddButton onClick={async () => {
-                
-                await handleGetContent(repo.id);
-                navigate(`/WriterDev/${repo.id}`, {state:{RepositoryTitle: repo.title}});
-            }}>
-                <i className="fas fa-pencil-alt"></i>
-            </AddButton>
-            <DeleteButton
-                onClick={() => {
-                    const confirmDelete = window.confirm(
-                        `Are you sure you want to delete the repository "${repo.title}"?`
-                    );
-                    if (confirmDelete) {
-                        handleDeleteRepo(repo.id);
-                    }
-                }}
-            >
-                <i className="fas fa-trash-alt"></i>
-            </DeleteButton>
-        </RepositoryCard>
+        {/* edit btn */}
+        <AddButton onClick={async () => {
+            
+            await handleGetContent(repo.id);
+            navigate(`/WriterDev/${repo.id}`, {state:{RepositoryTitle: repo.title}});
+        }}>
+            <i className="fas fa-pencil-alt"></i>
+        </AddButton>
+        <DeleteButton
+            onClick={() => {
+                const confirmDelete = window.confirm(
+                    `Are you sure you want to delete the repository "${repo.title}"?`
+                );
+                if (confirmDelete) {
+                    handleDeleteRepo(repo.id);
+                }
+            }}
+        >
+            <i className="fas fa-trash-alt"></i>
+        </DeleteButton>
+    </RepositoryCard>) : null
+        
     ))}
     <RepositoryCard onClick={handleAddRepository}>
-        <span>+ Add Repository</span>
+        <span className='Add-repo'>+ Add Repository</span>
     </RepositoryCard>
 </RepositoriesContainer>
 
@@ -263,7 +271,7 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
                       border:'solid 2px #FC8E40',
             }
         }}
-        >{loading? "Creating..." :"Create Repository"}</Button>
+        >{loading? "testing..." :"Create Repository"}</Button>
             </form>
           </FormContainer>
         </ModalOverlay>
@@ -283,6 +291,7 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
                 {response}
             </Alert>
         </Snackbar>
+        
     </>
     );
 };
