@@ -17,5 +17,25 @@ export const TTSProvider = ({ children }) => {
     window.speechSynthesis.speak(utterance);
   };
 
-  
+  const pauseTTS = () => {
+    setIsPaused(true);
+    window.speechSynthesis.pause();
+  };
+
+  const resumeTTS = () => {
+    setIsPaused(false);
+    window.speechSynthesis.resume();
+  };
+
+  const stopTTS = () => {
+    setIsSpeaking(false);
+    setIsPaused(false);
+    window.speechSynthesis.cancel();
+  };
+
+  return (
+    <TTSContext.Provider value={{ isSpeaking, isPaused, playTTS, pauseTTS, resumeTTS, stopTTS }}>
+      {children}
+    </TTSContext.Provider>
+  );
 }
