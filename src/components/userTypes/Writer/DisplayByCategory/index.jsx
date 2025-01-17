@@ -3,14 +3,17 @@ import BookCard from '../BookCard';
 import { CardsContext } from '../../../../context/CardsContext';
 import WriterNav from '../writerNav';
 import './displatByCategory.css';
+import { useBookmark } from '../../../../context/BookCardContext';
+
 const DisplayByCategory = ()=>{
     const{category,loading} = useContext(CardsContext);
-
+    const { isBookmarked } = useBookmark(); 
+    
     const slideBooks = (rowId) => {
       const row = document.getElementById(rowId);
       if (row) {
         row.scrollBy({
-          left: 300, // Adjust the scroll distance as needed
+          left: 300,
           behavior: "smooth",
         });
       }
@@ -28,6 +31,7 @@ const DisplayByCategory = ()=>{
             <div className="categories-container">
               {Object.entries(BooksArray).map(([category, books]) => (
                 <div key={category} className="category-row">
+
                   {/* Display category title */}
                   <h2 className="category-title">{category}</h2>
                   <div className="books-row-container">
@@ -39,6 +43,7 @@ const DisplayByCategory = ()=>{
                           img_url={book.img_url}
                           title={book.title}
                           author={book.author}
+                          url_text={book.url_text}
                         />
                       ))}
                     </div>
