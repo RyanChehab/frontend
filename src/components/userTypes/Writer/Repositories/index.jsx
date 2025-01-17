@@ -271,7 +271,7 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
                       border:'solid 2px #FC8E40',
             }
         }}
-        >{loading? "testing..." :"Create Repository"}</Button>
+        >{loading? "Creating..." :"Create Repository"}</Button>
             </form>
           </FormContainer>
         </ModalOverlay>
