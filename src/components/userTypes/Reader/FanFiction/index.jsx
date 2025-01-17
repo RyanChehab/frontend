@@ -20,6 +20,18 @@ const FanFiction = () => {
                             Exit
                         </button>
                         <h1 className="book-title">{RepoTitle}</h1>
+                        <button
+                                className="tts-button"
+                                onClick={() => {
+                                const utterance = new SpeechSynthesisUtterance(pages[currentPage] || "");
+                                utterance.lang = "en-US";
+                                utterance.rate = 1;//speed
+                                utterance.pitch = 1;//Pitch
+                                window.speechSynthesis.speak(utterance);
+                                }}
+                            >
+                                Read Aloud
+                            </button>
                     </div>
         
                     {/* TextArea Section */}
