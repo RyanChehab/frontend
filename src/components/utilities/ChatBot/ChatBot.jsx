@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import fetchData from "../../../utility/fetch";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -12,6 +13,27 @@ const Chatbot = () => {
     setMessages(newMessages);
     setUserMessage("");
     setLoading(true);
+
+    try{
+        const response = await fetchData(
+            "http://localhost:8000/api/chat",
+            'POST',
+            {message: userMessage}
+        )
+
+        const botReply = { role: "assistant", content: response.reply };
+        // update state for bot 
+        setMessages((prevMessages) => [...prevMessages, botReply]);
+    }catch (error) {
+        console.error("Error fetching chatbot response:", error);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { role: "assistant", content: "Sorry, something went wrong." },
+        ]);
+      } finally {
+        setLoading(false);
+      }
+
   }
 
 }
