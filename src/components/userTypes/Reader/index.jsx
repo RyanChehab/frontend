@@ -1,11 +1,11 @@
 import React from "react";
 import ReaderNav from "./Nav";
-import ReaderRepository from "./Repositories";
+import DisplayRepos from "./DisplayRepo";
 const Reader = () => {
     return(
     <>
         <ReaderNav/>
-        <ReaderRepository/>
+        <DisplayRepos/>
     </>
     )
 }
