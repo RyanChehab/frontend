@@ -27,6 +27,7 @@ import { WriterDevProvider } from "./context/WriterDev";
 import Reader from "./components/userTypes/Reader";
 import FanFiction from "./components/userTypes/Reader/FanFiction";
 import { ReaderRepoProvider } from "./context/ReaderRepositoryContext";
+import { ReaderBookmarkProvider } from "./context/ReaderBookmarkContext";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 const token = localStorage.getItem('token')
@@ -38,6 +39,7 @@ function App() {
     <AuthProvider>
       <RepositoryProvider>
         <GutenBookProvider>
+          <ReaderBookmarkProvider>
         <WriterDevProvider>
           <ReaderRepoProvider>
           <AdminListProvider>
@@ -67,6 +69,7 @@ function App() {
       </AdminListProvider>
       </ReaderRepoProvider>
       </WriterDevProvider>
+      </ReaderBookmarkProvider>
       </GutenBookProvider>
       </RepositoryProvider>
     </AuthProvider>
