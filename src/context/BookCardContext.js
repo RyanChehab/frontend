@@ -28,7 +28,7 @@ export const BookCardProvider = ({children})=>{
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
-                setBookmarkedBooks(result.bookmarked_ids);
+                setBookmarkedBooks(result.bookmarked_books);
             }catch(error){
                 console.error(error);
             }
