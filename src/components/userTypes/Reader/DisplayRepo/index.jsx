@@ -7,7 +7,7 @@ import { ReaderRepositoryContext } from "../../../../context/ReaderRepositoryCon
 const DisplayRepos = () => {
     
     const {repositories,loading} = useContext(ReaderRepositoryContext)
-    // const {isBookmarked} = useContext(ReaderBookmarkContext)
+    const {isBookmarked} = useContext(ReaderBookmarkContext)
     const data = Object.values(repositories)
 
     return loading ? (
@@ -20,7 +20,7 @@ const DisplayRepos = () => {
                 <ReaderCard
                 id = {repo.id}
                 title = {repo.title}
-                isBookmarked = {repo.isBookmarked}
+                isBookmarked = {isBookmarked(repo.id)}
                 img_url = {repo.img_url}
                 description = {repo.description}
                 />

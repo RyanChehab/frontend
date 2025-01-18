@@ -7,8 +7,8 @@ const IntroBanner = () => {
     <div className="intro-banner">
       {/* Left Section */}
       <div className="intro-left">
-        <h1 className="intro-title">Finals Exam</h1>
-        <p className="intro-description">A teacher gets shocking news that will ruin his life</p>
+        <h1 className="intro-title">Saving Black</h1>
+        <p className="intro-description">Harry Potter goes back in time in search for his lost godfather</p>
         <button className="visit-repo-btn">
           Visit Repository 
         </button>
@@ -17,7 +17,7 @@ const IntroBanner = () => {
       {/* Right Section */}
       <div className="intro-right">
         <div className="card-image">
-          
+          <img />
         </div>
       </div>
     </div>
