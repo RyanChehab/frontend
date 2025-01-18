@@ -4,7 +4,7 @@ import './WriterDev.css'
 import {useLocation,useNavigate } from "react-router-dom";
 import { Snackbar, Alert } from "@mui/material";
 import { SlideTransition } from "../../../Auth/login";
-
+import Chatbot from "../../../utilities/ChatBot/ChatBot";
 
 const WriterDev = () =>{
         const location = useLocation()
@@ -69,7 +69,7 @@ const WriterDev = () =>{
                         Next
                     </button>
                 </div>
-
+<Chatbot/>
             </div>
         </div>
         {/* Notification */}
