@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import fetchData from "../../../utility/fetch";
+import './ChatBot.css';
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -40,7 +41,42 @@ const Chatbot = () => {
       }
 
   }
-  return()
+
+  return(<div>
+      {/* Toggle Button */}
+      <button className="chatbot-toggle" onClick={toggleChatbot}>
+        {isOpen ? "✖" : "🤖"}
+      </button>
+
+      {/* Chatbot Interface */}
+      {isOpen && (
+        <div className="chatbot-container">
+          <div className="messages">
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={`message ${msg.role === "user" ? "user" : "bot"}`}
+              >
+                {msg.content}
+              </div>
+            ))}
+            {loading && <div className="loading">Typing...</div>}
+          </div>
+          <div className="chat-input">
+            <input
+              type="text"
+              value={userMessage}
+              onChange={(e) => setUserMessage(e.target.value)}
+              placeholder="Type your message..."
+              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+            />
+            <button onClick={sendMessage} disabled={loading}>
+              Send
+            </button>
+          </div>
+        </div>
+      )}
+    </div>)
 
 }
 
