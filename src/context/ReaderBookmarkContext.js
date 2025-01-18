@@ -6,7 +6,8 @@ export const ReaderBookmarkContext = createContext()
 export const ReaderBookmarkProvider = ({children}) =>{
 
     const token = localStorage.getItem('token')
-    const [bookmarkedRepo,setBookmarkedRepo] = useState([])
+
+    const [bookmarkedBooks, setBookmarkedBooks] = useState([]);
 
     useEffect(()=>{
         const getBookmarks = async () => {
@@ -17,7 +18,7 @@ export const ReaderBookmarkProvider = ({children}) =>{
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
-                setBookmarkedRepo(result.bookmarked_ids);
+                setBookmarkedBooks(result.bookmarked_ids);
             }catch(error){
                 console.error(error);
             }
@@ -42,7 +43,8 @@ export const ReaderBookmarkProvider = ({children}) =>{
                 
             )
             console.log(result)
-            // setBookmarkedRepo((prev) => [...prev, gutenberg_id]);
+            setBookmarkedBooks(result.bookmarked_ids);
+
         }catch(error){
             console.log(error)
         }
@@ -62,12 +64,16 @@ export const ReaderBookmarkProvider = ({children}) =>{
                 { Authorization: `Bearer ${token}` },
             );
             console.log(result)
-            // Update state
-            // setBookmarkedRepo((prev) => prev.filter((id) => id !== gutenberg_id));
+
+            setBookmarkedBooks(result.bookmarked_ids);
         } catch (error) {
             console.error("Failed to remove bookmark:", error?.response?.message || error.message);
         }
     };
+
+    const isBookmarked = (bookmarkable_id) => {
+        return bookmarkedBooks.includes()
+    }
 
     
     
