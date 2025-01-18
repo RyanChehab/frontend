@@ -18,7 +18,8 @@ export const ReaderBookmarkProvider = ({children}) =>{
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
-                setBookmarkedBooks(result.bookmarked_ids);
+                setBookmarkedBooks(result.bookmarked_repositories);
+                console.log('fetched bookmarks: ', result.bookmarked_repositories)
             }catch(error){
                 console.error(error);
             }
@@ -43,7 +44,7 @@ export const ReaderBookmarkProvider = ({children}) =>{
                 
             )
             console.log(result)
-            setBookmarkedBooks(result.bookmarked_ids);
+            setBookmarkedBooks((prev) => [...prev, id]);
 
         }catch(error){
             console.log(error)
@@ -65,22 +66,24 @@ export const ReaderBookmarkProvider = ({children}) =>{
             );
             console.log(result)
 
-            setBookmarkedBooks(result.bookmarked_ids);
+            setBookmarkedBooks((prev) => prev.filter((repo_id) => repo_id !== id))
         } catch (error) {
             console.error("Failed to remove bookmark:", error?.response?.message || error.message);
         }
     };
 
-    const isBookmarked = (bookmarkable_id) => {
-        return bookmarkedBooks.includes()
+    const isBookmarked = (id) => {
+        return bookmarkedBooks.includes(id)
     }
-
+console.log(bookmarkedBooks)
     
     
     return(
         <ReaderBookmarkContext.Provider value={{
             handleBookmark,
-            removeBookmark
+            removeBookmark,
+            isBookmarked,
+            bookmarkedBooks
         }}>
             {children}
         </ReaderBookmarkContext.Provider>
