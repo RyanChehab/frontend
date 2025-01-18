@@ -1,5 +1,7 @@
 import React,{useContext} from "react";
 import { ReaderBookmarkContext } from "../../../../context/ReaderBookmarkContext";
+import ReaderCard from "../ReaderCard";
+import { ReaderRepositoryContext } from "../../../../context/ReaderRepositoryContext";
 
 const ReaderBookmarks = () => {
     const {repositories,loading} = useContext(ReaderRepositoryContext)
@@ -28,3 +30,4 @@ const ReaderBookmarks = () => {
     )
 }
 
+export default ReaderBookmarks;
