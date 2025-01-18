@@ -26,6 +26,7 @@ import { WriterDevProvider } from "./context/WriterDev";
                     // Reader
 import Reader from "./components/userTypes/Reader";
 import FanFiction from "./components/userTypes/Reader/FanFiction";
+import ReaderBookmarks from "./components/userTypes/Reader/Bookmarks";
 import { ReaderRepoProvider } from "./context/ReaderRepositoryContext";
 import { ReaderBookmarkProvider } from "./context/ReaderBookmarkContext";
 import { TTSProvider } from "./components/utilities/TTS/TtsContext";
@@ -63,6 +64,7 @@ function App() {
             {/* Reader */}
             <Route path="reader" element={<Reader/>}/>
             <Route path="ReaderDev/:id" element={<FanFiction/>}/>
+            <Route path="ReaderBookmark" element={<ReaderBookmarks/>}/>
           </Routes>
         
           </BookCardProvider>
