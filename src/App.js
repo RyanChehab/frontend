@@ -64,7 +64,7 @@ function App() {
             {/* Reader */}
             <Route path="reader" element={<Reader/>}/>
             <Route path="ReaderDev/:id" element={<FanFiction/>}/>
-            <Route path="ReaderBookmark" element={<ReaderBookmarks/>}/>
+            <Route path="Readerbookmarks" element={<ReaderBookmarks/>}/>
           </Routes>
         
           </BookCardProvider>
