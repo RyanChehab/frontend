@@ -1,0 +1,67 @@
+.intro-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #fff5ec, #ffe8d6);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .intro-left {
+    flex: 1;
+    padding-right: 20px;
+    margin-left: 120px;
+  }
+  
+  .intro-title {
+    font-size: 2.5rem;
+    color: #FC8E40; /* Primary color */
+    margin-bottom: 20px;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .intro-description {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .visit-repo-btn {
+    background-color: #FC8E40; /* Primary color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .visit-repo-btn:hover {
+    background-color: #e07a38; /* Darker shade for hover */
+  }
+  
+  .intro-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+  }
+  
+  .card-image {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
