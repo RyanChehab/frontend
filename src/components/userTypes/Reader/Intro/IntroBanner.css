@@ -16,9 +16,9 @@
   
   .intro-title {
     font-size: 2.5rem;
-    color: #FC8E40; /* Primary color */
+    color: #FC8E40;
     margin-bottom: 20px;
-    font-family: "Arial", sans-serif;
+    font-family:"Cinzel Decorative";
   }
   
   .intro-description {
@@ -26,21 +26,32 @@
     color: #333;
     margin-bottom: 20px;
     line-height: 1.6;
+    font-family: "Roboto";
   }
   
   .visit-repo-btn {
-    background-color: #FC8E40; /* Primary color */
+    background-color: #FC8E40;
     color: white;
-    border: none;
+    font-size: 16px;
+    font-weight: 600;
     padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
-  
-  .visit-repo-btn:hover {
-    background-color: #e07a38; /* Darker shade for hover */
+
+.visit-repo-btn:hover {
+    background-color: #E67935;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+.visit-repo-btn:active {
+    background-color: #D86A26;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
   }
   
   .intro-right {
@@ -65,3 +76,61 @@
     object-fit: cover;
   }
   
+  @media (max-width: 576px) {
+    .intro-banner {
+      padding: 20px;
+    }
+    
+    .intro-left{
+      margin: 0;
+
+    }
+
+    .intro-right{
+      margin: 0;
+    }
+    .intro-description {
+      font-size: 0.9rem;
+    }
+  
+    .visit-repo-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  
+    .card-image {
+      width: 200px;
+      height: 200px;
+
+    }
+  }
+  
+  @media (max-width: 360px) {
+    .intro-title {
+      font-size: 1.5rem;
+    }
+  
+    .intro-description {
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+  
+    .visit-repo-btn {
+      font-size: 11px;
+      padding: 5px 10px;
+    }
+  
+    .card-image {
+      width: 150px;
+      height: 150px;
+    }
+
+    .intro-left{
+      margin: 0;
+
+    }
+
+    .intro-right{
+      margin: 0;
+    }
+  }
