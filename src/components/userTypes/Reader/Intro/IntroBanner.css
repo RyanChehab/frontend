@@ -75,6 +75,16 @@
     height: 100%;
     object-fit: cover;
   }
+
+  @media (max-width: 900px) {
+    .intro-left{
+      margin: 40px;
+    }
+
+    .intro-right{
+      margin: 40px;
+    }
+  }
   
   @media (max-width: 576px) {
     .intro-banner {
