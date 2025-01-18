@@ -187,7 +187,7 @@ const ReaderNav = () => {
     <>
             <nav className="navbar d-flex align-items-center justify-content-between">
 
-            <div onClick={()=>navigate("/writer")}>
+            <div onClick={()=>navigate("/reader")}>
                 <img src={logo} alt="logo" className="offcanvas-logo" />
             </div>
     
