@@ -31,7 +31,7 @@ export const RepositoryProvider = ({children})=>{
                 console.log("writers reposs",result)
                 setRepositories(result.repositories)
             }catch(error){
-                console.log(error.response.data.message)
+                console.log(error.response)
             }
         }
 
