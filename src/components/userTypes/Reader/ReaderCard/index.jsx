@@ -10,12 +10,13 @@ import { WriterDevContext } from "../../../../context/WriterDev";
 import { ReaderRepositoryContext } from "../../../../context/ReaderRepositoryContext";
 import { ReaderBookmarkContext } from "../../../../context/ReaderBookmarkContext";
 
-const ReaderCard = ({id, title, isBookmarked, img_url, description}) => {
+const ReaderCard = ({id, title, img_url, description, isBookmarked}) => {
 
     const {handleGetContent} = useContext(WriterDevContext)
     const {handleBookmark,removeBookmark} = useContext(ReaderBookmarkContext)
-    const navigate = useNavigate()
 
+
+    const navigate = useNavigate()
 
     const handleBookmarkToggle = () => {
         if (isBookmarked) {
