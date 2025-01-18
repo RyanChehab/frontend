@@ -12,7 +12,7 @@ export const ReaderRepoProvider = ({children}) => {
     // fetching all repos
     useEffect(()=>{
         const repos = async () => {
-            console.log('hellooooo')
+            
             try{
                 const result = await fetchData(
                     'http://localhost:8000/api/getReaderRepositories',
