@@ -1,13 +1,29 @@
-import react,{createContext} from 'react'
-
+import react,{createContext, useEffect} from 'react'
+import fetchData from '../utility/fetch'
 const IntroContext = createContext()
 
 const IntroProvider = ({children}) => {
-    
+
+    const token = localStorage.getItem('token')
+
+    useEffect(()=>{
+        const intro = async () => {
+            try{
+                const result = await fetchData(
+                    'http://localhost:8000/api/bookmarks/mostBookmarked',
+                    'POST',
+                    null,
+                    {Authorization: `bearer ${token}`}
+                )
+                console.log(result)
+            }catch(error){
+                error.log(error)
+            }
+        }
+    },[])
+
     return(
-        <IntroContext.Provider value={{
-            
-        }}>
+        <IntroContext.Provider value={{}}>
             {children}
         </IntroContext.Provider>
     )
