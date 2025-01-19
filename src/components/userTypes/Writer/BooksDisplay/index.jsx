@@ -1,11 +1,13 @@
 import React,{useContext,useState} from "react";
 import { CardsContext } from "../../../../context/CardsContext";
 import { useBookmark } from "../../../../context/BookCardContext";
+import { UserContext } from "../../../../context/UserContext";
 import BookCard from "../BookCard";
 import './BooksDisplay.css'
 
 const DisplayCards = ()=>{
     const { data, loading} = useContext(CardsContext);
+    const {show} = useContext(UserContext)
     const { isBookmarked } = useBookmark(); 
     const booksArray = Object.values(data);
 
@@ -13,7 +15,12 @@ const DisplayCards = ()=>{
         <p className="display-loading-message">Loading...</p>
       ) : booksArray.length > 0 ? (
       <>
-        <h2 className="display-title">Fetured Books</h2>
+        {show ? (
+          <h2 className="display-title">Featured Books</h2>
+        ) : (
+          <h2 className="display-title"><span className="explore">Explore</span> our Library</h2>
+        )}
+        
         <div className="books-container">
           {booksArray.map((book) => (
             <BookCard
