@@ -1,11 +1,11 @@
-import react,{createContext, useEffect} from 'react'
+import react,{createContext, useEffect, useState} from 'react'
 import fetchData from '../utility/fetch'
 export const IntroContext = createContext()
 
 export const IntroProvider = ({children}) => {
 
     const token = localStorage.getItem('token')
-
+    const [repository, setRepository] = useState()
     useEffect(()=>{
         const intro = async () => {
             try{
@@ -15,17 +15,17 @@ export const IntroProvider = ({children}) => {
                     null,
                     {Authorization: `bearer ${token}`}
                 )
-                console.log(result.repository)
+                setRepository(result.repository)
             }catch(error){
                 error.log(error)
             }
         }
 
         intro()
-    },[])
+    },[token])
 
     return(
-        <IntroContext.Provider value={{}}>
+        <IntroContext.Provider value={{repository}}>
             {children}
         </IntroContext.Provider>
     )
