@@ -1,5 +1,14 @@
+.cardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
 .book-card {
     width: 240px;
+    min-width: 240px;
     height: 380px; 
     display: flex;
     flex-direction: column;
