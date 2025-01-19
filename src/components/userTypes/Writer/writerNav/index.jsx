@@ -41,7 +41,6 @@ const WriterNav = () => {
                     
                     <div className="CollapsedprofilePic" >
                         <Avatar
-                        src={profilePic}
                         onClick={handleOpen}
                         sx={{ width: 40, height: 40}}
                         />
@@ -61,7 +60,7 @@ const WriterNav = () => {
                             horizontal: 'center', 
                         }}
                     >
-                        <MenuItem onClick={handleUploadClick}><PersonAddIcon style={{fontSize: 15, color: '#FC8E40'}} />Add Profile Picture</MenuItem>
+        
                         <MenuItem onClick={handleLogout}><LogoutIcon style={{ fontSize: 15, color: '#FC8E40' }} />  Logout</MenuItem>
                     </Menu>
                 </div>
@@ -142,7 +141,6 @@ const WriterNav = () => {
     
                 <div className="profilePic" >
                     <Avatar
-                    src={profilePic}
                     onClick={handleOpen}
                     sx={{ width: 40, height: 40}}
                     />
@@ -162,7 +160,7 @@ const WriterNav = () => {
                         horizontal: 'center', 
                     }}
                 >
-                    <MenuItem onClick={handleUploadClick}><PersonAddIcon style={{fontSize: 15, color: '#FC8E40'}} />Add Profile Picture</MenuItem>
+                
                     <MenuItem onClick={handleLogout}><LogoutIcon style={{ fontSize: 15, color: '#FC8E40' }} />  Logout</MenuItem>
                 </Menu>
             </nav>

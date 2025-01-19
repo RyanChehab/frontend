@@ -1,8 +1,7 @@
-import {React,useContext,useState,useEffect,useRef} from 'react';
+import {React,useContext} from 'react';
 import {Avatar, Menu, MenuItem} from '@mui/material';
 import { NavContext } from '../../../../context/NavContext';
 import {Link,useNavigate} from 'react-router-dom';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LogoutIcon from '@mui/icons-material/Logout';
 import logo from './../../../../assets/logo.png';
 import SearchStories from '../../../utilities/search';
@@ -13,7 +12,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 const ReaderNav = () => {
 
     const navigate = useNavigate();
-    const {isCollapsed,anchorEl,handleOpen,handleClose,handleLogout,handleNavigate} = useContext(NavContext)
+    const {isCollapsed,anchorEl,handleOpen,handleClose,handleLogout} = useContext(NavContext)
     
 
     // collapsed
@@ -42,7 +41,6 @@ const ReaderNav = () => {
                     
                     <div className="CollapsedprofilePic">
                         <Avatar
-                        src={profilePic}
                         onClick={handleOpen}
                         sx={{ width: 50, height: 50}}
                         />
@@ -62,7 +60,6 @@ const ReaderNav = () => {
                             horizontal: 'center', 
                         }}
                     >
-                        <MenuItem onClick={handleUploadClick}><PersonAddIcon style={{fontSize: 15, color: '#FC8E40'}} />&nbsp; Add Profile Picture</MenuItem>
                         <MenuItem onClick={handleLogout}><LogoutIcon style={{ fontSize: 15, color: '#FC8E40' }} /> &nbsp;Logout</MenuItem>
                     </Menu>
                 </div>
@@ -143,7 +140,6 @@ const ReaderNav = () => {
     
                 <div className="profilePic">
                     <Avatar
-                    src={profilePic}
                     onClick={handleOpen}
                     sx={{ width: 50, height: 50}}
                     />
@@ -163,7 +159,7 @@ const ReaderNav = () => {
                         horizontal: 'center', 
                     }}
                 >
-                    <MenuItem onClick={handleUploadClick}><PersonAddIcon style={{fontSize: 15, color: '#FC8E40'}} />Add Profile Picture</MenuItem>
+            
                     <MenuItem onClick={handleLogout}><LogoutIcon style={{ fontSize: 15, color: '#FC8E40' }} />  Logout</MenuItem>
                 </Menu>
             </nav>
