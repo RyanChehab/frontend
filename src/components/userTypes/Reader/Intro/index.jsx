@@ -15,7 +15,7 @@ const IntroBanner = () => {
       {/* Left Section */}
       <div className="intro-left">
         <h1 className="intro-title">{repository.title}</h1>
-        <p className="intro-description">Harry Potter goes back in time in search for his lost godfather</p>
+        <p className="intro-description">{repository.description}</p>
         <button className="visit-repo-btn">
           Visit Repository 
         </button>
@@ -24,7 +24,7 @@ const IntroBanner = () => {
       {/* Right Section */}
       <div className="intro-right">
         <div className="card-image">
-          <img />
+          <img src={repository.img_url}/>
         </div>
       </div>
     </div>
