@@ -20,13 +20,14 @@ import { NavProvider } from "./context/NavContext";
 import { CardProvider } from "./context/CardsContext";
 import { BookCardProvider } from "./context/BookCardContext";
 import { RepositoryProvider } from "./context/RepositoryContext";
-
 import { WriterDevProvider } from "./context/WriterDev";
+import { UserProvider } from "./context/UserContext";
 
                     // Reader
 import Reader from "./components/userTypes/Reader";
 import FanFiction from "./components/userTypes/Reader/FanFiction";
 import ReaderBookmarks from "./components/userTypes/Reader/Bookmarks";
+import DisplayCards from "./components/userTypes/Writer/BooksDisplay";
 import { IntroProvider } from "./context/IntroContext";
 import { ReaderRepoProvider } from "./context/ReaderRepositoryContext";
 import { ReaderBookmarkProvider } from "./context/ReaderBookmarkContext";
@@ -42,6 +43,7 @@ function App() {
     <AuthProvider>
       <RepositoryProvider>
         <GutenBookProvider>
+          <UserProvider>
           <ReaderBookmarkProvider>
         <WriterDevProvider>
           <IntroProvider>
@@ -67,6 +69,7 @@ function App() {
             <Route path="reader" element={<Reader/>}/>
             <Route path="ReaderDev/:id" element={<FanFiction/>}/>
             <Route path="Readerbookmarks" element={<ReaderBookmarks/>}/>
+            <Route path="ReaderBooks" element={<DisplayCards/>}/>
           </Routes>
         
           </BookCardProvider>
@@ -78,6 +81,7 @@ function App() {
       </IntroProvider>
       </WriterDevProvider>
       </ReaderBookmarkProvider>
+      </UserProvider>
       </GutenBookProvider>
       </RepositoryProvider>
     </AuthProvider>
