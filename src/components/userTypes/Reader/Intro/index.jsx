@@ -1,8 +1,11 @@
-import React from "react";
-
+import React, {useContext} from "react";
+import { IntroContext } from "../../../../context/IntroContext";
 import "./IntroBanner.css"; // Add corresponding CSS file
 
 const IntroBanner = () => {
+
+  const{repository} = useContext(IntroContext)
+  
   return (
     <div className="intro-banner">
       {/* Left Section */}
