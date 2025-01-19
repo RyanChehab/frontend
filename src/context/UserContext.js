@@ -1,19 +1,28 @@
-import React, {useState,createContext} from 'react'
+import React, {useState,createContext, useEffect} from 'react'
 
-const UserContext = createContext()
+export const UserContext = createContext()
 
-const UserProvider = ({children}) => {
+export const UserProvider = ({children}) => {
 
+    const token = localStorage.getItem('token')
     const [usertype,setUsertype] = useState('');
     const [show,setShow] = useState(false)
+    
+    useEffect(()=>{
 
-    setUsertype(localStorage.getItem('type'))
+        const userTypeStorage = localStorage.getItem('type')
+        
+        setUsertype(userTypeStorage)
 
-    if (usertype==='writer'){
-        setShow(true);
-    }
+        if (userTypeStorage === "writer") {
+            setShow(true);
+        } else {
+            setShow(false);
+        }
+    }, [token]);
 
-    return (<UserContext value={{}}>
+
+    return (<UserContext.Provider value={{show}}>
         {children}
-    </UserContext>)
+    </UserContext.Provider>)
 }
