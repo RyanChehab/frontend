@@ -5,8 +5,12 @@ import { SlideTransition } from "../../Auth/login";
 import { ModalOverlay } from "../../userTypes/Writer/Repositories";
 import { FormContainer } from "../../userTypes/Writer/Repositories";
 import { CustomeInput } from "../../userTypes/Writer/Repositories";
+import { UserContext } from "../../../context/UserContext";
+
 const GutenBook = () => {
     const {pages,currentPage,handlePageChange,textareaRef,title,handleFork,activateForkMode,forkMode,showForm,setShowForm,open,handleCreateRepository,response,handleCloseNotification,type,setRepoTitle,setDescription,repoLoading} = useContext(GutenBookContext)
+    
+    const {show} = useContext(UserContext)
     
     return(
 
@@ -21,11 +25,12 @@ const GutenBook = () => {
                     Exit
                 </button>
                 <h1 className="book-title">{title}</h1>
-                
-                <button className="back-button" onClick={()=>{activateForkMode()
-                }}>
-                    {forkMode? "Forking..": "Fork"}
-                </button>
+                {show&& (
+                    <button className="back-button" onClick={()=>{activateForkMode()
+                    }}>
+                        {forkMode? "Forking..": "Fork"}
+                    </button>
+                )}
                 
             </div>
 
