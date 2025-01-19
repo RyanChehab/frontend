@@ -11,7 +11,7 @@ import SearchStories from '../../../utilities/search';
 import '../../../../css/utilities.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import './Nav.css'
+
 const ReaderNav = () => {
 
     const navigate = useNavigate();

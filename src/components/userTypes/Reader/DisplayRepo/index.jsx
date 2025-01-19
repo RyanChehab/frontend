@@ -10,13 +10,15 @@ const DisplayRepos = () => {
     const {isBookmarked} = useContext(ReaderBookmarkContext)
     const data = Object.values(repositories)
 
+    const limitedData = data.slice(0, 10);
+
     return loading ? (
         <p className="display-loading-message">Loading...</p>
     ):
     (<>
         <p className="display-title">Featured Repositories</p>
         <div className="books-container">
-            {data.map((repo) =>(
+            {limitedData.map((repo) =>(
                 <ReaderCard
                 id = {repo.id}
                 title = {repo.title}
