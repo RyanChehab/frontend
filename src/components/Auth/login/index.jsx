@@ -140,9 +140,10 @@ const Login = () => {
             fontFamily: 'Roboto, sans-serif',
             fontWeight: '500',
             fontSize: '14px',
-            border: 'black 2px solid',
+            background: '#FC8E40',
+            color: 'white',
             '&:hover': {
-                border:'solid 2px #FC8E40',
+                color: 'black'
             }
         }}
         >
