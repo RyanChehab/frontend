@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { IntroContext } from "../../../../context/IntroContext";
 import { WriterDevContext } from "../../../../context/WriterDev";
-import "./IntroBanner.css"; // Add corresponding CSS file
+import "./IntroBanner.css"; 
 
 const IntroBanner = () => {
 

@@ -94,7 +94,6 @@ export const GutenBookProvider = ({children}) =>{
 
     const activateForkMode = () => {
         setForkMode(true); // Enabling fork mode
-        console.log("Fork mode activated! Click on a position in the text to fork.");
     };
 
     const handleFork = (e) => {
@@ -111,7 +110,6 @@ export const GutenBookProvider = ({children}) =>{
         const adjustedCursorPosition = currentPageStart + cursorPositionOnPage;
 
         const forkedContent = fullContent.slice(0, adjustedCursorPosition);
-        console.log(forkedContent)
         setForkedContent(forkedContent); // Save the sliced content
         setForkMode(false); // Exit fork mo
 

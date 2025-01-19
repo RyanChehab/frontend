@@ -29,8 +29,8 @@ img{
     padding: 0.4rem;
 }
 
-.CollapsedprofilePic{
-    
+.offcanvas-logo{
+    cursor: pointer;
 }
 
 .links:hover{

@@ -123,7 +123,6 @@ const ReaderNav = () => {
                         }}
                     >
                         <MenuItem onClick={handleUploadClick}><PersonAddIcon style={{fontSize: 15, color: '#FC8E40'}} />&nbsp; Add Profile Picture</MenuItem>
-                        <MenuItem onClick={handleClose}><SettingsIcon style={{ fontSize: 15, color: '#FC8E40' }} />&nbsp;Settings</MenuItem>
                         <MenuItem onClick={handleLogout}><LogoutIcon style={{ fontSize: 15, color: '#FC8E40' }} /> &nbsp;Logout</MenuItem>
                     </Menu>
                 </div>
@@ -225,7 +224,6 @@ const ReaderNav = () => {
                     }}
                 >
                     <MenuItem onClick={handleUploadClick}><PersonAddIcon style={{fontSize: 15, color: '#FC8E40'}} />Add Profile Picture</MenuItem>
-                    <MenuItem onClick={handleClose}><SettingsIcon style={{ fontSize: 15, color: '#FC8E40' }} />Settings</MenuItem>
                     <MenuItem onClick={handleLogout}><LogoutIcon style={{ fontSize: 15, color: '#FC8E40' }} />  Logout</MenuItem>
                 </Menu>
             </nav>

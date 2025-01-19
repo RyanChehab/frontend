@@ -175,7 +175,7 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
   const Repositories = () => {
     const navigate = useNavigate();
 
-    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type,repositories,handleDeleteRepo} = useContext(RepositoryContext)
+    const {handleAddRepository,showForm,loading,setShowForm, handleCreateRepository,setTitle,setDescription,response,handleCloseNotification,open,type,repositories,handleDeleteRepo,} = useContext(RepositoryContext)
     
     const {handleGetContent} = useContext(WriterDevContext)
     return (
@@ -237,17 +237,18 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
                   onClick={() => setShowForm(false)}
                 ></button>
               </div>
-              <h5 className='create'>Create Repository</h5>
+
+              {/* form title */}
+            <h5 className='create'>Create Repository</h5>
+
             <form onSubmit={handleCreateRepository}>
               <CustomeInput type="text"
               required
               placeholder='Title'
               fullWidth
+              inputProps={{ maxLength: 100 }}
               onChange={(e)=>setTitle(e.target.value)}
               />
-
-              {/* title counter */}
-              <span style={{ fontSize: '12px', color: 'gray' }}>{titleCounter}</span>
 
               <CustomeInput type="text"
               required
@@ -255,11 +256,9 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
               multiline
               rows={4}
               fullWidth
+              inputProps={{ maxLength: 500 }}
               onChange={(e)=>setDescription(e.target.value)}
               />
-
-              {/* DescriptionCounter */}
-              <span style={{ fontSize: '12px', color: 'gray' }}>{descriptionCounter}</span>
 
               <Button
               variant='contained'

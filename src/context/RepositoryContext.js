@@ -28,7 +28,6 @@ export const RepositoryProvider = ({children})=>{
                     null,
                     {Authorization: `Bearer ${token}`}
                 )
-                console.log("writers reposs",result)
                 setRepositories(result.repositories)
             }catch(error){
                 console.log(error.response)
@@ -125,7 +124,7 @@ export const RepositoryProvider = ({children})=>{
     const handleCloseNotification = () => {
         setOpen(false);
       };
-    
+
     return(
         <RepositoryContext.Provider value={{
             handleAddRepository,
@@ -140,7 +139,7 @@ export const RepositoryProvider = ({children})=>{
             type,
             open,
             repositories,
-            handleDeleteRepo
+            handleDeleteRepo,
         }}>
             {children}
         </RepositoryContext.Provider>

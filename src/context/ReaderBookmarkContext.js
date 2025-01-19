@@ -19,7 +19,7 @@ export const ReaderBookmarkProvider = ({children}) =>{
                     {Authorization: `Bearer ${token}`}
                 )
                 setBookmarkedBooks(result.bookmarked_repositories);
-                console.log('fetched bookmarks: ', result.bookmarked_repositories)
+
             }catch(error){
                 console.error(error);
             }
@@ -43,7 +43,6 @@ export const ReaderBookmarkProvider = ({children}) =>{
                 {Authorization: `Bearer ${token}`},
                 
             )
-            console.log(result)
             setBookmarkedBooks((prev) => [...prev, id]);
 
         }catch(error){
@@ -64,7 +63,6 @@ export const ReaderBookmarkProvider = ({children}) =>{
                 requestBody,
                 { Authorization: `Bearer ${token}` },
             );
-            console.log(result)
 
             setBookmarkedBooks((prev) => prev.filter((repo_id) => repo_id !== id))
         } catch (error) {
@@ -75,7 +73,6 @@ export const ReaderBookmarkProvider = ({children}) =>{
     const isBookmarked = (id) => {
         return bookmarkedBooks.includes(id)
     }
-console.log(bookmarkedBooks)
     
     
     return(

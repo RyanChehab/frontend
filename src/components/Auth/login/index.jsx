@@ -39,7 +39,8 @@ const Login = () => {
             fontFamily: 'Roboto',
           }}
         >
-          <span className='welcome'>Welcome </span>  back to where your story continues
+          <span className='welcome'>Welcome </span> <br></br><br>
+          </br>  Back to where your story continues
         </Typography>
     
     <form onSubmit={handleLogin}>
