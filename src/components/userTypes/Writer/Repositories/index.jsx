@@ -229,7 +229,7 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
       {showForm &&(
         <ModalOverlay>
           <FormContainer>
-
+          
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <button
                   type="button"
@@ -237,7 +237,7 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
                   onClick={() => setShowForm(false)}
                 ></button>
               </div>
-
+              <h5 className='create'>Create Repository</h5>
             <form onSubmit={handleCreateRepository}>
               <CustomeInput type="text"
               required
@@ -245,6 +245,10 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
               fullWidth
               onChange={(e)=>setTitle(e.target.value)}
               />
+
+              {/* title counter */}
+              <span style={{ fontSize: '12px', color: 'gray' }}>{titleCounter}</span>
+
               <CustomeInput type="text"
               required
               placeholder='The Fanfiction derrived from book...talks about..'
@@ -253,6 +257,10 @@ import { Button, Snackbar, Alert, Slide} from '@mui/material';
               fullWidth
               onChange={(e)=>setDescription(e.target.value)}
               />
+
+              {/* DescriptionCounter */}
+              <span style={{ fontSize: '12px', color: 'gray' }}>{descriptionCounter}</span>
+
               <Button
               variant='contained'
               color='#FC8E40'
