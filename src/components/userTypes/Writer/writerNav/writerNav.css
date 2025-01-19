@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+img{
+    width: 70px;
+    height: 70px;
+}
+
+.navbar{
+    margin: 0 120px;
+    height: 70px;
+}
+
+.collapsed-navbar{
+    margin: 0 120px;
+    height: 70px;
+}
+
+.links{
+    text-decoration: none;
+    font-size: 18px;
+    font-family:'Roboto';
+    color:black;
+    padding: 0.7rem;
+}
+
+.profilePic{
+    width: 70px;
+    height: 70px;
+    padding: 0.4rem;
+}
+
+.offcanvas-logo{
+    cursor: pointer;
+}
+
+.links:hover{
+    color:#FC8E40;
+}
+
+.hamburger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; 
+    height: 50px; 
+    border: 2px solid #FC8E40; 
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+}
+
+.hamburger-menu:hover{
+    background: #FC8E40;
+    color: white;
+}
+
+.offcanvas-logo{
+    width: 60px;
+    height: 60px;
+}
+.collapsed-img-logo:hover{
+    cursor: pointer;
+}
+.nav-item{
+    font-family:'Roboto';
+    font-size: 1.1rem;
+}
+
+.nav-link:hover{
+    cursor: pointer;
+}
+
+.nav-item:hover{
+    color: #FC8E40;
+}
+
+.offcanvas-top {
+    height: 350px !important;
+}
+
+.offcanvas-header {
+    height: 80px; 
+    border-bottom: #FC8E40 1px solid; 
+}
+
+.offcanvas-body {
+    padding: 2rem; 
+}
+
+.btn-close:hover{
+    cursor: pointer;
+}

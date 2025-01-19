@@ -1,0 +1,177 @@
+.intro-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #fff5ec, #ffe8d6);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .intro-left {
+    flex: 1;
+    padding-right: 20px;
+    margin-left: 120px;
+  }
+  
+  .intro-title {
+    font-size: 2.5rem;
+    color: #FC8E40;
+    margin-bottom: 20px;
+    font-family:"Cinzel Decorative";
+  }
+  
+  .intro-description {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-family: "Roboto";
+  }
+  
+  .visit-repo-btn {
+    background-color: #FC8E40;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+.visit-repo-btn:hover {
+    background-color: #E67935;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+.visit-repo-btn:active {
+    background-color: #D86A26;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+  }
+  
+  .intro-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+  }
+  
+  .card-image {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .repo-title{
+    font-family:"Cinzel Decorative";
+    font-weight: 800;
+    color: #D86A26;
+  }
+
+  @media (max-width: 900px) {
+    .intro-left{
+      margin: 40px;
+    }
+
+    .intro-right{
+      margin: 40px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .intro-banner {
+      padding: 20px;
+    }
+    
+    .intro-left{
+      margin: 0;
+
+    }
+
+    .intro-right{
+      margin: 0;
+    }
+    .intro-description {
+      font-size: 0.9rem;
+    }
+  
+    .visit-repo-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  
+    .card-image {
+      width: 200px;
+      height: 200px;
+
+    }
+  }
+  
+  @media (max-width: 390px) {
+    .intro-title {
+        font-size: 1.2rem; /* Smaller font size for title */
+    }
+  
+    .intro-description {
+        font-size: 0.7rem; /* Smaller font size for description */
+        line-height: 1.3; /* Adjusted line height */
+        margin-bottom: 10px; /* Add space below description */
+    }
+  
+    .visit-repo-btn {
+        font-size: 10px; /* Smaller font size for button */
+        padding: 4px 8px; /* Reduced padding */
+        margin-top: auto; /* Push button to the bottom */
+        margin-bottom: 15px; /* Add margin at the bottom */
+    }
+  
+    .card-image {
+        width: 120px; /* Smaller card image */
+        height: 120px; /* Smaller card image */
+    }
+
+    .intro-left {
+        margin: 0; /* Remove margin */
+        padding: 0 10px; /* Add horizontal padding */
+        display: flex; /* Make it a flex container */
+        flex-direction: column; /* Stack children vertically */
+        justify-content: flex-start; /* Align content to the top */
+        align-items: center; /* Center-align items horizontally */
+        height: 100%; /* Ensure it takes full height */
+    }
+
+    .intro-right {
+        margin: 0; /* Remove margin */
+        padding: 0 10px; /* Add horizontal padding */
+    }
+
+    .intro-banner {
+        padding: 15px; /* Reduce overall padding for the banner */
+        flex-direction: column; /* Stack the content vertically */
+        align-items: center; /* Center-align the content */
+    }
+
+    .intro-left,
+    .intro-right {
+        width: 100%; /* Make sections take full width */
+        text-align: center; /* Center text for better readability */
+    }
+  
+    .card-image img {
+        object-fit: contain; /* Prevent image cropping */
+    }
+}

@@ -1,0 +1,20 @@
+.Add-repo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FC8E40;
+    padding: 10px;
+    border: 2px dashed #FC8E40;
+    border-radius: 10px;
+    background-color: #fff5ec;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.Add-repo:hover {
+    background-color: #FC8E40;
+    color: #ffffff;
+}
+
+.create{
+    color: #FC8E40;
+    text-align: center;
+}

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.login{
+    background: url('../../../assets/login-bg.jpg')center center / cover no-repeat;
+    height: 100vh;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+header{
+    position: relative;
+}
+
+.title{
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-top: 3rem;
+    transform: translateX(-50%);
+    font-family:"Cinzel Decorative";
+    color: #000000;
+    font-size: 2.7rem;
+}
+
+@media(max-width:500px){
+    .title{
+        font-size: 26px;
+        font-weight: 550;
+    }
+}
+
+.link{
+    font-family: "Roboto";
+    text-align: right;
+}
+
+.logo{
+    width: 90px;  
+    margin-left: 2rem;  
+}
+
+.welcome{
+    color:#FC8E40;
+    font-size: 20px;
+    font-family:"Cinzel Decorative";
+    font-weight: 700;
+}
