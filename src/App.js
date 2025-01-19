@@ -27,6 +27,7 @@ import { WriterDevProvider } from "./context/WriterDev";
 import Reader from "./components/userTypes/Reader";
 import FanFiction from "./components/userTypes/Reader/FanFiction";
 import ReaderBookmarks from "./components/userTypes/Reader/Bookmarks";
+import { IntroProvider } from "./context/IntroContext";
 import { ReaderRepoProvider } from "./context/ReaderRepositoryContext";
 import { ReaderBookmarkProvider } from "./context/ReaderBookmarkContext";
 import { TTSProvider } from "./components/utilities/TTS/TtsContext";
@@ -43,6 +44,7 @@ function App() {
         <GutenBookProvider>
           <ReaderBookmarkProvider>
         <WriterDevProvider>
+          <IntroProvider>
           <ReaderRepoProvider>
             <TTSProvider>
           <AdminListProvider>
@@ -73,6 +75,7 @@ function App() {
       </AdminListProvider>
       </TTSProvider>
       </ReaderRepoProvider>
+      </IntroProvider>
       </WriterDevProvider>
       </ReaderBookmarkProvider>
       </GutenBookProvider>
