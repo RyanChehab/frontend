@@ -5,12 +5,16 @@ import "./IntroBanner.css"; // Add corresponding CSS file
 const IntroBanner = () => {
 
   const{repository} = useContext(IntroContext)
+
+  if (!repository) {
+    return <div>Loading...</div>;
+}
   
   return (
     <div className="intro-banner">
       {/* Left Section */}
       <div className="intro-left">
-        <h1 className="intro-title">Saving Black</h1>
+        <h1 className="intro-title">{repository.title}</h1>
         <p className="intro-description">Harry Potter goes back in time in search for his lost godfather</p>
         <button className="visit-repo-btn">
           Visit Repository 
