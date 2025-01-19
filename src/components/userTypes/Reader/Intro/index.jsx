@@ -21,8 +21,8 @@ const IntroBanner = () => {
         <h1 className="intro-title">{repository.title}</h1>
         <p className="intro-description">{repository.description}</p>
         <button className="visit-repo-btn" onClick={async ()=>{
-                            await handleGetContent(repository.id)
-                            navigate(`/ReaderDev/${repository.id}`,{state:{RepoTitle: title}})
+                            await handleGetContent(repository.repository_id)
+                            navigate(`/ReaderDev/${repository.repository_id}`,{state:{RepoTitle: repository.title}})
                     }}>
           Visit Repository 
         </button>
