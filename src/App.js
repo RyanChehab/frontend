@@ -28,6 +28,7 @@ import Reader from "./components/userTypes/Reader";
 import FanFiction from "./components/userTypes/Reader/FanFiction";
 import ReaderBookmarks from "./components/userTypes/Reader/Bookmarks";
 import ReaderBooks from "./components/userTypes/Reader/ReaderBooks";
+import ReaderRepos from "./components/userTypes/Reader/RepoPage";
 import { IntroProvider } from "./context/IntroContext";
 import { ReaderRepoProvider } from "./context/ReaderRepositoryContext";
 import { ReaderBookmarkProvider } from "./context/ReaderBookmarkContext";
@@ -70,6 +71,7 @@ function App() {
             <Route path="ReaderDev/:id" element={<FanFiction/>}/>
             <Route path="Readerbookmarks" element={<ReaderBookmarks/>}/>
             <Route path="ReaderBooks" element={<ReaderBooks/>}/>
+            <Route path="ReaderRepo" element={<ReaderRepos/>}/>
           </Routes>
         
           </BookCardProvider>
