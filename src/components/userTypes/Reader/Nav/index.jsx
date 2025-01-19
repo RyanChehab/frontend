@@ -11,6 +11,7 @@ import SearchStories from '../../../utilities/search';
 import '../../../../css/utilities.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import './Nav.css'
 const ReaderNav = () => {
 
     const navigate = useNavigate();
@@ -22,49 +23,49 @@ const ReaderNav = () => {
     const dropzoneRef = useRef(null);
     
     // Dropzone 
-    useEffect(()=>{
-        const token = localStorage.getItem("token");
-        const ProfilePicDropzone = new Dropzone(dropzoneRef.current,{
-            url: `${base_url}/upload`,
-            url:"http://localhost:8000/api/upload",
-            paramName: "profile_pic",
-            maxFiles: 1,
-            maxFilesize: 2, //mb
-            acceptedFiles: "image/jpeg,image/png",
-            autoProcessQueue: true,
-            headers:{
-                Authorization: `Bearer ${token}`
-            },
+    // useEffect(()=>{
+    //     const token = localStorage.getItem("token");
+    //     const ProfilePicDropzone = new Dropzone(dropzoneRef.current,{
+    //         url: `${base_url}/upload`,
+    //         url:"http://localhost:8000/api/upload",
+    //         paramName: "profile_pic",
+    //         maxFiles: 1,
+    //         maxFilesize: 2, //mb
+    //         acceptedFiles: "image/jpeg,image/png",
+    //         autoProcessQueue: true,
+    //         headers:{
+    //             Authorization: `Bearer ${token}`
+    //         },
     
-            init: function () {
-                this.on("success", (file, response) => {
-                    console.log("File uploaded successfully:", response.url);
-                    setProfilePic(response.url);
-                });
-                this.on("error", (file, errorMessage) => {
-                    console.error("Upload error:", errorMessage);
-                    alert("Error uploading profile picture: " + errorMessage.error);
+    //         init: function () {
+    //             this.on("success", (file, response) => {
+    //                 console.log("File uploaded successfully:", response.url);
+    //                 setProfilePic(response.url);
+    //             });
+    //             this.on("error", (file, errorMessage) => {
+    //                 console.error("Upload error:", errorMessage);
+    //                 alert("Error uploading profile picture: " + errorMessage.error);
     
-                    if(errorMessage.error === "Token has expired"){
-                        localStorage.removeItem("token");
+    //                 if(errorMessage.error === "Token has expired"){
+    //                     localStorage.removeItem("token");
     
-                            // Redirect to login
-                            navigate("/");
-                    }
+    //                         // Redirect to login
+    //                         navigate("/");
+    //                 }
     
-                    this.removeFile(file);
-                });
+    //                 this.removeFile(file);
+    //             });
     
-            }
-        })
-        // saving the instance 
-        dropzoneRef.current.dropzone = ProfilePicDropzone;
+    //         }
+    //     })
+    //     // saving the instance 
+    //     dropzoneRef.current.dropzone = ProfilePicDropzone;
     
-        console.log(dropzoneRef.current.dropzone)
-        return ()=>{
-            ProfilePicDropzone.destroy(); //cleanup dropzone instance 
-        }
-    },[])
+    //     console.log(dropzoneRef.current.dropzone)
+    //     return ()=>{
+    //         ProfilePicDropzone.destroy(); //cleanup dropzone instance 
+    //     }
+    // },[])
     
     const handleUploadClick = () => {
         const dropzoneInstance = dropzoneRef.current.dropzone;
@@ -75,13 +76,13 @@ const ReaderNav = () => {
         }
     };
 
-                            // collapsed
+    // collapsed
     return isCollapsed ? (
-    
+
         // Collapsed Navbar
     <>
         <nav className="collapsed-navbar">
-           <div className="d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center justify-content-between">
     
                 <div onClick={() => navigate("/reader")}>
                     <img src={logo} alt="logo" className="collapsed-img-logo"/>
@@ -126,9 +127,9 @@ const ReaderNav = () => {
                         <MenuItem onClick={handleLogout}><LogoutIcon style={{ fontSize: 15, color: '#FC8E40' }} /> &nbsp;Logout</MenuItem>
                     </Menu>
                 </div>
-           </div>
+            </div>
     
-           <div
+            <div
                 className="offcanvas offcanvas-top"
                 id="offcanvasNavbar"
                 tabIndex="-1"
@@ -233,4 +234,6 @@ const ReaderNav = () => {
     </>
         );
     }
+                        
+    
     export default ReaderNav;

@@ -1,5 +1,4 @@
 import React,{useContext}from "react";
-import { RepositoryContext } from "../../../../context/RepositoryContext";
 import { useNavigate } from "react-router-dom";
 import { RepositoriesContainer } from "../../Writer/Repositories";
 import { RepositoryCard } from "../../Writer/Repositories";
@@ -7,7 +6,6 @@ import { CardImage } from "../../Writer/Repositories";
 import { CardDetails } from "../../Writer/Repositories";
 import { CenterButton } from "../../Writer/Repositories";
 import { WriterDevContext } from "../../../../context/WriterDev";
-import { ReaderRepositoryContext } from "../../../../context/ReaderRepositoryContext";
 import { ReaderBookmarkContext } from "../../../../context/ReaderBookmarkContext";
 
 const ReaderCard = ({id, title, img_url, description, isBookmarked}) => {
@@ -47,7 +45,7 @@ const ReaderCard = ({id, title, img_url, description, isBookmarked}) => {
 
                     {/* Details Section */}
                     <CardDetails className="card-details">
-                        <h3>{title}</h3>
+                        <h3 className="repo-title">{title}</h3>
                         <p>{description}</p>
                     </CardDetails>
                     <CenterButton onClick={async ()=>{
