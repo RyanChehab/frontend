@@ -35,59 +35,74 @@ import { ReaderBookmarkProvider } from "./context/ReaderBookmarkContext";
 import { TTSProvider } from "./components/utilities/TTS/TtsContext";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
+
+import ProtectedRoute from "./components/shared/GutenBook/ProtectedRoute";
+
 const token = localStorage.getItem('token')
 
 function App() {
   
   return (
-    <Router>
-    <AuthProvider>
-      <RepositoryProvider>
+      <Router>
+        <AuthProvider>
+        <RepositoryProvider>
         <GutenBookProvider>
-          <UserProvider>
-          <ReaderBookmarkProvider>
+        <UserProvider>
+        <ReaderBookmarkProvider>
         <WriterDevProvider>
-          <IntroProvider>
-          <ReaderRepoProvider>
-            <TTSProvider>
-          <AdminListProvider>
-      <NavProvider>
+        <IntroProvider>
+        <ReaderRepoProvider>
+        <TTSProvider>
+        <AdminListProvider>
+        <NavProvider>
         <CardProvider>
-          <BookCardProvider>
+        <BookCardProvider>
           
           <Routes>
+
+            {/* public routes */}
             <Route path="/" element={<Login />} />
             <Route path="signup" element={<Signup />} />
-            <Route path="writer" element={<Writer/>} />
-            <Route path="Categories" element={<DisplayByCategory/>} />
-            <Route path="repositories" element={<Repositories/>}/>
-            <Route path="WriterDev/:id" element={<WriterDev/>} />
-            <Route path='bookmarks' element={<Bookmarks/>} />
-            <Route path="Book" element={<GutenBook/>}/>
-            {/* Admin */}
-            <Route path="adminPanel" element={<Admin/>}/>
+
+            {/* writer */}
+            <Route element={<ProtectedRoute role={["writer"]} />}>
+              <Route path="writer" element={<Writer/>} />
+              <Route path="Categories" element={<DisplayByCategory/>} />
+              <Route path="repositories" element={<Repositories/>}/>
+              <Route path="WriterDev/:id" element={<WriterDev/>} />
+              <Route path='bookmarks' element={<Bookmarks/>} />
+              <Route path="Book" element={<GutenBook/>}/>
+            </Route>
+
+            {/* Admin */}    
+            <Route element={<ProtectedRoute role={["admin"]} />}>
+              <Route path="adminPanel" element={<Admin/>}/>
+            </Route>
+
             {/* Reader */}
-            <Route path="reader" element={<Reader/>}/>
-            <Route path="ReaderDev/:id" element={<FanFiction/>}/>
-            <Route path="Readerbookmarks" element={<ReaderBookmarks/>}/>
-            <Route path="ReaderBooks" element={<ReaderBooks/>}/>
-            <Route path="ReaderRepo" element={<ReaderRepos/>}/>
+            <Route element={<ProtectedRoute role={["reader"]} />}>
+              <Route path="reader" element={<Reader/>}/>
+              <Route path="ReaderDev/:id" element={<FanFiction/>}/>
+              <Route path="Readerbookmarks" element={<ReaderBookmarks/>}/>
+              <Route path="ReaderBooks" element={<ReaderBooks/>}/>
+              <Route path="ReaderRepo" element={<ReaderRepos/>}/>
+            </Route>
           </Routes>
         
-          </BookCardProvider>
+        </BookCardProvider>
         </CardProvider>
-      </NavProvider>
-      </AdminListProvider>
-      </TTSProvider>
-      </ReaderRepoProvider>
-      </IntroProvider>
-      </WriterDevProvider>
-      </ReaderBookmarkProvider>
-      </UserProvider>
-      </GutenBookProvider>
-      </RepositoryProvider>
-    </AuthProvider>
-    </Router>
+        </NavProvider>
+        </AdminListProvider>
+        </TTSProvider>
+        </ReaderRepoProvider>
+        </IntroProvider>
+        </WriterDevProvider>
+        </ReaderBookmarkProvider>
+        </UserProvider>
+        </GutenBookProvider>
+        </RepositoryProvider>
+        </AuthProvider>
+      </Router>
     
   );
 }
