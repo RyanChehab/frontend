@@ -1,0 +1,32 @@
+
+@media(max-width:700px){
+    .nav-box{
+        justify-content: space-between;
+        min-width: 370px;
+        margin-left:-4rem;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 499px) {
+    .nav-box{
+        justify-content: space-between;
+        min-width: 380px;
+        margin-left:-6.5rem;
+    }
+  }
+
+@media(max-width:400px){
+    .nav-box{
+        justify-content: space-between;
+        min-width: 330px;
+        margin-left:-6.8rem;
+    }
+}
+
+@media(max-width:350px){
+    .nav-box{
+        justify-content: space-between;
+        min-width: 310px;
+        margin-left:-6.9rem;
+    }
+}

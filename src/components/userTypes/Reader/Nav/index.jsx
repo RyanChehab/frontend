@@ -8,6 +8,7 @@ import SearchStories from '../../../utilities/search';
 import '../../../../css/utilities.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import './ReaderNav.css'
 
 const ReaderNav = () => {
 
@@ -21,7 +22,7 @@ const ReaderNav = () => {
         // Collapsed Navbar
     <>
         <nav className="collapsed-navbar">
-            <div className="d-flex align-items-center justify-content-between">
+            <div className="nav-box d-flex align-items-center justify-content-between">
     
                 <div onClick={() => navigate("/reader")}>
                     <img src={logo} alt="logo" className="collapsed-img-logo"/>
