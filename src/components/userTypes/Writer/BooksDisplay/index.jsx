@@ -7,9 +7,13 @@ import './BooksDisplay.css'
 
 const DisplayCards = ()=>{
     const { data, loading} = useContext(CardsContext);
-    const {show} = useContext(UserContext)
+    const {show,initialized} = useContext(UserContext)
     const { isBookmarked } = useBookmark(); 
     const booksArray = Object.values(data);
+
+    if(!initialized){
+      return (<p>loading..</p>)
+    }
 
      return loading ? (
         <p className="display-loading-message">Loading...</p>
