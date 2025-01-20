@@ -2,7 +2,6 @@ import {React,useContext} from 'react';
 import {Avatar, Menu, MenuItem} from '@mui/material';
 import { NavContext } from '../../../../context/NavContext';
 import {Link,useNavigate} from 'react-router-dom';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LogoutIcon from '@mui/icons-material/Logout';
 import logo from './../../../../assets/logo.png';
 import SearchStories from '../../../utilities/search';
@@ -21,7 +20,7 @@ const WriterNav = () => {
         // Collapsed Navbar
     <>
         <nav className="collapsed-navbar">
-           <div className="d-flex align-items-center justify-content-between">
+           <div className="nav-box d-flex align-items-center space-between">
     
                 <div onClick={() => navigate("/writer")}>
                     <img src={logo} alt="logo" className="collapsed-img-logo"/>
