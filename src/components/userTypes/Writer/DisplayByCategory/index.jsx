@@ -50,10 +50,10 @@ const DisplayByCategory = ()=>{
                     {/* View More button */}
                     {books.length > 3 && (
                       <button
-                        className="view-more"
+                        className="chevron-button"
                         onClick={() => slideBooks(`books-row-${category}`)}
                       >
-                        View More
+                        <i class="fas fa-chevron-right"></i>
                       </button>
                     )}
                   </div>
