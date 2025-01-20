@@ -6,8 +6,8 @@ import './BookCard.css';
 
 const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked,url_text})=>{
     const { handleBookmark, removeBookmark} = useBookmark();
-    const {fetchBookContent,loading,setTitle} = useContext(GutenBookContext)
-    const {show} = useContext(UserContext)
+    const {fetchBookContent,loading} = useContext(GutenBookContext)
+    const {show,initialized} = useContext(UserContext)
 
     const handleBookmarkToggle = () => {
         if (isBookmarked) {
@@ -16,6 +16,10 @@ const BookCard = ({ gutenberg_id, img_url, title, author, isBookmarked,url_text}
             handleBookmark(gutenberg_id);
         }
     };
+    
+    if(!initialized){
+        return (<p>loading..</p>)
+    }
 
     return(
         <div className="cardContainer">
