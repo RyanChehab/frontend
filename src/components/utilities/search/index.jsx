@@ -2,6 +2,8 @@ import React,{useContext} from 'react';
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { NavContext } from '../../../context/NavContext';
+import SearchIcon from "@mui/icons-material/Search";
+import { InputAdornment } from "@mui/material";
 
 const SearchBar = styled(InputBase)(({ theme }) => ({
     minWidth: '100px',
@@ -24,6 +26,11 @@ const SearchStories = ()=>{
               value={searchTerm}
               onChange={handleInputChange}
               style={{ width: "100%" }}
+              startAdornment={
+                <InputAdornment position="start">
+                  <SearchIcon style={{ color: "#888" }} />
+                </InputAdornment>
+              }
             />
             {searchLoad && (
               <p style={{ marginTop: "10px", fontSize: "14px", color: "#555" }}>
