@@ -41,7 +41,7 @@ const WriterNav = () => {
                     <div className="CollapsedprofilePic" >
                         <Avatar
                         onClick={handleOpen}
-                        sx={{ width: 40, height: 40}}
+                        sx={{ width: 40, height: 40,}}
                         />
                     </div>
         
@@ -141,7 +141,7 @@ const WriterNav = () => {
                 <div className="profilePic" >
                     <Avatar
                     onClick={handleOpen}
-                    sx={{ width: 40, height: 40}}
+                    sx={{ width: 40, height: 40, marginTop: "5px"}}
                     />
                 </div>
     
